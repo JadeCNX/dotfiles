@@ -1,0 +1,44 @@
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[color]
+	ui = auto
+[alias]
+	tree = log --graph --full-history --all --color --date=local --pretty=format:\"%C(auto)%x09%h %C(blue)%an\t%C(auto)%s %d %x1b[2m%ad%x1b[0m%Creset\" # %d%an, %ai%
+	cm = commit -m
+	logs = log --stat
+	spull = !git stash && git pull && git fat pull && git stash pop
+	re-stash = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
+	mylog = log --oneline --author=jade --date=local --pretty=format:\"%C(auto)%h %s%d %x1b[2m%ad%x1b[0m%Creset\"
+[user]
+	email = jadearmy89@gmail.com
+	name = jade
+[push]
+	default = current
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[merge]
+	tool = code
+[core]
+	editor = vim
+	excludesfile = /Users/jade/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/jade/Library/Caches/com.torusknot.SourceTreeNotMAS/org.sparkle-project.Sparkle/Sourcetree 177/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+# [commit]
+# 	template = /Users/tc6/.stCommitMsg
+[diff]
+	tool = code
+[mergetool "sublime"]
+	cmd = sublime -w $MERGED
+	trustExitCode = false

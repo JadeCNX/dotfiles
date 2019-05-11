@@ -1,0 +1,13 @@
+*~
+.DS_Store
+.notags
+tags
+TAGS
+tags.lock
+tags.temp
+Session.vim
+.tern-port
+.vscode
+*.pyc
+node_modules
+.projectile

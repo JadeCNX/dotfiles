@@ -1,0 +1,30 @@
+
+# Set the SSH identities to load into the agent.
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_do_ytmi_rsa'
+
+
+# export GOPATH=/Users/jade/Develops/Go
+# export GOROOT=/usr/local/opt/go/libexec
+export ROYALE_HOME=/Users/jade/Develops/apache-royale-compiler-0.9.2-src
+export FLEX_HOME=/Users/jade/Develops/litic/sdk4.15
+# export TC_DEPLOY_DIR=/Users/jade/Develops/litic/gui_bin
+
+
+#alias gnr='git cherry origin/release origin/develop | perl -ne "m/^[\+]/&&s/^..//&&print" | git show --pretty="format:%C(auto)%h %s %d%an, %ai%Creset, %ai%Creset" -s --author=jade --stdin'
+alias gnr='~/scripts/cherry_release.py | git show --pretty="format:%C(auto)%h%C(green)%d %C(blue)%an %C(auto)%s %x1b[2m%ad%x1b[0m%Creset" -s --author=jade --stdin'
+#alias swfconfilctcheckout='git pull | grep "\t.*swf$" | xargs git checkout | xargs echo "checkout conflict success\n"'
+# alias git-pull-ignore-swf='~/Develops/scripts/._gcp.py | xargs -I % sh -c "git checkout % ; echo checkout %" && git pull && git fat pull'
+alias gcr='~/Develops/scripts/git-select-cherry.py'
+
+alias tail-flash='less +F /Users/jade/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt'
+# alias tail-flash-grep='tail -100 -f /Users/jade/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt | grep --line-buffered'
+
+alias tail-flash-chrome='less +F /Users/jade/Library/Application\ Support/Google/Chrome/Default/Pepper\ Data/Shockwave\ Flash/WritableRoot/Logs/flashlog.txt'
+# alias tail-flash-chrome-grep='tail -100 -f /Users/jade/Library/Application\ Support/Google/Chrome/Default/Pepper\ Data/Shockwave\ Flash/WritableRoot/Logs/flashlog.txt | grep --line-buffered'
+
+
+# Go development
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+

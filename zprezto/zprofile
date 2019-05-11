@@ -1,0 +1,119 @@
+#
+# Executes commands at login pre-zshrc.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+#
+# Browser
+#
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
+
+#
+# Editors
+#
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+#
+# Language
+#
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
+#
+# Paths
+#
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
+# Set the list of directories that cd searches.
+# cdpath=(
+#   $cdpath
+# )
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /usr/local/{bin,sbin}
+  $HOME/.node_modules/bin
+  $HOME/.cargo/bin
+  $HOME/.yarn/bin
+  $HOME/.config/yarn/global/node_modules/.bin
+  $path
+)
+
+
+# Delay transition between modes (n * 0.1 sec.)
+export KEYTIMEOUT=1
+
+
+#
+# Less
+#
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-X -F -g -i -M -R -S -w -z-4'
+
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+
+# Fix git auto-complete to search only local files
+__git_files () { 
+    _wanted files expl 'local files' _files  
+}
+
+
+#
+# tmuxinator
+#
+alias tmr=tmuxinator
+
+
+#
+# setopt
+#
+# disable warn glob with no match
+setopt nonomatch
+
+# turn on spelling correction
+# setopt correct
+
+# don't save duplicates in command history
+setopt histignoredups
+# don't allow accidental file over-writes
+# setopt noclobber
+
+# change directory with no cd
+setopt autocd
+
+export GTAGSLABEL=pygments
+
+#
+# Alias
+#
+alias vim='nvim'
+alias vims='nvim -S Session.vim'
+alias emacs='emacs -nw'
+alias hidden_show='defaults write com.apple.finder AppleShowAllFiles -bool YES'
+alias hidden_hide='defaults write com.apple.finder AppleShowAllFiles -bool NO'
+alias gts='git tag --sort=objecttype --sort=-creatordate | git show --date=local --pretty="format:%C(auto)%h%C(green)%d %C(blue)%an %C(auto)%s %x1b[2m%ad%x1b[0m%Creset" -s --stdin'
+alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'

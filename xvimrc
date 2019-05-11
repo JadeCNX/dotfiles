@@ -1,0 +1,18 @@
+set ignorecase
+set guioptions=r
+set hlsearch
+set blickcursor
+
+imap fd <Esc>
+
+nmap Y "*y 
+vmap Y "*y 
+
+" Window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+nnoremap n nzz
+nnoremap N Nzz
