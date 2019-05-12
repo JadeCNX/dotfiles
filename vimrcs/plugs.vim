@@ -36,7 +36,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'ludovicchabant/vim-gutentags'
@@ -68,7 +67,6 @@ Plug 'Shougo/neomru.vim'
 Plug 'SirVer/ultisnips' " ultimate snippet
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
@@ -115,6 +113,7 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'itchyny/lightline.vim'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
+" Plug 'junegunn/vim-peekaboo'
 " Plug 'koron/minimap-vim'
 " Plug 'lilydjwg/colorizer'
 " Plug 'lornix/vim-scrollbar'
@@ -131,9 +130,11 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'Shougo/echodoc.vim'
 " Plug 'Shougo/neoyank.vim'
 " Plug 'Shougo/unite-outline'
+" Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+" Plug 'terryma/vim-multiple-cursors'
 " Plug 'tomtom/tlib_vim'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
