@@ -341,10 +341,10 @@ if has('nvim')
   call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
 
   " Change mappings.
-  call denite#custom#map('normal','<C-j>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('normal', '<C-k>', '<denite:move_to_previous_line>',  'noremap')
-  call denite#custom#map('insert','<C-j>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>',  'noremap')
+  call denite#custom#map('normal','<C-n>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>',  'noremap')
+  call denite#custom#map('insert','<C-n>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>',  'noremap')
 
   call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
   call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
