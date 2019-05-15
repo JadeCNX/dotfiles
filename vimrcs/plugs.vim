@@ -86,7 +86,6 @@ Plug 'vim-scripts/utl.vim'
 Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
-Plug 'wsdjeg/FlyGrep.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
@@ -143,6 +142,7 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/taglist.vim'
 " Plug 'vim-scripts/YankRing.vim'
+" Plug 'wsdjeg/FlyGrep.vim'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
@@ -364,8 +364,8 @@ if has('nvim')
   " nnoremap <silent> <C-p> :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
   nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
-  nnoremap <leader>? :<C-u>Denite grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
-  " nnoremap <leader>? :<C-u>DeniteBufferDir grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
+  nnoremap <leader>/ :<C-u>Denite grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
+  nnoremap <leader>? :<C-u>DeniteBufferDir grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
 
   " nnoremap <leader>og :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
   nnoremap <M-p> :<C-u>Denite file/rec -highlight-mode-insert=Search<CR>
@@ -914,9 +914,9 @@ let g:vim_markdown_strikethrough = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> FlyGrep
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:spacevim_debug_level = 1
-let g:FlyGrep_input_delay = 100
-nnoremap <leader>/ :<C-u>FlyGrep<CR>
+" let g:spacevim_debug_level = 1
+" let g:FlyGrep_input_delay = 100
+" nnoremap <leader>/ :<C-u>FlyGrep<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
