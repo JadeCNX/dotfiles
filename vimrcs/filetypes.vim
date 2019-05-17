@@ -81,3 +81,10 @@ augroup XML
     autocmd!
     autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
 augroup END
+
+
+""""""""""""""""""""""""""""""
+" -> Image
+"""""""""""""""""""""""""""""""
+autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
+
