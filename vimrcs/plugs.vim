@@ -121,6 +121,7 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'mhartington/deoplete-typescript'
 " Plug 'mhinz/vim-startify'
 " Plug 'mileszs/ack.vim'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " Plug 'nsf/gocode'
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -725,9 +726,13 @@ if has('nvim')
         \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
         \ 'python': ['/usr/local/bin/pyls'],
         \ 'go': ['go-langserver'],
-        \ 'c': ['/usr/local/bin/cquery', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ],
-        \ 'cpp': ['/usr/local/bin/cquery', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ]
+        \ 'c': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
+        \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
+        \ 'cuda': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
+        \ 'objc': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
         \}
+  " \ 'c': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ],
+  " \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ]
 
   " Automatically start language servers.
   let g:LanguageClient_autoStart = 1
@@ -749,6 +754,21 @@ if has('nvim')
   nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <silent> <leader>ws :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
   nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
+
+  augroup LanguageClient_config_ccls
+    au!
+    au BufEnter * let b:Plugin_LanguageClient_started = 0
+    au User LanguageClientStarted setl signcolumn=yes
+    au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
+    au User LanguageClientStopped setl signcolumn=auto
+    au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
+    au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
+
+    nn <silent> xh :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+    nn <silent> xj :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+    nn <silent> xk :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+    nn <silent> xl :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+  augroup END
 
 endif
 
