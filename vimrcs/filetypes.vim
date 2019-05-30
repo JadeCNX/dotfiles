@@ -25,6 +25,12 @@ au FileType python set indentkeys-=0#
 
 
 """"""""""""""""""""""""""""""
+" -> JSON section
+"""""""""""""""""""""""""""""""
+ autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
+""""""""""""""""""""""""""""""
 " -> JavaScript section
 """""""""""""""""""""""""""""""
 " au FileType javascript call JavaScriptFold()

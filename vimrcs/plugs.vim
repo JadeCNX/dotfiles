@@ -13,17 +13,17 @@ if !has('nvim')
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 endif
 
+Plug '/junegunn/vim-easy-align'
 Plug '/usr/local/opt/fzf' " use with 'brew install fzf'
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'bps/vim-textobj-python'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/NrrwRgn'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'dbakker/vim-paragraph-motion'
-Plug 'deoplete-plugins/deoplete-tag'
 Plug 'devjoe/vim-codequery'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
@@ -37,8 +37,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
@@ -48,6 +49,7 @@ Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 Plug 'osyo-manga/vim-anzu'
 Plug 'osyo-manga/vim-over'
@@ -64,7 +66,6 @@ Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neomru.vim'
 Plug 'SirVer/ultisnips' " ultimate snippet
 Plug 'szw/vim-maximizer'
@@ -85,19 +86,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
-Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 Plug 'zacharied/denite-nerdfont'
-Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
 " Plug 'ashisha/image.vim'
+" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 " Plug 'bagrat/vim-workspace'
 " Plug 'bfredl/nvim-miniyank'
 " Plug 'blindFS/vim-taskwarrior'
@@ -106,6 +106,7 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'chr4/nginx.vim'
 " Plug 'ctrlpvim/ctrlp.vim' " serach for files, buffers, tags
 " Plug 'dahu/vim-fanfingtastic'
+" Plug 'deoplete-plugins/deoplete-tag'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
@@ -129,6 +130,7 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rust-lang/rust.vim'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/echodoc.vim'
 " Plug 'Shougo/neoyank.vim'
 " Plug 'Shougo/unite-outline'
@@ -145,7 +147,9 @@ Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/taglist.vim'
 " Plug 'vim-scripts/YankRing.vim'
+" Plug 'w0rp/ale'
 " Plug 'wsdjeg/FlyGrep.vim'
+" Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
@@ -273,26 +277,28 @@ colorscheme monokai_pro
 """"""""""""""""""""""""""""""
 " -> Deoplete
 """"""""""""""""""""""""""""""
-if has('nvim')
-  call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-  call deoplete#custom#var('around', {
-        \   'range_above': 50,
-        \   'range_below': 50,
-        \   'mark_above': '[↑]',
-        \   'mark_below': '[↓]',
-        \   'mark_changes': '[*]',
-        \})
-  " call deoplete#custom#option('sources', {
-  "       \ '_': ['buffer'],
-  "       \ 'cpp': ['buffer', 'tag'],
-  "       \})
-  " call deoplete#custom#source('_', 'sorters', [])
+" if has('nvim')
+"   call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+"   call deoplete#custom#var('around', {
+"         \   'range_above': 50,
+"         \   'range_below': 50,
+"         \   'mark_above': '[↑]',
+"         \   'mark_below': '[↓]',
+"         \   'mark_changes': '[*]',
+"         \})
 
-  let g:deoplete#enable_at_startup = 1
+"   call deoplete#custom#source('ultisnips', 'rank', 1000)
+"   " call deoplete#custom#option('sources', {
+"   "       \ '_': ['buffer'],
+"   "       \ 'cpp': ['buffer', 'tag'],
+"   "       \})
+"   " call deoplete#custom#source('_', 'sorters', [])
 
-  " <TAB>: completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-endif
+"   " let g:deoplete#enable_at_startup = 1
+
+"   " <TAB>: completion.
+"   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" endif
 
 
 """"""""""""""""""""""""""""""
@@ -306,10 +312,10 @@ if has('nvim')
   augroup end
 
   call denite#custom#option('default', {
-            \ 'auto_resize': 1,
-            \ 'winheight': 15,
-            \ 'vertical_preview': 1
-            \ })
+        \ 'auto_resize': 1,
+        \ 'winheight': 15,
+        \ 'vertical_preview': 1
+        \ })
 
   " call denite#custom#option('default', {
   " \ 'prompt': '❯'
@@ -587,40 +593,41 @@ let g:go_fmt_command = "goimports"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> deoplete-go
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  let g:deoplete#sources#go#gocode_binary = "/Users/jade/go/bin/gocode"
-endif
+" if has('nvim')
+"   let g:deoplete#sources#go#gocode_binary = "/Users/jade/go/bin/gocode"
+" endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> ALE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:ale_completion_enabled = 1
-let g:ale_linters = {
-      \   'javascript': ['tsserver', 'prettier', 'eslint'],
-      \   'python': ['autopep8', 'pylint'],
-      \   'go': ['gofmt', 'goimports', 'golint', 'golangserver', 'go vet'],
-      \   'typescript': ['typecheck', 'prettier', 'eslint'],
-      \   'vim': ['vint'],
-      \   'xml': ['xmllint'],
-      \   'scss': ['prettier', 'stylelint'],
-      \   'sass': ['stylelint'],
-      \   'json': ['prettier']
-      \}
+" let g:ale_linters = {
+"       \   'javascript': ['tsserver', 'prettier', 'eslint'],
+"       \   'python': ['autopep8', 'pylint'],
+"       \   'go': ['gofmt', 'goimports', 'golint', 'golangserver', 'go vet'],
+"       \   'typescript': ['typecheck', 'prettier', 'eslint'],
+"       \   'vim': ['vint'],
+"       \   'xml': ['xmllint'],
+"       \   'scss': ['prettier', 'stylelint'],
+"       \   'sass': ['stylelint'],
+"       \   'json': ['prettier']
+"       \}
 
-let g:ale_fixers = {
-      \   'javascript': [
-      \       'eslint',
-      \       'importjs'
-      \   ],
-      \}
+" let g:ale_fixers = {
+"       \   'javascript': [
+"       \       'eslint',
+"       \       'importjs'
+"       \   ],
+"       \}
 " \   'go': [
 " \       'gofmt',
 " \       'goimports'
 " \   ]
 " \       'prettier'
 
-nmap <silent> <leader>aa <Plug>(ale_next_wrap)
-nmap <silent> <leader>af <Plug>(ale_fix)
+" nmap <silent> <leader>aa <Plug>(ale_next_wrap)
+" nmap <silent> <leader>af <Plug>(ale_fix)
 
 " Disabling highlighting
 " let g:ale_set_highlights = 0
@@ -681,7 +688,7 @@ let g:NERDDefaultAlign = 'both'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:colorizer_auto_color = 0
 " let g:colorizer_skip_comments = 1
-let g:colorizer_auto_filetype='css,html,javascript,javascript.jsx'
+" let g:colorizer_auto_filetype='css,html,javascript,javascript.jsx'
 " let g:colorizer_nomap = 1
 let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 
@@ -735,64 +742,64 @@ let g:WebDevIconsOS = 'Darwin'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> LanguageClient-neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  let g:LanguageClient_serverCommands = {
-        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-        \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
-        \ 'python': ['/usr/local/bin/pyls'],
-        \ 'go': ['go-langserver'],
-        \ 'c': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'cuda': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'objc': ['/usr/local/bin/ccls', '--log-file=/tmp/cc.log'],
-        \}
-  " \ 'c': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ],
-  " \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ]
+" if has('nvim')
+"   let g:LanguageClient_serverCommands = {
+"         \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"         \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
+"         \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
+"         \ 'python': ['/usr/local/bin/pyls', '--log-file /tmp/lsp/pyls.log'],
+"         \ 'go': ['go-langserver'],
+"         \ 'c': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+"         \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+"         \ 'cuda': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+"         \ 'objc': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+"         \}
+"   " \ 'c': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ],
+"   " \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ]
 
-  " Automatically start language servers.
-  let g:LanguageClient_autoStart = 1
-  let g:LanguageClient_selectionUI = 'quickfix'
+"   " Automatically start language servers.
+"   let g:LanguageClient_autoStart = 1
+"   " let g:LanguageClient_selectionUI = 'quickfix'
 
-  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-  autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType go setlocal omnifunc=LanguageClient#complete
-  autocmd FileType python setlocal omnifunc=LanguageClient#complete
-  autocmd FileType rust setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+"   " " autocmd FileType go setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType python setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType rust setlocal omnifunc=LanguageClient#complete
 
-  autocmd FileType c setlocal omnifunc=LanguageClient#complete
-  autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
-  autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
-  autocmd FileType objc setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType c setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
+"   " autocmd FileType objc setlocal omnifunc=LanguageClient#complete
 
 
-  " if !executable('javascript-typescript-stdio')
-  " echo "javascript-typescript-stdio not installed!\n"
-  " endif
+"   " if !executable('javascript-typescript-stdio')
+"   " echo "javascript-typescript-stdio not installed!\n"
+"   " endif
 
-  nnoremap <silent> <leader>ww :call LanguageClient_contextMenu()<CR>
-  nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <silent> <leader>ws :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
-  nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
+"   nnoremap <silent> <leader>ww :call LanguageClient_contextMenu()<CR>
+"   nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
+"   nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
+"   nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
+"   nnoremap <silent> <leader>ws :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
+"   nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
 
-  augroup LanguageClient_config_ccls
-    au!
-    au BufEnter * let b:Plugin_LanguageClient_started = 0
-    au User LanguageClientStarted setl signcolumn=yes
-    au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
-    au User LanguageClientStopped setl signcolumn=auto
-    au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
-    au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
+"   augroup LanguageClient_config_ccls
+"     au!
+"     au BufEnter * let b:Plugin_LanguageClient_started = 0
+"     au User LanguageClientStarted setl signcolumn=yes
+"     au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
+"     au User LanguageClientStopped setl signcolumn=auto
+"     au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
+"     au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
 
-    nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
-    nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
-    nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
-    nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
-  augroup END
+"     nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+"     nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+"     nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+"     nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+"   augroup END
 
-endif
+" endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> tsuquyomi
@@ -970,8 +977,8 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " -> Override color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has("gui_running") && !has("gui_vimr")
-  hi Normal guibg=NONE
-  hi NonText guibg=NONE
+  " hi Normal guibg=#212121
+  " hi NonText guibg=#212121
   " hi LineNr guibg=NONE
   " hi SignColumn guibg=NONE
   " hi VertSplit guibg=NONE
@@ -984,3 +991,16 @@ if !has("gui_running") && !has("gui_vimr")
   " hi CursorLineNr guibg=NONE
   " hi StatusLine guibg=NONE
 endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> coc.nvim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" To enable highlight current symbol on CursorHold, add:
+autocmd CursorHold * silent call CocActionAsync('highlight')
