@@ -303,6 +303,12 @@ if has('nvim')
           \'winheight', winheight(0) / 3)
   augroup end
 
+  call denite#custom#option('default', {
+            \ 'auto_resize': 1,
+            \ 'winheight': 15,
+            \ 'vertical_preview': 1
+            \ })
+
   " call denite#custom#option('default', {
   " \ 'prompt': '❯'
   " \ })
@@ -345,12 +351,20 @@ if has('nvim')
   " Change mappings.
   call denite#custom#map('normal','<C-n>', '<denite:move_to_next_line>', 'noremap')
   call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>',  'noremap')
+
   call denite#custom#map('insert','<C-n>', '<denite:move_to_next_line>', 'noremap')
   call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>',  'noremap')
+
+  call denite#custom#map('normal', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
+  call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+  call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>', 'noremap')
 
   call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
   call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
   call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>', 'noremap')
+
+  call denite#custom#map('insert', '<C-e>', '<denite:do_action:preview>', 'noremap')
+  call denite#custom#map('normal', '<C-e>', '<denite:do_action:preview>', 'noremap')
 
   " git ls-files
   call denite#custom#alias('source', 'file/rec/git', 'file/rec')
@@ -364,9 +378,9 @@ if has('nvim')
 
   " nnoremap <silent> <C-p> :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
-  nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
-  nnoremap <leader>/ :<C-u>Denite grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
-  nnoremap <leader>? :<C-u>DeniteBufferDir grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend<CR>
+  nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend -auto-resume<CR>
+  nnoremap <leader>/ :<C-u>Denite grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend -auto-resume<CR>
+  nnoremap <leader>? :<C-u>DeniteBufferDir grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend -auto-resume<CR>
 
   " nnoremap <leader>og :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
   nnoremap <M-p> :<C-u>Denite file/rec -highlight-mode-insert=Search<CR>
@@ -744,6 +758,12 @@ if has('nvim')
   autocmd FileType python setlocal omnifunc=LanguageClient#complete
   autocmd FileType rust setlocal omnifunc=LanguageClient#complete
 
+  autocmd FileType c setlocal omnifunc=LanguageClient#complete
+  autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
+  autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
+  autocmd FileType objc setlocal omnifunc=LanguageClient#complete
+
+
   " if !executable('javascript-typescript-stdio')
   " echo "javascript-typescript-stdio not installed!\n"
   " endif
@@ -764,10 +784,10 @@ if has('nvim')
     au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
     au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
 
-    nn <silent> xh :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
-    nn <silent> xj :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
-    nn <silent> xk :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
-    nn <silent> xl :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+    nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+    nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+    nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+    nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
   augroup END
 
 endif
