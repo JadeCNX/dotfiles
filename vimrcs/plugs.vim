@@ -23,6 +23,7 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'dbakker/vim-paragraph-motion'
+Plug 'deoplete-plugins/deoplete-tag'
 Plug 'devjoe/vim-codequery'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
@@ -33,6 +34,7 @@ Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'honza/vim-snippets'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
+Plug 'jph00/swift-apple'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align'
