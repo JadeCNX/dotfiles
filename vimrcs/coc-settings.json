@@ -1,0 +1,30 @@
+{
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.extensionUpdateCheck": "never",
+  "json.enable": true,
+  "list.indicator": ">",
+  "python.jediEnabled": false,
+  "suggest.echodocSupport": true,
+  "suggest.enablePreview": true,
+  "suggest.noselect": false,
+  "suggest.snippetIndicator": "",
+  "suggest.triggerAfterInsertEnter": true,
+  "tsserver.enable": true,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    },
+     "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+  }
+}
