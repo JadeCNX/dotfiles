@@ -973,6 +973,43 @@ let g:vim_markdown_strikethrough = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tmux_navigator_disable_when_zoomed = 1
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> coc.nvim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" To enable highlight current symbol on CursorHold, add:
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+let g:coc_global_extensions = [      
+      \ 'coc-ccls',
+      \ 'coc-css',
+      \ 'coc-docker',
+      \ 'coc-emmet',
+      \ 'coc-git',
+      \ 'coc-gocode',
+      \ 'coc-highlight',
+      \ 'coc-html',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-phpls',
+      \ 'coc-prettier',
+      \ 'coc-python',
+      \ 'coc-rls',
+      \ 'coc-snippets',
+      \ 'coc-tag',
+      \ 'coc-tslint',
+      \ 'coc-tsserver',
+      \ 'coc-vimlsp',
+      \ 'coc-yaml',
+      \ 'coc-yank']
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Override color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -992,15 +1029,3 @@ if !has("gui_running") && !has("gui_vimr")
   " hi StatusLine guibg=NONE
 endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> coc.nvim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_prev = '<c-k>'
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" To enable highlight current symbol on CursorHold, add:
-autocmd CursorHold * silent call CocActionAsync('highlight')
