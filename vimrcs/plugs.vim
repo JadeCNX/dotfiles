@@ -991,7 +991,6 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-docker',
       \ 'coc-emmet',
-      \ 'coc-git',
       \ 'coc-gocode',
       \ 'coc-highlight',
       \ 'coc-html',
@@ -1008,6 +1007,7 @@ let g:coc_global_extensions = [
       \ 'coc-vimlsp',
       \ 'coc-yaml',
       \ 'coc-yank']
+     " \ 'coc-git',
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
