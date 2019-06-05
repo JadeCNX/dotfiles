@@ -6,10 +6,12 @@
   "python.jediEnabled": false,
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "suggest.snippetIndicator": "",
   "suggest.triggerAfterInsertEnter": true,
   "tsserver.enable": true,
+  "list.nextKeymap": "<c-n>",
+  "list.previousKeymap": "<c-p>",
   "languageserver": {
     "ccls": {
       "command": "ccls",

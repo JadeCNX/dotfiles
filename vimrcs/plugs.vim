@@ -59,7 +59,6 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'}
 Plug 'rickhowe/diffchar.vim'
 Plug 'rizzatti/dash.vim', {'on':'Dash'}
-Plug 'roxma/vim-paste-easy'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
@@ -104,6 +103,7 @@ Plug 'zacharied/denite-nerdfont'
 " Plug 'blueyed/vim-diminactive'
 " Plug 'carlitux/deoplete-ternjs'
 " Plug 'chr4/nginx.vim'
+" Plug 'roxma/vim-paste-easy'
 " Plug 'ctrlpvim/ctrlp.vim' " serach for files, buffers, tags
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'deoplete-plugins/deoplete-tag'
@@ -977,15 +977,6 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> coc.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_prev = '<c-k>'
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" To enable highlight current symbol on CursorHold, add:
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 let g:coc_global_extensions = [      
       \ 'coc-ccls',
       \ 'coc-css',
@@ -1008,6 +999,86 @@ let g:coc_global_extensions = [
       \ 'coc-yaml',
       \ 'coc-yank']
      " \ 'coc-git',
+
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" To enable highlight current symbol on CursorHold, add:
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <M-p> :<C-u>CocList files --ignore-case<CR>
+nmap <M-P> :<C-u>CocList mru --ignore-case<CR>
+
+vmap <leader>* :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
+nmap <leader>* :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+nmap <leader>/ :<C-u>CocList grep<CR>
+nmap <leader>? :<C-u>CocList grep --normal<CR>
+
+command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+
+function! s:GrepArgs(...)
+  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+  return join(list, "\n")
+endfunction
+
+" navigate diagnostics
+nmap [w <Plug>(coc-diagnostic-prev)
+nmap ]w <Plug>(coc-diagnostic-next)
+
+nmap <leader>wa <Plug>(coc-codeaction)
+nmap <leader>wr <Plug>(coc-rename)
+nmap <leader>wx <Plug>(coc-fix-current)
+ 
+nmap <leader>wdd <Plug>(coc-definition)
+nmap <leader>wdt <Plug>(coc-type-definition)
+nmap <leader>wdi <Plug>(coc-implementation)
+nmap <leader>wdr <Plug>(coc-references)
+
+nmap <leader>woo :<C-u>CocList outline --ignore-case<CR>
+nmap <leader>wos :<C-u>CocList symbols<CR>
+nmap <leader>wod :<C-u>CocList diagnostics<cr>
+
+" Remap for do action format
+nmap <leader>wf <Plug>(coc-format-selected)<CR>
+vmap <leader>wf <Plug>(coc-format-selected)<CR>
+
+" show documentation in preview window
+nnoremap <leader>wh :call <SID>show_documentation()<CR>
+
+nnoremap <leader>wj :<C-u>CocNext<CR>
+nnoremap <leader>wk :<C-u>CocPrev<CR>
+nnoremap <leader>wp :<C-u>CocListResume<CR>
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+function! s:GrepFromSelected(type)
+  let saved_unnamed_register = @@
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+  let word = substitute(@@, '\n$', '', 'g')
+  let word = escape(word, '| ')
+  let @@ = saved_unnamed_register
+  execute 'CocList grep '.word
+endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
