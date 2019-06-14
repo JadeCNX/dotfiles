@@ -36,6 +36,7 @@ autocmd FileChangedShellPost *
 
 " map <leader>
 let mapleader = " "
+let maplocalleader = "\""
 
 " scroll off
 set scrolloff=3

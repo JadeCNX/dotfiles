@@ -14,7 +14,6 @@ if !has('nvim')
 endif
 
 Plug '/junegunn/vim-easy-align'
-Plug '/usr/local/opt/fzf' " use with 'brew install fzf'
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bps/vim-textobj-python'
@@ -35,7 +34,6 @@ Plug 'honza/vim-snippets'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
 Plug 'kana/vim-textobj-indent'
@@ -64,8 +62,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/neomru.vim'
 Plug 'SirVer/ultisnips' " ultimate snippet
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -90,8 +86,8 @@ Plug 'wellle/visual-split.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
-Plug 'zacharied/denite-nerdfont'
 
+" Plug '/usr/local/opt/fzf' " use with 'brew install fzf'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
@@ -103,7 +99,6 @@ Plug 'zacharied/denite-nerdfont'
 " Plug 'blueyed/vim-diminactive'
 " Plug 'carlitux/deoplete-ternjs'
 " Plug 'chr4/nginx.vim'
-" Plug 'roxma/vim-paste-easy'
 " Plug 'ctrlpvim/ctrlp.vim' " serach for files, buffers, tags
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'deoplete-plugins/deoplete-tag'
@@ -115,6 +110,7 @@ Plug 'zacharied/denite-nerdfont'
 " Plug 'itchyny/lightline.vim'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
+" Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/vim-peekaboo'
 " Plug 'koron/minimap-vim'
 " Plug 'lilydjwg/colorizer'
@@ -129,9 +125,12 @@ Plug 'zacharied/denite-nerdfont'
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
+" Plug 'roxma/vim-paste-easy'
 " Plug 'rust-lang/rust.vim'
+" Plug 'Shougo/denite.nvim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/neomru.vim'
 " Plug 'Shougo/neoyank.vim'
 " Plug 'Shougo/unite-outline'
 " Plug 'svermeulen/vim-easyclip'
@@ -149,6 +148,7 @@ Plug 'zacharied/denite-nerdfont'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'w0rp/ale'
 " Plug 'wsdjeg/FlyGrep.vim'
+" Plug 'zacharied/denite-nerdfont'
 " Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'zhou13/vim-easyescape'
 
@@ -217,54 +217,51 @@ colorscheme monokai_pro
 """"""""""""""""""""""""""""""
 " -> CTRL-P
 """"""""""""""""""""""""""""""
-" if executable('fd')
-" let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
-" endif
+if exists(':CtrlP')
+  if executable('fd')
+    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
 
-" if executable('rg')
-" set grepprg=rg\ --color=never
-" let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-" let g:ctrlp_use_caching = 0
-" elseif
+  elseif executable('rg')
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+  
+  elseif executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
 
-" Use ag over grep
-" if executable('ag')
-" set grepprg=ag\ --nogroup\ --nocolor
-" elseif
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-" " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
 
-" " ag is fast enough that CtrlP doesn't need to cache
-" let g:ctrlp_use_caching = 0
-" endif
+  let g:ctrlp_map = '<c-f>'
+  nnoremap <M-p> :CtrlPMixed<cr>
+  nnoremap <M-P> :CtrlPMRU<cr>
+  map <M-b> :CtrlPBuffer<cr>
 
+  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_max_height = 20
+  let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_switch_buffer = 'et'
 
-" let g:ctrlp_map = '<c-f>'
-" nnoremap <M-p> :CtrlPMixed<cr>
-" nnoremap <M-P> :CtrlPMRU<cr>
-" map <M-b> :CtrlPBuffer<cr>
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tags*
+  set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
 
-" let g:ctrlp_use_caching = 0
-" " let g:ctrlp_working_path_mode = 0
-" let g:ctrlp_max_height = 20
-" let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_switch_buffer = 'et'
+  let g:ctrlp_extensions = ['mixed']
+  let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
 
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tags*
-" set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
+  function! BrightHighlightOn()
+    hi CursorLine guibg=darkred
+  endfunction
 
-" let g:ctrlp_extensions = ['mixed']
-" let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
-
-" function! BrightHighlightOn()
-" hi CursorLine guibg=darkred
-" endfunction
-
-" function! BrightHighlightOff()
-" hi CursorLine guibg=#2c323c
-" endfunction
+  function! BrightHighlightOff()
+    hi CursorLine guibg=#2c323c
+  endfunction
+endif
 
 
 """"""""""""""""""""""""""""""
@@ -304,7 +301,8 @@ colorscheme monokai_pro
 """"""""""""""""""""""""""""""
 " -> Denite
 """"""""""""""""""""""""""""""
-if has('nvim')
+if has('nvim') && exists(':Denite')
+  echo "test"
   augroup deniteresize
     autocmd!
     autocmd VimResized,VimEnter * call denite#custom#option('default',
@@ -406,23 +404,24 @@ endif
 """"""""""""""""""""""""""""""
 " -> FZF
 """"""""""""""""""""""""""""""
-" File search
-nmap <M-p> :Files<CR>
+if exists(':Denite')
+  " File search
+  nmap <M-p> :Files<CR>
 
-" Mapping selecting mappings
-" nmap <leader><tab> <plug>(fzf-maps-n)
-" xmap <leader><tab> <plug>(fzf-maps-x)
-" omap <leader><tab> <plug>(fzf-maps-o)
+  " Mapping selecting mappings
+  " nmap <leader><tab> <plug>(fzf-maps-n)
+  " xmap <leader><tab> <plug>(fzf-maps-x)
+  " omap <leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
-imap <c-x><c-w> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+  " Insert mode completion
+  imap <c-x><c-w> <plug>(fzf-complete-word)
+  imap <c-x><c-f> <plug>(fzf-complete-path)
+  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+  imap <c-x><c-l> <plug>(fzf-complete-line)
 
-
-" Advanced customization using autoload functions
-" inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+  " Advanced customization using autoload functions
+  " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+endif
 
 
 """"""""""""""""""""""""""""""
@@ -980,6 +979,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 let g:coc_global_extensions = [      
       \ 'coc-ccls',
       \ 'coc-css',
+      \ 'coc-dictionary',
       \ 'coc-docker',
       \ 'coc-emmet',
       \ 'coc-gocode',
@@ -996,6 +996,7 @@ let g:coc_global_extensions = [
       \ 'coc-tslint',
       \ 'coc-tsserver',
       \ 'coc-vimlsp',
+      \ 'coc-word',
       \ 'coc-yaml',
       \ 'coc-yank']
      " \ 'coc-git',
@@ -1003,15 +1004,15 @@ let g:coc_global_extensions = [
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 
-imap <C-l> <Plug>(coc-snippets-expand)
+imap <TAB> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " To enable highlight current symbol on CursorHold, add:
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <M-p> :<C-u>CocList files --ignore-case<CR>
-nmap <M-P> :<C-u>CocList mru --ignore-case<CR>
+nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
 
 vmap <leader>* :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
 nmap <leader>* :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
