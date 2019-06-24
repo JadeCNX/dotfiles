@@ -33,27 +33,27 @@ nnoremap Ud :eclipsecomparehead<cr>
 eclipseuiaction eclipseshowdoc org.eclipse.ui.edit.text.showInformation
 nnoremap K   :eclipseshowdoc<cr>
 
-nmap s <Plug>(sneak_s)
-nmap S <Plug>(sneak_S)
+" nmap s <Plug>(sneak_s)
+" nmap S <Plug>(sneak_S)
 
-nmap ; <Plug>(sneak-next)
-nmap , <Plug>(sneak-prev)
+" nmap ; <Plug>(sneak-next)
+" nmap , <Plug>(sneak-prev)
 
-vmap s <Plug>(sneak_s)
-vmap Z <Plug>(sneak_S)
+" vmap s <Plug>(sneak_s)
+" vmap Z <Plug>(sneak_S)
 
-vmap ; <Plug>(sneak-next)
-vmap , <Plug>(sneak-prev)
+" vmap ; <Plug>(sneak-next)
+" vmap , <Plug>(sneak-prev)
 
-nmap f <Plug>(sneak_f)
-nmap F <Plug>(sneak_F)
-nmap t <Plug>(sneak_t)
-nmap T <Plug>(sneak_T)
+" nmap f <Plug>(sneak_f)
+" nmap F <Plug>(sneak_F)
+" nmap t <Plug>(sneak_t)
+" nmap T <Plug>(sneak_T)
 
-vmap f <Plug>(sneak_f)
-vmap F <Plug>(sneak_F)
-vmap t <Plug>(sneak_t)
-vmap T <Plug>(sneak_T)
+" vmap f <Plug>(sneak_f)
+" vmap F <Plug>(sneak_F)
+" vmap t <Plug>(sneak_t)
+" vmap T <Plug>(sneak_T)
 
-omap z <Plug>(sneak_s)
-omap Z <Plug>(sneak_S)
+" omap z <Plug>(sneak_s)
+" omap Z <Plug>(sneak_S)

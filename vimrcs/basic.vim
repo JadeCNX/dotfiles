@@ -74,6 +74,9 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+" prevent vim auto add eol
+" set nofixendofline
+
 " ignore case when searching
 set ignorecase
 
