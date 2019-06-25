@@ -120,7 +120,6 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'mhartington/deoplete-typescript'
 " Plug 'mhinz/vim-startify'
 " Plug 'mileszs/ack.vim'
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " Plug 'nsf/gocode'
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -225,7 +224,7 @@ if exists(':CtrlP')
     set grepprg=rg\ --color=never
     let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
     let g:ctrlp_use_caching = 0
-  
+
   elseif executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
@@ -976,10 +975,9 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> coc.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:coc_global_extensions = [      
+let g:coc_global_extensions = [
       \ 'coc-ccls',
       \ 'coc-css',
-      \ 'coc-dictionary',
       \ 'coc-docker',
       \ 'coc-emmet',
       \ 'coc-gocode',
@@ -996,10 +994,11 @@ let g:coc_global_extensions = [
       \ 'coc-tslint',
       \ 'coc-tsserver',
       \ 'coc-vimlsp',
-      \ 'coc-word',
       \ 'coc-yaml',
       \ 'coc-yank']
-     " \ 'coc-git',
+" \ 'coc-word',
+" \ 'coc-dictionary',
+" \ 'coc-git',
 
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
@@ -1034,7 +1033,7 @@ nmap ]w <Plug>(coc-diagnostic-next)
 nmap <leader>wa <Plug>(coc-codeaction)
 nmap <leader>wr <Plug>(coc-rename)
 nmap <leader>wx <Plug>(coc-fix-current)
- 
+
 nmap <leader>wdd <Plug>(coc-definition)
 nmap <leader>wdt <Plug>(coc-type-definition)
 nmap <leader>wdi <Plug>(coc-implementation)
