@@ -22,8 +22,8 @@ nnoremap ]] :eclipsenextmember<cr>
 eclipseaction eclipseprevmember org.eclipse.jdt.ui.edit.text.java.goto.previous.member
 nnoremap [[ :eclipseprevmember<cr>
 
-imap fd <ESC>
-vmap fd <ESC>
+inoremap fd <ESC>
+vnoremap fd <ESC>
 
 "version control
 eclipseaction eclipsecomparehead org.eclipse.egit.ui.team.CompareWithHead
@@ -33,17 +33,17 @@ nnoremap Ud :eclipsecomparehead<cr>
 eclipseuiaction eclipseshowdoc org.eclipse.ui.edit.text.showInformation
 nnoremap K   :eclipseshowdoc<cr>
 
-" nmap s <Plug>(sneak_s)
-" nmap S <Plug>(sneak_S)
+nmap s <Plug>(sneak_s)
+nmap S <Plug>(sneak_S)
 
-" nmap ; <Plug>(sneak-next)
-" nmap , <Plug>(sneak-prev)
+nmap ; <Plug>(sneak-next)
+nmap , <Plug>(sneak-prev)
 
-" vmap s <Plug>(sneak_s)
+vmap s <Plug>(sneak_s)
 " vmap Z <Plug>(sneak_S)
 
-" vmap ; <Plug>(sneak-next)
-" vmap , <Plug>(sneak-prev)
+vmap ; <Plug>(sneak-next)
+vmap , <Plug>(sneak-prev)
 
 " nmap f <Plug>(sneak_f)
 " nmap F <Plug>(sneak_F)
