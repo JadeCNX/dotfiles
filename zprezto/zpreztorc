@@ -250,8 +250,3 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 #
 
 zstyle ":prezto:module:alias-tips" text "Alias to: "
-#
-# powerlevel10k
-#
-
-export POWERLEVEL9K_PROMPT_ON_NEWLINE=true

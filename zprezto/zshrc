@@ -10,25 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-
-#
-# FZF
-#
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob="!.git/*" --glob="!node_modules/*"'
-
-
-#
-# FASD
-#
-if command -v fasd &> /dev/null ; then
-  eval "$(fasd --init auto)"
-
-  alias v="fasd -f -e nvim"     # quick opening files with vim
-  alias m="fasd -f -e mplayer" # quick opening files with mplayer
-  alias o="fasd -f -e open"    # quick opening files with open
-fi
-
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
 

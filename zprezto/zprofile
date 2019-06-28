@@ -118,3 +118,35 @@ alias hidden-show='defaults write com.apple.finder AppleShowAllFiles -bool YES &
 alias hidden-hide='defaults write com.apple.finder AppleShowAllFiles -bool NO && killall Finder'
 alias gts='git tag --sort=objecttype --sort=-creatordate | git show --date=local --pretty="format:%C(auto)%h%C(green)%d %C(blue)%an %C(auto)%s %x1b[2m%ad%x1b[0m%Creset" -s --stdin'
 alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+
+#
+# FZF
+#
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob="!.git/*" --glob="!node_modules/*"'
+
+
+#
+# FASD
+#
+if command -v fasd &> /dev/null ; then
+  eval "$(fasd --init auto)"
+
+  alias v="fasd -f -e nvim"     # quick opening files with vim
+  alias m="fasd -f -e mplayer" # quick opening files with mplayer
+  alias o="fasd -f -e open"    # quick opening files with open
+fi
+
+#
+# powerlevel10k
+#
+
+export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
+#
+# zsh-iterm-touchbar
+#
+
+export TOUCHBAR_GIT_ENABLED=true
+export YARN_ENABLED=true
+
