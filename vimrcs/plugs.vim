@@ -153,6 +153,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 
 " Color schemes
 Plug 'phanviet/vim-monokai-pro'
+Plug 'tomasiser/vim-code-dark'
 " Plug 'rakr/vim-one'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'chriskempson/base16-vim'
@@ -182,7 +183,7 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-colorscheme monokai_pro
+colorscheme codedark
 
 
 """"""""""""""""""""""""""""""
@@ -499,7 +500,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='molokai'
+let g:airline_theme='codedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -1085,6 +1086,8 @@ endfunction
 " -> Override color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has("gui_running") && !has("gui_vimr")
+  hi Normal guibg=NONE
+  hi NonText guibg=NONE
   " hi Normal guibg=#212121
   " hi NonText guibg=#212121
   " hi LineNr guibg=NONE
