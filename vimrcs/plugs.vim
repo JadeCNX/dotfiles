@@ -57,12 +57,12 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'}
 Plug 'rickhowe/diffchar.vim'
 Plug 'rizzatti/dash.vim', {'on':'Dash'}
+Plug 'roman/golden-ratio'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'roman/golden-ratio'
 Plug 'SirVer/ultisnips' " ultimate snippet
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -77,6 +77,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'unblevable/quick-scope' " highlight f,t move
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -104,7 +105,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'deoplete-plugins/deoplete-tag'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
-" Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim', {'on': ['Tmuxline', 'TmuxlineSimple', 'TmuxlineSnapshot']}
 " Plug 'ervandew/supertab'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
@@ -975,6 +976,12 @@ let g:tmux_navigator_disable_when_zoomed = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-tmux-navigator
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:golden_ratio_exclude_nonmodifiable = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> coc.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:coc_global_extensions = [
@@ -1087,10 +1094,11 @@ endfunction
 " -> Override color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has("gui_running") && !has("gui_vimr")
-  hi Normal guibg=NONE
-  hi NonText guibg=NONE
-  hi LineNr guibg=NONE
-  hi SignColumn guibg=NONE
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NonText guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi LineNr guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
   " hi Normal guibg=#212121
   " hi NonText guibg=#212121
   " hi VertSplit guibg=NONE
