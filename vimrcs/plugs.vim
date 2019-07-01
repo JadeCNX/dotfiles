@@ -77,7 +77,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'unblevable/quick-scope' " highlight f,t move
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -140,6 +139,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tomtom/tlib_vim'
+" Plug 'tpope/vim-vinegar'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-flake8'
