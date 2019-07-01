@@ -62,6 +62,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
+Plug 'roman/golden-ratio'
 Plug 'SirVer/ultisnips' " ultimate snippet
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -1088,10 +1089,10 @@ endfunction
 if !has("gui_running") && !has("gui_vimr")
   hi Normal guibg=NONE
   hi NonText guibg=NONE
+  hi LineNr guibg=NONE
+  hi SignColumn guibg=NONE
   " hi Normal guibg=#212121
   " hi NonText guibg=#212121
-  " hi LineNr guibg=NONE
-  " hi SignColumn guibg=NONE
   " hi VertSplit guibg=NONE
   " hi Statement guibg=NONE
   " hi Title guibg=NONE
