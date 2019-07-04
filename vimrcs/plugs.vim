@@ -13,6 +13,10 @@ if !has('nvim')
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 endif
 
+if has('python3')
+  Plug 'SirVer/ultisnips' " ultimate snippet
+endif
+
 Plug '/junegunn/vim-easy-align'
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
@@ -63,7 +67,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips' " ultimate snippet
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeToggle']}
@@ -87,6 +90,7 @@ Plug 'wellle/visual-split.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
+Plug 'edkolev/tmuxline.vim'
 
 " Plug '/usr/local/opt/fzf' " use with 'brew install fzf'
 " Plug 'airblade/vim-gitgutter'
@@ -104,7 +108,6 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'deoplete-plugins/deoplete-tag'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
-" Plug 'edkolev/tmuxline.vim', {'on': ['Tmuxline', 'TmuxlineSimple', 'TmuxlineSnapshot']}
 " Plug 'ervandew/supertab'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
@@ -155,8 +158,6 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 
 " Color schemes
 Plug 'phanviet/vim-monokai-pro'
-Plug 'tomasiser/vim-code-dark'
-" Plug 'rakr/vim-one'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'chriskempson/base16-vim'
 " Plug 'flazz/vim-colorschemes'
@@ -165,7 +166,9 @@ Plug 'tomasiser/vim-code-dark'
 " Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
+" Plug 'rakr/vim-one'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
+" Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
 " Plug 'vim-scripts/pyte'
@@ -185,7 +188,7 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-colorscheme codedark
+colorscheme monokai_pro
 
 
 """"""""""""""""""""""""""""""
@@ -502,7 +505,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='codedark'
+let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
