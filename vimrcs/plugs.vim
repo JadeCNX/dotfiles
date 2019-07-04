@@ -43,6 +43,7 @@ Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Snea
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
+Plug 'lifepillar/vim-colortemplate'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
@@ -61,7 +62,6 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'}
 Plug 'rickhowe/diffchar.vim'
 Plug 'rizzatti/dash.vim', {'on':'Dash'}
-Plug 'roman/golden-ratio'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
@@ -108,6 +108,7 @@ Plug 'edkolev/tmuxline.vim'
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'deoplete-plugins/deoplete-tag'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
+" Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
@@ -128,6 +129,7 @@ Plug 'edkolev/tmuxline.vim'
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
+" Plug 'roman/golden-ratio'
 " Plug 'roxma/vim-paste-easy'
 " Plug 'rust-lang/rust.vim'
 " Plug 'Shougo/denite.nvim'
@@ -158,6 +160,8 @@ Plug 'edkolev/tmuxline.vim'
 
 " Color schemes
 Plug 'phanviet/vim-monokai-pro'
+" Plug 'tomasiser/vim-code-dark'
+" Plug 'rakr/vim-one'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'chriskempson/base16-vim'
 " Plug 'flazz/vim-colorschemes'
@@ -1100,8 +1104,8 @@ if !has("gui_running") && !has("gui_vimr")
   hi Normal guibg=NONE ctermbg=NONE
   hi NonText guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE
-  hi LineNr guibg=NONE ctermbg=NONE
-  hi SignColumn guibg=NONE ctermbg=NONE
+  " hi LineNr guibg=NONE ctermbg=NONE
+  " hi SignColumn guibg=NONE ctermbg=NONE
   " hi Normal guibg=#212121
   " hi NonText guibg=#212121
   " hi VertSplit guibg=NONE

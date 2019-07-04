@@ -165,9 +165,9 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'gitrocket',
-    'hyper-atom-dark-vibrancy',
     'hyperline',
     'space-pull',
+    // 'hyper-atom-dark-vibrancy',
     // 'hyper-atom-dark-transparent',
     // 'hyper-cat',
     // 'hyper-clean',
@@ -185,7 +185,7 @@ module.exports = {
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
-    // 'verminal',
+    'verminal',
   ],
 
   // in development, you can create a directory under
