@@ -1030,9 +1030,9 @@ nmap <leader>p :<C-u>CocList files --ignore-case<CR>
 nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
 
 vmap <leader>* :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
-nmap <leader>* :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
 nmap <leader>/ :<C-u>CocList grep<CR>
-nmap <leader>? :<C-u>CocList grep --normal<CR>
+nmap <leader>? :<C-u>CocList words<CR>
 
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
