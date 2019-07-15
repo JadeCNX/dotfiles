@@ -92,5 +92,5 @@ augroup END
 """"""""""""""""""""""""""""""
 " -> Image
 """""""""""""""""""""""""""""""
-autocmd BufEnter *.png,*.jpg,*gif exec "! imgcat ".expand("%") | :bw
+autocmd BufEnter *.png,*.jpg,*gif exec "! catimg ".expand("%") | :bw
 

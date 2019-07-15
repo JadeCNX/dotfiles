@@ -465,6 +465,7 @@ let g:user_emmet_mode='a'
 " let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\~$']
+let NERDTreeNodeDelimiter="\x07"
 let g:NERDTreeWinSize=35
 map <leader>n :NERDTreeToggle<cr>
 " map <leader>nb :NERDTreeFromBookmark<Space>

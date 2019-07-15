@@ -12,7 +12,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: '"FuraCodeiScript Nerd Font Mono","BlexMono Nerd Font", "SF Mono", "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"LigaOperatorMono Nerd Font Mono","FuraCodeiScript Nerd Font Mono","BlexMono Nerd Font", "SF Mono", "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -36,7 +36,7 @@ module.exports = {
     cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: false,
+    cursorBlink: true,
 
     // color of the text
     foregroundColor: '#fff',
@@ -185,7 +185,8 @@ module.exports = {
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
-    'verminal',
+    // 'verminal',
+    'hyperterm-monokai',
   ],
 
   // in development, you can create a directory under
