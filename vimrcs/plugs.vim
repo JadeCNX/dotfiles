@@ -17,6 +17,10 @@ if has('python3')
   Plug 'SirVer/ultisnips' " ultimate snippet
 endif
 
+if has('node')
+  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+endif
+
 Plug '/junegunn/vim-easy-align'
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
@@ -31,6 +35,7 @@ Plug 'devjoe/vim-codequery'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less', {'for': 'less'}
@@ -52,7 +57,6 @@ Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 Plug 'osyo-manga/vim-anzu'
 Plug 'osyo-manga/vim-over'
@@ -62,6 +66,7 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'}
 Plug 'rickhowe/diffchar.vim'
 Plug 'rizzatti/dash.vim', {'on':'Dash'}
+Plug 'roxma/vim-paste-easy'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
@@ -90,7 +95,6 @@ Plug 'wellle/visual-split.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
-Plug 'edkolev/tmuxline.vim'
 
 " Plug '/usr/local/opt/fzf' " use with 'brew install fzf'
 " Plug 'airblade/vim-gitgutter'
@@ -130,7 +134,6 @@ Plug 'edkolev/tmuxline.vim'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
 " Plug 'roman/golden-ratio'
-" Plug 'roxma/vim-paste-easy'
 " Plug 'rust-lang/rust.vim'
 " Plug 'Shougo/denite.nvim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

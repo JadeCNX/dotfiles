@@ -84,8 +84,8 @@ autocmd BufRead *.twig set syntax=html filetype=html
 " -> XML
 """""""""""""""""""""""""""""""
 augroup XML
-    autocmd!
     autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+    autocmd FileType xml set nofoldenable
 augroup END
 
 
