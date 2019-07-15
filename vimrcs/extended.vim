@@ -1,6 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set termguicolors
+
 " Set font according to system
 " if has("mac") || has("macunix")
 " set gfn=IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
@@ -157,7 +159,6 @@ map <leader>ap :cp<cr>
 " -> Shell section
 """"""""""""""""""""""""""""""
 if has('nvim')
-  set termguicolors
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 else
   set term=screen-256color
@@ -172,9 +173,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Cursor
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+
 if has('nvim')
-  set mouse=a
-  set termguicolors
   hi Cursor guifg='fg' guibg='Green'
   hi Cursor1 guifg='fg' guibg='Blue'
   hi Cursor2 guifg='fg' guibg='Red'

@@ -316,7 +316,7 @@ endif
 " -> Denite
 """"""""""""""""""""""""""""""
 if has('nvim') && exists(':Denite')
-  echo "test"
+  " echo "test"
   augroup deniteresize
     autocmd!
     autocmd VimResized,VimEnter * call denite#custom#option('default',
