@@ -40,6 +40,7 @@ Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'honza/vim-snippets'
+Plug 'idanarye/vim-vebugger'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
@@ -90,7 +91,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
-Plug 'vim-vdebug/vdebug'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
@@ -156,6 +156,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/taglist.vim'
 " Plug 'vim-scripts/YankRing.vim'
+" Plug 'vim-vdebug/vdebug'
 " Plug 'w0rp/ale'
 " Plug 'wsdjeg/FlyGrep.vim'
 " Plug 'zacharied/denite-nerdfont'
