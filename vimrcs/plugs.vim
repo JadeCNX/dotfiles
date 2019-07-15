@@ -90,6 +90,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
+Plug 'vim-vdebug/vdebug'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
@@ -994,110 +995,112 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> coc.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:coc_global_extensions = [
-      \ 'coc-ccls',
-      \ 'coc-css',
-      \ 'coc-docker',
-      \ 'coc-emmet',
-      \ 'coc-gocode',
-      \ 'coc-highlight',
-      \ 'coc-html',
-      \ 'coc-json',
-      \ 'coc-lists',
-      \ 'coc-phpls',
-      \ 'coc-prettier',
-      \ 'coc-python',
-      \ 'coc-rls',
-      \ 'coc-snippets',
-      \ 'coc-tag',
-      \ 'coc-tslint',
-      \ 'coc-tsserver',
-      \ 'coc-vimlsp',
-      \ 'coc-yaml',
-      \ 'coc-yank']
-" \ 'coc-word',
-" \ 'coc-dictionary',
-" \ 'coc-git',
+if exists(':CocAction')
+  let g:coc_global_extensions = [
+        \ 'coc-ccls',
+        \ 'coc-css',
+        \ 'coc-docker',
+        \ 'coc-emmet',
+        \ 'coc-gocode',
+        \ 'coc-highlight',
+        \ 'coc-html',
+        \ 'coc-json',
+        \ 'coc-lists',
+        \ 'coc-phpls',
+        \ 'coc-prettier',
+        \ 'coc-python',
+        \ 'coc-rls',
+        \ 'coc-snippets',
+        \ 'coc-tag',
+        \ 'coc-tslint',
+        \ 'coc-tsserver',
+        \ 'coc-vimlsp',
+        \ 'coc-yaml',
+        \ 'coc-yank']
+  " \ 'coc-word',
+  " \ 'coc-dictionary',
+  " \ 'coc-git',
 
-let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_prev = '<c-k>'
+  let g:coc_snippet_next = '<c-j>'
+  let g:coc_snippet_prev = '<c-k>'
 
-imap <TAB> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+  imap <TAB> <Plug>(coc-snippets-expand)
+  vmap <C-j> <Plug>(coc-snippets-select)
+  imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-" To enable highlight current symbol on CursorHold, add:
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  " To enable highlight current symbol on CursorHold, add:
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
+  nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+  nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
 
-vmap <leader>* :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
-nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
-nmap <leader>/ :<C-u>CocList grep<CR>
-nmap <leader>? :<C-u>CocList words<CR>
+  vmap <leader>* :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
+  nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>CocList grep<CR>
+  nmap <leader>? :<C-u>CocList words<CR>
 
-command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+  command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
-function! s:GrepArgs(...)
-  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-  return join(list, "\n")
-endfunction
+  function! s:GrepArgs(...)
+    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+          \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+    return join(list, "\n")
+  endfunction
 
-" navigate diagnostics
-nmap [w <Plug>(coc-diagnostic-prev)
-nmap ]w <Plug>(coc-diagnostic-next)
+  " navigate diagnostics
+  nmap [w <Plug>(coc-diagnostic-prev)
+  nmap ]w <Plug>(coc-diagnostic-next)
 
-nmap <leader>wa <Plug>(coc-codeaction)
-nmap <leader>wr <Plug>(coc-rename)
-nmap <leader>wx <Plug>(coc-fix-current)
+  nmap <leader>wa <Plug>(coc-codeaction)
+  nmap <leader>wr <Plug>(coc-rename)
+  nmap <leader>wx <Plug>(coc-fix-current)
 
-nmap <leader>wdd <Plug>(coc-definition)
-nmap <leader>wdt <Plug>(coc-type-definition)
-nmap <leader>wdi <Plug>(coc-implementation)
-nmap <leader>wdr <Plug>(coc-references)
+  nmap <leader>wdd <Plug>(coc-definition)
+  nmap <leader>wdt <Plug>(coc-type-definition)
+  nmap <leader>wdi <Plug>(coc-implementation)
+  nmap <leader>wdr <Plug>(coc-references)
 
-nmap <leader>woo :<C-u>CocList outline --ignore-case<CR>
-nmap <leader>wos :<C-u>CocList symbols<CR>
-nmap <leader>wod :<C-u>CocList diagnostics<cr>
+  nmap <leader>woo :<C-u>CocList outline --ignore-case<CR>
+  nmap <leader>wos :<C-u>CocList symbols<CR>
+  nmap <leader>wod :<C-u>CocList diagnostics<cr>
 
-" Remap for do action format
-nmap <leader>wf <Plug>(coc-format-selected)<CR>
-vmap <leader>wf <Plug>(coc-format-selected)<CR>
+  " Remap for do action format
+  nmap <leader>wf <Plug>(coc-format-selected)<CR>
+  vmap <leader>wf <Plug>(coc-format-selected)<CR>
 
-" show documentation in preview window
-nnoremap <leader>wh :call <SID>show_documentation()<CR>
+  " show documentation in preview window
+  nnoremap <leader>wh :call <SID>show_documentation()<CR>
 
-nnoremap <leader>wj :<C-u>CocNext<CR>
-nnoremap <leader>wk :<C-u>CocPrev<CR>
-nnoremap <leader>wp :<C-u>CocListResume<CR>
+  nnoremap <leader>wj :<C-u>CocNext<CR>
+  nnoremap <leader>wk :<C-u>CocPrev<CR>
+  nnoremap <leader>wp :<C-u>CocListResume<CR>
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
 
-function! s:GrepFromSelected(type)
-  let saved_unnamed_register = @@
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-  let word = substitute(@@, '\n$', '', 'g')
-  let word = escape(word, '| ')
-  let @@ = saved_unnamed_register
-  execute 'CocList grep '.word
-endfunction
+  function! s:GrepFromSelected(type)
+    let saved_unnamed_register = @@
+    if a:type ==# 'v'
+      normal! `<v`>y
+    elseif a:type ==# 'char'
+      normal! `[v`]y
+    else
+      return
+    endif
+    let word = substitute(@@, '\n$', '', 'g')
+    let word = escape(word, '| ')
+    let @@ = saved_unnamed_register
+    execute 'CocList grep '.word
+  endfunction
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
