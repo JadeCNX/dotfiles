@@ -15,10 +15,30 @@ endif
 
 if has('python3')
   Plug 'SirVer/ultisnips' " ultimate snippet
+  Plug 'Valloric/MatchTagAlways'
 endif
 
-if has('node')
+if executable('node')
+  let s:list_manager = 'coc'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
+elseif has('python3')
+  let s:list_manager = 'denite'
+  Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/echodoc.vim'
+  Plug 'Shougo/neomru.vim'
+  Plug 'Shougo/neoyank.vim'
+  Plug 'Shougo/unite-outline'
+  Plug 'zacharied/denite-nerdfont'
+  Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
+  Plug 'deoplete-plugins/deoplete-tag'
+  Plug 'carlitux/deoplete-ternjs'
+  Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+
+else
+  let s:list_manager = 'ctrlp'
+  Plug 'ctrlpvim/ctrlp.vim'
 endif
 
 Plug '/junegunn/vim-easy-align'
@@ -55,6 +75,7 @@ Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
@@ -64,7 +85,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install'}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx']}
 Plug 'rickhowe/diffchar.vim'
 Plug 'rizzatti/dash.vim', {'on':'Dash'}
 Plug 'roxma/vim-paste-easy'
@@ -102,16 +123,12 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
 " Plug 'ashisha/image.vim'
-" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 " Plug 'bagrat/vim-workspace'
 " Plug 'bfredl/nvim-miniyank'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
-" Plug 'carlitux/deoplete-ternjs'
 " Plug 'chr4/nginx.vim'
-" Plug 'ctrlpvim/ctrlp.vim' " serach for files, buffers, tags
 " Plug 'dahu/vim-fanfingtastic'
-" Plug 'deoplete-plugins/deoplete-tag'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
@@ -136,12 +153,6 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'rhysd/clever-f.vim'
 " Plug 'roman/golden-ratio'
 " Plug 'rust-lang/rust.vim'
-" Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/echodoc.vim'
-" Plug 'Shougo/neomru.vim'
-" Plug 'Shougo/neoyank.vim'
-" Plug 'Shougo/unite-outline'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
@@ -159,8 +170,6 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'vim-vdebug/vdebug'
 " Plug 'w0rp/ale'
 " Plug 'wsdjeg/FlyGrep.vim'
-" Plug 'zacharied/denite-nerdfont'
-" Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
@@ -231,7 +240,7 @@ colorscheme monokai_pro
 """"""""""""""""""""""""""""""
 " -> CTRL-P
 """"""""""""""""""""""""""""""
-if exists(':CtrlP')
+if s:list_manager == 'ctrlp'
   if executable('fd')
     let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
 
@@ -251,9 +260,9 @@ if exists(':CtrlP')
   endif
 
   let g:ctrlp_map = '<c-f>'
-  nnoremap <M-p> :CtrlPMixed<cr>
-  nnoremap <M-P> :CtrlPMRU<cr>
-  map <M-b> :CtrlPBuffer<cr>
+  nnoremap <leader>p :CtrlPMixed<cr>
+  nnoremap <leader>P :CtrlPMRU<cr>
+  " map <M-b> :CtrlPBuffer<cr>
 
   let g:ctrlp_use_caching = 0
   " let g:ctrlp_working_path_mode = 0
@@ -288,34 +297,34 @@ endif
 """"""""""""""""""""""""""""""
 " -> Deoplete
 """"""""""""""""""""""""""""""
-" if has('nvim')
-"   call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-"   call deoplete#custom#var('around', {
-"         \   'range_above': 50,
-"         \   'range_below': 50,
-"         \   'mark_above': '[↑]',
-"         \   'mark_below': '[↓]',
-"         \   'mark_changes': '[*]',
-"         \})
+if s:list_manager == 'denite'
+  call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+  call deoplete#custom#var('around', {
+        \   'range_above': 50,
+        \   'range_below': 50,
+        \   'mark_above': '[↑]',
+        \   'mark_below': '[↓]',
+        \   'mark_changes': '[*]',
+        \})
 
-"   call deoplete#custom#source('ultisnips', 'rank', 1000)
-"   " call deoplete#custom#option('sources', {
-"   "       \ '_': ['buffer'],
-"   "       \ 'cpp': ['buffer', 'tag'],
-"   "       \})
-"   " call deoplete#custom#source('_', 'sorters', [])
+  call deoplete#custom#source('ultisnips', 'rank', 1000)
+  " call deoplete#custom#option('sources', {
+  "       \ '_': ['buffer'],
+  "       \ 'cpp': ['buffer', 'tag'],
+  "       \})
+  " call deoplete#custom#source('_', 'sorters', [])
 
-"   " let g:deoplete#enable_at_startup = 1
+  " let g:deoplete#enable_at_startup = 1
 
-"   " <TAB>: completion.
-"   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" endif
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+endif
 
 
 """"""""""""""""""""""""""""""
 " -> Denite
 """"""""""""""""""""""""""""""
-if has('nvim') && exists(':Denite')
+if s:list_manager == 'denite'
   " echo "test"
   augroup deniteresize
     autocmd!
@@ -418,7 +427,7 @@ endif
 """"""""""""""""""""""""""""""
 " -> FZF
 """"""""""""""""""""""""""""""
-if exists(':Denite')
+if exists(':FZF')
   " File search
   nmap <M-p> :Files<CR>
 
@@ -756,64 +765,64 @@ let g:WebDevIconsOS = 'Darwin'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> LanguageClient-neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" if has('nvim')
-"   let g:LanguageClient_serverCommands = {
-"         \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-"         \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
-"         \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
-"         \ 'python': ['/usr/local/bin/pyls', '--log-file /tmp/lsp/pyls.log'],
-"         \ 'go': ['go-langserver'],
-"         \ 'c': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
-"         \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
-"         \ 'cuda': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
-"         \ 'objc': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
-"         \}
-"   " \ 'c': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ],
-"   " \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ]
+if s:list_manager == 'denite'
+  let g:LanguageClient_serverCommands = {
+        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
+        \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
+        \ 'python': ['/usr/local/bin/pyls', '--log-file /tmp/lsp/pyls.log'],
+        \ 'go': ['go-langserver'],
+        \ 'c': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+        \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+        \ 'cuda': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+        \ 'objc': ['/usr/local/bin/ccls', '--log-file=/tmp/lsp/cc.log'],
+        \}
+  " \ 'c': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ],
+  " \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/usr/local/var/log/cquery/cq.log', '--init={"cacheDirectory":"/var/cquery/", "completion": {"filterAndSort": false}}' ]
 
-"   " Automatically start language servers.
-"   let g:LanguageClient_autoStart = 1
-"   " let g:LanguageClient_selectionUI = 'quickfix'
+  " Automatically start language servers.
+  let g:LanguageClient_autoStart = 1
+  " let g:LanguageClient_selectionUI = 'quickfix'
 
-"   " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-"   " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-"   " " autocmd FileType go setlocal omnifunc=LanguageClient#complete
-"   " autocmd FileType python setlocal omnifunc=LanguageClient#complete
-"   " autocmd FileType rust setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+  " " autocmd FileType go setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType python setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType rust setlocal omnifunc=LanguageClient#complete
 
-"   " autocmd FileType c setlocal omnifunc=LanguageClient#complete
-"   " autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
-"   " autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
-"   " autocmd FileType objc setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType c setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType objc setlocal omnifunc=LanguageClient#complete
 
 
-"   " if !executable('javascript-typescript-stdio')
-"   " echo "javascript-typescript-stdio not installed!\n"
-"   " endif
+  " if !executable('javascript-typescript-stdio')
+  " echo "javascript-typescript-stdio not installed!\n"
+  " endif
 
-"   nnoremap <silent> <leader>ww :call LanguageClient_contextMenu()<CR>
-"   nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
-"   nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
-"   nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
-"   nnoremap <silent> <leader>ws :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
-"   nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
+  nnoremap <silent> <leader>ww :call LanguageClient_contextMenu()<CR>
+  nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent> <leader>ws :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
+  nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
 
-"   augroup LanguageClient_config_ccls
-"     au!
-"     au BufEnter * let b:Plugin_LanguageClient_started = 0
-"     au User LanguageClientStarted setl signcolumn=yes
-"     au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
-"     au User LanguageClientStopped setl signcolumn=auto
-"     au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
-"     au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
+  augroup LanguageClient_config_ccls
+    au!
+    au BufEnter * let b:Plugin_LanguageClient_started = 0
+    au User LanguageClientStarted setl signcolumn=yes
+    au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
+    au User LanguageClientStopped setl signcolumn=auto
+    au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
+    au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
 
-"     nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
-"     nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
-"     nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
-"     nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
-"   augroup END
+    nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+    nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+    nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+    nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+  augroup END
 
-" endif
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> tsuquyomi
@@ -997,7 +1006,7 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> coc.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists(':CocAction')
+if s:list_manager == 'coc'
   let g:coc_global_extensions = [
         \ 'coc-ccls',
         \ 'coc-css',
