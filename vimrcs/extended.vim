@@ -102,7 +102,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <M-v> <ESC>"+p`]a
+inoremap <leader>p <ESC>"+p`]a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Ack searching and cope displaying
@@ -126,7 +126,7 @@ vnoremap <silent> <leader>gv :call VisualSelection('gv', '')<CR><CR>
 " Open Ack and put the cursor in the right position
 map <leader>gg :grep
 
-" When you press <leader>r you can search and replace the selected text
+" When you press <leader>gr you can search and replace the selected text
 vnoremap <silent> <leader>gr :call VisualSelection('replace', '') <CR><CR>
 
 " Visual mode pressing * or # searches for the current selection
@@ -437,3 +437,17 @@ function! CopyMatches(reg)
   execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
+
+function! Syn()
+  for id in synstack(line("."), col("."))
+    echo synIDattr(id, "name")
+  endfor
+endfunction
+command! -nargs=0 Syn call Syn()
+
+function! HICursor()
+  echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+endfunction
+command! -nargs=0 HICursor call HICursor()

@@ -18,14 +18,15 @@ if has('python3')
   Plug 'Valloric/MatchTagAlways'
 endif
 
+let s:completion_manager = ''
 
 if executable('node')
   let s:completion_manager = 'coc'
 elseif has('python3')
-  let s:completion_manager = 'denite'
+  let s:completion_manager = 'deoplete'
 endif
 
-if s:completion_manager == 'denite'
+if s:completion_manager == 'deoplete'
   Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
   Plug 'carlitux/deoplete-ternjs'
   Plug 'deoplete-plugins/deoplete-tag'
@@ -182,9 +183,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-Plug 'tomasiser/vim-code-dark'
-" Plug 'phanviet/vim-monokai-pro'
-" Plug 'rakr/vim-one'
+Plug 'srcery-colors/srcery-vim'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'chriskempson/base16-vim'
 " Plug 'flazz/vim-colorschemes'
@@ -193,6 +192,7 @@ Plug 'tomasiser/vim-code-dark'
 " Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
+" Plug 'phanviet/vim-monokai-pro'
 " Plug 'rakr/vim-one'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
 " Plug 'tomasiser/vim-code-dark'
@@ -204,6 +204,7 @@ Plug 'tomasiser/vim-code-dark'
 " Initialize plugin system
 call plug#end()
 
+let g:srcery_italic = 1
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " let g:hybrid_custom_term_colors = 1
 " let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
@@ -215,7 +216,7 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-colorscheme codedark
+colorscheme srcery
 
 
 """"""""""""""""""""""""""""""
@@ -304,7 +305,7 @@ colorscheme codedark
 """"""""""""""""""""""""""""""
 " -> Deoplete
 """"""""""""""""""""""""""""""
-if s:completion_manager == 'denite'
+if s:completion_manager == 'deoplete'
   call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
   call deoplete#custom#var('around', {
         \   'range_above': 50,
@@ -331,7 +332,7 @@ endif
 """"""""""""""""""""""""""""""
 " -> Denite
 """"""""""""""""""""""""""""""
-if s:completion_manager == 'denite'
+if s:completion_manager == 'deoplete'
   augroup deniteresize
     autocmd!
     autocmd VimResized,VimEnter * call denite#custom#option('default',
@@ -630,7 +631,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='codedark'
+let g:airline_theme='srcery'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -871,7 +872,7 @@ let g:WebDevIconsOS = 'Darwin'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> LanguageClient-neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:completion_manager == 'denite'
+if s:completion_manager == 'deoplete'
   let g:LanguageClient_serverCommands = {
         \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
         \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
@@ -1221,6 +1222,13 @@ endif
 " -> vim-vebugger
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vebugger_leader='<Leader>d'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> diffchar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DiffColors=3
+let g:DiffModeSync=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
