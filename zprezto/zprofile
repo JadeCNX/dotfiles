@@ -118,3 +118,4 @@ alias hidden-show='defaults write com.apple.finder AppleShowAllFiles -bool YES &
 alias hidden-hide='defaults write com.apple.finder AppleShowAllFiles -bool NO && killall Finder'
 alias gts='git tag --sort=objecttype --sort=-creatordate | git show --date=local --pretty="format:%C(auto)%h%C(green)%d %C(blue)%an %C(auto)%s %x1b[2m%ad%x1b[0m%Creset" -s --stdin'
 alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+alias note='vims ~/Dropbox/.note/'

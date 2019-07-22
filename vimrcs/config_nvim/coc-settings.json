@@ -20,7 +20,6 @@
     },
     "ccls": {
       "command": "ccls",
-      // "args": ["--log-file=/tmp/ccls/ccls.log"],
       "filetypes": ["c", "cpp"],
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {

@@ -100,6 +100,11 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> Omni complete functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <M-v> <ESC>"+p`]a
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,30 +121,19 @@ elseif executable('ag')
 endif
 
 " When you press gv you Ack after the selected text
-vnoremap <silent> <leader>gv :call VisualSelection('gv', '')<cr>
+vnoremap <silent> <leader>gv :call VisualSelection('gv', '')<CR><CR>
 
 " Open Ack and put the cursor in the right position
 map <leader>gg :grep
 
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>gr :call VisualSelection('replace', '') <cr>
+vnoremap <silent> <leader>gr :call VisualSelection('replace', '') <CR><CR>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<cr>/<C-R>=@/<cr><cr>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
 map <leader>ao :botright copen<cr>
 map <leader>ac ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>an :cn<cr>

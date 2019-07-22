@@ -18,30 +18,38 @@ if has('python3')
   Plug 'Valloric/MatchTagAlways'
 endif
 
+
 if executable('node')
-  let s:list_manager = 'coc'
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
+  let s:completion_manager = 'coc'
 elseif has('python3')
-  let s:list_manager = 'denite'
-  Plug 'Shougo/denite.nvim'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/echodoc.vim'
-  Plug 'Shougo/neomru.vim'
-  Plug 'Shougo/neoyank.vim'
-  Plug 'Shougo/unite-outline'
-  Plug 'zacharied/denite-nerdfont'
-  Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
-  Plug 'deoplete-plugins/deoplete-tag'
-  Plug 'carlitux/deoplete-ternjs'
-  Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-
-else
-  let s:list_manager = 'ctrlp'
-  Plug 'ctrlpvim/ctrlp.vim'
+  let s:completion_manager = 'denite'
 endif
 
-Plug '/junegunn/vim-easy-align'
+if s:completion_manager == 'denite'
+  Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+  Plug 'carlitux/deoplete-ternjs'
+  Plug 'deoplete-plugins/deoplete-tag'
+  Plug 'Shougo/defx.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/echodoc.vim'
+  Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
+
+  " Plug 'Shougo/unite-outline'
+  " Plug 'Shougo/neoyank.vim'
+  " Plug 'Shougo/denite.nvim'
+  " Plug 'Shougo/neomru.vim'
+  " Plug 'zacharied/denite-nerdfont'
+
+elseif s:completion_manager == 'coc'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
+if empty(glob('/usr/local/opt/fzf'))
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+else
+  Plug '/usr/local/opt/fzf'
+endif
+
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bps/vim-textobj-python'
@@ -63,12 +71,13 @@ Plug 'idanarye/vim-vebugger'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
-Plug 'lifepillar/vim-colortemplate'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
@@ -86,8 +95,6 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx']}
 Plug 'rickhowe/diffchar.vim'
-Plug 'rizzatti/dash.vim', {'on':'Dash'}
-Plug 'roxma/vim-paste-easy'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
@@ -106,6 +113,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tweekmonster/fzf-filemru'
 Plug 'unblevable/quick-scope' " highlight f,t move
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -117,7 +125,6 @@ Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'ja
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 
-" Plug '/usr/local/opt/fzf' " use with 'brew install fzf'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
@@ -127,6 +134,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
 " Plug 'chr4/nginx.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
@@ -136,9 +144,9 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'itchyny/lightline.vim'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
-" Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/vim-peekaboo'
 " Plug 'koron/minimap-vim'
+" Plug 'lifepillar/vim-colortemplate'
 " Plug 'lilydjwg/colorizer'
 " Plug 'lornix/vim-scrollbar'
 " Plug 'maxbrunsfeld/vim-yankstack'
@@ -150,7 +158,9 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
+" Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roman/golden-ratio'
+" Plug 'roxma/vim-paste-easy'
 " Plug 'rust-lang/rust.vim'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
@@ -239,51 +249,49 @@ colorscheme codedark
 """"""""""""""""""""""""""""""
 " -> CTRL-P
 """"""""""""""""""""""""""""""
-if s:list_manager == 'ctrlp'
-  if executable('fd')
-    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+" if executable('fd')
+"   let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
 
-  elseif executable('rg')
-    set grepprg=rg\ --color=never
-    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-    let g:ctrlp_use_caching = 0
+" elseif executable('rg')
+"   set grepprg=rg\ --color=never
+"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+"   let g:ctrlp_use_caching = 0
 
-  elseif executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+" elseif executable('ag')
+"   set grepprg=ag\ --nogroup\ --nocolor
 
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-  endif
+"   " ag is fast enough that CtrlP doesn't need to cache
+"   let g:ctrlp_use_caching = 0
+" endif
 
-  let g:ctrlp_map = '<c-f>'
-  nnoremap <leader>p :CtrlPMixed<cr>
-  nnoremap <leader>P :CtrlPMRU<cr>
-  " map <M-b> :CtrlPBuffer<cr>
+" let g:ctrlp_map = '<c-f>'
+" nnoremap <leader>p :CtrlPMixed<cr>
+" nnoremap <leader>P :CtrlPMRU<cr>
+" " map <M-b> :CtrlPBuffer<cr>
 
-  let g:ctrlp_use_caching = 0
-  " let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_max_height = 20
-  let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-  let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_switch_buffer = 'et'
+" let g:ctrlp_use_caching = 0
+" " let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_max_height = 20
+" let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_switch_buffer = 'et'
 
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tags*
-  set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tags*
+" set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
 
-  let g:ctrlp_extensions = ['mixed']
-  let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
+" let g:ctrlp_extensions = ['mixed']
+" let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
 
-  function! BrightHighlightOn()
-    hi CursorLine guibg=darkred
-  endfunction
+" function! BrightHighlightOn()
+"   hi CursorLine guibg=darkred
+" endfunction
 
-  function! BrightHighlightOff()
-    hi CursorLine guibg=#2c323c
-  endfunction
-endif
+" function! BrightHighlightOff()
+"   hi CursorLine guibg=#2c323c
+" endfunction
 
 
 """"""""""""""""""""""""""""""
@@ -296,7 +304,7 @@ endif
 """"""""""""""""""""""""""""""
 " -> Deoplete
 """"""""""""""""""""""""""""""
-if s:list_manager == 'denite'
+if s:completion_manager == 'denite'
   call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
   call deoplete#custom#var('around', {
         \   'range_above': 50,
@@ -313,7 +321,7 @@ if s:list_manager == 'denite'
   "       \})
   " call deoplete#custom#source('_', 'sorters', [])
 
-  " let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 1
 
   " <TAB>: completion.
   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -323,8 +331,7 @@ endif
 """"""""""""""""""""""""""""""
 " -> Denite
 """"""""""""""""""""""""""""""
-if s:list_manager == 'denite'
-  " echo "test"
+if s:completion_manager == 'denite'
   augroup deniteresize
     autocmd!
     autocmd VimResized,VimEnter * call denite#custom#option('default',
@@ -358,21 +365,23 @@ if s:list_manager == 'denite'
   call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
   call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
 
-  " Ag command on grep source
-  " call denite#custom#var('grep', 'command', ['ag'])
-  " call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-  " call denite#custom#var('grep', 'recursive_opts', [])
-  " call denite#custom#var('grep', 'pattern_opt', [])
-  " call denite#custom#var('grep', 'separator', ['--'])
-  " call denite#custom#var('grep', 'final_opts', [])
-
-  " Ripgrep command on grep source
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--no-heading', '--glob=!tags', '--glob=!*.temp', '-S'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
+  if executable('ag')
+    " Ag command on grep source
+    call denite#custom#var('grep', 'command', ['ag'])
+    call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+  elseif executable('rg')
+    " Ripgrep command on grep source
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--no-heading', '--glob=!tags', '--glob=!*.temp', '-S'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+  endif
 
   call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
 
@@ -406,45 +415,143 @@ if s:list_manager == 'denite'
 
   " nnoremap <silent> <C-p> :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
-  nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend -auto-resume<CR>
-  nnoremap <leader>/ :<C-u>Denite grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend -auto-resume<CR>
-  nnoremap <leader>? :<C-u>DeniteBufferDir grep:. -no-empty -highlight-mode-insert=Search -post-action=suspend -auto-resume<CR>
+  " nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -no-empty -post-action=suspend -auto-resume<CR>
+  " nnoremap <leader>/ :<C-u>Denite grep:. -no-empty -post-action=suspend -auto-resume<CR>
+  " nnoremap <leader>? :<C-u>DeniteBufferDir grep:. -no-empty -post-action=suspend -auto-resume<CR>
 
   " nnoremap <leader>og :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
-  nnoremap <M-p> :<C-u>Denite file/rec -highlight-mode-insert=Search<CR>
-  " nnoremap <<leader>fleader>b :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
-  " nnoremap <leader>o<leader>fo :<C-u>DeniteBufferDir file/rec -highlight-mode-insert=Search<CR>
-  nnoremap <M-P> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
-  nnoremap <M-o> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+  " nnoremap <<leader>fleader>b :<C-u>Denite buffer <CR>
+  " nnoremap <leader>o<leader>fo :<C-u>DeniteBufferDir file/rec <CR>
+  " nnoremap <leader>p :<C-u>Denite buffer file/rec <CR>
+  " nnoremap <leader>P :<C-u>Denite file_mru <CR>
+  nnoremap <leader>o :<C-u>Denite outline <CR>
 
   " highlight deniteMatchedChar cterm=reverse gui=reverse
   " call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
   " call denite#custom#option('_', 'highlight_matched_range', 'None')
   " call denite#custom#option('_', 'highlight_matched_char', 'None')
+
+  " Define mappings
+  autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action') 
+    nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  endfunction
+
+  autocmd FileType denite-filter call s:denite_filter_my_settings()
+  function! s:denite_filter_my_settings() abort
+    imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+  endfunction
+
+  " Change default action.
+  " call denite#custom#kind('file', 'default_action', 'split')
+
+  " Add custom menus
+  let s:menus = {}
+
+  let s:menus.zsh = {
+        \ 'description': 'Edit your import zsh configuration'
+        \ }
+  let s:menus.zsh.file_candidates = [
+        \ ['zshrc', '~/.config/zsh/.zshrc'],
+        \ ['zshenv', '~/.zshenv'],
+        \ ]
+
+  let s:menus.my_commands = {
+        \ 'description': 'Example commands'
+        \ }
+  let s:menus.my_commands.command_candidates = [
+        \ ['Split the window', 'vnew'],
+        \ ['Open zsh menu', 'Denite menu:zsh'],
+        \ ['Format code', 'FormatCode', 'go,python'],
+        \ ]
+
+  call denite#custom#var('menu', 'menus', s:menus)
+
+  " Specify multiple paths in grep source
+  "call denite#start([{'name': 'grep',
+  "      \ 'args': [['a.vim', 'b.vim'], '', 'pattern']}])
 endif
 
 """"""""""""""""""""""""""""""
 " -> FZF
 """"""""""""""""""""""""""""""
-if exists(':FZF')
-  " File search
-  nmap <M-p> :Files<CR>
+" File search
+nmap <leader>p :Files<CR>
+nnoremap <leader>P :FilesMru --tiebreak=end<cr>
 
-  " Mapping selecting mappings
-  " nmap <leader><tab> <plug>(fzf-maps-n)
-  " xmap <leader><tab> <plug>(fzf-maps-x)
-  " omap <leader><tab> <plug>(fzf-maps-o)
+" Mapping selecting mappings
+" nmap <leader><tab> <plug>(fzf-maps-n)
+" xmap <leader><tab> <plug>(fzf-maps-x)
+" omap <leader><tab> <plug>(fzf-maps-o)
 
-  " Insert mode completion
-  imap <c-x><c-w> <plug>(fzf-complete-word)
-  imap <c-x><c-f> <plug>(fzf-complete-path)
-  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-  imap <c-x><c-l> <plug>(fzf-complete-line)
+" Insert mode completion
+imap <c-x><c-w> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-  " Advanced customization using autoload functions
-  " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+if executable('ag')
+  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Ag')<CR>
+  nmap <leader>* :exe 'Ag '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>Ag<CR>
+  nmap <leader>? :<C-u>Ag<CR>
+
+  command! -bang -nargs=* Ag
+        \ call fzf#vim#ag(<q-args>,
+        \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+        \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+        \                 <bang>0)
+
+elseif executable('rg')
+  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Rg')<CR>
+  nmap <leader>* :exe 'Rg '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>Rg<CR>
+  nmap <leader>? :<C-u>Rg<CR>
+
+  " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+  command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+        \   <bang>0 ? fzf#vim#with_preview('up:60%')
+        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+        \   <bang>0)
+else
+  command! -bang -nargs=* GGrep
+        \ call fzf#vim#grep(
+        \   'git grep --line-number '.shellescape(<q-args>), 0,
+        \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'GGrep')<CR>
+  nmap <leader>* :exe 'GGrep '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>GGrep<CR>
+  nmap <leader>? :<C-u>GGrep<CR>
 endif
 
+function! s:fzfGrebFromSelected(type, cmd)
+  let saved_unnamed_register = @@
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+  let word = substitute(@@, '\n$', '', 'g')
+  let word = escape(word, '| ')
+  let @@ = saved_unnamed_register
+  execute cmd.' '.word
+endfunction
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Advanced customization using autoload functions
+" inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 """"""""""""""""""""""""""""""
 " -> cpsm
@@ -764,7 +871,7 @@ let g:WebDevIconsOS = 'Darwin'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> LanguageClient-neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:list_manager == 'denite'
+if s:completion_manager == 'denite'
   let g:LanguageClient_serverCommands = {
         \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
         \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio', '--logfile /tmp/lsp/javascript-typescript-stdio.log'],
@@ -803,7 +910,7 @@ if s:list_manager == 'denite'
   nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
   nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <silent> <leader>ws :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
+  nnoremap <silent> <leader>O :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
   nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
 
   augroup LanguageClient_config_ccls
@@ -1005,7 +1112,7 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> coc.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:list_manager == 'coc'
+if s:completion_manager == 'coc'
   let g:coc_global_extensions = [
         \ 'coc-ccls',
         \ 'coc-css',
@@ -1041,21 +1148,21 @@ if s:list_manager == 'coc'
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-  nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
+  " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+  " nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
 
-  vmap <leader>* :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
-  nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
-  nmap <leader>/ :<C-u>CocList grep<CR>
-  nmap <leader>? :<C-u>CocList words<CR>
+  " vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
+  " nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
+  " nmap <leader>/ :<C-u>CocList grep<CR>
+  " nmap <leader>? :<C-u>CocList words<CR>
 
-  command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+  " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
-  function! s:GrepArgs(...)
-    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-          \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-    return join(list, "\n")
-  endfunction
+  " function! s:GrepArgs(...)
+  "   let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+  "         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+  "   return join(list, "\n")
+  " endfunction
 
   " navigate diagnostics
   nmap [w <Plug>(coc-diagnostic-prev)
@@ -1065,14 +1172,15 @@ if s:list_manager == 'coc'
   nmap <leader>wr <Plug>(coc-rename)
   nmap <leader>wx <Plug>(coc-fix-current)
 
-  nmap <leader>wdd <Plug>(coc-definition)
-  nmap <leader>wdt <Plug>(coc-type-definition)
-  nmap <leader>wdi <Plug>(coc-implementation)
-  nmap <leader>wdr <Plug>(coc-references)
+  nmap <leader>wd <Plug>(coc-definition)
+  nmap <leader>wt <Plug>(coc-type-definition)
+  nmap <leader>wi <Plug>(coc-implementation)
+  nmap <leader>wr <Plug>(coc-references)
 
-  nmap <leader>woo :<C-u>CocList outline --ignore-case<CR>
-  nmap <leader>wos :<C-u>CocList symbols<CR>
-  nmap <leader>wod :<C-u>CocList diagnostics<cr>
+  nmap <leader>we :<C-u>CocList diagnostics<cr>
+
+  nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
+  nmap <leader>O :<C-u>CocList symbols<CR>
 
   " Remap for do action format
   nmap <leader>wf <Plug>(coc-format-selected)<CR>
@@ -1085,9 +1193,6 @@ if s:list_manager == 'coc'
   nnoremap <leader>wk :<C-u>CocPrev<CR>
   nnoremap <leader>wp :<C-u>CocListResume<CR>
 
-  " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h '.expand('<cword>')
@@ -1096,21 +1201,26 @@ if s:list_manager == 'coc'
     endif
   endfunction
 
-  function! s:GrepFromSelected(type)
-    let saved_unnamed_register = @@
-    if a:type ==# 'v'
-      normal! `<v`>y
-    elseif a:type ==# 'char'
-      normal! `[v`]y
-    else
-      return
-    endif
-    let word = substitute(@@, '\n$', '', 'g')
-    let word = escape(word, '| ')
-    let @@ = saved_unnamed_register
-    execute 'CocList grep '.word
-  endfunction
+  " function! s:cocGrepFromSelected(type)
+  "   let saved_unnamed_register = @@
+  "   if a:type ==# 'v'
+  "     normal! `<v`>y
+  "   elseif a:type ==# 'char'
+  "     normal! `[v`]y
+  "   else
+  "     return
+  "   endif
+  "   let word = substitute(@@, '\n$', '', 'g')
+  "   let word = escape(word, '| ')
+  "   let @@ = saved_unnamed_register
+  "   execute 'CocList grep '.word
+  " endfunction
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-vebugger
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vebugger_leader='<Leader>d'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
