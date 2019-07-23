@@ -631,7 +631,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='srcery'
+let airline_theme='srcery'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -643,6 +643,9 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
 let g:airline_highlighting_cache = 1
 let g:airline#extensions#whitespace#enabled = 0
+
+" let g:airline#extensions#tmuxline#enabled = 1
+" let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -1105,7 +1108,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> vim-tmux-navigator
+" -> golden-ratio
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:golden_ratio_exclude_nonmodifiable = 1
 
