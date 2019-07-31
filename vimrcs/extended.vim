@@ -35,7 +35,7 @@ set termguicolors
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-  set undodir=~/.vim/temp_dirs/undodir
+  set undodir=~/.vim/undodir
   set undofile
 catch
 endtry
@@ -55,18 +55,15 @@ cno $c e <C-\>eCurrentFileDir("e")<cr>
 cno $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-K> <C-U>
-
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
-" Map ½ to something useful
-map ½ $
-cmap ½ $
-imap ½ $
-
+" NOTE: use readline.vim instead
+" cnoremap <C-A> <Home>
+" cnoremap <C-E> <End>
+" cnoremap <C-K> <C-U>
+" cnoremap <C-F> <RIGHT>
+" cnoremap <C-B> <LEFT>
+" cnoremap <C-D> <LEFT><DELETE>
+" cnoremap <C-P> <Up>
+" cnoremap <C-N> <Down>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Parenthesis/bracket

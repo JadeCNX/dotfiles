@@ -79,6 +79,7 @@ Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Snea
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
+Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
@@ -97,6 +98,7 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx']}
 Plug 'rickhowe/diffchar.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ryvnf/readline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
@@ -151,6 +153,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'lifepillar/vim-colortemplate'
 " Plug 'lilydjwg/colorizer'
 " Plug 'lornix/vim-scrollbar'
+" Plug 'lvht/mru'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'mhartington/deoplete-typescript'
@@ -483,8 +486,8 @@ endif
 " -> FZF
 """"""""""""""""""""""""""""""
 " File search
-nmap <leader>p :Files<CR>
-nnoremap <leader>P :FilesMru --tiebreak=end<cr>
+nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+nnoremap  <silent> <leader>P :History<cr>
 
 " Mapping selecting mappings
 " nmap <leader><tab> <plug>(fzf-maps-n)
@@ -783,7 +786,7 @@ let g:go_fmt_command = "goimports"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_smartcase = 1
 " map , <Plug>(easymotion-prefix)
-nmap <leader>j <Plug>(easymotion-overwin-w)
+nmap <leader>j <Plug>(easymotion-overwin-f)
 
 map  <Leader>f <Plug>(easymotion-overwin-f)
 nmap <Leader>F <Plug>(easymotion-overwin-f2)
@@ -1009,8 +1012,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:tagbar_left = 1
-let g:tagbar_vertical = 25
+let g:tagbar_left = 1
+let g:tagbar_previewwin_pos = ""
+" let g:tagbar_vertical = 25
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1234,6 +1238,25 @@ let g:vebugger_leader='<Leader>d'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:DiffColors=3
 let g:DiffModeSync=1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> diffchar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:rainbow_conf = {
+\	'separately': {
+\		'csv': {
+\			'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
+\		},
+\	}
+\}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vista.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vista#renderer#enable_icon = 1
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
