@@ -101,6 +101,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
+Plug 'soywod/kronos.vim'
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeToggle']}
@@ -1050,6 +1051,7 @@ nnoremap <silent><leader>m :MaximizerToggle<CR>
 " -> AutoPairs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsMapSpace = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -100,9 +100,9 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Omni complete functions
+" -> Paste from clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <leader>p <ESC>"+p`]a
+" noremap <C-P> "+p`]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Ack searching and cope displaying
