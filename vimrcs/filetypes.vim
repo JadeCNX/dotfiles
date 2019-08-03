@@ -9,19 +9,19 @@ au BufNewFile,BufRead *.jinja set syntax=htmljinja
 au BufNewFile,BufRead *.mako set filetype=mako
 au BufNewFile,BufRead *.as set filetype=actionscript
 
-au FileType python map <buffer> F :set foldmethod=indent<cr>
+" au FileType python map <buffer> F :set foldmethod=indent<cr>
 
-au FileType python inoremap <buffer> $r return
-au FileType python inoremap <buffer> $i import
-au FileType python inoremap <buffer> $p print
-au FileType python inoremap <buffer> $f # --- <esc>a
-au FileType python map <buffer> <leader>1 /class
-au FileType python map <buffer> <leader>2 /def
-au FileType python map <buffer> <leader>C ?class
-au FileType python map <buffer> <leader>D ?def
-au FileType python set cindent
-au FileType python set cinkeys-=0#
-au FileType python set indentkeys-=0#
+" au FileType python inoremap <buffer> $r return
+" au FileType python inoremap <buffer> $i import
+" au FileType python inoremap <buffer> $p print
+" au FileType python inoremap <buffer> $f # --- <esc>a
+" au FileType python map <buffer> <leader>1 /class
+" au FileType python map <buffer> <leader>2 /def
+" au FileType python map <buffer> <leader>C ?class
+" au FileType python map <buffer> <leader>D ?def
+" au FileType python set cindent
+" au FileType python set cinkeys-=0#
+" au FileType python set indentkeys-=0#
 
 
 """"""""""""""""""""""""""""""

@@ -504,7 +504,7 @@ if executable('ag')
   vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Ag')<CR>
   nmap <leader>* :exe 'Ag '.expand('<cword>')<CR>
   nmap <leader>/ :<C-u>Ag<CR>
-  nmap <leader>? :<C-u>Ag<CR>
+  " nmap <leader>? :<C-u>Ag<CR>
 
   command! -bang -nargs=* Ag
         \ call fzf#vim#ag(<q-args>,
@@ -516,7 +516,7 @@ elseif executable('rg')
   vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Rg')<CR>
   nmap <leader>* :exe 'Rg '.expand('<cword>')<CR>
   nmap <leader>/ :<C-u>Rg<CR>
-  nmap <leader>? :<C-u>Rg<CR>
+  " nmap <leader>? :<C-u>Rg<CR>
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
   command! -bang -nargs=* Rg
@@ -533,7 +533,7 @@ else
   vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'GGrep')<CR>
   nmap <leader>* :exe 'GGrep '.expand('<cword>')<CR>
   nmap <leader>/ :<C-u>GGrep<CR>
-  nmap <leader>? :<C-u>GGrep<CR>
+  " nmap <leader>? :<C-u>GGrep<CR>
 endif
 
 function! s:fzfGrebFromSelected(type, cmd)
@@ -1161,10 +1161,10 @@ if s:completion_manager == 'coc'
   " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
   " nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
 
-  " vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
-  " nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
+  vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
+  nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
   " nmap <leader>/ :<C-u>CocList grep<CR>
-  " nmap <leader>? :<C-u>CocList words<CR>
+  nmap <leader>? :<C-u>CocList grep<CR>
 
   " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
@@ -1178,6 +1178,7 @@ if s:completion_manager == 'coc'
   nmap [w <Plug>(coc-diagnostic-prev)
   nmap ]w <Plug>(coc-diagnostic-next)
 
+  nmap <leader>w. <C-u>:CocListResume<CR>
   nmap <leader>wa <Plug>(coc-codeaction)
   nmap <leader>wr <Plug>(coc-rename)
   nmap <leader>wx <Plug>(coc-fix-current)
