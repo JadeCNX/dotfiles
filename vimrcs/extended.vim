@@ -4,8 +4,8 @@
 set termguicolors
 
 " Set font according to system
-" if has("mac") || has("macunix")
-" set gfn=IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
+if has("mac") || has("macunix")
+  set gfn=LigaOperatorMono\ Nerd\ Font\ Mono:h14,IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
 " elseif has("win16") || has("win32")
 " set gfn=IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
 " elseif has("gui_gtk2")
@@ -14,7 +14,7 @@ set termguicolors
 " set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
 " elseif has("unix")
 " set gfn=Monospace\ 11
-" endif
+endif
 " set gfn=FuraCode\ Nerd\ Font,DankMono\ Nerd\ Font:h14,BlexMono\ Nerd\ Font:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
@@ -54,8 +54,8 @@ cno $c e <C-\>eCurrentFileDir("e")<cr>
 " it deletes everything until the last slash
 cno $q <C-\>eDeleteTillSlash()<cr>
 
-" Bash like keys for the command line
-" NOTE: use readline.vim instead
+" Readline like keys for the command line
+" NOTE: use vim-rsi instead
 " cnoremap <C-A> <Home>
 " cnoremap <C-E> <End>
 " cnoremap <C-K> <C-U>

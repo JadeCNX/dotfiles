@@ -98,7 +98,6 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx']}
 Plug 'rickhowe/diffchar.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ryvnf/readline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
@@ -113,6 +112,7 @@ Plug 'tpope/vim-abolish' " Abbreviation substitution
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
@@ -167,6 +167,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'roman/golden-ratio'
 " Plug 'roxma/vim-paste-easy'
 " Plug 'rust-lang/rust.vim'
+" Plug 'ryvnf/readline.vim'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
