@@ -1187,7 +1187,7 @@ if s:completion_manager == 'coc'
   nmap <leader>wd <Plug>(coc-definition)
   nmap <leader>wt <Plug>(coc-type-definition)
   nmap <leader>wi <Plug>(coc-implementation)
-  nmap <leader>wr <Plug>(coc-references)
+  nmap <leader>wg <Plug>(coc-references)
 
   nmap <leader>we :<C-u>CocList diagnostics<cr>
 
