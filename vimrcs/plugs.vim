@@ -190,8 +190,9 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Color schemes
 Plug 'srcery-colors/srcery-vim'
 " Plug 'altercation/vim-colors-solarized'
-" Plug 'chriskempson/base16-vim'
-" Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'gregsexton/Atom'
 " Plug 'jaxbot/semantic-highlight.vim'
 " Plug 'joshdick/onedark.vim'
@@ -588,6 +589,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\~$']
 let NERDTreeNodeDelimiter="\x07"
 let g:NERDTreeWinSize=35
+let NERDTreeMinimalUI=1
 map <leader>n :NERDTreeToggle<cr>
 " map <leader>nb :NERDTreeFromBookmark<Space>
 " map <leader>nf :NERDTreeFind<cr>
@@ -872,7 +874,8 @@ let g:indentLine_char = "¦"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> devicons
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsOS = 'Darwin'
 

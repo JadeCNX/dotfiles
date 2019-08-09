@@ -172,12 +172,17 @@ if has('nvim')
   hi Cursor2 guifg='fg' guibg='Red'
   set guicursor=
 	\n-c:block-Cursor,
-	\i-ve-ci:ver25-Cursor/lCursor1,
-	\r-cr:hor20-Cursor2/lCursor2,
+	\i-ve-ci:ver25,
+	\r-cr:hor20,
 	\o:hor50,
-	\v-ve:block-Cursor2/lCursor2,
-	\a:blinkwait700-blinkoff400-blinkon250,
+	\v-ve:block,
+	\a:blinkwait280-blinkoff225-blinkon225,
 	\sm:block-blinkwait175-blinkoff150-blinkon175
+
+  " hi Cursor gui=NONE guifg=bg guibg=fg
+  " hi Cursor2 gui=NONE guifg=bg guibg=fg
+  " hi lCursor1 gui=NONE guifg=bg guibg=fg
+  " hi lCursor2 gui=NONE guifg=bg guibg=fg
 
   au VimLeave * set guicursor=a:block-blinkon0
 elseif exists('$TMUX')
