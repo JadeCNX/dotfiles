@@ -130,7 +130,7 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
     verminal: {
-      fontFamily: '"FuraCodeiScript Nerd Font Mono"',
+      fontFamily: '"LigaOperatorMono Nerd Font Mono"',
       fontSize: 14
     },
     materialBox: {
@@ -185,8 +185,8 @@ module.exports = {
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
-    // 'verminal',
-    'hyperterm-monokai',
+    'verminal',
+    // 'hyperterm-monokai',
   ],
 
   // in development, you can create a directory under

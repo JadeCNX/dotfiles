@@ -154,6 +154,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'lilydjwg/colorizer'
 " Plug 'lornix/vim-scrollbar'
 " Plug 'lvht/mru'
+" Plug 'lyokha/vim-xkbswitch'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'mhartington/deoplete-typescript'
@@ -188,19 +189,21 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-Plug 'srcery-colors/srcery-vim'
+Plug 'joshdick/onedark.vim'
 " Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/base16-vim'
-Plug 'flazz/vim-colorschemes'
-Plug 'sainnhe/vim-color-vanilla-cake'
+" Plug 'challenger-deep-theme/vim'
+" Plug 'chriskempson/base16-vim'
+" Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
 " Plug 'jaxbot/semantic-highlight.vim'
-" Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
+" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'phanviet/vim-monokai-pro'
 " Plug 'rakr/vim-one'
+" Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
+" Plug 'srcery-colors/srcery-vim'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
@@ -210,11 +213,22 @@ Plug 'sainnhe/vim-color-vanilla-cake'
 " Initialize plugin system
 call plug#end()
 
-let g:srcery_italic = 1
+" let g:srcery_italic = 1
+" let g:PaperColor_Theme_Options = {
+"   \   'theme': {
+"   \     'default': {
+"   \       'transparent_background': 1,
+"   \       'allow_italic': 1,
+"   \       'allow_bold': 1
+"   \     }
+"   \   }
+"   \ }
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " let g:hybrid_custom_term_colors = 1
 " let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-" let g:onedark_terminal_italics = 1
+let g:onedark_terminal_italics = 1
+let g:onedark_hide_endofbuffer = 1
+" let g:onedark_termcolors = 256
 " let g:solarized_term_italics = 1
 " let g:solarized_termcolors=256
 " let g:solarized_visibility = 'high'
@@ -222,7 +236,7 @@ let g:srcery_italic = 1
 
 " Colorscheme
 set background=dark
-colorscheme srcery
+colorscheme onedark
 
 
 """"""""""""""""""""""""""""""
@@ -638,7 +652,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let airline_theme='srcery'
+let airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -653,6 +667,16 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " let g:airline#extensions#tmuxline#enabled = 1
 " let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+ " 
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -1262,6 +1286,15 @@ let s:rainbow_conf = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vista#renderer#enable_icon = 1
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-xkbswitch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:XkbSwitchEnabled = 1
+" let g:XkbSwitchLoadRIMappings = 0
+" let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+" inoremap ดก <ESC>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
