@@ -125,6 +125,7 @@ Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
@@ -892,13 +893,15 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> indentLine
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indentLine_char = "¦"
+let g:indentLine_char = "┊"
+let g:indentLine_setColors = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> devicons
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsOS = 'Darwin'
