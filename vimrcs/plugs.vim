@@ -118,7 +118,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/fzf-filemru'
-Plug 'unblevable/quick-scope' " highlight f,t move
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
@@ -177,6 +176,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tomtom/tlib_vim'
 " Plug 'tpope/vim-vinegar'
+" Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-flake8'
@@ -1096,7 +1096,7 @@ let g:formatter_yapf_style = 'google'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> QuickScope
+" -> quick-scope
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:qs_lazy_highlight = 1
 " let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
