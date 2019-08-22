@@ -12,6 +12,27 @@ nnoremap [e :.,.m<space>.-2<cr>
 vnoremap ]e :m<space>.+1<cr>gv
 vnoremap [e :m<space>.-2<cr>kgv
 
+vnoremap - $
+nnoremap - $
+
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
+cnoremap <C-F> <RIGHT>
+cnoremap <C-B> <LEFT>
+cnoremap <C-D> <LEFT><DELETE>
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+inoremap <C-A> <Home>
+inoremap <C-E> <End>
+inoremap <C-K> <C-U>
+inoremap <C-F> <RIGHT>
+inoremap <C-B> <LEFT>
+inoremap <C-D> <LEFT><DELETE>
+" inoremap <C-P> <Up>
+" inoremap <C-N> <Down>
+
 eclipseaction eclipsenextitem org.eclipse.ui.navigate.next
 nnoremap ]q :eclipsenextitem<cr>
 eclipseaction eclipsepreviousitem org.eclipse.ui.navigate.previous
