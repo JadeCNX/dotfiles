@@ -106,6 +106,7 @@ Plug 'soywod/kronos.vim'
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeToggle']}
+Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish' " Abbreviation substitution
