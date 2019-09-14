@@ -69,6 +69,7 @@ Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'honza/vim-snippets'
 Plug 'idanarye/vim-vebugger'
+Plug 'itchyny/calendar.vim'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
@@ -896,6 +897,7 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_char = "┊"
 let g:indentLine_setColors = 1
+let g:indentLine_fileTypeExclude = ['calendar']
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1272,6 +1274,12 @@ let g:vebugger_leader='<Leader>d'
 let g:DiffColors=3
 let g:DiffModeSync=1
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> Calendar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> diffchar
