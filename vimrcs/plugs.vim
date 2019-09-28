@@ -56,6 +56,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
+Plug 'chrisbra/csv.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -126,6 +127,7 @@ Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
 Plug 'Yggdroot/indentLine'
@@ -206,7 +208,7 @@ Plug 'joshdick/onedark.vim'
 " Plug 'rakr/vim-one'
 " Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
-" Plug 'srcery-colors/srcery-vim'
+Plug 'srcery-colors/srcery-vim'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
@@ -239,7 +241,7 @@ let g:onedark_hide_endofbuffer = 1
 
 " Colorscheme
 set background=dark
-colorscheme onedark
+colorscheme srcery
 
 
 """"""""""""""""""""""""""""""
@@ -655,7 +657,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let airline_theme='onedark'
+let airline_theme='srcery'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -669,6 +671,7 @@ let g:airline_highlighting_cache = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 " let g:airline#extensions#tmuxline#enabled = 1
+" let airline#extensions#tmuxline#color_template = 'replace'
 " let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 if !exists('g:airline_symbols')
@@ -1307,6 +1310,13 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " let g:XkbSwitchLoadRIMappings = 0
 " let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
 " inoremap ดก <ESC>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-latex-live-preview
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:livepreview_previewer = 'open -a Preview'
+let g:livepreview_engine = 'mactex'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -4,7 +4,7 @@
 set termguicolors
 
 " Set font according to system
-if has("mac") || has("macunix")
+if (has("mac") || has("macunix")) && !has("gui_vimr")
   set gfn=LigaOperatorMono\ Nerd\ Font\ Mono:h14,IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
 " elseif has("win16") || has("win32")
 " set gfn=IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11

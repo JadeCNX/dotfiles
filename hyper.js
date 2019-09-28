@@ -185,7 +185,8 @@ module.exports = {
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
-    'verminal',
+    'hyper-snazzy',
+    // 'verminal',
     // 'hyperterm-monokai',
   ],
 
