@@ -123,3 +123,5 @@ alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitesp
 
 alias note="vim -S ~/Dropbox/.note/Session.vim"
 alias c="clear"
+
+export PATH="$HOME/.cargo/bin:$PATH"

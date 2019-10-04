@@ -249,4 +249,4 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 # Alias-tips
 #
 
-zstyle ":prezto:module:alias-tips" text "Alias to: "
+zstyle ":prezto:module:alias-tips" text "Alias ~> "
