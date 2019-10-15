@@ -7,6 +7,7 @@ mv -iv ~/.hyper.js ~/.hyper.js.old
 mv -iv ~/.spacemacs.d ~/.spacemacs.d.old
 mv -iv ~/.tmux.conf ~/.tmux.conf.old
 mv -iv ~/.vimrc ~/.vimrc.old
+mv -iv ~/.config/nvim ~/.config/nvim.old
 mv -iv ~/.vrapperrc ~/.vrapperrc.old
 mv -iv ~/.w3m ~/.w3m.old
 mv -iv ~/.xvimrc ~/.xvimrc.old
@@ -39,9 +40,8 @@ ln -sfnv "$PWD/vrapperrc" ~/.vrapperrc
 ln -sfnv "$PWD/xvimrc" ~/.xvimrc
 
 # vim
-mkdir -p "$PWD/.config/nvim"
-ln -sfnv "$PWD/vimrcs/config_nvim/coc-setting.json" ~/.config/nvim/coc-settings.json
-ln -sfnv "$PWD/vimrcs/config_nvim/init.vim" ~/.config/nvim/init.vim
+mkdir -p "$PWD/.config"
+ln -sfnv "$PWD/vimrcs/config_nvim" ~/.config/nvim
 ln -sfnv "$PWD/vimrcs/vimrc.vim" ~/.vimrc
 
 # zprezto
