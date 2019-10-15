@@ -1,22 +1,22 @@
 #!/bin/sh
 
 # backup
-mv -iv ~/.alacritty.yml ~/.alacritty.yml.old
-mv -iv ~/.gitignore_global ~/.gitignore_global.old
-mv -iv ~/.hyper.js ~/.hyper.js.old
-mv -iv ~/.spacemacs.d ~/.spacemacs.d.old
-mv -iv ~/.tmux.conf ~/.tmux.conf.old
-mv -iv ~/.vimrc ~/.vimrc.old
-mv -iv ~/.config/nvim ~/.config/nvim.old
-mv -iv ~/.vrapperrc ~/.vrapperrc.old
-mv -iv ~/.w3m ~/.w3m.old
-mv -iv ~/.xvimrc ~/.xvimrc.old
-mv -iv ~/.zlogin ~/.zlogin.old
-mv -iv ~/.zlogout ~/.zlogout.old
-mv -iv ~/.zpreztorc ~/.zpreztorc.old
-mv -iv ~/.zprofile ~/.zprofile.old
-mv -iv ~/.zshenv ~/.zshenv.old
-mv -iv ~/.zshrc ~/.zshrc.old
+mv -iv ~/.alacritty.yml{,.old}
+mv -iv ~/.gitignore_global{,.old}
+mv -iv ~/.hyper.js{,.old}
+mv -iv ~/.spacemacs.d ~/.{,.old}
+mv -iv ~/.tmux.conf{,.old}
+mv -iv ~/.vimrc{,.old}
+mv -iv ~/.config/nvim{,.old}
+mv -iv ~/.vrapperrc{,.old}
+mv -iv ~/.w3m{,.old}
+mv -iv ~/.xvimrc{,.old}
+mv -iv ~/.zlogin{,.old}
+mv -iv ~/.zlogout{,.old}
+mv -iv ~/.zpreztorc{,.old}
+mv -iv ~/.zprofile{,.old}
+mv -iv ~/.zshenv{,.old}
+mv -iv ~/.zshrc{,.old}
 
 # alacritty
 ln -sfnv "$PWD/alacritty.yml" ~/.alacritty.yml
