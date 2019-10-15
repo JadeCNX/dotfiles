@@ -11,9 +11,6 @@
 	spull = !git stash && git pull && git fat pull && git stash pop
 	re-stash = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
 	mylog = log --oneline --author=jade --date=local --pretty=format:\"%C(auto)%h %s%d %x1b[2m%ad%x1b[0m%Creset\"
-[user]
-	email = jadearmy89@gmail.com
-	name = jade
 [push]
 	default = current
 [filter "hawser"]
