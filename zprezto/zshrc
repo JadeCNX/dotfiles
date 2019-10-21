@@ -8,7 +8,7 @@
 # Source Prezto.
 if ! [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-  git clone --recursive-submodules https://github.com/belak/prezto-contrib "${ZDOTDIR:-$HOME}/contrib"
+  git clone --recursive-submodules https://github.com/belak/prezto-contrib "${ZDOTDIR:-$HOME}/.zprezto/contrib"
 fi
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -49,9 +49,11 @@ _fzf_compgen_dir() {
 if command -v fasd &> /dev/null ; then
   eval "$(fasd --init auto)"
 
-  alias v="fasd -f -e nvim"     # quick opening files with vim
-  alias m="fasd -f -e mplayer" # quick opening files with mplayer
-  alias o="fasd -f -e open"    # quick opening files with open
+  alias v="fasd -f -e ${EDITOR}"     # quick opening files with vim
+  if [[ "$OSTYPE" == darwin* ]]; then
+    alias m="fasd -f -e mplayer" # quick opening files with mplayer
+    alias o="fasd -f -e open"    # quick opening files with open
+  fi
 fi
 
 
