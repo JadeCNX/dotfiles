@@ -510,7 +510,7 @@ endif
 " -> FZF
 """"""""""""""""""""""""""""""
 " File search
-nmap <silent> <leader>p :FilesMru --tiebreak=enda --git<CR>
+nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
 nnoremap  <silent> <leader>P :History<cr>
 
 " Mapping selecting mappings
