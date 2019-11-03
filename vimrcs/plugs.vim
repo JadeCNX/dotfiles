@@ -97,17 +97,17 @@ Plug 'osyo-manga/vim-over'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx']}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'json']}
 Plug 'rickhowe/diffchar.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeToggle']}
+Plug 'scrooloose/nerdtree'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'soywod/kronos.vim'
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeToggle']}
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
@@ -191,6 +191,9 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'vim-vdebug/vdebug'
 " Plug 'w0rp/ale'
 " Plug 'wsdjeg/FlyGrep.vim'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-notes'
+" Plug 'xolox/vim-session'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
@@ -460,7 +463,7 @@ if s:completion_manager == 'deoplete'
   " Define mappings
   autocmd FileType denite call s:denite_my_settings()
   function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action') 
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
     nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
     nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
     nnoremap <silent><buffer><expr> q denite#do_map('quit')
@@ -507,7 +510,7 @@ endif
 " -> FZF
 """"""""""""""""""""""""""""""
 " File search
-nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+nmap <silent> <leader>p :FilesMru --tiebreak=enda --git<CR>
 nnoremap  <silent> <leader>P :History<cr>
 
 " Mapping selecting mappings
@@ -601,17 +604,23 @@ let g:user_emmet_mode='a'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Nerd Tree
+" -> Nerdtree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\~$']
 let NERDTreeNodeDelimiter="\x07"
-let g:NERDTreeWinSize=35
 let NERDTreeMinimalUI=1
-map <leader>n :NERDTreeToggle<cr>
+
+let g:NERDTreeWinSize=35
+
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nf :NERDTreeFind<cr>
 " map <leader>nb :NERDTreeFromBookmark<Space>
-" map <leader>nf :NERDTreeFind<cr>
+
+" autocmd VimLeave * NERDTreeClose
+autocmd VimLeavePre * NERDTreeClose
+" autocmd VimEnter * NERDTree
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -678,7 +687,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
- " 
+" 
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -1288,12 +1297,12 @@ let g:calendar_google_task = 1
 " -> diffchar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:rainbow_conf = {
-\	'separately': {
-\		'csv': {
-\			'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
-\		},
-\	}
-\}
+      \   'separately': {
+      \       'csv': {
+      \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
+      \       },
+      \   }
+      \}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1318,6 +1327,24 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " let g:livepreview_previewer = 'open -a Preview'
 let g:livepreview_engine = 'mactex'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-session
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" If you don't want help windows to be restored:
+" set sessionoptions-=help
+
+" Don't persist options and mappings because it can corrupt sessions.
+" set sessionoptions-=options
+
+" Don't save hidden and unloaded buffers in sessions.
+" set sessionoptions-=buffers
+
+" let g:session_autosave='yes'
+" let g:session_autoload='yes'
+
+" let g:session_persist_font = 0
+" let g:session_persist_colors = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Override color
