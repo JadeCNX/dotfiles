@@ -203,6 +203,7 @@ vnoremap Y "*y
 nnoremap - $
 vnoremap - $
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Profile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -210,6 +211,14 @@ nnoremap <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<
 nnoremap <leader>DP :exe ":profile pause"<cr>
 nnoremap <leader>DC :exe ":profile continue"<cr>
 nnoremap <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> No syntax highlighting in vimdiff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &diff
+  syntax off
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

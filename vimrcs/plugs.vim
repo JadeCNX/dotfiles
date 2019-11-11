@@ -1189,7 +1189,8 @@ if s:completion_manager == 'coc'
         \ 'coc-tsserver',
         \ 'coc-vimlsp',
         \ 'coc-yaml',
-        \ 'coc-yank']
+        \ 'coc-yank',
+        \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets' ]
   " \ 'coc-word',
   " \ 'coc-dictionary',
   " \ 'coc-git',
@@ -1199,7 +1200,7 @@ if s:completion_manager == 'coc'
 
   imap <TAB> <Plug>(coc-snippets-expand)
   vmap <C-j> <Plug>(coc-snippets-select)
-  imap <C-j> <Plug>(coc-snippets-expand-jump)
+  imap <C-l> <Plug>(coc-snippets-expand-jump)
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
