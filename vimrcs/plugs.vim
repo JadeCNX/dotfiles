@@ -875,10 +875,12 @@ let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> ultisnips
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:UltiSnipsExpandTrigger = '<C-E>'
+let g:UltiSnipsExpandTrigger = '<NOP>'
+let g:UltiSnipsListSnippets = '<NOP>'
+let g:UltiSnipsJumpForwardTrigger = '<TAB>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 " let g:UltiSnipsListSnippets = '<C-S-E>'
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
-let g:UltiSnipsListSnippets = '<C-l>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> EditorConfig
@@ -1195,12 +1197,15 @@ if s:completion_manager == 'coc'
   " \ 'coc-dictionary',
   " \ 'coc-git',
 
-  let g:coc_snippet_next = '<c-j>'
-  let g:coc_snippet_prev = '<c-k>'
-
-  imap <TAB> <Plug>(coc-snippets-expand)
-  vmap <C-j> <Plug>(coc-snippets-select)
-  imap <C-l> <Plug>(coc-snippets-expand-jump)
+  " inoremap <silent><expr> <TAB>
+  "       \ pumvisible() ? "\<C-n>" :
+  "       \ <SID>check_back_space() ? "\<TAB>" :
+  "       \ coc#refresh()
+  " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  " function! s:check_back_space() abort
+  "   let col = col('.') - 1
+  "   return !col || getline('.')[col - 1]  =~# '\s'
+  " endfunction
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -1273,6 +1278,21 @@ if s:completion_manager == 'coc'
   "   let @@ = saved_unnamed_register
   "   execute 'CocList grep '.word
   " endfunction
+
+  " Use <C-l> for trigger snippet expand.
+  imap <C-l> <Plug>(coc-snippets-expand)
+
+  " Use <C-j> for select text for visual placeholder of snippet.
+  vmap <C-j> <Plug>(coc-snippets-select)
+
+  " Use <C-j> for jump to next placeholder, it's default of coc.nvim
+  let g:coc_snippet_next = '<c-j>'
+
+  " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+  let g:coc_snippet_prev = '<c-k>'
+
+  " Use <C-j> for both expand and jump (make expand higher priority.)
+  imap <C-j> <Plug>(coc-snippets-expand-jump)
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -12,6 +12,7 @@
   "tsserver.enable": true,
   "list.nextKeymap": "<c-n>",
   "list.previousKeymap": "<c-p>",
+  "yank.enableCompletion": true,
   "languageserver": {
     "swift": {
       "command": "~/.cache/source-lsp/release/sourcekit-lsp",
