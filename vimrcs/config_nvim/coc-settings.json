@@ -1,5 +1,7 @@
 {
   "coc.preferences.colorSupport": true,
+  "highlight.document.enable": true,
+  "highlight.colors.enable": false,
   "coc.preferences.extensionUpdateCheck": "never",
   "json.enable": true,
   "list.indicator": ">",

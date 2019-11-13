@@ -1306,6 +1306,7 @@ let g:vebugger_leader='<Leader>d'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:DiffColors=3
 let g:DiffModeSync=1
+let g:DiffCharNoKeyMap=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
