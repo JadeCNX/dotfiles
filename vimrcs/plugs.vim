@@ -98,7 +98,7 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascrip
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'json']}
-Plug 'rickhowe/diffchar.vim'
+Plug 'JadeCNX/diffchar.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
