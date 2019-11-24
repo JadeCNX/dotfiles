@@ -71,6 +71,7 @@ Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'honza/vim-snippets'
 Plug 'idanarye/vim-vebugger'
 Plug 'itchyny/calendar.vim'
+Plug 'JadeCNX/diffchar.vim'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
@@ -98,7 +99,6 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascrip
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'json']}
-Plug 'JadeCNX/diffchar.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -1136,9 +1136,17 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> rainbow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_conf = {
+      \   'separately': {
+      \       'csv': {
+      \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
+      \       },
+      \   }
+      \}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1177,7 +1185,6 @@ if s:completion_manager == 'coc'
         \ 'coc-docker',
         \ 'coc-emmet',
         \ 'coc-gocode',
-        \ 'coc-highlight',
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
@@ -1194,6 +1201,7 @@ if s:completion_manager == 'coc'
         \ 'coc-yank',
         \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets' ]
   " \ 'coc-word',
+  " \ 'coc-highlight',
   " \ 'coc-dictionary',
   " \ 'coc-git',
 
@@ -1314,17 +1322,6 @@ let g:DiffCharNoKeyMap=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> diffchar
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:rainbow_conf = {
-      \   'separately': {
-      \       'csv': {
-      \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
-      \       },
-      \   }
-      \}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
