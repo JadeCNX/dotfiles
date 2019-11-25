@@ -1226,13 +1226,13 @@ if s:completion_manager == 'coc'
   " nmap <leader>/ :<C-u>CocList grep<CR>
   nmap <leader>? :<C-u>CocList grep<CR>
 
-  " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+  command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
-  " function! s:GrepArgs(...)
-  "   let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-  "         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-  "   return join(list, "\n")
-  " endfunction
+  function! s:GrepArgs(...)
+    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+          \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+    return join(list, "\n")
+  endfunction
 
   " navigate diagnostics
   nmap [w <Plug>(coc-diagnostic-prev)
@@ -1272,20 +1272,20 @@ if s:completion_manager == 'coc'
     endif
   endfunction
 
-  " function! s:cocGrepFromSelected(type)
-  "   let saved_unnamed_register = @@
-  "   if a:type ==# 'v'
-  "     normal! `<v`>y
-  "   elseif a:type ==# 'char'
-  "     normal! `[v`]y
-  "   else
-  "     return
-  "   endif
-  "   let word = substitute(@@, '\n$', '', 'g')
-  "   let word = escape(word, '| ')
-  "   let @@ = saved_unnamed_register
-  "   execute 'CocList grep '.word
-  " endfunction
+  function! s:cocGrepFromSelected(type)
+    let saved_unnamed_register = @@
+    if a:type ==# 'v'
+      normal! `<v`>y
+    elseif a:type ==# 'char'
+      normal! `[v`]y
+    else
+      return
+    endif
+    let word = substitute(@@, '\n$', '', 'g')
+    let word = escape(word, '| ')
+    let @@ = saved_unnamed_register
+    execute 'CocList grep '.word
+  endfunction
 
   " Use <C-l> for trigger snippet expand.
   imap <C-l> <Plug>(coc-snippets-expand)
