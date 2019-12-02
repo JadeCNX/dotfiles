@@ -3,6 +3,8 @@
   "coc.preferences.extensionUpdateCheck": "never",
   "json.enable": true,
   "list.indicator": ">",
+  "list.nextKeymap": "<c-n>",
+  "list.previousKeymap": "<c-p>",
   "python.jediEnabled": false,
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
@@ -10,8 +12,6 @@
   "suggest.snippetIndicator": "",
   "suggest.triggerAfterInsertEnter": true,
   "tsserver.enable": true,
-  "list.nextKeymap": "<c-n>",
-  "list.previousKeymap": "<c-p>",
   "yank.enableCompletion": true,
   "languageserver": {
     "swift": {
