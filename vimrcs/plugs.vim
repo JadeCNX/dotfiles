@@ -68,6 +68,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less', {'for': 'less'}
+Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
 Plug 'honza/vim-snippets'
 Plug 'idanarye/vim-vebugger'
 Plug 'itchyny/calendar.vim'
@@ -101,13 +102,13 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'json']}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'soywod/kronos.vim'
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
@@ -1139,15 +1140,28 @@ nmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> rainbow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
+"  '#98BC37'
 let g:rainbow_conf = {
+      \   'guifgs': ['#F75341', '#FCE8C3', '#FED06E', '#68A8E4', '#FF5C8F', '#53FDE9'],
       \   'separately': {
       \       'csv': {
-      \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
+      \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend']
       \       },
+      \       'html': {
+      \           'parentheses': 0
+      \       },
+      \       'mxml': {
+      \           'parentheses': 0
+      \       },
+      \       'xml': {
+      \           'parentheses': 0
+      \       },
+      \       'bak': {
+      \           'parentheses': 0
+      \       }
       \   }
       \}
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> markdown
