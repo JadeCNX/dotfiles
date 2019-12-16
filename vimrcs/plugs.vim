@@ -74,7 +74,6 @@ Plug 'idanarye/vim-vebugger'
 Plug 'itchyny/calendar.vim'
 Plug 'JadeCNX/diffchar.vim'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
-Plug 'jiangmiao/auto-pairs'
 Plug 'jph00/swift-apple'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -105,7 +104,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'soywod/kronos.vim'
+Plug 'soywod/kronos.vim', {'on': ['Kronos']};
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
@@ -130,11 +129,11 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
 Plug 'Yggdroot/indentLine'
-Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 
 " Plug 'airblade/vim-gitgutter'
+" Plug 'alvan/vim-closetag'
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
 " Plug 'ashisha/image.vim'
@@ -151,6 +150,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
 " Plug 'itchyny/lightline.vim'
+" Plug 'jiangmiao/auto-pairs'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
 " Plug 'junegunn/vim-peekaboo'
@@ -195,6 +195,7 @@ Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
+" Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
@@ -1101,10 +1102,11 @@ nnoremap <silent><leader>m :MaximizerToggle<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> AutoPairs
+" -> auto-pairs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:AutoPairsShortcutToggle = ''
-let g:AutoPairsMapSpace = 0
+" let g:AutoPairsShortcutToggle = ''
+" let g:AutoPairsMapSpace = 0
+" let g:AutoPairsFlyMode = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
