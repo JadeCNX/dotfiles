@@ -104,7 +104,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'soywod/kronos.vim', {'on': ['Kronos']};
+Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
