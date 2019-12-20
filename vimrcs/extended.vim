@@ -6,14 +6,14 @@ set termguicolors
 " Set font according to system
 if (has("mac") || has("macunix")) && !has("gui_vimr")
   set gfn=LigaOperatorMono\ Nerd\ Font\ Mono:h14,IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
-" elseif has("win16") || has("win32")
-" set gfn=IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-" elseif has("gui_gtk2")
-" set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-" elseif has("linux")
-" set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-" elseif has("unix")
-" set gfn=Monospace\ 11
+  " elseif has("win16") || has("win32")
+  " set gfn=IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
+  " elseif has("gui_gtk2")
+  " set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
+  " elseif has("linux")
+  " set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
+  " elseif has("unix")
+  " set gfn=Monospace\ 11
 endif
 " set gfn=FuraCode\ Nerd\ Font,DankMono\ Nerd\ Font:h14,BlexMono\ Nerd\ Font:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
 
@@ -458,10 +458,11 @@ command! -nargs=0 Syn call Syn()
 
 function! HICursor()
   echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+	\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+	\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
 endfunction
 command! -nargs=0 HICursor call HICursor()
+
 
 """"""""""""""""""""""""""""""
 " -> Trim
@@ -485,6 +486,45 @@ endfunction
 
 command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
 command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
-nnoremap <F12>     :ShowSpaces 1<CR>
-nnoremap <S-F12>   m`:TrimSpaces<CR>``
-vnoremap <S-F12>   :TrimSpaces<CR>
+" nnoremap <F12>     :ShowSpaces 1<CR>
+" nnoremap <S-F12>   m`:TrimSpaces<CR>``
+" vnoremap <S-F12>   :TrimSpaces<CR>
+
+
+""""""""""""""""""""""""""""""
+" -> Ignore whitespace in diff
+""""""""""""""""""""""""""""""
+function! DiffIwhiteToggle()
+  if &diffopt =~ "iwhite"
+    set diffopt-=iwhite
+    echo "Diff no ignore whitespace"
+  else
+    set diffopt+=iwhite
+    echo "Diff ignore whitespace"
+  endif
+endfunction
+set diffopt+=iwhite
+command! -bar -nargs=0 DiffIwhiteToggle call DiffIwhiteToggle()
+
+
+""""""""""""""""""""""""""""""
+" -> Ignore whitespace in diff
+""""""""""""""""""""""""""""""
+function! DiffNoSyntaxToggle()
+  if exists("b:diff_no_syntax") && b:diff_no_syntax == 1
+    diffoff
+    set syntax=on
+    if exists(":RainbowToggleOn")
+      RainbowToggleOn
+    endif
+    let b:diff_no_syntax=0
+  else
+    diffthis
+    set syntax=off
+    if exists(":RainbowToggleOff")
+      RainbowToggleOff
+    endif
+    let b:diff_no_syntax=1
+  endif
+endfunction
+command! -bar -nargs=0 DiffNoSyntaxToggle call DiffNoSyntaxToggle()
