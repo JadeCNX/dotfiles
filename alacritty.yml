@@ -17,9 +17,9 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  dimensions:
-    columns: 0
-    lines: 0
+  #dimensions:
+  #  columns: 0
+  #  lines: 0
 
   # Window position (changes require restart)
   #
@@ -33,12 +33,12 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 0
-    y: 0
+  #padding:
+  #  x: 0
+  #  y: 0
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  #dynamic_padding: false
 
   # Window decorations
   #
@@ -60,13 +60,23 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  #startup_mode: Windowed
 
   # Window title
   #title: Alacritty
 
   # Window class (Linux only):
-  #class: Alacritty
+  #class:
+    # Application instance name
+    #instance: Alacritty
+    # General application class
+    #general: Alacritty
+
+  # GTK theme variant (Linux only)
+  #
+  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
+  # Set this to `None` to use the default theme variant.
+  #gtk_theme_variant: None
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -76,15 +86,6 @@ scrolling:
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   multiplier: 3
-
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used
-  # to allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false
@@ -108,51 +109,60 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: LigaOperatorMono Nerd Font Mono
-    # family: SFmono Nerd Font Mono
+    # family: LigaOperatorMono Nerd Font Mono
+    family: SFmono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
 
   # Bold font face
-  bold:
+  #bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: LigaOperatorMono Nerd Font Mono
-    # family: SFmono Nerd Font Mono
+    #family: monospace
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
 
   # Italic font face
-  italic:
+  #italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: LigaOperatorMono Nerd Font Mono
-    # family: SFmono Nerd Font Mono
+    #family: monospace
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
+
+  # Bold italic font face
+  #bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    #family: monospace
+
+    # The `style` can be specified to pick a specific face.
+    #style: Bold Italic
 
   # Point size
   size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  offset:
-    x: 0
-    y: 0
+  #offset:
+  #  x: 0
+  #  y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
-  glyph_offset:
-    x: 0
-    y: 0
+  #glyph_offset:
+  #  x: 0
+  #  y: 0
 
   # Thin stroke font rendering (macOS only)
   #
@@ -249,7 +259,7 @@ colors:
   # Example:
   #   `- { index: 16, color: '0xff00ff' }`
   #
-  indexed_colors: []
+  #indexed_colors: []
 
 # Visual Bell
 #
@@ -272,68 +282,16 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
-  animation: EaseOutExpo
-  duration: 0
-  color: '0xffffff'
+#visual_bell:
+#  animation: EaseOutExpo
+#  duration: 0
+#  color: '0xffffff'
 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 0.95
-
-# Mouse bindings
-#
-# Available fields:
-#   - mouse
-#   - action
-#   - mods (optional)
-#
-# Values for `mouse`:
-#   - Middle
-#   - Left
-#   - Right
-#   - Numeric identifier such as `5`
-#
-# All available `mods` and `action` values are documented in the key binding
-# section.
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
-
-mouse:
-  # Click settings
-  #
-  # The `double_click` and `triple_click` settings control the time
-  # alacritty should wait for accepting multiple clicks as one double
-  # or triple click.
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-
-  # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: false
-
-  url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
-
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    modifiers: None
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
@@ -418,66 +376,103 @@ debug:
   # Record all characters and escape sequences as test data.
   ref_test: false
 
+#mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  #hide_when_typing: false
+
+  #url:
+    # URL launcher
+    #
+    # This program is executed when clicking on a text which is recognized as a URL.
+    # The URL is always added to the command as the last parameter.
+    #
+    # When set to `None`, URL launching will be disabled completely.
+    #
+    # Default:
+    #   - (macOS) open
+    #   - (Linux) xdg-open
+    #   - (Windows) explorer
+    #launcher:
+    #  program: xdg-open
+    #  args: []
+
+    # URL modifiers
+    #
+    # These are the modifiers that need to be held down for opening URLs when clicking
+    # on them. The available modifiers are documented in the key binding section.
+    #modifiers: None
+
+# Mouse bindings
+#
+# Mouse bindings are specified as a list of objects, much like the key
+# bindings further below.
+#
+# Each mouse binding will specify a:
+#
+# - `mouse`:
+#
+#   - Middle
+#   - Left
+#   - Right
+#   - Numeric identifier such as `5`
+#
+# - `action` (see key bindings)
+#
+# And optionally:
+#
+# - `mods` (see key bindings)
+mouse_bindings:
+ - { mouse: Middle, action: PasteSelection }
+
 # Key bindings
 #
-# Key bindings are specified as a list of objects. Each binding will specify a
-# key and modifiers required to trigger it, terminal modes where the binding is
-# applicable, and what should be done when the key binding fires. It can either
-# send a byte sequence to the running application (`chars`), execute a
-# predefined action (`action`) or fork and execute a specified command plus
-# arguments (`command`).
+# Key bindings are specified as a list of objects. For example, this is the
+# default paste binding:
 #
-# Bindings are always filled by default, but will be replaced when a new binding
-# with the same triggers is defined. To unset a default binding, it can be
-# mapped to the `None` action.
+# `- { key: V, mods: Control|Shift, action: Paste }`
 #
-# Example:
-#   `- { key: V, mods: Control|Shift, action: Paste }`
+# Each key binding will specify a:
 #
-# Available fields:
-#   - key
-#   - mods (optional)
-#   - chars | action | command (exactly one required)
-#   - mode (optional)
+# - `key`: Identifier of the key pressed
 #
-# Values for `key`:
-#   - `A` -> `Z`
-#   - `F1` -> `F12`
-#   - `Key1` -> `Key0`
+#    - A-Z
+#    - F1-F24
+#    - Key0-Key9
 #
-#   A full list with available key codes can be found here:
-#   https://docs.rs/glutin/*/glutin/enum.VirtualKeyCode.html#variants
+#    A full list with available key codes can be found here:
+#    https://docs.rs/glutin/*/glutin/event/enum.VirtualKeyCode.html#variants
 #
-#   Instead of using the name of the keys, the `key` field also supports using
-#   the scancode of the desired key. Scancodes have to be specified as a
-#   decimal number.
-#   This command will allow you to display the hex scancodes for certain keys:
-#     `showkey --scancodes`
+#    Instead of using the name of the keys, the `key` field also supports using
+#    the scancode of the desired key. Scancodes have to be specified as a
+#    decimal number. This command will allow you to display the hex scancodes
+#    for certain keys:
 #
-# Values for `mods`:
-#   - Command
-#   - Control
-#   - Option
-#   - Super
-#   - Shift
-#   - Alt
+#       `showkey --scancodes`.
 #
-#   Multiple `mods` can be combined using `|` like this: `mods: Control|Shift`.
-#   Whitespace and capitalization is relevant and must match the example.
+# Then exactly one of:
 #
-# Values for `chars`:
-#   The `chars` field writes the specified string to the terminal. This makes
-#   it possible to pass escape sequences.
-#   To find escape codes for bindings like `PageUp` ("\x1b[5~"), you can run
-#   the command `showkey -a` outside of tmux.
-#   Note that applications use terminfo to map escape sequences back to
-#   keys. It is therefore required to update the terminfo when
-#   changing an escape sequence.
+# - `chars`: Send a byte sequence to the running application
 #
-# Values for `action`:
+#    The `chars` field writes the specified string to the terminal. This makes
+#    it possible to pass escape sequences. To find escape codes for bindings
+#    like `PageUp` (`"\x1b[5~"`), you can run the command `showkey -a` outside
+#    of tmux. Note that applications use terminfo to map escape sequences back
+#    to keys. It is therefore required to update the terminfo when changing an
+#    escape sequence.
+#
+# - `action`: Execute a predefined action
+#
+#   - Copy
 #   - Paste
 #   - PasteSelection
-#   - Copy
 #   - IncreaseFontSize
 #   - DecreaseFontSize
 #   - ResetFontSize
@@ -490,26 +485,52 @@ debug:
 #   - ClearHistory
 #   - Hide
 #   - Quit
-#   - ClearLogNotice
-#   - SpawnNewInstance
 #   - ToggleFullscreen
+#   - SpawnNewInstance
+#   - ClearLogNotice
+#   - ReceiveChar
 #   - None
 #
-# Values for `action` (macOS only):
+#   (macOS only):
 #   - ToggleSimpleFullscreen: Enters fullscreen without occupying another space
 #
-# Values for `command`:
-#   The `command` field must be a map containing a `program` string and
-#   an `args` array of command line parameter strings.
+# - `command`: Fork and execute a specified command plus arguments
 #
-#   Example:
-#       `command: { program: "alacritty", args: ["-e", "vttest"] }`
+#    The `command` field must be a map containing a `program` string and an
+#    `args` array of command line parameter strings. For example:
+#       `{ program: "alacritty", args: ["-e", "vttest"] }`
 #
-# Values for `mode`:
-#   - ~AppCursor
-#   - AppCursor
-#   - ~AppKeypad
-#   - AppKeypad
+# And optionally:
+#
+# - `mods`: Key modifiers to filter binding actions
+#
+#    - Command
+#    - Control
+#    - Option
+#    - Super
+#    - Shift
+#    - Alt
+#
+#    Multiple `mods` can be combined using `|` like this:
+#       `mods: Control|Shift`.
+#    Whitespace and capitalization are relevant and must match the example.
+#
+# - `mode`: Indicate a binding for only specific terminal reported modes
+#
+#    This is mainly used to send applications the correct escape sequences
+#    when in different modes.
+#
+#    - AppCursor
+#    - AppKeypad
+#    - Alt
+#
+#    A `~` operator can be used before a mode to apply the binding whenever
+#    the mode is *not* active, e.g. `~Alt`.
+#
+# Bindings are always filled by default, but will be replaced when a new
+# binding with the same triggers is defined. To unset a default binding, it can
+# be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
+# a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
   # (Windows/Linux only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
@@ -523,18 +544,18 @@ key_bindings:
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
   # (macOS only)
-  #- { key: Key0,   mods: Command,         action: ResetFontSize    }
-  #- { key: Equals, mods: Command,         action: IncreaseFontSize }
+  - { key: Key0,   mods: Command,         action: ResetFontSize    }
+  - { key: Equals, mods: Command,         action: IncreaseFontSize }
   #- { key: Add,    mods: Command,         action: IncreaseFontSize }
-  #- { key: Minus,  mods: Command,         action: DecreaseFontSize }
+  - { key: Minus,  mods: Command,         action: DecreaseFontSize }
   #- { key: K,      mods: Command,         action: ClearHistory     }
-  #- { key: K,      mods: Command,         chars: "\x0c"            }
-  #- { key: V,      mods: Command,         action: Paste            }
-  #- { key: C,      mods: Command,         action: Copy             }
-  #- { key: H,      mods: Command,         action: Hide             }
-  #- { key: Q,      mods: Command,         action: Quit             }
-  #- { key: W,      mods: Command,         action: Quit             }
-  #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
+  - { key: K,      mods: Command,         chars: "\x0c"            }
+  - { key: V,      mods: Command,         action: Paste            }
+  - { key: C,      mods: Command,         action: Copy             }
+  - { key: H,      mods: Command,         action: Hide             }
+  - { key: Q,      mods: Command,         action: Quit             }
+  - { key: W,      mods: Command,         action: Quit             }
+  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }

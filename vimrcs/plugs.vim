@@ -92,6 +92,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
+Plug 'neoclide/jsonc.vim'
 Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 Plug 'osyo-manga/vim-anzu'
 Plug 'osyo-manga/vim-over'
@@ -512,8 +513,11 @@ endif
 " -> FZF
 """"""""""""""""""""""""""""""
 " File search
-nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+nnoremap <silent> <leader>p :FilesMru --tiebreak=end<CR>
 nnoremap  <silent> <leader>P :History<cr>
+nnoremap  <silent> <leader>gp :GFiles<cr>
+nnoremap  <silent> <leader>gP :GStatus<cr>
+nnoremap  <silent> <leader>gb :GStatus<cr>
 
 " Mapping selecting mappings
 " nmap <leader><tab> <plug>(fzf-maps-n)
@@ -1280,6 +1284,8 @@ if s:completion_manager == 'coc'
   nnoremap <leader>wk :<C-u>CocPrev<CR>
   nnoremap <leader>wp :<C-u>CocListResume<CR>
 
+  nnoremap <silent> <leader>wy :call StatusDiagnosticToClipboard()<CR>
+
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h '.expand('<cword>')
@@ -1301,6 +1307,19 @@ if s:completion_manager == 'coc'
     let word = escape(word, '| ')
     let @@ = saved_unnamed_register
     execute 'CocList grep '.word
+  endfunction
+
+  function! StatusDiagnosticToClipboard()
+    call setreg('+','')
+    let diagList=CocAction('diagnosticList')
+    let line=line('.')
+    for diagItem in diagList
+      if line == diagItem['lnum']
+        let str=diagItem['message']
+        call setreg('+',str)
+        return
+      endif
+    endfor
   endfunction
 
   " Use <C-l> for trigger snippet expand.

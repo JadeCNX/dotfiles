@@ -1,15 +1,20 @@
 {
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "never",
+  /* "coc.preferences.hoverTarget": "echo", */
+  /* "diagnostic.messageTarget": "echo", */
   "json.enable": true,
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
   "list.previousKeymap": "<c-p>",
   "python.jediEnabled": false,
+  "signature.target": "echo",
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
+  /* "suggest.floatEnable": false, */
+  "suggest.autoTrigger":"always",
   "suggest.noselect": true,
-  "suggest.snippetIndicator": "",
+  "suggest.snippetIndicator": "",
   "suggest.triggerAfterInsertEnter": true,
   "tsserver.enable": true,
   "yank.enableCompletion": true,
@@ -17,7 +22,7 @@
     "swift": {
       "command": "~/.cache/source-lsp/release/sourcekit-lsp",
       "filetypes": ["swift", "objc", "objcpp"],
-      "rootPatterns": [".xcodeproj", ".xcworkspace", ".git"],
+      "rootPatterns": [".xcodeproj", ".xcworkspace", ".git"]
     },
     "ccls": {
       "command": "ccls",
@@ -34,6 +39,6 @@
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
-    },
+    }
   }
 }
