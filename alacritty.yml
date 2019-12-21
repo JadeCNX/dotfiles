@@ -109,6 +109,9 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
+    # family: BlexMono Nerd Font
+    # family: FuraCode Nerd Font
+    # family: FuraCodeiScript Nerd Font Mono
     # family: LigaOperatorMono Nerd Font Mono
     family: SFmono Nerd Font Mono
 
