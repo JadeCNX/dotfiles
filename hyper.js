@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 11,
 
     // font family with optional fallbacks
     fontFamily: '"LigaOperatorMono Nerd Font Mono", "SFMono Nerd Font Mono","FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -164,11 +164,10 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'gitrocket',
-    'hyperline',
-    'space-pull',
-    // 'hyper-atom-dark-vibrancy',
+    'git-falcon9 ',
+    // 'gitrocket',
     // 'hyper-atom-dark-transparent',
+    // 'hyper-atom-dark-vibrancy',
     // 'hyper-cat',
     // 'hyper-clean',
     // 'hyper-material-box',
@@ -182,12 +181,14 @@ module.exports = {
     // 'hyper-spotify',
     // 'hyper-statusline',
     // 'hypercwd',
+    'hyperline',
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
-    'hyper-snazzy',
-    // 'verminal',
     // 'hyperterm-monokai',
+    'hyperterm-new-moon-theme',
+    // 'space-pull',
+    // 'verminal',
   ],
 
   // in development, you can create a directory under

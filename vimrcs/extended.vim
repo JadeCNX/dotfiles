@@ -115,7 +115,7 @@ endif
 vnoremap <silent> <leader>gv :call VisualSelection('gv', '')<CR><CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>gg :grep
+nnoremap <leader>gg :greps<space>
 
 " When you press <leader>gr you can search and replace the selected text
 vnoremap <silent> <leader>gr :call VisualSelection('replace', '') <CR><CR>
@@ -125,10 +125,10 @@ vnoremap <silent> <leader>gr :call VisualSelection('replace', '') <CR><CR>
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<cr>/<C-R>=@/<cr><cr>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 
-map <leader>ao :botright copen<cr>
-map <leader>ac ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>an :cn<cr>
-map <leader>ap :cp<cr>
+nnoremap <leader>ao :botright copen<cr>
+nnoremap <leader>an :cn<cr>
+nnoremap <leader>ap :cp<cr>
+" nnoremap <leader>ac ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 
 """"""""""""""""""""""""""""""

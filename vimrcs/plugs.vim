@@ -516,8 +516,7 @@ endif
 nnoremap <silent> <leader>p :FilesMru --tiebreak=end<CR>
 nnoremap  <silent> <leader>P :History<cr>
 nnoremap  <silent> <leader>gp :GFiles<cr>
-nnoremap  <silent> <leader>gP :GStatus<cr>
-nnoremap  <silent> <leader>gb :GStatus<cr>
+nnoremap  <silent> <leader>b :Buffers<cr>
 
 " Mapping selecting mappings
 " nmap <leader><tab> <plug>(fzf-maps-n)
@@ -676,9 +675,15 @@ let airline_theme='srcery'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#fnamemod = ':t:r'
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#show_buffers = 1
+" let g:airline#extensions#tabline#fnamemod = ':t:r'
+" let g:airline#extensions#tabline#fnamecollapse = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_type = 0
+" let g:airline#extensions#tabline#buf_label_first = 1
+" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
@@ -687,7 +692,7 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " let g:airline#extensions#tmuxline#enabled = 1
 " let airline#extensions#tmuxline#color_template = 'replace'
-" let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+" let airline#extensions#tmuxline#snapshot_file = '~/.tmux-statusline-colors.conf'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -698,16 +703,17 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+" let g:airline#extensions#tabline#close_symbol = '﯇   X '
 
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> lightline
@@ -758,6 +764,8 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 " -> Fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set diffopt += vertical
+nnoremap  <silent> <leader>gs :Gstatus<cr>
+nnoremap  <silent> <leader>gb :Gblame<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
