@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 11,
+    fontSize: 14,
 
     // font family with optional fallbacks
     fontFamily: '"LigaOperatorMono Nerd Font Mono", "SFMono Nerd Font Mono","FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -27,10 +27,10 @@ module.exports = {
     letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)',
+    cursorColor: '#FBB829',
 
     // terminal text color under BLOCK cursor
-    cursorAccentColor: '#303030',
+    cursorAccentColor: '#1c1b19',
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
     cursorShape: 'BLOCK',
@@ -39,17 +39,17 @@ module.exports = {
     cursorBlink: true,
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: '#fce8c3',
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: '#000',
+    backgroundColor: 'rgba(28,27,25,0.888)',
 
     // terminal selection color
-    selectionColor: 'rgba(248,28,229,0.3)',
+    selectionColor: '#FCE8C3',
 
     // border color (window, tabs)
-    borderColor: '#303030',
+    borderColor: 'rgba(28,27,25,0.888)',
 
     // custom CSS to embed in the main window
     css: '',
@@ -67,28 +67,28 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '2px 4px 18px',
+    padding: '2px 4px 8px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: '#000000',
-      red: '#e06c75',
-      green: '#98c379',
-      yellow: '#d19a66',
-      blue: '#61afef',
-      magenta: '#c678dd',
-      cyan: '#56b6c2',
-      white: '#C7C7C7',
-      lightBlack: '#686868',
-      lightRed: '#be5046',
-      lightGreen: '#67F86F',
-      lightYellow: '#e5c07b',
-      lightBlue: '#6A76FB',
-      lightMagenta: '#FD7CFC',
-      lightCyan: '#61afef',
-      lightWhite: '#FFFFFF',
+      black:   '#1c1b19',
+      red:     '#ef2f27',
+      green:   '#519f50',
+      yellow:  '#fbb829',
+      blue:    '#2c78bf',
+      magenta: '#e02c6d',
+      cyan:    '#0aaeb3',
+      white:   '#918175',
+      lightBlack:   '#404040',
+      lightRed:     '#f75341',
+      lightGreen:   '#98bc37',
+      lightYellow:  '#fed06e',
+      lightBlue:    '#68a8e4',
+      lightMagenta: '#ff5c8f',
+      lightCyan:    '#53fde9',
+      lightWhite:   '#fce8c3',
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -186,7 +186,7 @@ module.exports = {
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
     // 'hyperterm-monokai',
-    'hyperterm-new-moon-theme',
+    // 'hyperterm-new-moon-theme',
     // 'space-pull',
     // 'verminal',
   ],
