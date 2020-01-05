@@ -38,6 +38,13 @@ autocmd FileChangedShellPost *
 let mapleader = " "
 let maplocalleader = "\""
 
+" Fast saving
+" nmap <leader>w :w!<cr>
+
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command! W execute w !sudo tee % >' /dev/null' <bar> edit!>''>
+
 " scroll off
 set scrolloff=3
 set sidescrolloff=3

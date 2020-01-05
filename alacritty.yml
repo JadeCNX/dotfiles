@@ -109,11 +109,12 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    # family: BlexMono Nerd Font
+    family: BlexMono Nerd Font
     # family: FuraCode Nerd Font
     # family: FuraCodeiScript Nerd Font Mono
-    family: LigaOperatorMono Nerd Font Mono
+    # family: LigaOperatorMono Nerd Font Mono
     # family: SFmono Nerd Font Mono
+    # family: mplus Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     # style: Regular
@@ -152,7 +153,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
