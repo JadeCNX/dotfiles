@@ -1,11 +1,4 @@
 #
-# Executes commands at login pre-zshrc.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
 # Browser
 #
 
@@ -52,6 +45,8 @@ path=(
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin
   $HOME/.fastlane/bin
+  $HOME/.fastlane/bin
+  $HOME/.iterm2
   $path
 )
 
@@ -84,12 +79,6 @@ __git_files () {
 
 
 #
-# tmuxinator
-#
-alias tmr=tmuxinator
-
-
-#
 # setopt
 #
 # disable warn glob with no match
@@ -109,20 +98,43 @@ setopt autocd
 export GTAGSLABEL=pygments
 
 #
-# Alias
+# powerlevel10k
 #
-alias vim='nvim'
-alias vims='nvim -S Session.vim'
-alias emacs='emacs -nw'
+export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
-alias hidden-show='defaults write com.apple.finder AppleShowAllFiles -bool YES && killall Finder'
-alias hidden-hide='defaults write com.apple.finder AppleShowAllFiles -bool NO && killall Finder'
 
-alias gts='git tag --sort=objecttype --sort=-creatordate | git show --date=local --pretty="format:%C(auto)%h%C(green)%d %C(blue)%an %C(auto)%s %x1b[2m%ad%x1b[0m%Creset" -s --stdin'
-alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
-alias glp='git log -p'
+#
+# zsh-iterm-touchbar
+#
+export TOUCHBAR_GIT_ENABLED=true
+export YARN_ENABLED=true
 
-alias note="vim -S ~/Dropbox/.note/Session.vim"
-alias c="clear"
+#
+# FZF
+#
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Use ;; as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER=';;'
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# Options to fzf command
+export FZF_COMPLETION_OPTS='+c -x'
+
+if [ -n "$TMUX" ]; then
+  export FZF_TMUX=1
+fi
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob="!.git/*" --glob="!node_modules/*"'
+# export FZF_DEFAULT_COMMAND='fd --type file --follow -E .git -E node_modules'
+
+
