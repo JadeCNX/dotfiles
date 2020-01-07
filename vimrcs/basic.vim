@@ -254,8 +254,8 @@ vnoremap j gj
 " noremap gl <C-W>l
 
 " remop escape key
-inoremap fd <ESC>
-vnoremap fd <ESC>
+inoremap jk <ESC>
+vnoremap jk <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Spell checking

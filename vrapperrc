@@ -43,8 +43,8 @@ nnoremap ]] :eclipsenextmember<cr>
 eclipseaction eclipseprevmember org.eclipse.jdt.ui.edit.text.java.goto.previous.member
 nnoremap [[ :eclipseprevmember<cr>
 
-inoremap fd <ESC>
-vnoremap fd <ESC>
+inoremap jk <ESC>
+vnoremap jk <ESC>
 
 "version control
 eclipseaction eclipsecomparehead org.eclipse.egit.ui.team.CompareWithHead
