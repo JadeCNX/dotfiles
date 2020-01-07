@@ -159,13 +159,13 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    ;; default : spacemacs-dark
-   dotspacemacs-themes '(srcery)
+   dotspacemacs-themes '(spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("LigaOperatorMono Nerd Font Mono"
-                               :size 14
+                               :size 12
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -208,7 +208,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -335,6 +335,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   )
 
+  (setq spacemacs-theme-comment-bg nil)
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -362,6 +364,9 @@ you should place your code here."
 
   ;; Enable company mode globally
   ;; (global-company-mode)
+
+  ;; Set escape keybinding to "jk"
+  (setq-default evil-escape-key-sequence "jk")
 
   ;; Diff highlight - gutter highlight changed
   (global-diff-hl-mode)
