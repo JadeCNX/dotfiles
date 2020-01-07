@@ -224,7 +224,7 @@ Plug 'srcery-colors/srcery-vim'
 " Initialize plugin system
 call plug#end()
 
-" let g:srcery_italic = 1
+let g:srcery_italic = 1
 " let g:PaperColor_Theme_Options = {
 "   \   'theme': {
 "   \     'default': {
@@ -247,7 +247,7 @@ let g:onedark_hide_endofbuffer = 1
 
 " Colorscheme
 set background=dark
-colorscheme onedark
+colorscheme srcery
 
 
 """"""""""""""""""""""""""""""
@@ -671,7 +671,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let airline_theme='onedark'
+let airline_theme='srcery'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -691,7 +691,7 @@ let g:airline_highlighting_cache = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 " let g:airline#extensions#tmuxline#enabled = 1
-" let airline#extensions#tmuxline#color_template = 'replace'
+" let airline#extensions#tmuxline#color_template = 'insert'
 " let airline#extensions#tmuxline#snapshot_file = '~/.tmux-statusline-colors.conf'
 
 if !exists('g:airline_symbols')
