@@ -255,7 +255,6 @@ vnoremap j gj
 
 " remop escape key
 inoremap jk <ESC>
-vnoremap jk <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Spell checking

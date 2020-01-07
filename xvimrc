@@ -3,7 +3,7 @@ set guioptions=r
 set hlsearch
 set blickcursor
 
-imap jk <Esc>
+inoremap jk <Esc>
 
 nmap Y "*y 
 vmap Y "*y 

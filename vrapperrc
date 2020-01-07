@@ -44,7 +44,6 @@ eclipseaction eclipseprevmember org.eclipse.jdt.ui.edit.text.java.goto.previous.
 nnoremap [[ :eclipseprevmember<cr>
 
 inoremap jk <ESC>
-vnoremap jk <ESC>
 
 "version control
 eclipseaction eclipsecomparehead org.eclipse.egit.ui.team.CompareWithHead
