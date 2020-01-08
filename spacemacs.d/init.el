@@ -366,7 +366,7 @@ you should place your code here."
   ;; (global-company-mode)
 
   ;; Set escape keybinding to "jk"
-  (setq-default evil-escape-key-sequence "jk")
+  ; (setq-default evil-escape-key-sequence "jk")
 
   ;; Diff highlight - gutter highlight changed
   (global-diff-hl-mode)
