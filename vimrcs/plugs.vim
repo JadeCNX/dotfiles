@@ -1226,6 +1226,7 @@ if s:completion_manager == 'coc'
         \ 'coc-tslint',
         \ 'coc-tsserver',
         \ 'coc-vimlsp',
+        \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank',
         \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets' ]
@@ -1332,10 +1333,10 @@ if s:completion_manager == 'coc'
   endfunction
 
   " Use <C-l> for trigger snippet expand.
-  imap <C-l> <Plug>(coc-snippets-expand)
+  " imap <C-l> <Plug>(coc-snippets-expand)
 
   " Use <C-j> for select text for visual placeholder of snippet.
-  vmap <C-j> <Plug>(coc-snippets-select)
+  " vnoremap <C-j> <Plug>(coc-snippets-select)
 
   " Use <C-j> for jump to next placeholder, it's default of coc.nvim
   let g:coc_snippet_next = '<c-j>'
@@ -1344,7 +1345,21 @@ if s:completion_manager == 'coc'
   let g:coc_snippet_prev = '<c-k>'
 
   " Use <C-j> for both expand and jump (make expand higher priority.)
-  imap <C-j> <Plug>(coc-snippets-expand-jump)
+  " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
+
+  " Enter for expand.
+  " inoremap <expr> <cr> pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
+
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? coc#_select_confirm() :
+        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
