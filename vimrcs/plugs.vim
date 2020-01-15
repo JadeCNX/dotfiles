@@ -1294,6 +1294,12 @@ if s:completion_manager == 'coc'
   nnoremap <leader>wk :<C-u>CocPrev<CR>
   nnoremap <leader>wp :<C-u>CocListResume<CR>
 
+  " Create mappings for function text object, requires document symbols feature of languageserver.
+  xmap if <Plug>(coc-funcobj-i)
+  xmap af <Plug>(coc-funcobj-a)
+  omap if <Plug>(coc-funcobj-i)
+  omap af <Plug>(coc-funcobj-a)
+
   nnoremap <silent> <leader>wy :call StatusDiagnosticToClipboard()<CR>
 
   function! s:show_documentation()
@@ -1360,6 +1366,16 @@ if s:completion_manager == 'coc'
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
+  
+  augroup cocgroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    " autocmd set formatexpr=CocAction('formatSelected')
+    autocmd FileType typescriptreact,typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

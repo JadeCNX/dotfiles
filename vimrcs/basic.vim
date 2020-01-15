@@ -75,7 +75,7 @@ set ruler
 set cmdheight=2
 
 " a buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -137,9 +137,10 @@ endif
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" write backup
-set nowb
-set noswf
+" no write backup
+set nowritebackup
+set noswapfile
+set nobackup
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -165,6 +166,13 @@ set showbreak=↪
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" always show signcolumns
+set signcolumn=yes
+
 
 " Show < or > when characters are not displayed on the left or right.
 " set listchars=trail:.,precedes:,extends:
