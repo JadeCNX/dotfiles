@@ -67,6 +67,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'glts/vim-textobj-comment'
 Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
@@ -76,6 +77,7 @@ Plug 'itchyny/calendar.vim'
 Plug 'JadeCNX/diffchar.vim'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jph00/swift-apple'
+Plug 'Julian/vim-textobj-variable-segment'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
@@ -114,6 +116,7 @@ Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish' " Abbreviation substitution
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
