@@ -89,7 +89,6 @@ Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
@@ -165,6 +164,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'lornix/vim-scrollbar'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
+" Plug 'mattn/emmet-vim'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'mhartington/deoplete-typescript'
@@ -177,6 +177,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roman/golden-ratio'
 " Plug 'roxma/vim-paste-easy'
+" Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 " Plug 'ryvnf/readline.vim'
 " Plug 'svermeulen/vim-easyclip'
@@ -1220,6 +1221,7 @@ if s:completion_manager == 'coc'
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
+        \ 'coc-pairs',
         \ 'coc-phpls',
         \ 'coc-prettier',
         \ 'coc-python',
@@ -1237,16 +1239,6 @@ if s:completion_manager == 'coc'
   " \ 'coc-highlight',
   " \ 'coc-dictionary',
   " \ 'coc-git',
-
-  " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? "\<C-n>" :
-  "       \ <SID>check_back_space() ? "\<TAB>" :
-  "       \ coc#refresh()
-  " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  " function! s:check_back_space() abort
-  "   let col = col('.') - 1
-  "   return !col || getline('.')[col - 1]  =~# '\s'
-  " endfunction
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -1359,11 +1351,18 @@ if s:completion_manager == 'coc'
   " Enter for expand.
   " inoremap <expr> <cr> pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
 
+  " inoremap <silent><expr> <TAB>
+  "       \ pumvisible() ? "\<C-y>" :
+  "       \ <SID>check_back_space() ? "\<TAB>" :
+  "       \ coc#refresh()
+  " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
   inoremap <silent><expr> <TAB>
         \ pumvisible() ? coc#_select_confirm() :
-        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+        \ coc#expandableOrJumpable() ? "\<C-y>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
+        " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 
   function! s:check_back_space() abort
     let col = col('.') - 1
