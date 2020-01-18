@@ -129,6 +129,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
+Plug 'dense-analysis/ale'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -196,7 +197,6 @@ Plug 'Yggdroot/indentLine'
 " Plug 'vim-scripts/taglist.vim'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-vdebug/vdebug'
-" Plug 'w0rp/ale'
 " Plug 'wsdjeg/FlyGrep.vim'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
@@ -677,23 +677,26 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " -> airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let airline_theme='srcery'
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" let g:airline#extensions#tabline#fnamemod = ':t:r'
-" let g:airline#extensions#tabline#fnamecollapse = 1
-" let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_type = 0
-" let g:airline#extensions#tabline#buf_label_first = 1
-" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_tabs = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
-let g:airline_highlighting_cache = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#whitespace#enabled = 0
+
+let g:airline_highlighting_cache = 1
+let g:airline_powerline_fonts = 1
+
+" let g:airline#extensions#tabline#buf_label_first = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline#extensions#tabline#fnamecollapse = 1
+" let g:airline#extensions#tabline#fnamemod = ':t:r'
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 
 " let g:airline#extensions#tmuxline#enabled = 1
 " let airline#extensions#tmuxline#color_template = 'insert'
@@ -800,6 +803,17 @@ let g:go_fmt_command = "goimports"
 " -> ALE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:ale_completion_enabled = 1
+let g:ale_sign_error = '☠ '
+let g:ale_sign_warning = '⚠️ '
+
+let g:ale_echo_msg_error_str = '☠ '
+let g:ale_echo_msg_warning_str = '⚠️ '
+let g:ale_echo_msg_format = '%severity%[%linter%] %s'
+
+let g:ale_completion_tsserver_autoimport = 1
+
+set omnifunc=ale#completion#OmniFunc
+
 " let g:ale_linters = {
 "       \   'javascript': ['tsserver', 'prettier', 'eslint'],
 "       \   'python': ['autopep8', 'pylint'],
@@ -831,7 +845,7 @@ let g:go_fmt_command = "goimports"
 " let g:ale_set_highlights = 0
 
 " Only run linting when saving the file
-" let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'never'
 " let g:ale_lint_on_enter = 0
 
 
@@ -1235,10 +1249,11 @@ if s:completion_manager == 'coc'
         \ 'coc-yaml',
         \ 'coc-yank',
         \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets' ]
-  " \ 'coc-word',
-  " \ 'coc-highlight',
   " \ 'coc-dictionary',
   " \ 'coc-git',
+  " \ 'coc-highlight',
+  " \ 'coc-omni',
+  " \ 'coc-word',
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
