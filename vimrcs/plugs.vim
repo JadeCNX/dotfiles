@@ -56,13 +56,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
-Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'chrisbra/NrrwRgn'
 Plug 'chrisbra/unicode.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'dbakker/vim-paragraph-motion'
-Plug 'devjoe/vim-codequery'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -101,7 +100,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'json', 'html']}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
@@ -134,7 +133,7 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'] }
 Plug 'Yggdroot/indentLine'
 
 " Plug 'airblade/vim-gitgutter'
@@ -149,6 +148,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'chr4/nginx.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'dahu/vim-fanfingtastic'
+" Plug 'devjoe/vim-codequery'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'

@@ -160,7 +160,7 @@ set tabstop=4
 set linebreak
 set breakindent
 set textwidth=500
-set showbreak=↪
+let &showbreak='↳ '
 " set cpoptions+=n
 
 set ai "Auto indent
