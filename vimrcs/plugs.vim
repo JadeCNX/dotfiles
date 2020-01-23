@@ -75,7 +75,6 @@ Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
 Plug 'honza/vim-snippets'
 Plug 'idanarye/vim-vebugger'
 Plug 'itchyny/calendar.vim'
-Plug 'JadeCNX/diffchar.vim'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jph00/swift-apple'
 Plug 'Julian/vim-textobj-variable-segment'
@@ -97,7 +96,6 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 Plug 'neoclide/jsonc.vim'
 Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
-Plug 'osyo-manga/vim-anzu'
 Plug 'osyo-manga/vim-over'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
@@ -156,6 +154,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
 " Plug 'itchyny/lightline.vim'
+" Plug 'JadeCNX/diffchar.vim'
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
@@ -173,6 +172,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'mhinz/vim-startify'
 " Plug 'mileszs/ack.vim'
 " Plug 'nsf/gocode'
+" Plug 'osyo-manga/vim-anzu'
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
@@ -1406,9 +1406,9 @@ let g:vebugger_leader='<Leader>d'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> diffchar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:DiffColors=3
-let g:DiffModeSync=1
-let g:DiffCharNoKeyMap=1
+" let g:DiffColors=3
+" let g:DiffModeSync=1
+" let g:DiffCharNoKeyMap=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
