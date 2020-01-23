@@ -60,8 +60,10 @@ Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'chrisbra/NrrwRgn'
 Plug 'chrisbra/unicode.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'cohama/lexima.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'dbakker/vim-paragraph-motion'
+Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -128,7 +130,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
-Plug 'dense-analysis/ale'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -178,6 +179,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roman/golden-ratio'
 " Plug 'roxma/vim-paste-easy'
+" Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 " Plug 'ryvnf/readline.vim'
@@ -908,10 +910,10 @@ let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = '<NOP>'
-let g:UltiSnipsListSnippets = '<NOP>'
-let g:UltiSnipsJumpForwardTrigger = '<TAB>'
-let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
+let g:UltiSnipsExpandTrigger = '<F12>'
+let g:UltiSnipsListSnippets = '<F12>'
+" let g:UltiSnipsJumpForwardTrigger = ''
+" let g:UltiSnipsJumpBackwardTrigger = ''
 " let g:UltiSnipsListSnippets = '<C-S-E>'
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 

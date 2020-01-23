@@ -206,7 +206,19 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+map <space>t<space> :tabnext<space>
+
+map <space>1 :tabnext 1<cr>
+map <space>2 :tabnext 2<cr>
+map <space>3 :tabnext 3<cr>
+map <space>4 :tabnext 4<cr>
+map <space>5 :tabnext 5<cr>
+map <space>6 :tabnext 6<cr>
+map <space>7 :tabnext 7<cr>
+map <space>8 :tabnext 8<cr>
+map <space>9 :tabnext 9<cr>
+map <space>0 :tabnext 10<cr>
+
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
