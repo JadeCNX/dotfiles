@@ -89,6 +89,7 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
+Plug 'machakann/vim-sandwich'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
@@ -121,7 +122,6 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'vim-airline/vim-airline'
@@ -190,6 +190,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tomtom/tlib_vim'
 " Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-vinegar'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
@@ -669,11 +670,16 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> surround.vim config
-" Annotate strings with gettext
+" -> surround.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+" vmap Si S(i_<esc>f)
+" au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-sandwich
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+runtime macros/sandwich/keymap/surround.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
