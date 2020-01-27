@@ -75,6 +75,7 @@ Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
 Plug 'honza/vim-snippets'
 Plug 'idanarye/vim-vebugger'
 Plug 'itchyny/calendar.vim'
+Plug 'JadeCNX/vim-sleuth'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jph00/swift-apple'
 Plug 'Julian/vim-textobj-variable-segment'
@@ -119,7 +120,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -189,6 +189,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tomtom/tlib_vim'
+" Plug 'tpope/vim-sleuth'
 " Plug 'tpope/vim-vinegar'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
@@ -947,6 +948,9 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 let g:indentLine_char = "┊"
 let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
+
+" for 'tab' indent line
+set list lcs=tab:\┊\ 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
