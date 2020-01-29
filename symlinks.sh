@@ -5,7 +5,7 @@ backup()
 	file=$1
 	if [ -L $file ] ; then
 		echo "unlink ${file}"
-		unlink -v $file
+		rm -f $file
 	elif [ -e $file ] ; then
 		mv -iv $file{,.old}
 	# else
