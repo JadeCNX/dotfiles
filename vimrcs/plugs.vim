@@ -134,6 +134,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'] }
 Plug 'Yggdroot/indentLine'
+Plug 'yssl/QFEnter'
 
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-closetag'

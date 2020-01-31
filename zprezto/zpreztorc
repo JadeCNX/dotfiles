@@ -47,6 +47,7 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'docker' \
   'alias-tips' \
+  'thefuck' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \

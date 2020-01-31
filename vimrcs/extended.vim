@@ -91,18 +91,32 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Paste from clipboard
+" -> Paste from clipboard and indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" noremap <C-P> "+p`]
+noremap <C-P> :normal "*p=`]`]<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Ack searching and cope displaying
-"    requires ack.vim - it's much better than vimgrep/grep
+" -> Grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use the the_silver_searcher if possible (much faster than Ack)
-" if executable('ag')
-" let g:ackprg = 'ag --vimgrep --smart-case'
-" endif
+func! VisualSelection(direction, extra_filter) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+
+  let l:pattern = escape(@", "\\/.*'$^~[]")
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+  if a:direction == 'gv'
+    call CmdLine("grep '" . l:pattern . "' " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  endif
+
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunc
+
+
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob='!tags'\ --glob='!*.temp'
   set grepformat=%f:%l:%c:%m
@@ -111,11 +125,23 @@ elseif executable('ag')
   set grepformat=%f:%l:%c:%m
 endif
 
-" When you press gv you Ack after the selected text
 vnoremap <silent> <leader>gv :call VisualSelection('gv', '')<CR><CR>
-
-" Open Ack and put the cursor in the right position
 nnoremap <leader>gg :grep<space>
+nnoremap <leader>gm :set operatorfunc=GrepOperator<cr>g@
+vnoremap <leader>gm :<c-u>call GrepOperator(visualmode())<cr>
+
+function! GrepOperator(type)
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+
+  silent execute "grep " . shellescape(@@) . " ."
+  copen
+endfunction
 
 " When you press <leader>gr you can search and replace the selected text
 vnoremap <silent> <leader>gr :call VisualSelection('replace', '') <CR><CR>
@@ -165,13 +191,13 @@ if has('nvim')
   hi Cursor1 guifg='fg' guibg='Blue'
   hi Cursor2 guifg='fg' guibg='Red'
   set guicursor=
-	\n-c:block-Cursor,
-	\i-ve-ci:ver25,
-	\r-cr:hor20,
-	\o:hor50,
-	\v-ve:block,
-	\a:blinkwait280-blinkoff225-blinkon225,
-	\sm:block-blinkwait175-blinkoff150-blinkon175
+        \n-c:block-Cursor,
+        \i-ve-ci:ver25,
+        \r-cr:hor20,
+        \o:hor50,
+        \v-ve:block,
+        \a:blinkwait280-blinkoff225-blinkon225,
+        \sm:block-blinkwait175-blinkoff150-blinkon175
 
   " hi Cursor gui=NONE guifg=bg guibg=fg
   " hi Cursor2 gui=NONE guifg=bg guibg=fg
@@ -211,14 +237,6 @@ nnoremap <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<
 nnoremap <leader>DP :exe ":profile pause"<cr>
 nnoremap <leader>DC :exe ":profile continue"<cr>
 nnoremap <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> No syntax highlighting in vimdiff
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if &diff
-  syntax off
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -293,23 +311,6 @@ endfunction
 function! CmdLine(str)
   call feedkeys(":" . a:str)
 endfunction
-
-func! VisualSelection(direction, extra_filter) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-
-  let l:pattern = escape(@", "\\/.*'$^~[]")
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-  if a:direction == 'gv'
-    call CmdLine("grep '" . l:pattern . "' " )
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  endif
-
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunc
 
 " Delete trailing white space on save, useful for some filetypes ;)
 func! CleanExtraSpaces()
@@ -442,9 +443,9 @@ augroup Scrollbar
     " line + vcol + %
     let pad = strlen(line('$'))-strlen(line('.')) + 3 - strlen(virtcol('.')) + 3 - strlen(line('.')*100/line('$'))
     let bar = repeat(' ',pad).' [%1*%'.barWidth.'.'.barWidth.'('
-	  \.repeat('-',progress )
-	  \.'%2*0%1*'
-	  \.repeat('-',barWidth - progress - 1).'%0*%)%<]'
+          \.repeat('-',progress )
+          \.'%2*0%1*'
+          \.repeat('-',barWidth - progress - 1).'%0*%)%<]'
 
     return stl.bar
   endfun
@@ -471,8 +472,8 @@ command! -nargs=0 Syn call Syn()
 
 function! HICursor()
   echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-	\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-	\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+        \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+        \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
 endfunction
 command! -nargs=0 HICursor call HICursor()
 
@@ -505,6 +506,56 @@ command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> Make vim ludicrously fast again.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! Ludicrous(enable)
+  if a:enable
+    if exists(":RainbowToggleOff")
+      RainbowToggleOff
+    endif
+    if exists(":ALEDisable")
+      ALEDisable
+    endif
+    if exists(":SignifyDisable")
+      SignifyDisable
+    endif
+  else
+    if exists(":RainbowToggleOn")
+      RainbowToggleOn
+    endif
+    if exists(":ALEEnable")
+      ALEDisable
+    endif
+    if exists(":SignifyEnable")
+      SignifyEnable
+    endif
+  endif
+endfunction
+
+
+function! LudicrousToggle()
+  if exists("b:diff_no_syntax") && b:diff_no_syntax == 1
+    call Ludicrous(0)
+    let b:diff_no_syntax=0
+  else
+    call Ludicrous(1)
+    let b:diff_no_syntax=1
+  endif
+endfunction
+
+command! -bar -nargs=0 LudicrousToggle call LudicrousToggle()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> No syntax highlighting in vimdiff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &diff
+  syntax off
+  call Ludicrous(1)
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Ignore whitespace in diff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! DiffIwhiteToggle()
@@ -525,18 +576,18 @@ command! -bar -nargs=0 DiffIwhiteToggle call DiffIwhiteToggle()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! DiffNoSyntaxToggle()
   if exists("b:diff_no_syntax") && b:diff_no_syntax == 1
-    diffoff
-    set syntax=on
-    if exists(":RainbowToggleOn")
-      RainbowToggleOn
+    if &diff
+      windo diffoff
     endif
+    set syntax=on
+    call Ludicrous(0)
     let b:diff_no_syntax=0
   else
-    diffthis
-    set syntax=off
-    if exists(":RainbowToggleOff")
-      RainbowToggleOff
+    if !&diff
+      windo diffthis
     endif
+    set syntax=off
+    call Ludicrous(1)
     let b:diff_no_syntax=1
   endif
 endfunction
@@ -547,61 +598,61 @@ command! -bar -nargs=0 DiffNoSyntaxToggle call DiffNoSyntaxToggle()
 " -> Sort inline words
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! SortWordsSelection()
-    " Get the visual mark points
-    let StartPosition = getpos("'<")
-    let EndPosition = getpos("'>")
+  " Get the visual mark points
+  let StartPosition = getpos("'<")
+  let EndPosition = getpos("'>")
 
-    if StartPosition[0] != EndPosition[0]
-        echoerr "Range spans multiple buffers"
-    elseif StartPosition[1] != EndPosition[1]
-        " This is a multiple line range, probably easiest to work line wise
+  if StartPosition[0] != EndPosition[0]
+    echoerr "Range spans multiple buffers"
+  elseif StartPosition[1] != EndPosition[1]
+    " This is a multiple line range, probably easiest to work line wise
 
-        " This could be made a lot more complicated and sort the whole
-        " lot, but that would require thoughts on how many
-        " words/characters on each line, so that can be an exercise for
-        " the reader!
-        for LineNum in range(StartPosition[1], EndPosition[1])
-            call setline(LineNum, join(sort(split(getline('.'), ' ')), " "))
-        endfor
+    " This could be made a lot more complicated and sort the whole
+    " lot, but that would require thoughts on how many
+    " words/characters on each line, so that can be an exercise for
+    " the reader!
+    for LineNum in range(StartPosition[1], EndPosition[1])
+      call setline(LineNum, join(sort(split(getline('.'), ' ')), " "))
+    endfor
+  else
+    " Single line range, sort words
+    let CurrentLine = getline(StartPosition[1])
+
+    " Split the line into the prefix, the selected bit and the suffix
+
+    " The start bit
+    if StartPosition[2] > 1
+      let StartOfLine = CurrentLine[:StartPosition[2]-2]
     else
-        " Single line range, sort words
-        let CurrentLine = getline(StartPosition[1])
-
-        " Split the line into the prefix, the selected bit and the suffix
-
-        " The start bit
-        if StartPosition[2] > 1
-            let StartOfLine = CurrentLine[:StartPosition[2]-2]
-        else
-            let StartOfLine = ""
-        endif
-        " The end bit
-        if EndPosition[2] < len(CurrentLine)
-            let EndOfLine = CurrentLine[EndPosition[2]:]
-        else
-            let EndOfLine = ""
-        endif
-        " The middle bit
-        let BitToSort = CurrentLine[StartPosition[2]-1:EndPosition[2]-1]
-
-        " Move spaces at the start of the section to variable StartOfLine
-        while BitToSort[0] == ' '
-            let BitToSort = BitToSort[1:]
-            let StartOfLine .= ' '
-        endwhile
-        " Move spaces at the end of the section to variable EndOfLine
-        while BitToSort[len(BitToSort)-1] == ' '
-            let BitToSort = BitToSort[:len(BitToSort)-2]
-            let EndOfLine = ' ' . EndOfLine
-        endwhile
-
-        " Sort the middle bit
-        let Sorted = join(sort(split(BitToSort, ' ')), ' ')
-        " Reform the line
-        let NewLine = StartOfLine . Sorted . EndOfLine
-        " Write it out
-        call setline(StartPosition[1], NewLine)
+      let StartOfLine = ""
     endif
+    " The end bit
+    if EndPosition[2] < len(CurrentLine)
+      let EndOfLine = CurrentLine[EndPosition[2]:]
+    else
+      let EndOfLine = ""
+    endif
+    " The middle bit
+    let BitToSort = CurrentLine[StartPosition[2]-1:EndPosition[2]-1]
+
+    " Move spaces at the start of the section to variable StartOfLine
+    while BitToSort[0] == ' '
+      let BitToSort = BitToSort[1:]
+      let StartOfLine .= ' '
+    endwhile
+    " Move spaces at the end of the section to variable EndOfLine
+    while BitToSort[len(BitToSort)-1] == ' '
+      let BitToSort = BitToSort[:len(BitToSort)-2]
+      let EndOfLine = ' ' . EndOfLine
+    endwhile
+
+    " Sort the middle bit
+    let Sorted = join(sort(split(BitToSort, ' ')), ' ')
+    " Reform the line
+    let NewLine = StartOfLine . Sorted . EndOfLine
+    " Write it out
+    call setline(StartPosition[1], NewLine)
+  endif
 endfunction
 
 " Add a mapping, go to your string, then press vi",s
