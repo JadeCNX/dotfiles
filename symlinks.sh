@@ -3,13 +3,8 @@
 backup()
 {
 	file=$1
-	if [ -L $file ] ; then
-		echo "unlink ${file}"
-		rm -f $file
-	elif [ -e $file ] ; then
+	if [[ -e $file ]] && [[ ! -L $file ]] ; then
 		mv -iv $file{,.old}
-	# else
-	#     echo "Missing"
 	fi
 }
 
