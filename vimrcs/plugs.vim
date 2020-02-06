@@ -60,10 +60,8 @@ Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'chrisbra/NrrwRgn'
 Plug 'chrisbra/unicode.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'cohama/lexima.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'dbakker/vim-paragraph-motion'
-Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -89,8 +87,6 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
-Plug 'machakann/vim-sandwich'
-Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
@@ -103,6 +99,7 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascrip
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
+Plug 'resolritter/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
@@ -122,6 +119,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'vim-airline/vim-airline'
@@ -146,8 +144,10 @@ Plug 'yssl/QFEnter'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
 " Plug 'chr4/nginx.vim'
+" Plug 'cohama/lexima.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'dahu/vim-fanfingtastic'
+" Plug 'dense-analysis/ale'
 " Plug 'devjoe/vim-codequery'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
@@ -166,6 +166,8 @@ Plug 'yssl/QFEnter'
 " Plug 'lornix/vim-scrollbar'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
+" Plug 'machakann/vim-sandwich'
+" Plug 'majutsushi/tagbar'
 " Plug 'mattn/emmet-vim'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
@@ -191,7 +193,6 @@ Plug 'yssl/QFEnter'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tomtom/tlib_vim'
 " Plug 'tpope/vim-sleuth'
-" Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-vinegar'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
@@ -680,7 +681,7 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-sandwich
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-runtime macros/sandwich/keymap/surround.vim
+" runtime macros/sandwich/keymap/surround.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1106,8 +1107,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tagbar_left = 1
-let g:tagbar_previewwin_pos = ""
+" let g:tagbar_left = 1
+" let g:tagbar_previewwin_pos = ""
 " let g:tagbar_vertical = 25
 
 
@@ -1248,7 +1249,6 @@ if s:completion_manager == 'coc'
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
-        \ 'coc-pairs',
         \ 'coc-phpls',
         \ 'coc-prettier',
         \ 'coc-python',
@@ -1262,6 +1262,7 @@ if s:completion_manager == 'coc'
         \ 'coc-yaml',
         \ 'coc-yank',
         \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets' ]
+  " \ 'coc-pairs',
   " \ 'coc-dictionary',
   " \ 'coc-git',
   " \ 'coc-highlight',

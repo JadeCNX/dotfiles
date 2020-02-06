@@ -2,7 +2,7 @@
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "never",
   "codeLens.enable": true,
-  "diagnostic.displayByAle": true,
+  /* "diagnostic.displayByAle": true, */
   "json.enable": true,
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
@@ -18,8 +18,9 @@
   "tsserver.enable": true,
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */
-  /* "diagnostic.messageTarget": "echo", */
   /* "suggest.floatEnable": false, */
+  "diagnostic.messageTarget": "echo",
+  "diagnostic.enableSign": true,
   "languageserver": {
     "swift": {
       "command": "~/.cache/source-lsp/release/sourcekit-lsp",
