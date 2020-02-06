@@ -67,8 +67,10 @@ alias gts='git tag --sort=objecttype --sort=-creatordate | git show --date=local
 alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 alias glp='git log -p'
 
-alias note="vim -S ~/Dropbox/.note/Session.vim"
-alias c="clear"
+alias note='vim -S ~/Dropbox/.note/Session.vim'
+alias c='clear'
+
+alias vtop='vtop --theme parallax'
 
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

@@ -109,18 +109,18 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: BlexMono Nerd Font
+    # family: BlexMono Nerd Font
     # family: FuraCode Nerd Font
     # family: FuraCodeiScript Nerd Font Mono
     # family: LigaOperatorMono Nerd Font Mono
-    # family: SFmono Nerd Font Mono
+    family: SFmono Nerd Font Mono
     # family: mplus Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    # style: Regular
+    style: Light
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
@@ -128,10 +128,10 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
@@ -139,10 +139,10 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Light Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
@@ -150,7 +150,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
   size: 12.0
