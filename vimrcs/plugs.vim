@@ -102,8 +102,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'java
 Plug 'resolritter/auto-pairs'
 Plug 'roman/golden-ratio'
 Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
