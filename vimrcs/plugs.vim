@@ -100,6 +100,7 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 Plug 'resolritter/auto-pairs'
+Plug 'roman/golden-ratio'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
@@ -180,7 +181,6 @@ Plug 'yssl/QFEnter'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
-" Plug 'roman/golden-ratio'
 " Plug 'roxma/vim-paste-easy'
 " Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
@@ -1116,7 +1116,7 @@ endif
 " -> maximizer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:maximizer_set_default_mapping = 0
-nnoremap <silent><leader>m :MaximizerToggle<CR>
+nnoremap <silent><leader>m :MaximizerToggle!<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

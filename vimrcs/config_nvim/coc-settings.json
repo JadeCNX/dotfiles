@@ -1,7 +1,7 @@
 {
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "never",
-  "codeLens.enable": true,
+  /* "codeLens.enable": true, */
   /* "diagnostic.displayByAle": true, */
   "json.enable": true,
   "list.indicator": ">",
