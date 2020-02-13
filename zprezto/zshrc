@@ -70,7 +70,7 @@ alias glp='git log -p'
 alias note='vim -S ~/Dropbox/.note/Session.vim'
 alias c='clear'
 
-alias vtop='vtop --theme parallax'
+alias vtop='vtop --theme wizard'
 
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

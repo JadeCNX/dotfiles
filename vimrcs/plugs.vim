@@ -870,12 +870,13 @@ let g:ale_lint_on_text_changed = 'never'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Easy Motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 " map , <Plug>(easymotion-prefix)
-nmap <leader>j <Plug>(easymotion-overwin-f)
+" nmap <leader>j <Plug>(easymotion-overwin-f)
 
-map  <Leader>f <Plug>(easymotion-overwin-f)
-nmap <Leader>F <Plug>(easymotion-overwin-f2)
+map <C-F> <Plug>(easymotion-overwin-f2)
+" nmap <Leader>F <Plug>(easymotion-overwin-f2)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
