@@ -98,14 +98,14 @@ Plug 'osyo-manga/vim-over'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
-Plug 'resolritter/auto-pairs'
-Plug 'roman/golden-ratio'
-Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
+Plug 'resolritter/auto-pairs'
+Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
+Plug 'ShirajG/golden-ratio'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -693,10 +693,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 
 let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 1
@@ -707,7 +709,6 @@ let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#fnamemod = ':t:r'
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 " let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 
 " let g:airline#extensions#tmuxline#enabled = 1
 " let airline#extensions#tmuxline#color_template = 'insert'
@@ -1235,6 +1236,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " -> golden-ratio
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:golden_ratio_exclude_nonmodifiable = 1
+let g:golden_ratio_constant = 1.25
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
