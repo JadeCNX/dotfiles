@@ -211,7 +211,7 @@ Plug 'yssl/QFEnter'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-" Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'challenger-deep-theme/vim'
 " Plug 'chriskempson/base16-vim'
@@ -687,7 +687,7 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let airline_theme='srcery'
+let airline_theme='onedark'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -711,7 +711,7 @@ let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#left_sep = ' '
 
 " let g:airline#extensions#tmuxline#enabled = 1
-" let airline#extensions#tmuxline#color_template = 'insert'
+" let airline#extensions#tmuxline#color_template = 'replace'
 " let airline#extensions#tmuxline#snapshot_file = '~/.tmux-statusline-colors.conf'
 
 if !exists('g:airline_symbols')
