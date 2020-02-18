@@ -51,6 +51,10 @@ else
   Plug '/usr/local/opt/fzf'
 endif
 
+if executable('ctag')
+  Plug 'ludovicchabant/vim-gutentags'
+endif
+
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bps/vim-textobj-python'
@@ -85,7 +89,6 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'liuchengxu/vista.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
