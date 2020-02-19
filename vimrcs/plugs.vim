@@ -726,7 +726,7 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-" let g:airline#extensions#tabline#close_symbol = '﯇   X '
+let g:airline#extensions#tabline#close_symbol = '⏻' " '﯇   X '
 
 " nmap <leader>1 <Plug>AirlineSelectTab1
 " nmap <leader>2 <Plug>AirlineSelectTab2
@@ -876,10 +876,11 @@ let g:ale_lint_on_text_changed = 'never'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
+let g:EasyMotion_keys = 'sdfjkla;eruiopcvnmty'
 " map , <Plug>(easymotion-prefix)
 " nmap <leader>j <Plug>(easymotion-overwin-f)
 
-map <C-F> <Plug>(easymotion-overwin-f2)
+map <C-F> <Plug>(easymotion-overwin-f)
 " nmap <Leader>F <Plug>(easymotion-overwin-f2)
 
 
@@ -1239,7 +1240,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " -> golden-ratio
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:golden_ratio_exclude_nonmodifiable = 1
-let g:golden_ratio_constant = 1.25
+let g:golden_ratio_constant = 1.618
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
