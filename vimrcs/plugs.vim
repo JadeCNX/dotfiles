@@ -57,6 +57,7 @@ endif
 
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
@@ -1323,7 +1324,6 @@ if s:completion_manager == 'coc'
 
   nnoremap <leader>wj :<C-u>CocNext<CR>
   nnoremap <leader>wk :<C-u>CocPrev<CR>
-  nnoremap <leader>wp :<C-u>CocListResume<CR>
 
   " Create mappings for function text object, requires document symbols feature of languageserver.
   xmap if <Plug>(coc-funcobj-i)
