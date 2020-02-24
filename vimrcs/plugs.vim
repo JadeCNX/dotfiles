@@ -59,6 +59,8 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'bps/vim-textobj-python'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
@@ -109,7 +111,6 @@ Plug 'resolritter/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'ShirajG/golden-ratio'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -190,6 +191,7 @@ Plug 'yssl/QFEnter'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 " Plug 'ryvnf/readline.vim'
+" Plug 'ShirajG/golden-ratio'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
@@ -965,7 +967,7 @@ let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
 
 " for 'tab' indent line
-set list lcs=tab:\┊\ 
+set list lcs=tab:\┊\
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1238,6 +1240,21 @@ let g:tmux_navigator_disable_when_zoomed = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> lens.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+
+" nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
+" nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
+" nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
+" nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
+
+let g:fzf_layout = {
+      \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
+      \ }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> golden-ratio
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:golden_ratio_exclude_nonmodifiable = 1
@@ -1398,13 +1415,13 @@ if s:completion_manager == 'coc'
         \ coc#expandableOrJumpable() ? "\<C-y>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
-        " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+  " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
-  
+
   augroup cocgroup
     autocmd!
     " Setup formatexpr specified filetype(s).
