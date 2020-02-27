@@ -51,7 +51,7 @@ else
   Plug '/usr/local/opt/fzf'
 endif
 
-if executable('ctag')
+if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
 
@@ -59,8 +59,6 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'bps/vim-textobj-python'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
@@ -101,7 +99,6 @@ Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 Plug 'neoclide/jsonc.vim'
 Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 Plug 'osyo-manga/vim-over'
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
@@ -111,6 +108,7 @@ Plug 'resolritter/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
+Plug 'ShirajG/golden-ratio'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -136,7 +134,7 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'] }
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'], 'on': ['ImportCont']}
 Plug 'Yggdroot/indentLine'
 Plug 'yssl/QFEnter'
 
@@ -149,6 +147,8 @@ Plug 'yssl/QFEnter'
 " Plug 'bfredl/nvim-miniyank'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
+" Plug 'camspiers/animate.vim'
+" Plug 'camspiers/lens.vim'
 " Plug 'chr4/nginx.vim'
 " Plug 'cohama/lexima.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -168,6 +168,7 @@ Plug 'yssl/QFEnter'
 " Plug 'junegunn/vim-peekaboo'
 " Plug 'koron/minimap-vim'
 " Plug 'lifepillar/vim-colortemplate'
+" Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'lilydjwg/colorizer'
 " Plug 'lornix/vim-scrollbar'
 " Plug 'lvht/mru'
@@ -191,7 +192,6 @@ Plug 'yssl/QFEnter'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 " Plug 'ryvnf/readline.vim'
-" Plug 'ShirajG/golden-ratio'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
@@ -217,7 +217,7 @@ Plug 'yssl/QFEnter'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'challenger-deep-theme/vim'
 " Plug 'chriskempson/base16-vim'
@@ -967,7 +967,7 @@ let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
 
 " for 'tab' indent line
-set list lcs=tab:\┊\ 
+set list lcs=tab:\┊\
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
