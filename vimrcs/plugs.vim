@@ -1242,16 +1242,16 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> lens.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+" let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
 
 " nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 " nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
 " nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
 " nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
 
-let g:fzf_layout = {
-      \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
-      \ }
+" let g:fzf_layout = {
+"       \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
+"       \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
