@@ -240,7 +240,7 @@ nnoremap <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Horizontal scroll with mouse. 
+" -> Horizontal scroll with mouse.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <S-ScrollWheelUp>   <ScrollWheelLeft>
 nnoremap <S-2-ScrollWheelUp> <2-ScrollWheelLeft>
@@ -592,6 +592,24 @@ function! DiffNoSyntaxToggle()
   endif
 endfunction
 command! -bar -nargs=0 DiffNoSyntaxToggle call DiffNoSyntaxToggle()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> delete empty buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! DeleteEmptyBuffers()
+  let [i, n; empty] = [1, bufnr('$')]
+  while i <= n
+    if bufexists(i) && bufname(i) == ''
+      call add(empty, i)
+    endif
+    let i += 1
+  endwhile
+  if len(empty) > 0
+    exe 'bdelete' join(empty)
+  endif
+endfunction
+command! -bar -nargs=0 DeleteEmptyBuffers call DeleteEmptyBuffers()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

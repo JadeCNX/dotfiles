@@ -58,6 +58,7 @@ endif
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
+Plug 'andymass/vim-matchup'
 Plug 'bps/vim-textobj-python'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
@@ -109,6 +110,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'ShirajG/golden-ratio'
+Plug 'simnalamburt/vim-mundo'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -160,6 +162,7 @@ Plug 'yssl/QFEnter'
 " Plug 'ervandew/supertab'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
+" Plug 'haya14busa/vim-asterisk'
 " Plug 'itchyny/lightline.vim'
 " Plug 'JadeCNX/diffchar.vim'
 " Plug 'jiangmiao/auto-pairs'
@@ -168,8 +171,8 @@ Plug 'yssl/QFEnter'
 " Plug 'junegunn/vim-peekaboo'
 " Plug 'koron/minimap-vim'
 " Plug 'lifepillar/vim-colortemplate'
-" Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'lilydjwg/colorizer'
+" Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
 " Plug 'lornix/vim-scrollbar'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
@@ -183,6 +186,7 @@ Plug 'yssl/QFEnter'
 " Plug 'mileszs/ack.vim'
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
+" Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
@@ -232,6 +236,7 @@ Plug 'yssl/QFEnter'
 " Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
 Plug 'srcery-colors/srcery-vim'
+Plug 'arzg/vim-colors-xcode'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
@@ -967,7 +972,7 @@ let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
 
 " for 'tab' indent line
-set list lcs=tab:\┊\ 
+set list lcs=tab:\┊\
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1196,10 +1201,9 @@ nmap ga <Plug>(EasyAlign)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "  '#98BC37'
 let g:rainbow_conf = {
-      \   'guifgs': ['#F75341', '#FCE8C3', '#FED06E', '#68A8E4', '#FF5C8F', '#53FDE9'],
       \   'separately': {
       \       'csv': {
       \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend']
@@ -1218,6 +1222,7 @@ let g:rainbow_conf = {
       \       }
       \   }
       \}
+" \   'guifgs': ['#F75341', '#FCE8C3', '#FED06E', '#68A8E4', '#FF5C8F', '#53FDE9'],
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> markdown
@@ -1475,6 +1480,17 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:livepreview_previewer = 'open -a Preview'
 let g:livepreview_engine = 'mactex'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-matchup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:matchup_matchpref = {
+      \ 'html': {
+      \ 'tagnameonly' : 1,
+      \ 'nolist' : 1
+      \ }
+      \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
