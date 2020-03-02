@@ -972,7 +972,7 @@ let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
 
 " for 'tab' indent line
-set list lcs=tab:\┊\
+set list lcs=tab:\┊\ 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1487,6 +1487,10 @@ let g:livepreview_engine = 'mactex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:matchup_matchpref = {
       \ 'html': {
+      \ 'tagnameonly' : 1,
+      \ 'nolist' : 1
+      \ },
+      \ 'xml': {
       \ 'tagnameonly' : 1,
       \ 'nolist' : 1
       \ }
