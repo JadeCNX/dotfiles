@@ -92,7 +92,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
-Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
@@ -110,7 +109,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'ShirajG/golden-ratio'
-Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-expand-region'
@@ -159,6 +158,7 @@ Plug 'yssl/QFEnter'
 " Plug 'devjoe/vim-codequery'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
+" Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 " Plug 'ervandew/supertab'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
