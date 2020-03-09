@@ -50,6 +50,10 @@ mkdir -pv ~/.config
 ln -sfnv $PWD/vimrcs/config_nvim ~/.config/nvim
 ln -sfnv $PWD/vimrcs/vimrc.vim ~/.vimrc
 
+# htop
+backup ~/.config/htop/htoprc
+ln -sfnv $PWD/htoprc ~/.config/htop/htoprc
+
 # zprezto
 backup ~/.zlogin
 backup ~/.zlogout
