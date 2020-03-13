@@ -1201,7 +1201,7 @@ nmap ga <Plug>(EasyAlign)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
 "  '#98BC37'
 let g:rainbow_conf = {
       \   'separately': {
@@ -1307,8 +1307,10 @@ if s:completion_manager == 'coc'
 
   vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
   nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
+  nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
   " nmap <leader>/ :<C-u>CocList grep<CR>
-  nmap <leader>? :<C-u>CocList grep<CR>
+  nmap <leader>? :<C-u>CocList -I grep -S<CR>
+  nmap <leader>gg :<C-u>CocList grep <CR>
 
   command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
