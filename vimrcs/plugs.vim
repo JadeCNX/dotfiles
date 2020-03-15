@@ -95,7 +95,6 @@ Plug 'luochen1990/rainbow'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 Plug 'neoclide/jsonc.vim'
 Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 Plug 'osyo-manga/vim-over'
@@ -158,8 +157,10 @@ Plug 'yssl/QFEnter'
 " Plug 'devjoe/vim-codequery'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'edkolev/tmuxline.vim'
-" Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 " Plug 'ervandew/supertab'
+" Plug 'google/vim-codefmt'
+" Plug 'google/vim-glaive'
+" Plug 'google/vim-maktaba'
 " Plug 'google/vim-searchindex'
 " Plug 'haya14busa/is.vim'
 " Plug 'haya14busa/vim-asterisk'
@@ -172,7 +173,6 @@ Plug 'yssl/QFEnter'
 " Plug 'koron/minimap-vim'
 " Plug 'lifepillar/vim-colortemplate'
 " Plug 'lilydjwg/colorizer'
-" Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
 " Plug 'lornix/vim-scrollbar'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
@@ -181,9 +181,12 @@ Plug 'yssl/QFEnter'
 " Plug 'mattn/emmet-vim'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
+" Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
+" Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 " Plug 'mhartington/deoplete-typescript'
 " Plug 'mhinz/vim-startify'
 " Plug 'mileszs/ack.vim'
+" Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
@@ -196,6 +199,7 @@ Plug 'yssl/QFEnter'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 " Plug 'ryvnf/readline.vim'
+" Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
@@ -245,6 +249,8 @@ Plug 'arzg/vim-colors-xcode'
 
 " Initialize plugin system
 call plug#end()
+
+" call glaive#Install()
 
 let g:srcery_italic = 1
 " let g:PaperColor_Theme_Options = {
@@ -674,6 +680,12 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 "             \ |   Startify
 "             \ |   wincmd w
 "             \ | endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> polyglot
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:polyglot_disabled = ['jsx']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1171,7 +1183,47 @@ nnoremap <silent><leader>m :MaximizerToggle!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:formatter_yapf_style = 'google'
+nmap gu :Autoformat<CR>
+" let g:autoformat_verbosemode=1
+let g:formatdef_prettier = '"prettier --stdin --stdin-filepath ".expand("%:p")." --tab-width=".shiftwidth()'
+let g:formatters_css = ['prettier', 'cssbeautify']
+let g:formatters_scss = ['prettier', 'sassconvert']
+let g:formatters_typescript = ['prettier', 'tsfmt']
+let g:formatters_markdown = ['prettier', 'remark_markdown']
+let g:formatters_javascript = [
+            \ 'prettier',
+            \ 'eslint_local',
+            \ 'jsbeautify_javascript',
+            \ 'jscs',
+            \ 'standard_javascript',
+            \ 'xo_javascript',
+            \ ]
+let g:formatters_json = [
+            \ 'prettier',
+            \ 'jsbeautify_json',
+            \ 'fixjson',
+            \ ]
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-codefmt
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Glaive codefmt plugin[mappings]
+" Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+
+" augroup autoformat_settings
+"   autocmd FileType bzl AutoFormatBuffer buildifier
+"   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+"   autocmd FileType dart AutoFormatBuffer dartfmt
+"   autocmd FileType go AutoFormatBuffer gofmt
+"   autocmd FileType gn AutoFormatBuffer gn
+"   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+"   autocmd FileType java AutoFormatBuffer google-java-format
+"   autocmd FileType python AutoFormatBuffer yapf
+"   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+"   autocmd FileType rust AutoFormatBuffer rustfmt
+"   autocmd FileType vue AutoFormatBuffer prettier
+" augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1439,6 +1491,7 @@ if s:completion_manager == 'coc'
   augroup end
 
 endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-vebugger
