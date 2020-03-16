@@ -187,6 +187,7 @@ Plug 'yssl/QFEnter'
 " Plug 'mhinz/vim-startify'
 " Plug 'mileszs/ack.vim'
 " Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
+" Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
@@ -714,7 +715,7 @@ let airline_theme='onedark'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
+let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo']
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_type = 0
@@ -977,14 +978,24 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> indentLine
+" -> indentline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_char = "┊"
 let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
 
 " for 'tab' indent line
-set list lcs=tab:\┊\ 
+set ist lcs=tab:\┊\  " Last one is space!
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> indent guides
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', 'quickfix']
+" let g:indent_guides_default_mapping = 0
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_start_level = 2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1191,18 +1202,18 @@ let g:formatters_scss = ['prettier', 'sassconvert']
 let g:formatters_typescript = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
 let g:formatters_javascript = [
-            \ 'prettier',
-            \ 'eslint_local',
-            \ 'jsbeautify_javascript',
-            \ 'jscs',
-            \ 'standard_javascript',
-            \ 'xo_javascript',
-            \ ]
+      \ 'prettier',
+      \ 'eslint_local',
+      \ 'jsbeautify_javascript',
+      \ 'jscs',
+      \ 'standard_javascript',
+      \ 'xo_javascript',
+      \ ]
 let g:formatters_json = [
-            \ 'prettier',
-            \ 'jsbeautify_json',
-            \ 'fixjson',
-            \ ]
+      \ 'prettier',
+      \ 'jsbeautify_json',
+      \ 'fixjson',
+      \ ]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1299,7 +1310,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> lens.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+" let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'vista', 'Mundo']
 
 " nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 " nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
