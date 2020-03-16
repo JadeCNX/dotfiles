@@ -985,7 +985,7 @@ let g:indentLine_setColors = 1
 let g:indentLine_fileTypeExclude = ['calendar']
 
 " for 'tab' indent line
-set ist lcs=tab:\┊\  " Last one is space!
+set list lcs=tab:\┊\  " Last one is space!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
