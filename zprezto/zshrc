@@ -67,6 +67,8 @@ alias gts='git tag --sort=objecttype --sort=-creatordate | git show --date=local
 alias giw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 alias glp='git log -p'
 
+alias dkct='docker-compose logs -f --tail 10'
+
 alias note='vim -S ~/Dropbox/.note/Session.vim'
 alias c='clear'
 
