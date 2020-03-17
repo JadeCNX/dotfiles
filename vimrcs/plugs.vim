@@ -980,12 +980,12 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> indentline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indentLine_char = "┊"
-let g:indentLine_setColors = 1
+let g:indentLine_char = "│"
 let g:indentLine_fileTypeExclude = ['calendar']
+" let g:indentLine_setColors = 0
 
 " for 'tab' indent line
-set list lcs=tab:\┊\  " Last one is space!
+set list lcs=tab:\│\  " Last one is space!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1592,6 +1592,7 @@ hi Type gui=italic
 hi Underlined gui=underline
 hi Function gui=italic
 hi Italic gui=italic
+hi Whitespace guifg=gray30
 
 " transparent background
 if !has("gui_running") && !has("gui_vimr")
