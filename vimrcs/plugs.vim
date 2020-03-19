@@ -102,8 +102,6 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
-Plug 'resolritter/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
@@ -128,6 +126,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 Plug 'vim-scripts/utl.vim'
 Plug 'wellle/targets.vim'
@@ -191,8 +190,10 @@ Plug 'yssl/QFEnter'
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" Plug 'resolritter/auto-pairs'
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
@@ -715,7 +716,7 @@ let airline_theme='onedark'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo']
+let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_type = 0
@@ -981,7 +982,7 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 " -> indentline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_char = "│"
-let g:indentLine_fileTypeExclude = ['calendar']
+let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista']
 " let g:indentLine_setColors = 0
 
 " for 'tab' indent line
@@ -992,7 +993,7 @@ set list lcs=tab:\│\  " Last one is space!
 " -> indent guides
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', 'quickfix']
+" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', 'quickfix', 'MundoDiff']
 " let g:indent_guides_default_mapping = 0
 " let g:indent_guides_guide_size = 1
 " let g:indent_guides_start_level = 2
@@ -1194,12 +1195,16 @@ nnoremap <silent><leader>m :MaximizerToggle!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap gu :Autoformat<CR>
+nmap <leader>ff :Autoformat<CR>
+vmap <leader>ff :Autoformat<CR>
+
 " let g:autoformat_verbosemode=1
-let g:formatdef_prettier = '"prettier --stdin --stdin-filepath ".expand("%:p")." --tab-width=".shiftwidth()'
+" let g:formatdef_prettier = '"prettier --stdin --stdin-filepath ".expand("%:p")." --tab-width=".shiftwidth()'
+let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=false --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
-let g:formatters_typescript = ['prettier', 'tsfmt']
+let g:formatters_typescript = ['prettier_ts', 'tsfmt']
+let g:formatters_typescriptreact = ['prettier_ts', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
 let g:formatters_javascript = [
       \ 'prettier',
@@ -1310,7 +1315,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> lens.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'vista', 'Mundo']
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
 
 " nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 " nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
@@ -1334,7 +1339,6 @@ let g:golden_ratio_constant = 1.618
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if s:completion_manager == 'coc'
   let g:coc_global_extensions = [
-        \ 'coc-ccls',
         \ 'coc-css',
         \ 'coc-docker',
         \ 'coc-emmet',
@@ -1343,7 +1347,6 @@ if s:completion_manager == 'coc'
         \ 'coc-json',
         \ 'coc-lists',
         \ 'coc-phpls',
-        \ 'coc-prettier',
         \ 'coc-python',
         \ 'coc-rls',
         \ 'coc-snippets',
@@ -1353,8 +1356,10 @@ if s:completion_manager == 'coc'
         \ 'coc-vimlsp',
         \ 'coc-xml',
         \ 'coc-yaml',
-        \ 'coc-yank',
-        \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets' ]
+        \ 'coc-yank']
+  " \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets'
+  " \ 'coc-ccls',
+  " \ 'coc-prettier',
   " \ 'coc-pairs',
   " \ 'coc-dictionary',
   " \ 'coc-git',
@@ -1373,7 +1378,7 @@ if s:completion_manager == 'coc'
   nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
   " nmap <leader>/ :<C-u>CocList grep<CR>
   nmap <leader>? :<C-u>CocList -I grep -S<CR>
-  nmap <leader>gg :<C-u>CocList grep <CR>
+  nmap <leader>gg :<C-u>CocList grep\ 
 
   command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 

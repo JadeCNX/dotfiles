@@ -126,7 +126,7 @@ elseif executable('ag')
 endif
 
 vnoremap <silent> <leader>gv :call VisualSelection('gv', '')<CR><CR>
-nnoremap <leader>gg :grep<space>
+" nnoremap <leader>gg :grep<space>
 nnoremap <leader>gm :set operatorfunc=GrepOperator<cr>g@
 vnoremap <leader>gm :<c-u>call GrepOperator(visualmode())<cr>
 
@@ -595,9 +595,9 @@ command! -bar -nargs=0 DiffNoSyntaxToggle call DiffNoSyntaxToggle()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> delete empty buffers
+" -> close empty buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! DeleteEmptyBuffers()
+function! CloseEmptyBuffers()
   let [i, n; empty] = [1, bufnr('$')]
   while i <= n
     if bufexists(i) && bufname(i) == ''
@@ -609,7 +609,7 @@ function! DeleteEmptyBuffers()
     exe 'bdelete' join(empty)
   endif
 endfunction
-command! -bar -nargs=0 DeleteEmptyBuffers call DeleteEmptyBuffers()
+command! -bar -nargs=0 CloseEmptyBuffers call CloseEmptyBuffers()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
