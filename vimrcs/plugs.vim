@@ -60,6 +60,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
 Plug 'bps/vim-textobj-python'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
@@ -105,7 +107,6 @@ Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle',
 Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
-Plug 'ShirajG/golden-ratio'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'szw/vim-maximizer'
@@ -146,8 +147,6 @@ Plug 'yssl/QFEnter'
 " Plug 'bfredl/nvim-miniyank'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
-" Plug 'camspiers/animate.vim'
-" Plug 'camspiers/lens.vim'
 " Plug 'chr4/nginx.vim'
 " Plug 'cohama/lexima.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -202,6 +201,7 @@ Plug 'yssl/QFEnter'
 " Plug 'rust-lang/rust.vim'
 " Plug 'ryvnf/readline.vim'
 " Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
+" Plug 'ShirajG/golden-ratio'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'tacahiroy/ctrlp-funky'
@@ -1315,23 +1315,27 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> lens.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
+let g:animate#easing_func = 'animate#ease_out_cubic'
+let g:lens#disabled_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff']
+" let g:lens#disabled_buftypes = ['quickfix', 'terminal']
+let g:lens#disabled = 1
 
-" nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
-" nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
-" nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
-" nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
+nnoremap <silent> <M-k> :<C-u>call animate#window_delta_height(10)<CR>
+nnoremap <silent> <M-j> :<C-u>call animate#window_delta_height(-10)<CR>
+nnoremap <silent> <M-h> :<C-u>call animate#window_delta_width(10)<CR>
+nnoremap <silent> <M-l> :<C-u>call animate#window_delta_width(-10)<CR>
+nnoremap <silent> <M-;> :<C-u>call lens#run()<CR>
 
-" let g:fzf_layout = {
-"       \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
-"       \ }
+let g:fzf_layout = {
+      \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
+      \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> golden-ratio
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:golden_ratio_exclude_nonmodifiable = 1
-let g:golden_ratio_constant = 1.618
+" let g:golden_ratio_exclude_nonmodifiable = 1
+" let g:golden_ratio_constant = 1.618
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1339,9 +1343,12 @@ let g:golden_ratio_constant = 1.618
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if s:completion_manager == 'coc'
   let g:coc_global_extensions = [
+        \ 'coc-actions',
         \ 'coc-css',
         \ 'coc-docker',
         \ 'coc-emmet',
+        \ 'coc-explorer',
+        \ 'coc-flutter',
         \ 'coc-gocode',
         \ 'coc-html',
         \ 'coc-json',
@@ -1357,15 +1364,15 @@ if s:completion_manager == 'coc'
         \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank']
-  " \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets'
   " \ 'coc-ccls',
-  " \ 'coc-prettier',
-  " \ 'coc-pairs',
   " \ 'coc-dictionary',
   " \ 'coc-git',
   " \ 'coc-highlight',
   " \ 'coc-omni',
+  " \ 'coc-pairs',
+  " \ 'coc-prettier',
   " \ 'coc-word',
+  " \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets'
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')

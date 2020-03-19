@@ -1,6 +1,6 @@
 {
   "coc.preferences.colorSupport": true,
-  "coc.preferences.extensionUpdateCheck": "never",
+  "coc.preferences.extensionUpdateCheck": "weekly",
   /* "codeLens.enable": true, */
   /* "diagnostic.displayByAle": true, */
   "json.enable": true,
@@ -16,6 +16,12 @@
   "suggest.noselect": true,
   "suggest.snippetIndicator": "⚡️",
   "suggest.triggerAfterInsertEnter": true,
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
   "tsserver.enable": true,
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */
@@ -39,7 +45,7 @@
         }
       }
     },
-     "dockerfile": {
+    "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
