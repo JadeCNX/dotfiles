@@ -8,9 +8,9 @@ endif
 call plug#begin('~/.vim/plugged')
 
 if !has('nvim')
+  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 endif
 
 if has('python3')
@@ -27,19 +27,18 @@ elseif has('python3')
 endif
 
 if s:completion_manager == 'deoplete'
+  Plug 'Shougo/defx.nvim'
+  " Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/echodoc.vim'
+  " Plug 'Shougo/neomru.vim'
+  " Plug 'Shougo/neoyank.vim'
+  " Plug 'Shougo/unite-outline'
   Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
   Plug 'carlitux/deoplete-ternjs'
   Plug 'deoplete-plugins/deoplete-tag'
-  Plug 'Shougo/defx.nvim'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/echodoc.vim'
-  Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
-
-  " Plug 'Shougo/unite-outline'
-  " Plug 'Shougo/neoyank.vim'
-  " Plug 'Shougo/denite.nvim'
-  " Plug 'Shougo/neomru.vim'
   " Plug 'zacharied/denite-nerdfont'
+  Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
 
 elseif s:completion_manager == 'coc'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -58,139 +57,109 @@ endif
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'andymass/vim-matchup'
-Plug 'bps/vim-textobj-python'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
-Plug 'chrisbra/Colorizer'
-Plug 'chrisbra/csv.vim', {'for': 'csv'}
-Plug 'chrisbra/NrrwRgn'
-Plug 'chrisbra/unicode.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'dbakker/vim-paragraph-motion'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'easymotion/vim-easymotion'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'glts/vim-textobj-comment'
-Plug 'godlygeek/tabular'
-Plug 'groenewege/vim-less', {'for': 'less'}
-Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
-Plug 'honza/vim-snippets'
-Plug 'idanarye/vim-vebugger'
-Plug 'itchyny/calendar.vim'
+" Plug 'JadeCNX/diffchar.vim'
 Plug 'JadeCNX/vim-sleuth'
-Plug 'jceb/vim-orgmode', {'for': 'org'}
-Plug 'jph00/swift-apple'
 Plug 'Julian/vim-textobj-variable-segment'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
-Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
-Plug 'liuchengxu/vista.vim'
-Plug 'luochen1990/rainbow'
-Plug 'metakirby5/codi.vim'
-Plug 'mhinz/vim-signify'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'neoclide/jsonc.vim'
-Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
-Plug 'osyo-manga/vim-over'
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
-Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
-Plug 'ryanoasis/vim-devicons'
-Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
-Plug 'sheerun/vim-polyglot'
-Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
-Plug 'soywod/kronos.vim', {'on': ['Kronos']}
-Plug 'szw/vim-maximizer'
-Plug 'terryma/vim-expand-region'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
-Plug 'timcharper/textile.vim', {'for': ['textile']}
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tommcdo/vim-exchange'
-Plug 'tpope/vim-abolish' " Abbreviation substitution
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tweekmonster/fzf-filemru'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/auto-pairs-gentle'
-Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
-Plug 'vim-scripts/utl.vim'
-Plug 'wellle/targets.vim'
-Plug 'wellle/visual-split.vim'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
+" Plug 'Quramy/tsuquyomi'
+" Plug 'ShirajG/golden-ratio'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact'], 'on': ['ImportCont']}
 Plug 'Yggdroot/indentLine'
-Plug 'yssl/QFEnter'
-
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-closetag'
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
+Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
 " Plug 'bagrat/vim-workspace'
 " Plug 'bfredl/nvim-miniyank'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
+Plug 'bps/vim-textobj-python'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 " Plug 'chr4/nginx.vim'
+Plug 'chrisbra/Colorizer'
+Plug 'chrisbra/NrrwRgn'
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
+Plug 'chrisbra/unicode.vim'
+Plug 'christoomey/vim-tmux-navigator'
 " Plug 'cohama/lexima.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'dahu/vim-fanfingtastic'
+Plug 'dbakker/vim-paragraph-motion'
 " Plug 'dense-analysis/ale'
 " Plug 'devjoe/vim-codequery'
+Plug 'dhruvasagar/vim-table-mode'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'glts/vim-textobj-comment'
+Plug 'godlygeek/tabular'
 " Plug 'google/vim-codefmt'
 " Plug 'google/vim-glaive'
 " Plug 'google/vim-maktaba'
 " Plug 'google/vim-searchindex'
+Plug 'groenewege/vim-less', {'for': 'less'}
+Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
 " Plug 'haya14busa/is.vim'
 " Plug 'haya14busa/vim-asterisk'
+Plug 'honza/vim-snippets'
+Plug 'idanarye/vim-vebugger'
+Plug 'itchyny/calendar.vim'
 " Plug 'itchyny/lightline.vim'
-" Plug 'JadeCNX/diffchar.vim'
+Plug 'jceb/vim-orgmode', {'for': 'org'}
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
+Plug 'jph00/swift-apple'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 " Plug 'junegunn/vim-peekaboo'
+Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 " Plug 'koron/minimap-vim'
 " Plug 'lifepillar/vim-colortemplate'
 " Plug 'lilydjwg/colorizer'
+Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 " Plug 'lornix/vim-scrollbar'
+Plug 'luochen1990/rainbow'
 " Plug 'lvht/mru'
-" Plug 'lyokha/vim-xkbswitch'
+Plug 'lyokha/vim-xkbswitch'
 " Plug 'machakann/vim-sandwich'
 " Plug 'majutsushi/tagbar'
 " Plug 'mattn/emmet-vim'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
-" Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
 " Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+Plug 'metakirby5/codi.vim'
 " Plug 'mhartington/deoplete-typescript'
+Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
+Plug 'michaeljsmith/vim-indent-object'
 " Plug 'mileszs/ack.vim'
 " Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neoclide/jsonc.vim'
+Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
+Plug 'osyo-manga/vim-over'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
-" Plug 'Quramy/tsuquyomi'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'resolritter/auto-pairs'
 " Plug 'rhysd/clever-f.vim'
@@ -199,50 +168,79 @@ Plug 'yssl/QFEnter'
 " Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
+Plug 'ryanoasis/vim-devicons'
 " Plug 'ryvnf/readline.vim'
 " Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
-" Plug 'ShirajG/golden-ratio'
+Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
+Plug 'sheerun/vim-polyglot'
+Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
+Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
+Plug 'szw/vim-maximizer'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'terryma/vim-expand-region'
 " Plug 'terryma/vim-multiple-cursors'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
+Plug 'timcharper/textile.vim', {'for': ['textile']}
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tommcdo/vim-exchange'
 " Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-abolish' " Abbreviation substitution
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
 " Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
+Plug 'tweekmonster/fzf-filemru'
 " Plug 'unblevable/quick-scope' " highlight f,t move
-" Plug 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
-" Plug 'vim-flake8'
-" Plug 'vim-scripts/mru.vim' " most recently use
+Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/SyntaxRange'
-" Plug 'vim-scripts/taglist.vim'
 " Plug 'vim-scripts/YankRing.vim'
+Plug 'vim-scripts/auto-pairs-gentle'
+" Plug 'vim-scripts/mru.vim' " most recently use
+" Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/utl.vim'
 " Plug 'vim-vdebug/vdebug'
+Plug 'wellle/targets.vim'
+Plug 'wellle/visual-split.vim'
+Plug 'wesQ3/vim-windowswap'
 " Plug 'wsdjeg/FlyGrep.vim'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
+Plug 'yssl/QFEnter'
 " Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-" Plug 'joshdick/onedark.vim'
+" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'altercation/vim-colors-solarized'
+Plug 'arzg/vim-colors-xcode'
 " Plug 'challenger-deep-theme/vim'
 " Plug 'chriskempson/base16-vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
 " Plug 'jaxbot/semantic-highlight.vim'
+" Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
-" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'phanviet/vim-monokai-pro'
 " Plug 'rakr/vim-one'
 " Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
 Plug 'srcery-colors/srcery-vim'
-Plug 'arzg/vim-colors-xcode'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
@@ -713,7 +711,8 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 " -> airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let airline_theme='onedark'
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 0
+let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
@@ -1063,10 +1062,10 @@ if s:completion_manager == 'deoplete'
     au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
     au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
 
-    nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
-    nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
-    nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
-    nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+    " nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+    " nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+    " nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+    " nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
   augroup END
 
 endif
@@ -1402,7 +1401,7 @@ if s:completion_manager == 'coc'
   nmap <leader>w. <C-u>:CocListResume<CR>
   nmap <leader>wa <Plug>(coc-codeaction)
   nmap <leader>wr <Plug>(coc-rename)
-  nmap <leader>wx <Plug>(coc-fix-current)
+  nmap <leader>wq <Plug>(coc-fix-current)
 
   nmap <leader>wd <Plug>(coc-definition)
   nmap <leader>wt <Plug>(coc-type-definition)
@@ -1547,10 +1546,20 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-xkbswitch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:XkbSwitchEnabled = 1
+let g:XkbSwitchEnabled = 1
 " let g:XkbSwitchLoadRIMappings = 0
-" let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+let g:XkbSwitchIMappings = ['th']
 " inoremap ดก <ESC>
+let g:XkbSwitchIMappingsTr = {
+          \ 'th':
+          \ {'<': 'qwertyuiop[]asdfghjkl;''zxcvbnm,.`/'.
+          \       'QERTYUIOP{ASDFGHJKL:CVBN<>?~@#$^&|'.
+          \       '14567890-=@#$%^&*()_+',
+          \  '>': 'ๆไำพะัีรนยบลฟหกดเ้่าสวงผปแอิืทมใฝ'.
+          \       '๐ฎฑธํ๊ณฯญฐฤฆฏโฌ็๋ษศซฉฮฺ์ฒฬฦ'.
+          \       'ๅภถุึคตจขช๑๒๓๔ู฿๕๖๗๘๙'}
+          \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1573,6 +1582,15 @@ let g:matchup_matchpref = {
       \ 'nolist' : 1
       \ }
       \ }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-windowswap
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:windowswap_map_keys = 0 "prevent default bindings
+" nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+" nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>wx :call WindowSwap#EasyWindowSwap()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
