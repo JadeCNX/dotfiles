@@ -134,7 +134,7 @@ Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 " Plug 'lornix/vim-scrollbar'
 Plug 'luochen1990/rainbow'
 " Plug 'lvht/mru'
-Plug 'lyokha/vim-xkbswitch'
+" Plug 'lyokha/vim-xkbswitch'
 " Plug 'machakann/vim-sandwich'
 " Plug 'majutsushi/tagbar'
 " Plug 'mattn/emmet-vim'
@@ -1546,20 +1546,20 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-xkbswitch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:XkbSwitchEnabled = 1
+" let g:XkbSwitchEnabled = 1
 " let g:XkbSwitchLoadRIMappings = 0
-let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
-let g:XkbSwitchIMappings = ['th']
+" let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+" let g:XkbSwitchIMappings = ['rh']
 " inoremap ดก <ESC>
-let g:XkbSwitchIMappingsTr = {
-          \ 'th':
-          \ {'<': 'qwertyuiop[]asdfghjkl;''zxcvbnm,.`/'.
-          \       'QERTYUIOP{ASDFGHJKL:CVBN<>?~@#$^&|'.
-          \       '14567890-=@#$%^&*()_+',
-          \  '>': 'ๆไำพะัีรนยบลฟหกดเ้่าสวงผปแอิืทมใฝ'.
-          \       '๐ฎฑธํ๊ณฯญฐฤฆฏโฌ็๋ษศซฉฮฺ์ฒฬฦ'.
-          \       'ๅภถุึคตจขช๑๒๓๔ู฿๕๖๗๘๙'}
-          \ }
+" let g:XkbSwitchIMappingsTr = {
+"           \ 'th':
+"           \ {'<': 'qwertyuiop[]asdfghjkl;''zxcvbnm,.`/'.
+"           \       'QERTYUIOP{ASDFGHJKL:CVBN<>?~@#$^&|'.
+"           \       '14567890-=@#$%^&*()_+',
+"           \  '>': 'ๆไำพะัีรนยบลฟหกดเ้่าสวงผปแอิืทมใฝ'.
+"           \       '๐ฎฑธํ๊ณฯญฐฤฆฏโฌ็๋ษศซฉฮฺ์ฒฬฦ'.
+"           \       'ๅภถุึคตจขช๑๒๓๔ู฿๕๖๗๘๙'}
+"           \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
