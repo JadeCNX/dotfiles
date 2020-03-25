@@ -74,6 +74,7 @@ alias c='clear'
 
 alias vtop='vtop --theme wizard'
 
+alias mux='{ pgrep -vx tmux > /dev/null && tmux new -d -s delete-me && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t delete-me && tmux attach } || tmux attach'
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"

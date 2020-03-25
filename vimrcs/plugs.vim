@@ -1202,6 +1202,7 @@ vmap <leader>ff :Autoformat<CR>
 let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=false --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
+let g:formatters_html = ['prettier']
 let g:formatters_typescript = ['prettier_ts', 'tsfmt']
 let g:formatters_typescriptreact = ['prettier_ts', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
