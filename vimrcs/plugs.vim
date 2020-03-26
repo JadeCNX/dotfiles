@@ -215,8 +215,8 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
 " Plug 'wsdjeg/FlyGrep.vim'
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
