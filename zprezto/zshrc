@@ -3,7 +3,7 @@
 #
 if ! [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-  git clone --recursive-submodules https://github.com/belak/prezto-contrib "${ZDOTDIR:-$HOME}/.zprezto/contrib"
+  git clone --recursive https://github.com/belak/prezto-contrib "${ZDOTDIR:-$HOME}/.zprezto/contrib"
 fi
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
