@@ -71,7 +71,7 @@ alias glp='git log -p'
 
 alias dkct='docker-compose logs -f --tail 10'
 
-alias note='vim -S ~/Dropbox/.note/Session.vim'
+alias note='vim -S ~/Dropbox/.notes/Session.vim'
 alias c='clear'
 
 alias vtop='vtop --theme wizard'
