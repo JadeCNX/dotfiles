@@ -211,12 +211,13 @@ Plug 'vim-scripts/auto-pairs-gentle'
 " Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/utl.vim'
 " Plug 'vim-vdebug/vdebug'
+" Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
 " Plug 'wsdjeg/FlyGrep.vim'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
+" Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
@@ -1595,9 +1596,15 @@ nnoremap <silent> <leader>wx :call WindowSwap#EasyWindowSwap()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-wiki
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :let g:notes_directories = ['~/Dropbox/.notes']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-notes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:let g:notes_directories = ['~/Dropbox/.notes']
+" :let g:notes_directories = ['~/Dropbox/.notes']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
