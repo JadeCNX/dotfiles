@@ -165,7 +165,7 @@ Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle',
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
-" Plug 'rstacruz/vim-closer'
+Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -206,7 +206,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/auto-pairs-gentle'
+" Plug 'vim-scripts/auto-pairs-gentle'
 " Plug 'vim-scripts/mru.vim' " most recently use
 " Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/utl.vim'
