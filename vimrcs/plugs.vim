@@ -64,6 +64,7 @@ Plug 'JadeCNX/vim-sleuth'
 Plug 'Julian/vim-textobj-variable-segment'
 " Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
 " Plug 'Quramy/tsuquyomi'
+" Plug 'Raimondi/delimitMate'
 " Plug 'ShirajG/golden-ratio'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -95,6 +96,7 @@ Plug 'dbakker/vim-paragraph-motion'
 " Plug 'devjoe/vim-codequery'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
+Plug 'dimonomid/auto-pairs-gentle'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'edkolev/tmuxline.vim'
@@ -118,7 +120,7 @@ Plug 'jceb/vim-orgmode', {'for': 'org'}
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
-Plug 'jph00/swift-apple'
+Plug 'jph00/swift-apple', {'for': 'swift'}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
@@ -161,7 +163,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-" Plug 'resolritter/auto-pairs'
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
@@ -1354,7 +1355,6 @@ if s:completion_manager == 'coc'
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
-        \ 'coc-pairs',
         \ 'coc-phpls',
         \ 'coc-python',
         \ 'coc-rls',
@@ -1366,6 +1366,7 @@ if s:completion_manager == 'coc'
         \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank']
+  " \ 'coc-pairs',
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
   " \ 'coc-git',
@@ -1386,7 +1387,7 @@ if s:completion_manager == 'coc'
   nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
   " nmap <leader>/ :<C-u>CocList grep<CR>
   nmap <leader>? :<C-u>CocList -I grep -S<CR>
-  nmap <leader>gg :<C-u>CocList grep\ 
+  nmap <leader>gg :<C-u>CocList grep\
 
   command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
