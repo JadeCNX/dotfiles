@@ -165,7 +165,7 @@ Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle',
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
-Plug 'rstacruz/vim-closer'
+" Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -1354,6 +1354,7 @@ if s:completion_manager == 'coc'
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
+        \ 'coc-pairs',
         \ 'coc-phpls',
         \ 'coc-python',
         \ 'coc-rls',
@@ -1370,7 +1371,6 @@ if s:completion_manager == 'coc'
   " \ 'coc-git',
   " \ 'coc-highlight',
   " \ 'coc-omni',
-  " \ 'coc-pairs',
   " \ 'coc-prettier',
   " \ 'coc-word',
   " \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets'
