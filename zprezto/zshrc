@@ -81,3 +81,4 @@ alias m='{ pgrep -vx tmux > /dev/null && tmux new -d -s delete-me && tmux run-sh
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

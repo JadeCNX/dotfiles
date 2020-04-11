@@ -1221,6 +1221,7 @@ let g:formatters_json = [
       \ 'jsbeautify_json',
       \ 'fixjson',
       \ ]
+let g:formatters_python = ['black', 'yapf', 'autopep8']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
