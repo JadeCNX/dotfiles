@@ -212,7 +212,7 @@ Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/utl.vim'
 " Plug 'vim-vdebug/vdebug'
-" Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
@@ -1408,8 +1408,8 @@ if s:completion_manager == 'coc'
   nmap <leader>wq <Plug>(coc-fix-current)
 
   nmap <leader>wd <Plug>(coc-definition)
-  nmap <leader>wt <Plug>(coc-type-definition)
-  nmap <leader>wi <Plug>(coc-implementation)
+  " nmap <leader>wt <Plug>(coc-type-definition)
+  " nmap <leader>wi <Plug>(coc-implementation)
   nmap <leader>wg <Plug>(coc-references)
 
   nmap <leader>we :<C-u>CocList diagnostics<cr>
