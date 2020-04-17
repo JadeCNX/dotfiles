@@ -1487,7 +1487,7 @@ if s:completion_manager == 'coc'
   " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
 
   " Enter for expand.
-  " inoremap <expr> <cr> pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
+  inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : "\<CR>"
 
   " inoremap <silent><expr> <TAB>
   "       \ pumvisible() ? "\<C-y>" :
@@ -1496,10 +1496,11 @@ if s:completion_manager == 'coc'
   " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
   inoremap <silent><expr> <TAB>
-        \ pumvisible() ? coc#_select_confirm() :
+        \ pumvisible() ? "\<C-n>" :
         \ coc#expandableOrJumpable() ? "\<C-y>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
+        " \ pumvisible() ? coc#_select_confirm() :
   " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 
   function! s:check_back_space() abort
