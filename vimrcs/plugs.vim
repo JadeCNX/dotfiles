@@ -28,7 +28,7 @@ endif
 
 if s:completion_manager == 'deoplete'
   Plug 'Shougo/defx.nvim'
-  " Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/denite.nvim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/echodoc.vim'
   " Plug 'Shougo/neomru.vim'
@@ -39,6 +39,7 @@ if s:completion_manager == 'deoplete'
   Plug 'deoplete-plugins/deoplete-tag'
   " Plug 'zacharied/denite-nerdfont'
   Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
+  Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -152,7 +153,6 @@ Plug 'michaeljsmith/vim-indent-object'
 " Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/jsonc.vim'
-Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
 Plug 'osyo-manga/vim-over'
@@ -1600,6 +1600,7 @@ nnoremap <silent> <leader>wx :call WindowSwap#EasyWindowSwap()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-wiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_list = [{'path': '~/Dropbox/.notes'}]
 " :let g:notes_directories = ['~/Dropbox/.notes']
 
 
