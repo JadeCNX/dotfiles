@@ -164,6 +164,7 @@ Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle',
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
+Plug 'rhysd/git-messenger.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
 " Plug 'rstacruz/vim-closer'
@@ -229,7 +230,7 @@ Plug 'yssl/QFEnter'
 " Color schemes
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'altercation/vim-colors-solarized'
-Plug 'arzg/vim-colors-xcode'
+" Plug 'arzg/vim-colors-xcode'
 " Plug 'challenger-deep-theme/vim'
 " Plug 'chriskempson/base16-vim'
 " Plug 'flazz/vim-colorschemes'
@@ -1404,13 +1405,13 @@ if s:completion_manager == 'coc'
 
   nmap <leader>w. <C-u>:CocListResume<CR>
   nmap <leader>wa <Plug>(coc-codeaction)
-  nmap <leader>wr <Plug>(coc-rename)
+  nmap <leader>wn <Plug>(coc-rename)
   nmap <leader>wq <Plug>(coc-fix-current)
 
   nmap <leader>wd <Plug>(coc-definition)
   " nmap <leader>wt <Plug>(coc-type-definition)
   " nmap <leader>wi <Plug>(coc-implementation)
-  nmap <leader>wg <Plug>(coc-references)
+  nmap <leader>wr <Plug>(coc-references)
 
   nmap <leader>we :<C-u>CocList diagnostics<cr>
 
@@ -1493,7 +1494,7 @@ if s:completion_manager == 'coc'
   "       \ pumvisible() ? "\<C-y>" :
   "       \ <SID>check_back_space() ? "\<TAB>" :
   "       \ coc#refresh()
-  " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
   inoremap <silent><expr> <TAB>
         \ pumvisible() ? "\<C-n>" :
