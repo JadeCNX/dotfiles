@@ -1501,7 +1501,7 @@ if s:completion_manager == 'coc'
         \ coc#expandableOrJumpable() ? "\<C-y>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
-        " \ pumvisible() ? coc#_select_confirm() :
+  " \ pumvisible() ? coc#_select_confirm() :
   " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 
   function! s:check_back_space() abort
@@ -1602,8 +1602,9 @@ nnoremap <silent> <leader>wx :call WindowSwap#EasyWindowSwap()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-wiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [{'path': '~/Dropbox/.notes'}]
-" :let g:notes_directories = ['~/Dropbox/.notes']
+" let g:vimwiki_list = [{'path': '~/Dropbox/.notes'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
