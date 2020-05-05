@@ -1,58 +1,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> GUI related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set termguicolors
-
-" Set font according to system
-if (has("mac") || has("macunix")) && !has("gui_vimr")
-  set gfn=LigaOperatorMono\ Nerd\ Font\ Mono:h14,IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
-  " elseif has("win16") || has("win32")
-  " set gfn=IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-  " elseif has("gui_gtk2")
-  " set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-  " elseif has("linux")
-  " set gfn=IBM\ Plex\ Mono:h14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-  " elseif has("unix")
-  " set gfn=Monospace\ 11
-endif
-" set gfn=FuraCode\ Nerd\ Font,DankMono\ Nerd\ Font:h14,BlexMono\ Nerd\ Font:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
-
-" Disable scrollbars (real hackers don't use scrollbars for navigation!)
-" set guioptions-=r
-" set guioptions-=R
-" set guioptions-=l
-" set guioptions-=L
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <leader>e :e! ~/.vim/my_configs.vim<cr>
-" autocmd! bufwritepost ~/.vim/my_configs.vim source ~/.vim/my_configs.vim
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Turn persistent undo on
-"    means that you can undo even when you close a buffer/VIM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-  set undodir=~/.vim/undodir
-  set undofile
-catch
-endtry
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart mappings on the command line
-cno #h e ~/
-cno #d e ~/Desktop/
-cno #j e ./
-cno #c e <C-\>eCurrentFileDir("e")<cr>
+" cno #h e ~/
+" cno #d e ~/Desktop/
+" cno #j e ./
+" cno #c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash
-cno #q <C-\>eDeleteTillSlash()<cr>
+" cno #q <C-\>eDeleteTillSlash()<cr>
 
 " Readline like keys for the command line
 " NOTE: use vim-rsi instead
@@ -178,41 +135,6 @@ endif
 if exists('$TMUX') || !has('nvim')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Cursor
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
-
-if has('nvim')
-  hi Cursor guifg='fg' guibg='Green'
-  hi Cursor1 guifg='fg' guibg='Blue'
-  hi Cursor2 guifg='fg' guibg='Red'
-  set guicursor=
-        \n-c:block-Cursor,
-        \i-ve-ci:ver25,
-        \r-cr:hor20,
-        \o:hor50,
-        \v-ve:block,
-        \a:blinkwait280-blinkoff225-blinkon225,
-        \sm:block-blinkwait175-blinkoff150-blinkon175
-
-  " hi Cursor gui=NONE guifg=bg guibg=fg
-  " hi Cursor2 gui=NONE guifg=bg guibg=fg
-  " hi lCursor1 gui=NONE guifg=bg guibg=fg
-  " hi lCursor2 gui=NONE guifg=bg guibg=fg
-
-  au VimLeave * set guicursor=a:block-blinkon0
-elseif exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 

@@ -20,7 +20,7 @@ endif
 
 let s:completion_manager = ''
 
-if executable('node')
+if executable('node') && has('nvim')
   let s:completion_manager = 'coc'
 elseif has('python3')
   let s:completion_manager = 'deoplete'
