@@ -388,6 +388,7 @@ if s:completion_manager == 'deoplete'
   let g:deoplete#enable_at_startup = 1
 
   " <TAB>: completion.
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 endif
 
@@ -1034,23 +1035,23 @@ if s:completion_manager == 'deoplete'
   let g:LanguageClient_autoStart = 1
   " let g:LanguageClient_selectionUI = 'quickfix'
 
-  " autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-  " " autocmd FileType go setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType python setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType rust setlocal omnifunc=LanguageClient#complete
+  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType go setlocal omnifunc=LanguageClient#complete
+  autocmd FileType python setlocal omnifunc=LanguageClient#complete
+  autocmd FileType rust setlocal omnifunc=LanguageClient#complete
 
-  " autocmd FileType c setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType objc setlocal omnifunc=LanguageClient#complete
+  autocmd FileType c setlocal omnifunc=LanguageClient#complete
+  autocmd FileType cpp setlocal omnifunc=LanguageClient#complete
+  autocmd FileType cuda setlocal omnifunc=LanguageClient#complete
+  autocmd FileType objc setlocal omnifunc=LanguageClient#complete
 
 
   " if !executable('javascript-typescript-stdio')
   " echo "javascript-typescript-stdio not installed!\n"
   " endif
 
-  nnoremap <silent> <leader>ww :call LanguageClient_contextMenu()<CR>
+  nnoremap <silent> <leader>wa :call LanguageClient_contextMenu()<CR>
   nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
   nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>

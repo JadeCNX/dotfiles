@@ -57,6 +57,7 @@ _fzf_compgen_dir() {
 #
 # Alias
 #
+alias vi='/usr/local/vim'
 alias vim='nvim'
 alias vims='nvim -S Session.vim'
 alias emacs='emacs -nw'
