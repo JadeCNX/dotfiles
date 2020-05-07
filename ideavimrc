@@ -1,0 +1,24 @@
+" set extensions
+set easymotion
+set surround
+set multiple-cursors
+set commentary
+set ReplaceWithRegister
+set argtextobj
+set textobj-entire
+
+" set options
+set hlsearch
+set history
+set incsearch
+set ignorecase
+
+
+imap fd <C-c>
+
+map <c-h> <C-W>h
+map <c-j> <C-W>j
+map <c-k> <C-W>k
+map <c-l> <C-W>l
+
+map Y "*y

@@ -42,7 +42,7 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'rsync' \
   'archive' \
-  'git' \
+  'git-contrib' \
   'docker' \
   'alias-tips' \
   'syntax-highlighting' \
@@ -89,17 +89,6 @@ zstyle ':prezto:module:editor' ps-context 'yes'
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
-zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
-  || _git_log_medium_format='%C(auto)%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
-zstyle -s ':prezto:module:git:log:onelinewithauthor' format '_git_log_oneline_with_author_format' \
-  || _git_log_oneline_with_author_format='%C(auto)%h %s%d %C(bold)%C(cyan)%aN%C(reset) %C(auto)%x1b[2m%ad%x1b[0m%Creset'
-zstyle -s ':prezto:module:git:log:oneline' format '_git_log_oneline_format' \
-  || _git_log_oneline_format='%C(auto)%h %s%d %x1b[2m%ad%x1b[0m%Creset'
-
-alias gia='git add -v'
-alias giA='git add -v --patch'
-alias giu='git add -v --update'
-alias glo='git log --topo-order --pretty=format:"${_git_log_oneline_with_author_format}"'
 
 
 #
