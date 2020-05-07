@@ -1054,7 +1054,7 @@ if s:completion_manager == 'deoplete'
   nnoremap <silent> <leader>wa :call LanguageClient_contextMenu()<CR>
   nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> <leader>wr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent> <leader>wn :call LanguageClient#textDocument_rename()<CR>
   nnoremap <silent> <leader>O :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
   nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
 
