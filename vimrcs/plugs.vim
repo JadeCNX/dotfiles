@@ -55,6 +55,10 @@ if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
 
+if has('nvim')
+  Plug 'kassio/neoterm'
+endif
+
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
@@ -83,6 +87,7 @@ Plug 'andymass/vim-matchup'
 Plug 'bps/vim-textobj-python'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'chamindra/marvim'
 " Plug 'chr4/nginx.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/NrrwRgn'
@@ -115,6 +120,7 @@ Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
 " Plug 'haya14busa/vim-asterisk'
 Plug 'honza/vim-snippets'
 Plug 'idanarye/vim-vebugger'
+Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'itchyny/calendar.vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
@@ -127,6 +133,7 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 " Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
+Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
@@ -202,10 +209,10 @@ Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/fzf-filemru'
 " Plug 'unblevable/quick-scope' " highlight f,t move
-Plug 'vim/killersheep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
+" Plug 'vim-jp/vital.vim'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/YankRing.vim'
@@ -214,6 +221,7 @@ Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/utl.vim'
 " Plug 'vim-vdebug/vdebug'
+Plug 'vim/killersheep'
 Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
@@ -1613,6 +1621,17 @@ let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
 " -> vim-notes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " :let g:notes_directories = ['~/Dropbox/.notes']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> marvim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:marvim_store = '/usr/local/.marvim' " change store place.
+" let g:marvim_store = '~/.vim/marvim'
+" let g:marvim_find_key = '<space>kk' " change find key from <F2> to 'space'
+" let g:marvim_store_key = '<space>ks'     " change store key from <F3> to 'ms'
+" let g:marvim_register = 'q'       " change used register from 'q' to 'c'
+" let g:marvim_prefix = 0           " disable default syntax based prefix
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

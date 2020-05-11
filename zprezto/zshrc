@@ -35,6 +35,8 @@ export FZF_COMPLETION_TRIGGER=';;'
 # Options to fzf command
 export FZF_COMPLETION_OPTS='+c -x'
 
+export CHEAT_USE_FZF=true
+
 if [ -n "$TMUX" ]; then
   export FZF_TMUX=1
 fi

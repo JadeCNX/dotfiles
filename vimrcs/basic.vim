@@ -248,6 +248,15 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
+
+" neovim specified commands
+if has('nvim')
+
+  " inccommand shows you in realtime what changes your ex command should make
+  set inccommand=nosplit
+
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
