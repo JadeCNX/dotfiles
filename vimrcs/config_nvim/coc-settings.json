@@ -26,6 +26,8 @@
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */
   /* "suggest.floatEnable": false, */
+  "diagnostic.locationlist": true,
+  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.messageTarget": "echo",
   "diagnostic.enableSign": true,
   "languageserver": {
