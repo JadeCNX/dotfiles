@@ -1368,7 +1368,7 @@ if s:completion_manager == 'coc'
         \ 'coc-json',
         \ 'coc-lists',
         \ 'coc-phpls',
-        \ 'coc-python',
+        \ 'coc-pyright',
         \ 'coc-rls',
         \ 'coc-snippets',
         \ 'coc-tag',
@@ -1378,6 +1378,7 @@ if s:completion_manager == 'coc'
         \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank']
+  " \ 'coc-python',
   " \ 'coc-pairs',
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
