@@ -73,22 +73,22 @@ module.exports = {
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black:   '#1c1b19',
-      red:     '#ef2f27',
-      green:   '#519f50',
-      yellow:  '#fbb829',
-      blue:    '#2c78bf',
-      magenta: '#e02c6d',
-      cyan:    '#0aaeb3',
-      white:   '#918175',
-      lightBlack:   '#404040',
-      lightRed:     '#f75341',
-      lightGreen:   '#98bc37',
-      lightYellow:  '#fed06e',
-      lightBlue:    '#68a8e4',
-      lightMagenta: '#ff5c8f',
-      lightCyan:    '#53fde9',
-      lightWhite:   '#fce8c3',
+      black:   '#1C1B19',
+      red:     '#EF2F27',
+      green:   '#519F50',
+      yellow:  '#FBB829',
+      blue:    '#2C78BF',
+      magenta: '#E02C6D',
+      cyan:    '#0AAEB3',
+      white:   '#D0BFA1',
+      lightBlack:   '#918175',
+      lightRed:     '#F75341',
+      lightGreen:   '#98BC37',
+      lightYellow:  '#FED06E',
+      lightBlue:    '#68A8E4',
+      lightMagenta: '#FF5C8F',
+      lightCyan:    '#53FDE9',
+      lightWhite:   '#FCE8C3',
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -129,30 +129,32 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-    verminal: {
-      fontFamily: '"LigaOperatorMono Nerd Font Mono"',
-      fontSize: 14
-    },
-    materialBox: {
-      scheme: 'one-dark',
-    },
-    MaterialTheme: {
-      // Set the theme variant,
-      // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
-      theme: '',
-
-      // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
-      // OPTIONS: From 0.1 to 1
-      backgroundOpacity: '.4',
-
-      // [Optional] Set the accent color for the current active tab
-      accentColor: '#64FFDA',
-
-      // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
-      // OPTIONS: 'dark', 'ultra-dark', 'bright'
-      // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
-      vibrancy: 'ultra-dark',
-    },
+/*
+ *     verminal: {
+ *       fontFamily: '"LigaOperatorMono Nerd Font Mono"',
+ *       fontSize: 14
+ *     },
+ *     materialBox: {
+ *       scheme: 'one-dark',
+ *     },
+ *     MaterialTheme: {
+ *       // Set the theme variant,
+ *       // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
+ *       theme: '',
+ *
+ *       // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
+ *       // OPTIONS: From 0.1 to 1
+ *       backgroundOpacity: '.4',
+ *
+ *       // [Optional] Set the accent color for the current active tab
+ *       accentColor: '#64FFDA',
+ *
+ *       // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
+ *       // OPTIONS: 'dark', 'ultra-dark', 'bright'
+ *       // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
+ *       vibrancy: 'ultra-dark',
+ *     },
+ */
   },
   enableVibrancy: true,
 
@@ -164,7 +166,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'git-falcon9 ',
+    'git-falcon9',
     // 'gitrocket',
     // 'hyper-atom-dark-transparent',
     // 'hyper-atom-dark-vibrancy',

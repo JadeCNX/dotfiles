@@ -748,7 +748,7 @@ let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#left_sep = ' '
 
 " let g:airline#extensions#tmuxline#enabled = 1
-" let airline#extensions#tmuxline#color_template = 'replace'
+" let airline#extensions#tmuxline#color_template = 'insert'
 " let airline#extensions#tmuxline#snapshot_file = '~/.tmux-statusline-colors.conf'
 
 if !exists('g:airline_symbols')
@@ -1558,6 +1558,9 @@ let g:calendar_google_task = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vista#renderer#enable_icon = 1
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_echo_cursor_strategy = 'both'
+" let g:vista_highlight_whole_line = 1
+" let g:vista#renderer#enable_icon = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
