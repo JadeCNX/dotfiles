@@ -123,6 +123,7 @@ Plug 'idanarye/vim-vebugger'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'itchyny/calendar.vim'
 " Plug 'itchyny/lightline.vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 " Plug 'jistr/vim-nerdtree-tabs'
