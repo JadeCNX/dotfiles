@@ -65,7 +65,7 @@ alias tmr=tmuxinator
 if type "nvim" > /dev/null; then
   alias vim='nvim'
   alias vims='nvim -S Session.vim'
-else:
+else
   alias vims='vim -S Session.vim'
 fi
 
