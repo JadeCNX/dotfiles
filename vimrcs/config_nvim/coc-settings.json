@@ -41,10 +41,13 @@
       "args": ["--log-file=~/.cache/ccls/ccls.log"],
       "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
       "trace.server": "verbose",
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
         "cache": {
           "directory": "~/.cache/ccls"
+        },
+        "client": {
+          "snippetSupport": true
         }
       }
     },

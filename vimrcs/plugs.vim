@@ -55,9 +55,9 @@ if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
 
-if has('nvim')
-  Plug 'kassio/neoterm'
-endif
+" if has('nvim')
+"   Plug 'kassio/neoterm'
+" endif
 
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
