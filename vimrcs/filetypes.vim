@@ -27,7 +27,7 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> JSON section
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- autocmd FileType json syntax match Comment +\/\/.\+$+
+ " autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -38,11 +38,11 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 " au FileType javascript setl nocindent
 " au FileType javascript setl expandtab shiftwidth=4 tabstop=4
 
-au FileType javascript imap <c-t> console.log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
+" au FileType javascript imap <c-t> console.log();<esc>hi
+" au FileType javascript imap <c-a> alert();<esc>hi
 
-au FileType javascript inoremap <buffer> $r return
-au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
+" au FileType javascript inoremap <buffer> $r return
+" au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
 
 " function! JavaScriptFold()
 "     setl foldmethod=syntax
