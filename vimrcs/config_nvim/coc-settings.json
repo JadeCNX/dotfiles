@@ -1,7 +1,7 @@
 {
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
-  "codeLens.enable": true,
+  /* "codeLens.enable": true, */
   "json.enable": true,
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
