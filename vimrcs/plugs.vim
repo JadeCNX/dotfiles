@@ -184,6 +184,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
+Plug 'skywind3000/asyncrun.vim'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'

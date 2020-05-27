@@ -16,3 +16,5 @@ nnoremap <C-l> <C-w>l
 
 nnoremap n nzz
 nnoremap N Nzz
+
+nmap <space>h :normal<space>

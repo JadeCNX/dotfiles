@@ -22,3 +22,5 @@ map <c-k> <C-W>k
 map <c-l> <C-W>l
 
 map Y "*y
+
+map <space>h :normal<space>
