@@ -148,7 +148,7 @@ Plug 'luochen1990/rainbow'
 " Plug 'lyokha/vim-xkbswitch'
 " Plug 'machakann/vim-sandwich'
 " Plug 'majutsushi/tagbar'
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
@@ -1362,7 +1362,6 @@ if s:completion_manager == 'coc'
         \ 'coc-actions',
         \ 'coc-css',
         \ 'coc-docker',
-        \ 'coc-emmet',
         \ 'coc-explorer',
         \ 'coc-flutter',
         \ 'coc-gocode',
@@ -1380,6 +1379,7 @@ if s:completion_manager == 'coc'
         \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank']
+  " \ 'coc-emmet',
   " \ 'coc-python',
   " \ 'coc-pairs',
   " \ 'coc-ccls',
