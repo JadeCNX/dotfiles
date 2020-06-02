@@ -69,6 +69,9 @@ ln -sfnv $PWD/zprezto/zprofile ~/.zprofile
 ln -sfnv $PWD/zprezto/zshenv ~/.zshenv
 ln -sfnv $PWD/zprezto/zshrc ~/.zshrc
 
+backup ~/.fzf_git.zsh
+ln -sfnv $PWD/scripts/fzf_git.zsh ~/.fzf_git.zsh
+
 # hammperspoon
 backup ~/.hammerspoon
 ln -sfnv $PWD/hammerspoon ~/.hammerspoon

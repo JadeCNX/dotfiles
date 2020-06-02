@@ -29,6 +29,7 @@ fi
 # FZF
 #
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf_git.zsh ] && source ~/.fzf_git.zsh
 # Use ;; as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER=';;'
 
@@ -54,10 +55,6 @@ _fzf_compgen_dir() {
 }
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob="!.git/*" --glob="!node_modules/*"'
 # export FZF_DEFAULT_COMMAND='fd --type file --follow -E .git -E node_modules'
-
-# DOT_PATH=$0:a
-DOT_PATH=$0:a:h
-test -e "$DOT_PATH/scripts/fzf_git.zsh" && source "$DOT_PATH/scripts/fzf_git.zsh"
 
 #
 # Alias
