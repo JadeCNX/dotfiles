@@ -1,24 +1,24 @@
 #!bin/zsh
 
-# fbr - ceckout git branch
-f-br() {
+# gbzv - checkout git branch -vv
+gbzv() {
     local branches branch
-    branches=$(git branch -vv) &&
+    branches=$(git branch --color=auto -vv) &&
         branch=$(echo "$branches" | fzf +m) &&
         git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
-# fbr - checkout git branch (including remote branches)
-f-br() {
+# gbzr - checkout git branch (including remote branches)
+gbz() {
     local branches branch
-    branches=$(git branch --all | grep -v HEAD) &&
+    branches=$(git branch --color=auto --all | grep -v HEAD) &&
         branch=$(echo "$branches" |
         fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
         git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-# fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
-f-br() {
+# gbzl - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
+gbza() {
     local branches branch
     branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
         branch=$(echo "$branches" |
@@ -26,8 +26,8 @@ f-br() {
         git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-# fco - checkout git branch/tag
-f-co() {
+# gcoz - checkout git branch/tag
+gcz() {
     local tags branches target
     tags=$(
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
@@ -42,8 +42,8 @@ f-co() {
 }
 
 
-# fco_preview - checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
-f-co_preview() {
+# fcz - checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
+gcZ() {
     local tags branches target
     tags=$(
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
@@ -57,15 +57,15 @@ f-co_preview() {
         --ansi --preview="git log -200 --pretty=format:%s $(echo {+2..} |  sed 's/$/../' )" ) || return
     git checkout $(echo "$target" | awk '{print $2}')
 }
-# fcoc - checkout git commit
-f-coc() {
+# gcoz - checkout git commit
+gccz() {
     local commits commit
     commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
         commit=$(echo "$commits" | fzf --tac +s +m -e) &&
         git checkout $(echo "$commit" | sed "s/ .*//")
 }
-# fshow - git commit browser
-f-show() {
+# glz - git commit browser
+glz() {
     git log --graph --color=always \
         --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
         fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -79,8 +79,8 @@ alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bo
 _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
 _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | diff-so-fancy'"
 
-# fcoc_preview - checkout git commit with previews
-f-coc_preview() {
+# glzc - checkout git commit with previews
+glzc() {
     local commit
     commit=$( glNoGraph |
         fzf --no-sort --reverse --tiebreak=index --no-multi \
@@ -88,8 +88,8 @@ f-coc_preview() {
         git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
-# fshow_preview - git commit browser with previews
-f-show_preview() {
+# glZ - git commit browser with previews
+glZ() {
     glNoGraph |
         fzf --no-sort --reverse --tiebreak=index --no-multi \
         --ansi --preview="$_viewGitLogLine" \
@@ -98,9 +98,9 @@ f-show_preview() {
         --bind "alt-y:execute:$_gitLogLineToHash | xclip"
 }
 
-# fcs - get git commit sha
+# glzs - get git commit sha
 # example usage: git rebase -i `fcs`
-f-cs() {
+glzc() {
     local commits commit
     commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
         commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
@@ -112,7 +112,7 @@ f-cs() {
 # enter shows you the contents of the stash
 # ctrl-d shows a diff of the stash against your current HEAD
 # ctrl-b checks the stash out as a branch, for easier merging
-f-stash() {
+gsz() {
     local out q k sha
     while out=$(
         git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
