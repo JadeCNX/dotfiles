@@ -57,7 +57,7 @@ _fzf_compgen_dir() {
 
 # DOT_PATH=$0:a
 DOT_PATH=$0:a:h
-test -e "${DOT_PATH}/scripts/fzf_git.zsh" && source "${DOT_PATH}/scripts/fzf_git.zsh"
+test -e "$DOT_PATH/scripts/fzf_git.zsh" && source "$DOT_PATH/scripts/fzf_git.zsh"
 
 #
 # Alias
