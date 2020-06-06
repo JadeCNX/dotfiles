@@ -59,25 +59,13 @@ endif
 "   Plug 'kassio/neoterm'
 " endif
 
-Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'AndrewRadev/switch.vim'
-Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
-Plug 'ConradIrwin/vim-bracketed-paste'
-" Plug 'JadeCNX/diffchar.vim'
-Plug 'JadeCNX/vim-sleuth'
-Plug 'Julian/vim-textobj-variable-segment'
-" Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
-" Plug 'Quramy/tsuquyomi'
-" Plug 'Raimondi/delimitMate'
-" Plug 'ShirajG/golden-ratio'
-" Plug 'Valloric/YouCompleteMe'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Yggdroot/indentLine'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-closetag'
 " Plug 'alvan/vim-clotag'
 " Plug 'amix/vim-zenroom2'
+Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
 " Plug 'bagrat/vim-workspace'
@@ -88,15 +76,18 @@ Plug 'bps/vim-textobj-python'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'chamindra/marvim'
+Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 " Plug 'chr4/nginx.vim'
 Plug 'chrisbra/Colorizer'
-Plug 'chrisbra/NrrwRgn'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
+Plug 'chrisbra/NrrwRgn'
 Plug 'chrisbra/unicode.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'cohama/lexima.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'dahu/vim-fanfingtastic'
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'dbakker/vim-paragraph-motion'
 " Plug 'dense-analysis/ale'
 " Plug 'devjoe/vim-codequery'
@@ -124,11 +115,14 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'itchyny/calendar.vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'JadeCNX/diffchar.vim'
+Plug 'JadeCNX/vim-sleuth'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 " Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
 Plug 'jph00/swift-apple', {'for': 'swift'}
+Plug 'Julian/vim-textobj-variable-segment'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
@@ -151,6 +145,7 @@ Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
+" Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
 " Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
 " Plug 'mhartington/deoplete-typescript'
@@ -170,6 +165,8 @@ Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
+" Plug 'Quramy/tsuquyomi'
+" Plug 'Raimondi/delimitMate'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/git-messenger.vim'
@@ -183,6 +180,7 @@ Plug 'ryanoasis/vim-devicons'
 " Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
 Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
+" Plug 'ShirajG/golden-ratio'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
@@ -211,17 +209,18 @@ Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/fzf-filemru'
 " Plug 'unblevable/quick-scope' " highlight f,t move
+" Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-jp/vital.vim'
-Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
-" Plug 'vim-scripts/SyntaxRange'
-" Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-scripts/auto-pairs-gentle'
+Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/mru.vim' " most recently use
+" Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/utl.vim'
+" Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-vdebug/vdebug'
 Plug 'vim/killersheep'
 Plug 'vimwiki/vimwiki'
@@ -233,7 +232,9 @@ Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
+Plug 'Yggdroot/indentLine'
 Plug 'yssl/QFEnter'
 " Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'zhou13/vim-easyescape'
