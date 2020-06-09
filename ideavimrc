@@ -24,3 +24,5 @@ map <c-l> <C-W>l
 map Y "*y
 
 map <space>h :normal<space>
+
+nnoremap c* *Ncgn

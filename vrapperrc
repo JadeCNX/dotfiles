@@ -85,3 +85,9 @@ vmap , <Plug>(sneak-prev)
 " omap Z <Plug>(sneak_S)
 
 map <leader>h :normal<Space>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> *Ncgn https://youtu.be/YwMgnmZNWXA
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap c* *Ncgn
+
