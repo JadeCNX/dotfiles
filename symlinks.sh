@@ -77,3 +77,8 @@ backup ~/.hammerspoon
 ln -sfnv $PWD/hammerspoon ~/.hammerspoon
 
 
+# starship https://starship.rs
+backup ~/.config/starship.toml
+ln -sfnv $PWD/starship.toml ~/.config/starship.toml
+
+
