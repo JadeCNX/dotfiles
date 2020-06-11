@@ -759,10 +759,10 @@ if !exists('g:airline_symbols')
 endif
 
 " 
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = ' '
 let g:airline#extensions#tabline#close_symbol = '⏻' " '﯇   X '
 
 " nmap <leader>1 <Plug>AirlineSelectTab1
