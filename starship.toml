@@ -1,28 +1,97 @@
-[directory]
-style = "blue"
+# Don't print a new line at the start of the prompt
+add_newline = true
 
 [battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "💀"
+disabled = false
+charging_symbol = ""
+discharging_symbol = ""
+full_symbol = ""
+
+[[battery.display]]
+style = "bold red"
+threshold = 10
+
+[[battery.display]]
+style = "bold yellow"
+threshold = 30
+
+[[battery.display]]
+style = "bold green"
+threshold = 80
+
+[character]
+symbol = ""
+# use_symbol_for_status = true
+
+[directory]
+prefix = " "
+style = "blue"
+
+[docker_context]
+prefix = " "
+
+[erlang]
+prefix = " "
+
+[elixir]
+symbol = " "
 
 [git_branch]
-symbol = "🌱 "
+symbol = " "
 truncation_length = 4
 truncation_symbol = ""
 
-[[battery.display]]
-threshold = 10
-style = "bold red"
+[git_status]
+disabled = false
+# ahead = "🏎💨"
+# behind = "😰"
+# conflicted = "🏳"
+# deleted = "🗑"
+# diverged = "😵"
+# modified = "📝"
+# renamed = "👅"
+# staged.style = "green"
+# staged.value = "++"
+# staged_count.enabled = true
+# staged_count.style = "green"
+# stashed = "📦"
+# untracked = "🤷"
 
-[[battery.display]]
-threshold = 30
-style = "bold yellow"
+[golang]
+symbol = "ﳑ "
 
-[[battery.display]]
-threshold = 80
-style = "bold green"
+[java]
+symbol = " "
 
-[[battery.display]]
-threshold = 100
-style = "bold gold"
+[kubernetes]
+symbol = "ﴱ "
+
+[memory_usage]
+disabled = true
+prefix = ""
+show_percentage = true
+show_swap = false
+style = "bold dimmed white"
+symbol = " "
+threshold = 50
+
+[nodejs]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[time]
+disabled = true
+format = " %T"
+style = "bright-white"
+
