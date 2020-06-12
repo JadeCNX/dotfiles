@@ -26,6 +26,8 @@ symbol = ""
 [directory]
 prefix = " "
 style = "blue"
+truncation_length = 7
+truncate_to_repo = false
 
 [docker_context]
 prefix = " "
