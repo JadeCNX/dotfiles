@@ -21,7 +21,12 @@ threshold = 80
 
 [character]
 symbol = ""
+vicmd_symbol = ""
 # use_symbol_for_status = true
+
+[cmd_duration]
+min_time = 500
+# prefix = "underwent "
 
 [directory]
 prefix = " "
@@ -43,19 +48,39 @@ symbol = " "
 
 [git_status]
 disabled = false
-# ahead = "🏎💨"
-# behind = "😰"
-# conflicted = "🏳"
-# deleted = "🗑"
-# diverged = "😵"
-# modified = "📝"
-# renamed = "👅"
-# staged.style = "green"
-# staged.value = "++"
-# staged_count.enabled = true
-# staged_count.style = "green"
-# stashed = "📦"
-# untracked = "🤷"
+ahead = ""
+behind = ""
+diverged = ""
+show_sync_count = true
+style = "yellow"
+conflicted.value = "C"
+conflicted.style = "cyan"
+conflicted_count.enabled = true
+conflicted_count.style = "cyan"
+deleted.value = "D"
+deleted.style = "red"
+deleted_count.enabled = true
+deleted_count.style = "red"
+modified.value = "M"
+modified.style = "white"
+modified_count.enabled = true
+modified_count.style = "white"
+renamed = ""
+# renamed.style = "blue"
+# renamed_count.enabled = true
+# renamed_count.style = "blue"
+staged.value = "A"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+stashed.value = "S"
+stashed.style = "#D79E4A"
+stashed_count.enabled = true
+stashed_count.style = "#D79E4A"
+untracked.value = "?"
+untracked.style = "blue"
+untracked_count.enabled = true
+untracked_count.style = "blue"
 
 [golang]
 symbol = "ﳑ "
@@ -77,6 +102,9 @@ threshold = 50
 
 [nodejs]
 symbol = " "
+
+[package]
+symbol = " "
 
 [php]
 symbol = " "
