@@ -67,6 +67,7 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
+Plug 'APZelos/blamer.nvim'
 " Plug 'ashisha/image.vim'
 " Plug 'bagrat/vim-workspace'
 " Plug 'bfredl/nvim-miniyank'
@@ -998,7 +999,8 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_enabled = 1
 let g:indentLine_char = "│"
-let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista']
+let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista', 'help']
+let g:indentLine_color_gui = '#333333'
 " let g:indentLine_setColors = 0
 
 " for 'tab' indent line
@@ -1640,6 +1642,17 @@ let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
 " let g:marvim_store_key = '<space>ks'     " change store key from <F3> to 'ms'
 " let g:marvim_register = 'q'       " change used register from 'q' to 'c'
 " let g:marvim_prefix = 0           " disable default syntax based prefix
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> blamer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+" let g:blamer_show_in_visual_modes = 0
+" let g:blamer_prefix = ' > '
+let g:blamer_relative_time = 1
+highlight Blamer guifg=gray30 gui=italic
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
