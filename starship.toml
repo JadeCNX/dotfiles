@@ -2,7 +2,7 @@
 add_newline = true
 
 [battery]
-disabled = false
+disabled = true
 charging_symbol = ""
 discharging_symbol = ""
 full_symbol = ""
