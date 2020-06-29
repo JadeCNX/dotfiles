@@ -21,6 +21,7 @@
     "typescriptreact": ["javascript"],
     "typescript": ["javascript"]
   },
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "tsserver.enable": true,
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */
@@ -31,26 +32,6 @@
   "diagnostic.enableSign": true,
   /* "diagnostic.displayByAle": true, */
   "languageserver": {
-    "swift": {
-      "command": "~/.cache/source-lsp/release/sourcekit-lsp",
-      "filetypes": ["swift", "objc", "objcpp"],
-      "rootPatterns": [".xcodeproj", ".xcworkspace", ".git"]
-    },
-    "ccls": {
-      "command": "ccls",
-      "args": ["--log-file=~/.cache/ccls/ccls.log"],
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-      "trace.server": "verbose",
-      "rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": "~/.cache/ccls"
-        },
-        "client": {
-          "snippetSupport": true
-        }
-      }
-    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],

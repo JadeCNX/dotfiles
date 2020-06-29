@@ -14,7 +14,7 @@ if !has('nvim')
 endif
 
 if has('python3')
-  Plug 'SirVer/ultisnips' " ultimate snippet
+  " Plug 'SirVer/ultisnips' " ultimate snippet
   Plug 'Valloric/MatchTagAlways'
 endif
 
@@ -963,8 +963,8 @@ let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = '<F12>'
-let g:UltiSnipsListSnippets = '<F12>'
+" let g:UltiSnipsExpandTrigger = '<F12>'
+" let g:UltiSnipsListSnippets = '<F12>'
 " let g:UltiSnipsJumpForwardTrigger = ''
 " let g:UltiSnipsJumpBackwardTrigger = ''
 " let g:UltiSnipsListSnippets = '<C-S-E>'
@@ -1364,8 +1364,12 @@ let g:fzf_layout = {
 if s:completion_manager == 'coc'
   let g:coc_global_extensions = [
         \ 'coc-actions',
+        \ 'coc-clangd',
+        \ 'coc-cmake',
         \ 'coc-css',
+        \ 'coc-cssmodules',
         \ 'coc-docker',
+        \ 'coc-eslint',
         \ 'coc-explorer',
         \ 'coc-flutter',
         \ 'coc-gocode',
@@ -1376,13 +1380,21 @@ if s:completion_manager == 'coc'
         \ 'coc-pyright',
         \ 'coc-rls',
         \ 'coc-snippets',
+        \ 'coc-spell-checker',
+        \ 'coc-tabnine',
         \ 'coc-tag',
+        \ 'coc-tailwindcss',
+        \ 'coc-template',
         \ 'coc-tslint',
         \ 'coc-tsserver',
         \ 'coc-vimlsp',
         \ 'coc-xml',
         \ 'coc-yaml',
-        \ 'coc-yank']
+        \ 'coc-yank',
+        \ 'https://github.com/cstrap/python-snippets',
+        \ 'https://github.com/infeng/vscode-react-typescript',
+        \ 'https://github.com/xabikos/vscode-javascript'
+        \ ]
   " \ 'coc-emmet',
   " \ 'coc-python',
   " \ 'coc-pairs',
@@ -1393,7 +1405,6 @@ if s:completion_manager == 'coc'
   " \ 'coc-omni',
   " \ 'coc-prettier',
   " \ 'coc-word',
-  " \ 'https://github.com/dsznajder/vscode-es7-javascript-react-snippets'
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -1649,7 +1660,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
-" let g:blamer_show_in_visual_modes = 0
+let g:blamer_show_in_visual_modes = 0
 " let g:blamer_prefix = ' > '
 let g:blamer_relative_time = 1
 highlight Blamer guifg=gray30 gui=italic
