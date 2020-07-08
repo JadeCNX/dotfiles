@@ -695,3 +695,28 @@ endif
 " -> quick normal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>h :normal<Space>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> Clean up on leave
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function!  <SID>DeleteBufferByExtension(strExt)
+  let s:bufNr = bufnr("$")
+  echo 'all bufnr' . s:bufNr
+  while s:bufNr > 0
+    echo 'bufnr' . s:bufNr
+    if buflisted(s:bufNr)
+      echo 'buf name' . bufname(s:bufNr)
+      " if (matchstr(bufname(s:bufNr), ".".a:strExt."$") == ".".a:strExt )
+      " if getbufvar(s:bufNr, '&modified') == 0
+      "   execute "bd ".s:bufNr
+      " endif
+      " endif
+    endif
+    let s:bufNr = s:bufNr-1
+  endwhile
+endfunction
+
+map <leader>et :call <SID>DeleteBufferByExtension("txt")
+
+" autocmd VimLeavePre :bufdo if &ft == 'coc-explorer' | doautocmd FileType | endif

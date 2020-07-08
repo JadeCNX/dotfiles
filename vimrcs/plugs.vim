@@ -55,6 +55,10 @@ if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
 
+if s:completion_manager != 'coc'
+  Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
+endif
+
 " if has('nvim')
 "   Plug 'kassio/neoterm'
 " endif
@@ -164,7 +168,6 @@ Plug 'osyo-manga/vim-over'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'Raimondi/delimitMate'
@@ -656,21 +659,23 @@ let g:user_emmet_mode='a'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\~$']
-let NERDTreeNodeDelimiter="\x07"
-let NERDTreeMinimalUI=1
+if s:completion_manager != 'coc'
+  " let g:NERDTreeWinPos = "right"
+  let NERDTreeShowHidden=1
+  let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\~$']
+  let NERDTreeNodeDelimiter="\x07"
+  let NERDTreeMinimalUI=1
 
-let g:NERDTreeWinSize=35
+  let g:NERDTreeWinSize=35
 
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nf :NERDTreeFind<cr>
-" map <leader>nb :NERDTreeFromBookmark<Space>
+  map <leader>ee :NERDTreeToggle<cr>
+  map <leader>ef :NERDTreeFind<cr>
+  " map <leader>nb :NERDTreeFromBookmark<Space>
 
-" autocmd VimLeave * NERDTreeClose
-autocmd VimLeavePre * NERDTreeClose
-" autocmd VimEnter * NERDTree
+  " autocmd VimLeave * NERDTreeClose
+  " autocmd VimLeavePre * NERDTreeClose
+  " autocmd VimEnter * NERDTree
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1193,7 +1198,7 @@ nnoremap <silent><leader>m :MaximizerToggle!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-over
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <leader>su <C-u>:OverCommandLine<CR>
+" map <leader>su :<C-u>OverCommandLine<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1431,8 +1436,8 @@ if s:completion_manager == 'coc'
   nmap [w <Plug>(coc-diagnostic-prev)
   nmap ]w <Plug>(coc-diagnostic-next)
 
-  nmap <leader>w. <C-u>:CocListResume<CR>
-  nmap <leader>wa <Plug>(coc-codeaction)
+  nmap <leader>w. :<C-u>CocListResume<CR>
+  nmap <leader>wa :<C-u>CocAction<CR>
   nmap <leader>wn <Plug>(coc-rename)
   nmap <leader>wq <Plug>(coc-fix-current)
 
@@ -1546,6 +1551,9 @@ if s:completion_manager == 'coc'
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   augroup end
 
+  nmap <leader>ee :CocCommand explorer --toggle --sources=file+<CR>
+
+  " autocmd VimLeavePre :bufdo if &ft == 'coc-explorer' | doautocmd FileType | endif
 endif
 
 

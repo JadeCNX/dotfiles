@@ -2,6 +2,7 @@
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
   /* "codeLens.enable": true, */
+  "cSpell.showCommandsInEditorContextMenu": false,
   "json.enable": true,
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
@@ -15,6 +16,7 @@
   "suggest.noselect": true,
   "suggest.snippetIndicator": "⚡️",
   "suggest.triggerAfterInsertEnter": true,
+  "explorer.icon.enableNerdfont": true,
   "snippets.extends": {
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
@@ -26,7 +28,7 @@
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */
   /* "suggest.floatEnable": false, */
-  "diagnostic.locationlist": true,
+  /* "diagnostic.virtualText": true, */
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.messageTarget": "echo",
   "diagnostic.enableSign": true,
