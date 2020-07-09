@@ -102,10 +102,11 @@ font:
     # family: LigaOperatorMono Nerd Font Mono
     # family: SFmono Nerd Font Mono
     # family: mplus Nerd Font Mono
-    family: OperatorMonoSSmLig Nerd Font
+    # family: OperatorMonoSSmLig Nerd Font
+    family: VictorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Book
+    # style: Book
 
   # Bold font face
   # bold:
@@ -141,7 +142,7 @@ font:
     # style: Bold Italic
 
   # Point size
-  size: 16.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
