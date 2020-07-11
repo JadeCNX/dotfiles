@@ -1218,8 +1218,8 @@ nnoremap <silent><leader>m :MaximizerToggle!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>ff :Autoformat<CR>
-vmap <leader>ff :Autoformat<CR>
+nmap <leader>ff :<C-u>Autoformat<CR>
+vmap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
 " let g:autoformat_verbosemode=1
 " let g:formatdef_prettier = '"prettier --stdin --stdin-filepath ".expand("%:p")." --tab-width=".shiftwidth()'
