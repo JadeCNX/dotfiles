@@ -2,12 +2,13 @@
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
   /* "codeLens.enable": true, */
+  "cSpell.diagnosticLevel": "Hint",
   "cSpell.showCommandsInEditorContextMenu": false,
   "json.enable": true,
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
   "list.previousKeymap": "<c-p>",
-  /* "python.jediEnabled": false, */
+  "python.jediEnabled": false,
   "python.pythonPath": "python3",
   "signature.target": "echo",
   "suggest.autoTrigger": "always",
@@ -29,10 +30,12 @@
   /* "coc.preferences.hoverTarget": "echo", */
   /* "suggest.floatEnable": false, */
   /* "diagnostic.virtualText": true, */
-  "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.messageTarget": "echo",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.displayByAle": false,
+  "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.enableSign": true,
-  /* "diagnostic.displayByAle": true, */
+  "diagnostic.messageTarget": "float",
+  "diagnostic.refreshOnInsertMode": true,
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",

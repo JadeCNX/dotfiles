@@ -1400,8 +1400,8 @@ if s:completion_manager == 'coc'
         \ 'https://github.com/infeng/vscode-react-typescript',
         \ 'https://github.com/xabikos/vscode-javascript'
         \ ]
-  " \ 'coc-emmet',
   " \ 'coc-python',
+  " \ 'coc-emmet',
   " \ 'coc-pairs',
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
