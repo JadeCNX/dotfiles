@@ -95,6 +95,9 @@ setopt histignoredups
 # change directory with no cd
 setopt autocd
 
+# do not exit on end-of-file
+setopt ignore_eof
+
 export GTAGSLABEL=pygments
 
 #
