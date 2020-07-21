@@ -1438,8 +1438,10 @@ if s:completion_manager == 'coc'
 
   nmap <leader>w. :<C-u>CocListResume<CR>
   nmap <leader>wa :<C-u>CocAction<CR>
+  nmap <leader>wc :<C-u>CocCommand<CR>
   nmap <leader>wn <Plug>(coc-rename)
   nmap <leader>wq <Plug>(coc-fix-current)
+  nmap <leader>wh <Plug>(coc-float-hide)
 
   nmap <leader>wd <Plug>(coc-definition)
   " nmap <leader>wt <Plug>(coc-type-definition)
