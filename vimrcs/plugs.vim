@@ -1457,6 +1457,8 @@ if s:completion_manager == 'coc'
   nmap <leader>wf <Plug>(coc-format-selected)<CR>
   vmap <leader>wf <Plug>(coc-format-selected)<CR>
 
+  nmap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
+
   " show documentation in preview window
   nnoremap <leader>wh :call <SID>show_documentation()<CR>
 
@@ -1588,6 +1590,19 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " let g:vista_echo_cursor_strategy = 'both'
 " let g:vista_highlight_whole_line = 1
 " let g:vista#renderer#enable_icon = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> switch.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType javascriptreact,typescriptreact let b:switch_custom_definitions = [
+      \ {
+      \   '\(\k\+=\){\(\w[a-zA-Z0-9.]*\)}':      '\1{`${\2}`}',
+      \   '\(\k\+=\){`${\(\w[a-zA-Z0-9.]*\)}`}': '\1{\2}',
+      \ },
+      \ ['let', 'const', 'var'],
+      \ ['else', 'else if']
+      \ ]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

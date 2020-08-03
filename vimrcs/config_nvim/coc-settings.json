@@ -2,6 +2,7 @@
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
   /* "codeLens.enable": true, */
+  "cSpell.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.showCommandsInEditorContextMenu": false,
   "json.enable": true,

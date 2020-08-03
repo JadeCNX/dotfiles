@@ -97,16 +97,26 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: BlexMono Nerd Font
-    # family: FuraCode Nerd Font
+    # family: FiraCode Nerd Font
+    # family: GoMono Nerd Font
+    # family: GohuFont Nerd Font
+    # family: Hasklug Nerd Font
     # family: FuraCodeiScript Nerd Font Mono
+    # family: Hurmit Nerd Font
+    # family: iMWritingMonoS Nerd Font
+    # family: Inconsolata Nerd Font
+    # family: InconsolataGo Nerd Font
+    # family: Iosevka Nerd Font
+    # family: JetBrainsMono Nerd Font
     # family: LigaOperatorMono Nerd Font Mono
-    # family: SFmono Nerd Font Mono
     # family: mplus Nerd Font Mono
-    # family: OperatorMonoSSmLig Nerd Font
-    family: VictorMono Nerd Font
+    family: OperatorMonoSSmLig Nerd Font
+    # family: SFmono Nerd Font
+    # family: Source Code Pro
+    # family: VictorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    # style: Book
+    style: Light
 
   # Bold font face
   # bold:
@@ -142,7 +152,7 @@ font:
     # style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -282,7 +292,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 0.90
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
