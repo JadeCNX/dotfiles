@@ -46,6 +46,7 @@ zstyle ':prezto:load' pmodule \
   'forgit' \
   'docker' \
   'alias-tips' \
+  'command-not-found' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
