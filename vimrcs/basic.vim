@@ -232,7 +232,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 map <leader>te :tabedit <c-r>=expand("%:p:h")<CR>
 
 " Switch CWD to the directory of the open buffer
-map <leader>pwd :cd %:p:h<cr>:pwd<cr>
+" map <leader>pwd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try

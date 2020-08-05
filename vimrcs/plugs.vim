@@ -403,8 +403,8 @@ if s:completion_manager == 'deoplete'
   let g:deoplete#enable_at_startup = 1
 
   " <TAB>: completion.
-  inoremap <expr><S-TAB> pumvisible() ? '\<C-p>' : '\<S-TAB>'
-  inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
+  inoremap <expr><S-TAB> pumvisible() ? '<C-p>' : '<S-TAB>'
+  inoremap <expr><TAB>  pumvisible() ? '<C-n>' : '<TAB>'
 endif
 
 
@@ -978,6 +978,7 @@ let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 " let g:UltiSnipsListSnippets = '<C-S-E>'
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> EditorConfig
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1529,25 +1530,26 @@ if s:completion_manager == 'coc'
   " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
 
   " Enter for expand.
-  inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '\<CR>'
+  inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
+
 
   " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? '\<C-y>' :
-  "       \ <SID>check_back_space() ? '\<TAB>' :
+  "       \ pumvisible() ? '<C-y>' :
+  "       \ <SID>check_back_space() ? '<TAB>' :
   "       \ coc#refresh()
-  " inoremap <expr> <S-TAB> pumvisible() ? '\<C-p>' : '\<C-h>'
-  inoremap <expr> <C-n> pumvisible() ? '\<C-n>' : coc#refresh()
-  inoremap <expr> <C-p> pumvisible() ? '\<C-p>' : coc#refresh()
+  " inoremap <expr> <S-TAB> pumvisible() ? '<C-p>' : '<C-h>'
+  inoremap <expr> <C-n> pumvisible() ? '<C-n>' : coc#refresh()
+  inoremap <expr> <C-p> pumvisible() ? '<C-p>' : coc#refresh()
 
   inoremap <silent><expr> <TAB>
         \ pumvisible() ? coc#_select_confirm() :
-        \ <SID>check_back_space() ? '\<TAB>' :
+        \ <SID>check_back_space() ? '<tab>' :
         \ coc#refresh()
 
   " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? '\<C-n>' :
-  "       \ coc#expandableOrJumpable() ? '\<C-y>' :
-  "       \ <SID>check_back_space() ? '\<TAB>' :
+  "       \ pumvisible() ? '<C-n>' :
+  "       \ coc#expandableOrJumpable() ? '<C-y>' :
+  "       \ <SID>check_back_space() ? '<TAB>' :
   "       \ coc#refresh()
   " \ pumvisible() ? coc#_select_confirm() :
   " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
