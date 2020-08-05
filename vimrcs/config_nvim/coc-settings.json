@@ -26,6 +26,8 @@
     "typescript": ["javascript"]
   },
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "snippets.autoTrigger": true,
+  "snippets.enableStatusItem": true,
   "tsserver.enable": true,
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */

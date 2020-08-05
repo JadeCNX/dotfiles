@@ -14,7 +14,7 @@ if !has('nvim')
 endif
 
 if has('python3')
-  " Plug 'SirVer/ultisnips' " ultimate snippet
+  Plug 'SirVer/ultisnips' " ultimate snippet
   Plug 'Valloric/MatchTagAlways'
 endif
 
@@ -968,10 +968,13 @@ let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:UltiSnipsExpandTrigger = '<F12>'
-" let g:UltiSnipsListSnippets = '<F12>'
-" let g:UltiSnipsJumpForwardTrigger = ''
-" let g:UltiSnipsJumpBackwardTrigger = ''
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger = '<F12>'
+let g:UltiSnipsListSnippets = '<F12>'
+let g:UltiSnipsJumpForwardTrigger = ''
+let g:UltiSnipsJumpBackwardTrigger = ''
 " let g:UltiSnipsListSnippets = '<C-S-E>'
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 
@@ -1385,6 +1388,7 @@ if s:completion_manager == 'coc'
         \ 'coc-pyright',
         \ 'coc-rls',
         \ 'coc-snippets',
+        \ 'coc-ultisnips',
         \ 'coc-spell-checker',
         \ 'coc-tabnine',
         \ 'coc-tag',
@@ -1531,7 +1535,9 @@ if s:completion_manager == 'coc'
   "       \ pumvisible() ? "\<C-y>" :
   "       \ <SID>check_back_space() ? "\<TAB>" :
   "       \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
+  inoremap <expr> <C-p> pumvisible() ? "\<C-p>" : coc#refresh()
 
   inoremap <silent><expr> <TAB>
         \ pumvisible() ? "\<C-n>" :
