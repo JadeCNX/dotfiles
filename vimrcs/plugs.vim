@@ -13,10 +13,10 @@ if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-if has('python3')
-  Plug 'SirVer/ultisnips' " ultimate snippet
-  " Plug 'Valloric/MatchTagAlways'
-endif
+" if has('python3')
+"   Plug 'SirVer/ultisnips' " ultimate snippet
+"   Plug 'Valloric/MatchTagAlways'
+" endif
 
 let s:completion_manager = ''
 
@@ -971,10 +971,10 @@ let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsExpandTrigger = '<F12>'
-let g:UltiSnipsListSnippets = '<F12>'
-let g:UltiSnipsJumpForwardTrigger = ''
-let g:UltiSnipsJumpBackwardTrigger = ''
+" let g:UltiSnipsExpandTrigger = '<F12>'
+" let g:UltiSnipsListSnippets = '<F12>'
+" let g:UltiSnipsJumpForwardTrigger = ''
+" let g:UltiSnipsJumpBackwardTrigger = ''
 " let g:UltiSnipsListSnippets = '<C-S-E>'
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 
@@ -1388,7 +1388,6 @@ if s:completion_manager == 'coc'
         \ 'coc-pyright',
         \ 'coc-rls',
         \ 'coc-snippets',
-        \ 'coc-ultisnips',
         \ 'coc-spell-checker',
         \ 'coc-tabnine',
         \ 'coc-tag',
@@ -1404,15 +1403,16 @@ if s:completion_manager == 'coc'
         \ 'https://github.com/infeng/vscode-react-typescript',
         \ 'https://github.com/xabikos/vscode-javascript'
         \ ]
-  " \ 'coc-python',
-  " \ 'coc-emmet',
-  " \ 'coc-pairs',
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
+  " \ 'coc-emmet',
   " \ 'coc-git',
   " \ 'coc-highlight',
   " \ 'coc-omni',
+  " \ 'coc-pairs',
   " \ 'coc-prettier',
+  " \ 'coc-python',
+  " \ 'coc-ultisnips',
   " \ 'coc-word',
 
   " To enable highlight current symbol on CursorHold, add:
