@@ -15,7 +15,7 @@ endif
 
 if has('python3')
   Plug 'SirVer/ultisnips' " ultimate snippet
-  Plug 'Valloric/MatchTagAlways'
+  " Plug 'Valloric/MatchTagAlways'
 endif
 
 let s:completion_manager = ''
@@ -403,8 +403,8 @@ if s:completion_manager == 'deoplete'
   let g:deoplete#enable_at_startup = 1
 
   " <TAB>: completion.
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr><S-TAB> pumvisible() ? '\<C-p>' : '\<S-TAB>'
+  inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
 endif
 
 
@@ -846,14 +846,14 @@ nnoremap  <silent> <leader>gb :Gblame<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> deoplete-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " if has('nvim')
-"   let g:deoplete#sources#go#gocode_binary = "/Users/jade/go/bin/gocode"
+"   let g:deoplete#sources#go#gocode_binary = '/Users/jade/go/bin/gocode'
 " endif
 
 
@@ -1070,7 +1070,7 @@ if s:completion_manager == 'deoplete'
 
 
   " if !executable('javascript-typescript-stdio')
-  " echo "javascript-typescript-stdio not installed!\n"
+  " echo 'javascript-typescript-stdio not installed!\n'
   " endif
 
   nnoremap <silent> <leader>wa :call LanguageClient_contextMenu()<CR>
@@ -1109,8 +1109,8 @@ endif
 " -> deoplete-ternjs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " if has('nvim')
-"     let g:tern#command = ["tern"]
-"     let g:tern#arguments = ["--persistent"]
+"     let g:tern#command = ['tern']
+"     let g:tern#arguments = ['--persistent']
 "     let g:deoplete#sources#ternjs#include_keywords = 1
 "     let g:deoplete#sources#ternjs#docs = 1
 "     let g:deoplete#sources#ternjs#filetypes = [ 'javascript', 'jsx', 'javascript.jsx', 'vue' ]
@@ -1172,7 +1172,7 @@ endif
 " -> tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:tagbar_left = 1
-" let g:tagbar_previewwin_pos = ""
+" let g:tagbar_previewwin_pos = ''
 " let g:tagbar_vertical = 25
 
 
@@ -1529,21 +1529,26 @@ if s:completion_manager == 'coc'
   " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
 
   " Enter for expand.
-  inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : "\<CR>"
+  inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '\<CR>'
 
   " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? "\<C-y>" :
-  "       \ <SID>check_back_space() ? "\<TAB>" :
+  "       \ pumvisible() ? '\<C-y>' :
+  "       \ <SID>check_back_space() ? '\<TAB>' :
   "       \ coc#refresh()
-  inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
-  inoremap <expr> <C-p> pumvisible() ? "\<C-p>" : coc#refresh()
+  " inoremap <expr> <S-TAB> pumvisible() ? '\<C-p>' : '\<C-h>'
+  inoremap <expr> <C-n> pumvisible() ? '\<C-n>' : coc#refresh()
+  inoremap <expr> <C-p> pumvisible() ? '\<C-p>' : coc#refresh()
 
   inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ coc#expandableOrJumpable() ? "\<C-y>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
+        \ pumvisible() ? coc#_select_confirm() :
+        \ <SID>check_back_space() ? '\<TAB>' :
         \ coc#refresh()
+
+  " inoremap <silent><expr> <TAB>
+  "       \ pumvisible() ? '\<C-n>' :
+  "       \ coc#expandableOrJumpable() ? '\<C-y>' :
+  "       \ <SID>check_back_space() ? '\<TAB>' :
+  "       \ coc#refresh()
   " \ pumvisible() ? coc#_select_confirm() :
   " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 
@@ -1729,7 +1734,7 @@ hi Italic gui=italic
 hi Whitespace guifg=gray30
 
 " transparent background
-if !has("gui_running") && !has("gui_vimr")
+if !has('gui_running') && !has('gui_vimr')
   hi Normal guibg=NONE ctermbg=NONE
   hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
   hi EndOfBuffer guibg=NONE ctermbg=NONE

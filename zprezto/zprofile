@@ -111,9 +111,3 @@ export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #
 export TOUCHBAR_GIT_ENABLED=true
 export YARN_ENABLED=true
-
-
-#
-# java
-#
-[[ -e "/usr/libexec/java_home" ]] && export JAVA_HOME="$(/usr/libexec/java_home)"
