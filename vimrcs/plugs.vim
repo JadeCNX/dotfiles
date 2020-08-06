@@ -561,10 +561,10 @@ endif
 " -> FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File search
-nnoremap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+nnoremap <silent> <leader>p :ProjectMru --tiebreak=end<CR>
 nnoremap  <silent> <leader>P :History<cr>
-nnoremap  <silent> <leader>gp :GFiles<cr>
 nnoremap  <silent> <leader>b :Buffers<cr>
+nnoremap  <silent> <leader>B :GFiles<cr>
 
 " Mapping selecting mappings
 " nmap <leader><tab> <plug>(fzf-maps-n)
@@ -572,36 +572,44 @@ nnoremap  <silent> <leader>b :Buffers<cr>
 " omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-imap <c-x><c-w> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+inoremap <c-x><c-w> <plug>(fzf-complete-word)
+inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
+inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
-if executable('ag')
-  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Ag')<CR>
-  nmap <leader>* :exe 'Ag '.expand('<cword>')<CR>
-  nmap <leader>/ :<C-u>Ag<CR>
-  " nmap <leader>? :<C-u>Ag<CR>
+if executable('fd')
+  inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+else
+  inoremap <c-x><c-f> <plug>(fzf-complete-path)
+endif
 
+if executable('rg')
+  function! RipgrepFzf(query, fullscreen)
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
+
+  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'RG')<CR>
+  nmap <leader>* :exe 'RG '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>RG<CR>
+  " nmap <leader>? :<C-u>RG<CR>
+
+elseif executable('ag')
   command! -bang -nargs=* Ag
         \ call fzf#vim#ag(<q-args>,
         \                 <bang>0 ? fzf#vim#with_preview('up:60%')
         \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
         \                 <bang>0)
 
-elseif executable('rg')
-  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Rg')<CR>
-  nmap <leader>* :exe 'Rg '.expand('<cword>')<CR>
-  nmap <leader>/ :<C-u>Rg<CR>
-  " nmap <leader>? :<C-u>Rg<CR>
+  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Ag')<CR>
+  nmap <leader>* :exe 'Ag '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>Ag<CR>
+  " nmap <leader>? :<C-u>Ag<CR>
 
-  " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-  command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-        \   <bang>0 ? fzf#vim#with_preview('up:60%')
-        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-        \   <bang>0)
 else
   command! -bang -nargs=* GGrep
         \ call fzf#vim#grep(
@@ -634,6 +642,12 @@ command! -bang -nargs=? -complete=dir Files
 
 " Advanced customization using autoload functions
 " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> fzf-filemru
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fzf_filemru_bufwrite = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> cpsm
