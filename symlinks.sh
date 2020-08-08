@@ -76,6 +76,9 @@ ln -sfnv $PWD/scripts/fzf_git.zsh ~/.fzf_git.zsh
 backup ~/.hammerspoon
 ln -sfnv $PWD/hammerspoon ~/.hammerspoon
 
+# bat
+backup ~/.config/bat
+ln -sfnv $PWD/bat ~/.config/bat
 
 # starship https://starship.rs
 backup ~/.config/starship.toml
