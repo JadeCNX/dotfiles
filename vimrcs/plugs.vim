@@ -1555,10 +1555,9 @@ if s:completion_manager == 'coc'
   inoremap <expr> <C-n> pumvisible() ? '<C-n>' : coc#refresh()
   inoremap <expr> <C-p> pumvisible() ? '<C-p>' : coc#refresh()
 
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? coc#_select_confirm() :
-        \ <SID>check_back_space() ? '<tab>' :
-        \ coc#refresh()
+  inoremap <silent><expr> <TAB> pumvisible()  ? coc#_select_confirm() : '<TAB>'
+        " \ <SID>check_back_space() ? '<TAB>' :
+        " \ coc#refresh()
 
   " inoremap <silent><expr> <TAB>
   "       \ pumvisible() ? '<C-n>' :
