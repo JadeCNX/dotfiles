@@ -12,3 +12,4 @@ Session.vim
 node_modules
 .projectile
 .ccls-cache
+.vim
