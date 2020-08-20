@@ -137,6 +137,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
+" Plug 'kiteco/vim-plugin'
 " Plug 'koron/minimap-vim'
 " Plug 'lifepillar/vim-colortemplate'
 " Plug 'lilydjwg/colorizer'
@@ -561,10 +562,10 @@ endif
 " -> FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File search
-nnoremap <silent> <leader>p :ProjectMru --tiebreak=end<CR>
-nnoremap  <silent> <leader>P :History<cr>
-nnoremap  <silent> <leader>b :Buffers<cr>
-nnoremap  <silent> <leader>B :GFiles<cr>
+nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+nmap <silent> <leader>P :History<cr>
+nmap <silent> <leader>b :Buffers<cr>
+nmap <silent> <leader>B :GFiles<cr>
 
 " Mapping selecting mappings
 " nmap <leader><tab> <plug>(fzf-maps-n)
@@ -572,14 +573,14 @@ nnoremap  <silent> <leader>B :GFiles<cr>
 " omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-inoremap <c-x><c-w> <plug>(fzf-complete-word)
-inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
-inoremap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-w> <plug>(fzf-complete-word)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 if executable('fd')
-  inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+  imap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
 else
-  inoremap <c-x><c-f> <plug>(fzf-complete-path)
+  imap <c-x><c-f> <plug>(fzf-complete-path)
 endif
 
 if executable('rg')
@@ -1404,7 +1405,6 @@ if s:completion_manager == 'coc'
         \ 'coc-rls',
         \ 'coc-snippets',
         \ 'coc-spell-checker',
-        \ 'coc-tabnine',
         \ 'coc-tag',
         \ 'coc-tailwindcss',
         \ 'coc-template',
@@ -1423,10 +1423,12 @@ if s:completion_manager == 'coc'
   " \ 'coc-emmet',
   " \ 'coc-git',
   " \ 'coc-highlight',
+  " \ 'coc-kite',
   " \ 'coc-omni',
   " \ 'coc-pairs',
   " \ 'coc-prettier',
   " \ 'coc-python',
+  " \ 'coc-tabnine',
   " \ 'coc-ultisnips',
   " \ 'coc-word',
 

@@ -1,5 +1,6 @@
 # Don't print a new line at the start of the prompt
 add_newline = true
+scan_timeout = 1
 
 [battery]
 disabled = true
