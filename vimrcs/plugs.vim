@@ -1229,7 +1229,8 @@ nnoremap <silent><leader>m :MaximizerToggle!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> auto-pairs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsShortcutBackInsert = ''
+let g:AutoPairsShortcutToggle = ''
 " let g:AutoPairsMapSpace = 0
 " let g:AutoPairsFlyMode = 0
 
