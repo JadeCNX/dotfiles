@@ -191,7 +191,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
-Plug 'szw/vim-maximizer'
+" Plug 'szw/vim-maximizer'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'terryma/vim-expand-region'
@@ -212,6 +212,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
+Plug 'troydm/zoomwintab.vim'
 Plug 'tweekmonster/fzf-filemru'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
@@ -245,7 +246,6 @@ Plug 'yssl/QFEnter'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'challenger-deep-theme/vim'
@@ -256,6 +256,7 @@ Plug 'yssl/QFEnter'
 " Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
+" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'phanviet/vim-monokai-pro'
 " Plug 'rakr/vim-one'
 " Plug 'sainnhe/vim-color-vanilla-cake'
@@ -753,13 +754,15 @@ let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_splits = 1
+" let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tabs = 0
+" let g:airline#extensions#tabline#tab_nr_type = 2 " tab number
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+" let g:airline#extensions#tabline#show_tab_count = 1
+let g:airline#extensions#zoomwintab#enabled = 1
 
 let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 1
@@ -1195,8 +1198,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> maximizer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:maximizer_set_default_mapping = 0
-nnoremap <silent><leader>m :MaximizerToggle!<CR>
+" let g:maximizer_set_default_mapping = 0
+" nnoremap <silent><leader>m :MaximizerToggle!<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
