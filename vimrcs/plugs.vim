@@ -56,7 +56,10 @@ if executable('ctags')
 endif
 
 if s:completion_manager != 'coc'
+  " Plug 'jistr/vim-nerdtree-tabs'
   Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
 " if has('nvim')
@@ -124,7 +127,6 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'JadeCNX/vim-sleuth'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
-" Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'jlanzarotta/bufexplorer'
 Plug 'jph00/swift-apple', {'for': 'swift'}
 Plug 'Julian/vim-textobj-variable-segment'
@@ -196,7 +198,6 @@ Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'terryma/vim-expand-region'
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
 Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
@@ -238,7 +239,6 @@ Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
 Plug 'Yggdroot/indentLine'
 Plug 'yssl/QFEnter'
@@ -754,10 +754,10 @@ let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
-let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 1
 " let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#show_tabs = 1
 " let g:airline#extensions#tabline#tab_nr_type = 2 " tab number
 let g:airline#extensions#whitespace#enabled = 0
 " let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
@@ -1562,8 +1562,8 @@ if s:completion_manager == 'coc'
   inoremap <expr> <C-p> pumvisible() ? '<C-p>' : coc#refresh()
 
   inoremap <silent><expr> <TAB> pumvisible()  ? coc#_select_confirm() : '<TAB>'
-        " \ <SID>check_back_space() ? '<TAB>' :
-        " \ coc#refresh()
+  " \ <SID>check_back_space() ? '<TAB>' :
+  " \ coc#refresh()
 
   " inoremap <silent><expr> <TAB>
   "       \ pumvisible() ? '<C-n>' :
