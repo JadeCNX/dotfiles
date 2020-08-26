@@ -74,7 +74,7 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
-Plug 'APZelos/blamer.nvim'
+" Plug 'APZelos/blamer.nvim'
 " Plug 'ashisha/image.vim'
 " Plug 'bagrat/vim-workspace'
 " Plug 'bfredl/nvim-miniyank'
@@ -86,7 +86,7 @@ Plug 'camspiers/lens.vim'
 Plug 'chamindra/marvim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 " Plug 'chr4/nginx.vim'
-Plug 'chrisbra/Colorizer'
+" Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'chrisbra/NrrwRgn'
 Plug 'chrisbra/unicode.vim'
@@ -157,7 +157,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
 " Plug 'mhartington/deoplete-typescript'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 " Plug 'mileszs/ack.vim'
@@ -179,6 +179,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'rhysd/git-messenger.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
@@ -750,6 +751,7 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let airline_theme='onedark'
 " let g:airline#extensions#ale#enabled = 0
+let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -976,11 +978,11 @@ let g:NERDDefaultAlign = 'both'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Colorizer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:colorizer_auto_color = 0
+" let g:colorizer_auto_color = 0
 " let g:colorizer_skip_comments = 1
 " let g:colorizer_auto_filetype='css,html,javascript,javascript.jsx'
 " let g:colorizer_nomap = 1
-let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
+" let g:colorizer_hex_pattern = ['#', '\%(\x\{6}\|\x\{3}\)', '']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1400,6 +1402,7 @@ if s:completion_manager == 'coc'
         \ 'coc-eslint',
         \ 'coc-explorer',
         \ 'coc-flutter',
+        \ 'coc-git',
         \ 'coc-gocode',
         \ 'coc-html',
         \ 'coc-json',
@@ -1425,7 +1428,6 @@ if s:completion_manager == 'coc'
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
   " \ 'coc-emmet',
-  " \ 'coc-git',
   " \ 'coc-highlight',
   " \ 'coc-kite',
   " \ 'coc-omni',
@@ -1740,6 +1742,21 @@ highlight Blamer guifg=gray30 gui=italic
 
 " let g:session_persist_font = 0
 " let g:session_persist_colors = 0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-hexokinase
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Hexokinase_highlighters = ['backgroundfull']
+" let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
+" let g:Hexokinase_highlighters = ['sign_column']
+" set signcolumn=yes:9 " Neovim only
+" let g:Hexokinase_highlighters = ['foreground']
+" let g:Hexokinase_highlighters = ['foregroundfull']
+" let g:Hexokinase_highlighters = ['background']
+" let g:Hexokinase_highlighters = ['backgroundfull']
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Override color
