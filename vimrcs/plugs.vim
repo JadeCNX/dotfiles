@@ -752,18 +752,19 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 let airline_theme='onedark'
 " let g:airline#extensions#ale#enabled = 0
 let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#vista#enabled = 0
+" let g:airline#extensions#tabline#alt_sep = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff']
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 1
-" let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_tabs = 1
-" let g:airline#extensions#tabline#tab_nr_type = 2 " tab number
-let g:airline#extensions#whitespace#enabled = 0
-" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree', 'vista', 'Mundo', 'list', 'quickfix', 'MundoDiff', 'coc-explorer']
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_splits = 0
 " let g:airline#extensions#tabline#show_tab_count = 1
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tabs = 0
+" let g:airline#extensions#tabline#tab_nr_type = 2 " tab number
+" let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+let g:airline#extensions#vista#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#zoomwintab#enabled = 1
 
 let g:airline_highlighting_cache = 1
@@ -1028,7 +1029,7 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_enabled = 1
 let g:indentLine_char = "│"
-let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista', 'help']
+let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista', 'help', 'coc-explorer']
 let g:indentLine_color_gui = '#333333'
 " let g:indentLine_setColors = 0
 
@@ -1040,7 +1041,7 @@ set list lcs=tab:\│\  " Last one is space!
 " -> indent guides
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', 'quickfix', 'MundoDiff']
+" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', 'quickfix', 'MundoDiff', 'coc-explorer']
 " let g:indent_guides_default_mapping = 0
 " let g:indent_guides_guide_size = 1
 " let g:indent_guides_start_level = 2
@@ -1366,7 +1367,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " -> lens.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:animate#easing_func = 'animate#ease_out_cubic'
-let g:lens#disabled_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff']
+let g:lens#disabled_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff', 'coc-explorer']
 " let g:lens#disabled_buftypes = ['quickfix', 'terminal']
 let g:lens#disabled = 1
 

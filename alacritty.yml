@@ -107,7 +107,7 @@ font:
     # family: GoMono Nerd Font
     # family: Hasklug Nerd Font
     # family: Hurmit Nerd Font
-    # family: iMWritingMonoS Nerd Font
+    family: iMWritingMonoS Nerd Font
     # family: Inconsolata Nerd Font
     # family: InconsolataGo Nerd Font
     # family: Iosevka Nerd Font
@@ -117,10 +117,10 @@ font:
     # family: OperatorMonoSSmLig Nerd Font
     # family: SFmono Nerd Font
     # family: Source Code Pro
-    family: VictorMono Nerd Font
+    # family: VictorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    # style: Regular
 
   # Bold font face
   #bold:
