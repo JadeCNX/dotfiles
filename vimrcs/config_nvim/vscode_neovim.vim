@@ -184,8 +184,6 @@ call plug#end()
 
 let g:EasyMotion_smartcase = 1
 " map , <Plug>(easymotion-prefix)
-nmap <space>j <Plug>(easymotion-overwin-f)
 
-map  <space>f <Plug>(easymotion-overwin-f)
-nmap <space>F <Plug>(easymotion-overwin-f2)
+map  <C-f> <Plug>(easymotion-overwin-f)
 
