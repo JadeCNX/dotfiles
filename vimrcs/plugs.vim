@@ -770,6 +770,8 @@ let g:airline#extensions#zoomwintab#enabled = 1
 let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 1
 
+let g:airline_statusline_ontop = 1
+
 " let g:airline#extensions#tabline#buf_label_first = 1
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
 " let g:airline#extensions#tabline#fnamecollapse = 1
