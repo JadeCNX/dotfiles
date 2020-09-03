@@ -1,11 +1,13 @@
 {
   "coc.preferences.colorSupport": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   /* "codeLens.enable": true, */
   "cSpell.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.showCommandsInEditorContextMenu": false,
   "git.addGBlameToVirtualText": true,
+  "git.addGBlameToBufferVar": true,
   "json.enable": true,
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
