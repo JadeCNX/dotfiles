@@ -786,11 +786,11 @@ function! StatusDiagnostic() abort
 endfunction
 
 set statusline=
-set statusline+=%1*\ #%n\                          " buffernr
-set statusline+=%2*\\ %*                          " split
-set statusline+=%3*\ %f\                           " buffernr
-set statusline+=%3*%=                              " blank area
-set statusline+=%3*%{!airline#check_mode(winnr())} " check mode for airline
+set statusline+=%1*\ #%n\                                 " buffernr
+set statusline+=%2*\\ %*                                 " split
+set statusline+=%3*\ %f\                                  " buffernr
+set statusline+=%4*%=%{!airline#check_mode(winnr())}        " check mode for airline
+set statusline+=%3*%{get(b:,'coc_current_function','')} " current function
 
 " set statusline+=%5*                                        " split
 " set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
@@ -811,7 +811,7 @@ let s:color4='#1c1b19'
 execute 'hi User1 guifg=' . s:color4 . ' guibg=' . s:color1
 execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
 execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
-" execute 'hi User4 guifg=' . s:color1 . ' guibg=' . s:color3
+execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
 " execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
