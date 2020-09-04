@@ -788,9 +788,9 @@ endfunction
 set statusline=
 set statusline+=%1*\ #%n\                                 " buffernr
 set statusline+=%2*\\ %*                                 " split
-set statusline+=%3*\ %f\                                  " buffernr
-set statusline+=%4*%=%{!airline#check_mode(winnr())}        " check mode for airline
-set statusline+=%3*%{get(b:,'coc_current_function','')} " current function
+set statusline+=%3*\ %<%f%h%m%r                           " file
+set statusline+=%4*%=%{!airline#check_mode(winnr())}      " check mode for airline
+set statusline+=%3*%{get(b:,'coc_current_function','')}\  " current function
 
 " set statusline+=%5*                                        " split
 " set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
