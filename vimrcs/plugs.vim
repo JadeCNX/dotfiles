@@ -749,9 +749,9 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let airline_theme='onedark'
+let airline_theme='srcery'
 " let g:airline#extensions#ale#enabled = 0
-let g:airline#extensions#coc#enabled = 0
+let g:airline#extensions#coc#enabled = 1
 " let g:airline#extensions#tabline#alt_sep = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -786,15 +786,19 @@ function! StatusDiagnostic() abort
 endfunction
 
 set statusline=
-set statusline+=%2*#%n\ %f\                                 " buffernr
-set statusline+=%7*\\                                      " split
-set statusline+=%1*\ %{StatusDiagnostic()}                  " diagnostic info
-set statusline+=%1*%=%{get(b:,'coc_current_function','')}\  " current function
-set statusline+=%6*                                        " split
-set statusline+=%4*\ \ %{&spelllang}\                       " Spellanguage & Highlight on?
-set statusline+=%5*                                        " split
-set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
-set statusline+=%2*\ %l,%c\ %P\ %*                          " rownumber,colnumber
+set statusline+=%1*\ #%n\                          " buffernr
+set statusline+=%2*\\ %*                          " split
+set statusline+=%3*\ %f\                           " buffernr
+set statusline+=%3*%=                              " blank area
+set statusline+=%3*%{!airline#check_mode(winnr())} " check mode for airline
+
+" set statusline+=%5*                                        " split
+" set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
+" set statusline+=%2*\ %l,%c\ %P\ %*                          " rownumber,colnumber
+" set statusline+=%6*                                        " split
+" set statusline+=%4*\ \ %{&spelllang}\                       " Spellanguage & Highlight on?
+" set statusline+=%1*\ %{StatusDiagnostic()}                  " diagnostic info
+" set statusline+=%1*%=%{get(b:,'coc_current_function','')}\  " current function
 " set statusline^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
 " set statusline+=%1*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}" Encoding
 " set statusline+=%1*\ %<%f%h%m%r%b\ 0x%B\ \ %l,%c%V\ %P\ %* " character under cursor
@@ -804,12 +808,14 @@ let s:color2='#918175'
 let s:color3='#2d2c29'
 let s:color4='#1c1b19'
 
-execute 'hi User1 guifg=' . s:color1 . ' guibg=' . s:color3
-execute 'hi User2 guifg=' . s:color4 . ' guibg=' . s:color1
-execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
-execute 'hi User5 guifg=' . s:color2 . ' guibg=' . s:color1
-execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
-execute 'hi User7 guifg=' . s:color3 . ' guibg=' . s:color1
+execute 'hi User1 guifg=' . s:color4 . ' guibg=' . s:color1
+execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
+execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
+" execute 'hi User4 guifg=' . s:color1 . ' guibg=' . s:color3
+" execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
+" execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
+" execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
+" execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
 
 " let g:airline#extensions#tabline#buf_label_first = 1
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -1633,7 +1639,8 @@ if s:completion_manager == 'coc'
 
   nmap <leader>ee :CocCommand explorer --toggle --sources=file+<CR>
 
-  " autocmd VimLeavePre :bufdo if &ft == 'coc-explorer' | doautocmd FileType | endif
+  " autocmd VimLeavePre * bufdo if &ft == 'coc-explorer' | bdelete | endif
+  " autocmd VimLeave * NERDTreeClose
 endif
 
 
