@@ -1546,6 +1546,19 @@ if s:completion_manager == 'coc'
   omap if <Plug>(coc-funcobj-i)
   omap af <Plug>(coc-funcobj-a)
 
+  " navigate chunks of current buffer
+  nmap [g <Plug>(coc-git-prevchunk)
+  nmap ]g <Plug>(coc-git-nextchunk)
+  " show chunk diff at current position
+  nmap <leader>gi <Plug>(coc-git-chunkinfo)
+  " show commit contains current position
+  nmap <leader>gc <Plug>(coc-git-commit)
+  " create text object for git chunks
+  omap ig <Plug>(coc-git-chunk-inner)
+  xmap ig <Plug>(coc-git-chunk-inner)
+  omap ag <Plug>(coc-git-chunk-outer)
+  xmap ag <Plug>(coc-git-chunk-outer)
+
   nnoremap <silent> <leader>wy :call StatusDiagnosticToClipboard()<CR>
 
   function! s:show_documentation()
