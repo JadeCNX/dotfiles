@@ -168,7 +168,7 @@ Plug 'neoclide/jsonc.vim'
 " Plug 'osyo-manga/vim-anzu'
 Plug 'osyo-manga/vim-over'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+" Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
@@ -222,6 +222,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-jp/vital.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 " Plug 'vim-scripts/mru.vim' " most recently use
@@ -1757,6 +1759,10 @@ nnoremap <silent> <leader>wx :call WindowSwap#EasyWindowSwap()<CR>
 " let g:vimwiki_list = [{'path': '~/Dropbox/.notes'}]
 let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+augroup pandoc_syntax
+  autocmd! FileType vimwiki set syntax=markdown.pandoc
+augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

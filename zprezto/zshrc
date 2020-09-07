@@ -107,7 +107,7 @@ alias hidden-hide='defaults write com.apple.finder AppleShowAllFiles -bool NO &&
 
 alias dkct='docker-compose logs -f --tail 10'
 
-alias note='vim -S ~/Dropbox/.notes/Session.vim'
+alias note='vim +VimwikiIndex'
 alias c='clear'
 
 alias vtop='vtop --theme wizard'
