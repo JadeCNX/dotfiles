@@ -107,14 +107,14 @@ font:
     # family: GoMono Nerd Font
     # family: Hasklug Nerd Font
     # family: Hurmit Nerd Font
-    family: iMWritingMonoS Nerd Font
+    # family: iMWritingMonoS Nerd Font
     # family: Inconsolata Nerd Font
     # family: InconsolataGo Nerd Font
     # family: Iosevka Nerd Font
     # family: JetBrainsMono Nerd Font
     # family: LigaOperatorMono Nerd Font Mono
     # family: mplus Nerd Font Mono
-    # family: OperatorMonoSSmLig Nerd Font
+    family: OperatorMonoSSmLig Nerd Font
     # family: SFmono Nerd Font
     # family: Source Code Pro
     # family: VictorMono Nerd Font
