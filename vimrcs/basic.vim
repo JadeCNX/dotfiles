@@ -1,3 +1,7 @@
+" Colorscheme
+set background=dark
+colorscheme slate
+
 " Show line number
 set number
 
@@ -159,7 +163,7 @@ set tabstop=4
 " Linebreak on 500 characters
 set linebreak
 set breakindent
-set textwidth=500
+set textwidth=160
 let &showbreak='↳ '
 " set cpoptions+=n
 
