@@ -62,6 +62,10 @@ if s:completion_manager != 'coc'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
+if executable('go') && (has('nvim') || has('sign'))
+  Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+endif
+
 " if has('nvim')
 "   Plug 'kassio/neoterm'
 " endif
@@ -179,7 +183,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'rhysd/git-messenger.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'

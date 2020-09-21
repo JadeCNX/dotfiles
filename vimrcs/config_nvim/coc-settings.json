@@ -27,6 +27,7 @@
     "typescriptreact": ["javascript"],
     "typescript": ["javascript"]
   },
+  "clangd.semanticHighlighting": true,
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "snippets.autoTrigger": true,
   "snippets.enableStatusItem": true,
