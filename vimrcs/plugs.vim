@@ -1566,6 +1566,8 @@ if s:completion_manager == 'coc'
 
   nnoremap <silent> <leader>wy :call StatusDiagnosticToClipboard()<CR>
 
+  nmap <leader>w; :<C-u>CocCommand clangd.switchSourceHeader<CR>
+
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h '.expand('<cword>')
@@ -1618,7 +1620,8 @@ if s:completion_manager == 'coc'
   " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
 
   " Enter for expand.
-  inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
+  " inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
+  inoremap <expr> <c-l> pumvisible() ? coc#_select_confirm() : coc#refresh()
 
 
   " inoremap <silent><expr> <TAB>
@@ -1629,7 +1632,7 @@ if s:completion_manager == 'coc'
   inoremap <expr> <C-n> pumvisible() ? '<C-n>' : coc#refresh()
   inoremap <expr> <C-p> pumvisible() ? '<C-p>' : coc#refresh()
 
-  inoremap <silent><expr> <TAB> pumvisible()  ? coc#_select_confirm() : '<TAB>'
+  " inoremap <silent><expr> <TAB> pumvisible()  ? coc#_select_confirm() : '<TAB>'
   " \ <SID>check_back_space() ? '<TAB>' :
   " \ coc#refresh()
 
