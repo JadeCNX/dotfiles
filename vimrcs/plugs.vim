@@ -106,6 +106,7 @@ Plug 'dbakker/vim-paragraph-motion'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'dimonomid/auto-pairs-gentle'
+Plug 'dyng/ctrlsf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'edkolev/tmuxline.vim'
@@ -195,6 +196,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'soywod/kronos.vim', {'on': ['Kronos']}
+Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'szw/vim-maximizer'
