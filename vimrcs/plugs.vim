@@ -66,9 +66,11 @@ if executable('go') && (has('nvim') || has('sign'))
   Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 endif
 
-" if has('nvim')
-"   Plug 'kassio/neoterm'
-" endif
+if has('nvim')
+" Plug 'kassio/neoterm'
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+  Plug 'norcalli/nvim-colorizer.lua'
+endif
 
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-closetag'
@@ -1623,7 +1625,7 @@ if s:completion_manager == 'coc'
 
   " Enter for expand.
   " inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
-  inoremap <expr> <c-l> pumvisible() ? coc#_select_confirm() : coc#refresh()
+  inoremap <expr> <c-j> pumvisible() ? coc#_select_confirm() : coc#refresh()
 
 
   " inoremap <silent><expr> <TAB>
