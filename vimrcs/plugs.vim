@@ -62,9 +62,9 @@ if s:completion_manager != 'coc'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
-if executable('go') && (has('nvim') || has('sign'))
-  Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-endif
+" if executable('go') && (has('nvim') || has('sign'))
+"   Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" endif
 
 if has('nvim')
 " Plug 'kassio/neoterm'
@@ -1834,6 +1834,11 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 " let g:Hexokinase_highlighters = ['background']
 " let g:Hexokinase_highlighters = ['backgroundfull']
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> nvim-colorizer.lua
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua require'colorizer'.setup()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
