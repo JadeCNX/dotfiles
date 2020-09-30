@@ -1304,13 +1304,13 @@ nmap <leader>ff :<C-u>Autoformat<CR>
 vmap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
 " let g:autoformat_verbosemode=1
-" let g:formatdef_prettier = '"prettier --stdin --stdin-filepath ".expand("%:p")." --tab-width=".shiftwidth()'
-let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=false --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
+let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")." --tab-width=".shiftwidth()'
+" let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=true --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
 let g:formatters_html = ['prettier']
-let g:formatters_typescript = ['prettier_ts', 'tsfmt']
-let g:formatters_typescriptreact = ['prettier_ts', 'tsfmt']
+let g:formatters_typescript = ['prettier', 'tsfmt']
+let g:formatters_typescriptreact = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
 let g:formatters_javascript = [
       \ 'prettier',
