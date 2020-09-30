@@ -67,8 +67,10 @@ endif
 " endif
 
 if has('nvim')
-" Plug 'kassio/neoterm'
-  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+  " Plug 'APZelos/blamer.nvim'
+  " Plug 'bfredl/nvim-miniyank'
+  " Plug 'kassio/neoterm'
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
   Plug 'norcalli/nvim-colorizer.lua'
 endif
 
@@ -80,10 +82,8 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
-" Plug 'APZelos/blamer.nvim'
 " Plug 'ashisha/image.vim'
 " Plug 'bagrat/vim-workspace'
-" Plug 'bfredl/nvim-miniyank'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
 Plug 'bps/vim-textobj-python'

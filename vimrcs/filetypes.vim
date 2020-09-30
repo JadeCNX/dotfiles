@@ -28,6 +28,9 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 " -> JSON section
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  " autocmd FileType json syntax match Comment +\/\/.\+$+
+ autocmd FileType json set nowrap
+ autocmd FileType jsonc set nowrap
+ autocmd FileType json5 set nowrap
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
