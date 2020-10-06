@@ -44,6 +44,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'git-contrib' \
   'forgit' \
+  'zsh-nvm' \
   'docker' \
   'alias-tips' \
   'command-not-found' \

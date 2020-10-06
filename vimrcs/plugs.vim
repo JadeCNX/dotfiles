@@ -20,7 +20,7 @@ endif
 
 let s:completion_manager = ''
 
-if executable('node') && has('nvim')
+if executable('node')
   let s:completion_manager = 'coc'
 elseif has('python3')
   let s:completion_manager = 'deoplete'
@@ -42,7 +42,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim'  ", {'branch': 'release'}
 endif
 
 if empty(glob('/usr/local/opt/fzf'))
@@ -1474,6 +1474,7 @@ if s:completion_manager == 'coc'
         \ 'coc-template',
         \ 'coc-tslint',
         \ 'coc-tsserver',
+        \ 'coc-ultisnips',
         \ 'coc-vimlsp',
         \ 'coc-xml',
         \ 'coc-yaml',
@@ -1492,7 +1493,6 @@ if s:completion_manager == 'coc'
   " \ 'coc-prettier',
   " \ 'coc-python',
   " \ 'coc-tabnine',
-  " \ 'coc-ultisnips',
   " \ 'coc-word',
 
   " To enable highlight current symbol on CursorHold, add:

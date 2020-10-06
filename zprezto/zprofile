@@ -46,7 +46,6 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   /usr/local/opt/llvm/bin
-  $HOME/.node_modules/bin
   $HOME/.cargo/bin
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin

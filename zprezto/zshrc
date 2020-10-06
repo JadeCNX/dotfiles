@@ -87,10 +87,10 @@ printf 'ctrl-r:execute-silent(realpath {} | xargs echo -n | $copy)'
 
 export FZF_DEFAULT_OPTS="--bind '$(fzf-binds)'"
 
+
 #
 # Alias
 #
-
 alias emacs='emacs -nw'
 alias tmr=tmuxinator
 
