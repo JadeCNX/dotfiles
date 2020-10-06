@@ -37,14 +37,13 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'homebrew' \
   'osx' \
-  'node' \
+  'zsh-nvm' \
   'yum' \
   'python' \
   'rsync' \
   'archive' \
   'git-contrib' \
   'forgit' \
-  'zsh-nvm' \
   'docker' \
   'alias-tips' \
   'command-not-found' \
