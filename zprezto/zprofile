@@ -49,6 +49,7 @@ path=(
   $HOME/.cargo/bin
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin
+  $HOME/.node_modules/bin
   $HOME/.fastlane/bin
   $HOME/.iterm2
   $path
