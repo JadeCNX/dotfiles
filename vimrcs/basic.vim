@@ -107,7 +107,8 @@ set lazyredraw
 set magic
 
 " show matching brackets when text indicator is over them
-set showmatch
+set noshowmatch
+let g:loaded_matchparen=1
 
 " how many tenths of a second to blink when matching brackets
 set mat=2
