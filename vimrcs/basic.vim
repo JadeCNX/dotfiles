@@ -204,8 +204,8 @@ map <silent> <leader><cr> :noh<cr>
 " map <leader>ba :bufdo bd<cr>
 
 map <c-q> :Bclose<cr>
-map <c-l> :bnext<cr>
-map <c-h> :bprevious<cr>
+" map <c-l> :bnext<cr>
+" map <c-h> :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
