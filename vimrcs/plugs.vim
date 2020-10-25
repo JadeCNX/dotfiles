@@ -42,7 +42,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim'  ", {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'}  ", {'branch': 'release'}
 endif
 
 if empty(glob('/usr/local/opt/fzf'))
@@ -70,7 +70,7 @@ if has('nvim')
   " Plug 'APZelos/blamer.nvim'
   " Plug 'bfredl/nvim-miniyank'
   " Plug 'kassio/neoterm'
-  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
   Plug 'norcalli/nvim-colorizer.lua'
 endif
 
@@ -662,6 +662,20 @@ let g:fzf_filemru_bufwrite = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-clap
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nmap <silent> <leader>p :Clap files<CR>
+" nmap <silent> <leader>P :Clap history<cr>
+" nmap <silent> <leader>b :Clap buffers<cr>
+" nmap <silent> <leader>B :Clap gfiles<cr>
+" nmap <silent> <leader>l :Clap filetypes<cr>
+" nmap <silent> <leader>q :Clap command<cr>
+" nmap <silent> <leader>Q :Clap command_history<cr>
+" nmap <silent> <leader>/ :Clap grep<cr>
+" nmap <silent> <leader>? :Clap grep<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> cpsm
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
@@ -760,7 +774,7 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let airline_theme='srcery'
 " let g:airline#extensions#ale#enabled = 0
-let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#enabled = 0
 " let g:airline#extensions#tabline#alt_sep = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -775,6 +789,7 @@ let g:airline#extensions#tabline#show_tabs = 0
 let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#zoomwintab#enabled = 1
+let g:webdevicons_enable = 1
 
 let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 1

@@ -4,9 +4,11 @@ scan_timeout = 1
 
 [aws]
 symbol = " "
+disabled = true
 
 [gcloud]
 symbol = " "
+disabled = true
 
 [battery]
 disabled = true
@@ -27,8 +29,9 @@ style = "bold green"
 threshold = 80
 
 [character]
-symbol = ""
-vicmd_symbol = ""
+success_symbol = "[](green)"
+error_symbol = "[ ](red)"
+vicmd_symbol = "[](yellow)"
 # use_symbol_for_status = true
 
 [cmd_duration]
@@ -36,13 +39,14 @@ min_time = 500
 # prefix = "underwent "
 
 [directory]
-format = " ($style)[$path]($style)[$read_only]($read_only_style) "
+format = "[ $path]($style)[$read_only]($read_only_style) "
 style = "blue"
 truncation_length = 7
 truncate_to_repo = false
 
 [docker_context]
 symbol = " "
+only_with_files = true
 
 [erlang]
 symbol = " "
@@ -53,41 +57,26 @@ symbol = " "
 [git_branch]
 symbol = " "
 
+[git_commit]
+only_detached = false
+tag_disabled = false
+tag_symbol = " "
+format = "[ $hash]($style) [$tag]($style)"
+
 [git_status]
 disabled = false
-ahead = ""
-behind = ""
+# format = "[\\[$ahead_behind$all_status\\]]($style) "
+ahead = "[$count ](yellow)"
+behind = "[$count ](yellow)"
+conflicted = "[$count ](cyan)"
+deleted = "[$count ](red)"
 diverged = ""
-show_sync_count = true
-style = "bright-yellow"
-conflicted.value = ""
-conflicted.style = "cyan"
-conflicted_count.enabled = true
-conflicted_count.style = "cyan"
-deleted.value = "  "
-deleted.style = "red"
-deleted_count.enabled = true
-deleted_count.style = "red"
-modified.value = "  "
-modified.style = "white"
-modified_count.enabled = true
-modified_count.style = "white"
+modified = "[$count ](blue)"
 renamed = ""
-# renamed.style = "blue"
-# renamed_count.enabled = true
-# renamed_count.style = "blue"
-staged.value = "  "
-staged.style = "green"
-staged_count.enabled = true
-staged_count.style = "green"
-stashed.value = "  "
-stashed.style = "#D79E4A"
-stashed_count.enabled = true
-stashed_count.style = "#D79E4A"
-untracked.value = "  "
-untracked.style = "blue"
-untracked_count.enabled = true
-untracked_count.style = "blue"
+staged = "[$count ](green)"
+stashed = "[$count ](bold yellow)"
+untracked = "[$count ](purple)"
+# style = "fg:bright-yellow bg:white"
 
 [golang]
 symbol = "ﳑ "
