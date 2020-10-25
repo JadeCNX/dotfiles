@@ -19,6 +19,7 @@ endif
 " endif
 
 let s:completion_manager = ''
+let s:search_manager = 'clap'
 
 if executable('node')
   let s:completion_manager = 'coc'
@@ -45,17 +46,20 @@ elseif s:completion_manager == 'coc'
   Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'}  ", {'branch': 'release'}
 endif
 
-if empty(glob('/usr/local/opt/fzf'))
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-else
-  Plug '/usr/local/opt/fzf'
-endif
 
 if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
 
-if s:completion_manager != 'coc'
+if s:search_manager == 'fzf'
+  if empty(glob('/usr/local/opt/fzf'))
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  else
+    Plug '/usr/local/opt/fzf'
+  endif
+  Plug 'junegunn/fzf.vim'
+  Plug 'tweekmonster/fzf-filemru'
+
   " Plug 'jistr/vim-nerdtree-tabs'
   Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
@@ -70,7 +74,9 @@ if has('nvim')
   " Plug 'APZelos/blamer.nvim'
   " Plug 'bfredl/nvim-miniyank'
   " Plug 'kassio/neoterm'
-  " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  if s:search_manager == 'clap'
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  endif
   Plug 'norcalli/nvim-colorizer.lua'
 endif
 
@@ -137,7 +143,6 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'jlanzarotta/bufexplorer'
 Plug 'jph00/swift-apple', {'for': 'swift'}
 Plug 'Julian/vim-textobj-variable-segment'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 " Plug 'junegunn/vim-peekaboo'
@@ -222,7 +227,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'tweekmonster/fzf-filemru'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
@@ -572,107 +576,144 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" File search
-nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
-nmap <silent> <leader>P :History<cr>
-nmap <silent> <leader>b :Buffers<cr>
-nmap <silent> <leader>B :GFiles<cr>
+if s:search_manager  == 'fzf'
+  " File search
+  nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+  nmap <silent> <leader>P :History<cr>
+  nmap <silent> <leader>b :Buffers<cr>
+  nmap <silent> <leader>B :GFiles<cr>
+  nmap <silent> <leader>l :Filetypes<cr>
 
-" Mapping selecting mappings
-" nmap <leader><tab> <plug>(fzf-maps-n)
-" xmap <leader><tab> <plug>(fzf-maps-x)
-" omap <leader><tab> <plug>(fzf-maps-o)
+  " Mapping selecting mappings
+  " nmap <leader><tab> <plug>(fzf-maps-n)
+  " xmap <leader><tab> <plug>(fzf-maps-x)
+  " omap <leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
-imap <c-x><c-w> <plug>(fzf-complete-word)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+  " Insert mode completion
+  imap <c-x><c-w> <plug>(fzf-complete-word)
+  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+  imap <c-x><c-l> <plug>(fzf-complete-line)
 
-if executable('fd')
-  imap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
-else
-  imap <c-x><c-f> <plug>(fzf-complete-path)
-endif
+  if executable('fd')
+    imap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+  else
+    imap <c-x><c-f> <plug>(fzf-complete-path)
+  endif
 
-if executable('rg')
-  function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  if executable('rg')
+    function! RipgrepFzf(query, fullscreen)
+      let command_fmt = 'rg --column --line-number --vimgrep --no-heading --color=always --smart-case -- %s || true'
+      let initial_command = printf(command_fmt, shellescape(a:query))
+      let reload_command = printf(command_fmt, '{q}')
+      let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+    endfunction
+
+    function! RipgrepNoIgnoreFzf(query, fullscreen)
+      let command_fmt = 'rg -H --no-heading --vimgrep --column --line-number --smart-case --hidden -g "!.git/"' -- %s || true'
+      let initial_command = printf(command_fmt, shellescape(a:query))
+      let reload_command = printf(command_fmt, '{q}')
+      let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+    endfunction
+
+    command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+    command! -nargs=* -bang RGNoIgnore call RipgrepFzf(<q-args>, <bang>0)
+
+    vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'RG')<CR>
+    nmap <leader>* :exe 'RG '.expand('<cword>')<CR>
+    nmap <leader>/ :<C-u>RG<CR>
+    nmap <leader>? :<C-u>RGNoIgnore<CR>
+    " nmap <leader>? :<C-u>RG<CR>
+
+  elseif executable('ag')
+    command! -bang -nargs=* Ag
+          \ call fzf#vim#ag(<q-args>,
+          \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+          \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \                 <bang>0)
+
+    vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Ag')<CR>
+    nmap <leader>* :exe 'Ag '.expand('<cword>')<CR>
+    nmap <leader>/ :<C-u>Ag<CR>
+    nmap <leader>? :<C-u>GGrep<CR>
+    " nmap <leader>? :<C-u>Ag<CR>
+
+  else
+    command! -bang -nargs=* GGrep
+          \ call fzf#vim#grep(
+          \   'git grep --line-number '.shellescape(<q-args>), 0,
+          \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+    vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'GGrep')<CR>
+    nmap <leader>* :exe 'GGrep '.expand('<cword>')<CR>
+    nmap <leader>/ :<C-u>GGrep<CR>
+    nmap <leader>? :<C-u>GGrep<CR>
+    " nmap <leader>? :<C-u>GGrep<CR>
+  endif
+
+  function! s:fzfGrebFromSelected(type, cmd)
+    let saved_unnamed_register = @@
+    if a:type ==# 'v'
+      normal! `<v`>y
+    elseif a:type ==# 'char'
+      normal! `[v`]y
+    else
+      return
+    endif
+    let word = substitute(@@, '\n$', '', 'g')
+    let word = escape(word, '| ')
+    let @@ = saved_unnamed_register
+    execute cmd.' '.word
   endfunction
 
-  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+  " Likewise, Files command with preview window
+  command! -bang -nargs=? -complete=dir Files
+        \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'RG')<CR>
-  nmap <leader>* :exe 'RG '.expand('<cword>')<CR>
-  nmap <leader>/ :<C-u>RG<CR>
-  " nmap <leader>? :<C-u>RG<CR>
-
-elseif executable('ag')
-  command! -bang -nargs=* Ag
-        \ call fzf#vim#ag(<q-args>,
-        \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-        \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-        \                 <bang>0)
-
-  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'Ag')<CR>
-  nmap <leader>* :exe 'Ag '.expand('<cword>')<CR>
-  nmap <leader>/ :<C-u>Ag<CR>
-  " nmap <leader>? :<C-u>Ag<CR>
-
-else
-  command! -bang -nargs=* GGrep
-        \ call fzf#vim#grep(
-        \   'git grep --line-number '.shellescape(<q-args>), 0,
-        \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
-  vmap <leader>* :<C-u>call <SID>fzfGrebFromSelected(visualmode(), 'GGrep')<CR>
-  nmap <leader>* :exe 'GGrep '.expand('<cword>')<CR>
-  nmap <leader>/ :<C-u>GGrep<CR>
-  " nmap <leader>? :<C-u>GGrep<CR>
+  " Advanced customization using autoload functions
+  " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 endif
-
-function! s:fzfGrebFromSelected(type, cmd)
-  let saved_unnamed_register = @@
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-  let word = substitute(@@, '\n$', '', 'g')
-  let word = escape(word, '| ')
-  let @@ = saved_unnamed_register
-  execute cmd.' '.word
-endfunction
-
-" Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-" Advanced customization using autoload functions
-" inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> fzf-filemru
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:fzf_filemru_bufwrite = 1
+if s:search_manager != 'fzf'
+  let g:fzf_filemru_bufwrite = 1
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-clap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nmap <silent> <leader>p :Clap files<CR>
-" nmap <silent> <leader>P :Clap history<cr>
-" nmap <silent> <leader>b :Clap buffers<cr>
-" nmap <silent> <leader>B :Clap gfiles<cr>
-" nmap <silent> <leader>l :Clap filetypes<cr>
-" nmap <silent> <leader>q :Clap command<cr>
-" nmap <silent> <leader>Q :Clap command_history<cr>
-" nmap <silent> <leader>/ :Clap grep<cr>
-" nmap <silent> <leader>? :Clap grep<cr>
+if s:search_manager == 'clap'
+  nmap <silent> <leader>p :Clap files<CR>
+  nmap <silent> <leader>P :Clap files --type f -uu -g "!.git/" .<cr>
+  nmap <silent> <leader>b :Clap buffers<cr>
+  nmap <silent> <leader>B :Clap gfiles<cr>
+  nmap <silent> <leader>l :Clap filetypes<cr>
+  nmap <silent> <leader>q :Clap command<cr>
+  nmap <silent> <leader>Q :Clap command_history<cr>
+  nmap <silent> <leader>/ :Clap grep2<cr>
+  nmap <silent> <leader>? :Clap grep2<cr>
+  nmap <silent> <leader>* :Clap grep2 ++query=<cword><cr>
+  vmap <silent> <leader>* :Clap grep2 ++query=@visual<cr>
+  " let g:clap_theme = 'material_design_dark'
+  let g:clap_popup_border = 'nil'
+  let g:clap_insert_mode_only = v:true
+  " let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
+  let g:clap_search_box_border_style = 'nil'
+  let g:clap_disable_run_rooter = v:true
+
+  if has('nvim')
+    autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
+    autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
+  else
+    let g:clap_popup_move_manager = {
+          \ "\<C-N>": "\<Down>",
+          \ "\<C-P>": "\<Up>",
+          \ }
+  endif
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1513,15 +1554,17 @@ if s:completion_manager == 'coc'
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-  " nmap <leader>P :<C-u>CocList mru --ignore-case<CR>
-
-  vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
-  nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
-  nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
-  " nmap <leader>/ :<C-u>CocList grep<CR>
-  nmap <leader>? :<C-u>CocList -I grep -S<CR>
-  nmap <leader>gg :<C-u>CocList grep\
+  if s:search_manager == 'coc'
+    nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+    nmap <leader>P :<C-u>CocList files --ignore-case<CR>
+    vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
+    nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
+    nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
+    nmap <leader>/ :<C-u>CocList grep<CR>
+    nmap <leader>? :<C-u>CocList -I grep -S<CR>
+    nmap <leader>l :<C-u>CocList filetypes<CR>
+    nmap <leader>gg :<C-u>CocList grep\
+  endif
 
   command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
