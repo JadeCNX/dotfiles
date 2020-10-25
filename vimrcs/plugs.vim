@@ -19,7 +19,7 @@ endif
 " endif
 
 let s:completion_manager = ''
-let s:search_manager = 'clap'
+let s:search_manager = 'coc'
 
 if executable('node')
   let s:completion_manager = 'coc'
@@ -691,12 +691,12 @@ if s:search_manager == 'clap'
   nmap <silent> <leader>b :Clap buffers<cr>
   nmap <silent> <leader>B :Clap gfiles<cr>
   nmap <silent> <leader>l :Clap filetypes<cr>
-  nmap <silent> <leader>q :Clap command<cr>
-  nmap <silent> <leader>Q :Clap command_history<cr>
-  nmap <silent> <leader>/ :Clap grep2<cr>
+  nmap <silent> <leader>: :Clap command<cr>
+  nmap <silent> <leader>; :Clap command_history<cr>
+  nmap <silent> <leader>/ :Clap grep<cr>
   nmap <silent> <leader>? :Clap grep2<cr>
-  nmap <silent> <leader>* :Clap grep2 ++query=<cword><cr>
-  vmap <silent> <leader>* :Clap grep2 ++query=@visual<cr>
+  nmap <silent> <leader>* :Clap grep ++query=<cword><cr>
+  vmap <silent> <leader>* :Clap grep ++query=@visual<cr>
   " let g:clap_theme = 'material_design_dark'
   let g:clap_popup_border = 'nil'
   let g:clap_insert_mode_only = v:true
@@ -1555,24 +1555,39 @@ if s:completion_manager == 'coc'
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
   if s:search_manager == 'coc'
+    function! s:cocGrepFromSelected(type)
+      let saved_unnamed_register = @@
+      if a:type ==# 'v'
+        normal! `<v`>y
+      elseif a:type ==# 'char'
+        normal! `[v`]y
+      else
+        return
+      endif
+      let word = substitute(@@, '\n$', '', 'g')
+      let word = escape(word, '| ')
+      let @@ = saved_unnamed_register
+      execute 'CocList grep '.word
+    endfunction
+
     nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-    nmap <leader>P :<C-u>CocList files --ignore-case<CR>
+    nmap <leader>P :<C-u>CocList files --ignore-case -u<CR>
     vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
     nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
     nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
-    nmap <leader>/ :<C-u>CocList grep<CR>
-    nmap <leader>? :<C-u>CocList -I grep -S<CR>
+    nmap <leader>/ :<C-u>CocList -I grep<CR>
+    nmap <leader>? :<C-u>CocList -I grep -u<CR>
     nmap <leader>l :<C-u>CocList filetypes<CR>
     nmap <leader>gg :<C-u>CocList grep\
   endif
 
-  command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+  " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
-  function! s:GrepArgs(...)
-    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-          \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-    return join(list, "\n")
-  endfunction
+  " function! s:GrepArgs(...)
+  "   let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+  "         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+  "   return join(list, "\n")
+  " endfunction
 
   " navigate diagnostics
   nmap [w <Plug>(coc-diagnostic-prev)
@@ -1636,21 +1651,6 @@ if s:completion_manager == 'coc'
     else
       call CocAction('doHover')
     endif
-  endfunction
-
-  function! s:cocGrepFromSelected(type)
-    let saved_unnamed_register = @@
-    if a:type ==# 'v'
-      normal! `<v`>y
-    elseif a:type ==# 'char'
-      normal! `[v`]y
-    else
-      return
-    endif
-    let word = substitute(@@, '\n$', '', 'g')
-    let word = escape(word, '| ')
-    let @@ = saved_unnamed_register
-    execute 'CocList grep '.word
   endfunction
 
   function! StatusDiagnosticToClipboard()
