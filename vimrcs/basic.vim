@@ -372,7 +372,7 @@ endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a
 
-if has('nvim')
+if has('nvim') && !has("gui_vimr")
   hi Cursor guifg='fg' guibg='Green'
   hi Cursor1 guifg='fg' guibg='Blue'
   hi Cursor2 guifg='fg' guibg='Red'

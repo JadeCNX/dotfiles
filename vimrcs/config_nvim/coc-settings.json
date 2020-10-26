@@ -36,12 +36,19 @@
   /* "coc.preferences.hoverTarget": "echo", */
   /* "suggest.floatEnable": false, */
   /* "diagnostic.virtualText": true, */
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.displayByAle": false,
+  /* "diagnostic.checkCurrentLine": true, */
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.enableSign": true,
-  "diagnostic.messageTarget": "float",
+  /* "diagnostic.messageTarget": "echo", */
   "diagnostic.refreshOnInsertMode": true,
+  "html.autoClosingTags": true,
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "typescriptreact",
+    "javascriptreact"
+  ],
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",
