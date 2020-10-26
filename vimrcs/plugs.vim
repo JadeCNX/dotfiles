@@ -1572,6 +1572,8 @@ if s:completion_manager == 'coc'
 
     nmap <leader>p :<C-u>CocList files --ignore-case<CR>
     nmap <leader>P :<C-u>CocList files --ignore-case -u<CR>
+    nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
+    nmap <leader>B :<C-u>CocList mru --ignore-case<CR>
     vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
     nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
     nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
