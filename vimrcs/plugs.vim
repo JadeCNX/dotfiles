@@ -19,7 +19,7 @@ endif
 " endif
 
 let s:completion_manager = ''
-let s:search_manager = 'coc'
+let s:search_manager = 'clap'
 
 if executable('node')
   let s:completion_manager = 'coc'
@@ -43,7 +43,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'}  ", {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}  
 endif
 
 
@@ -184,11 +184,12 @@ Plug 'osyo-manga/vim-over'
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
+" Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall --verbose' }
 " Plug 'Quramy/tsuquyomi'
 " Plug 'Raimondi/delimitMate'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
-Plug 'rhysd/git-messenger.vim'
+" Plug 'rhysd/git-messenger.vim'
 " Plug 'rizzatti/dash.vim', {'on':'Dash'}
 " Plug 'roxma/vim-paste-easy'
 " Plug 'rstacruz/vim-closer'
@@ -197,7 +198,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'ryanoasis/vim-devicons'
 " Plug 'ryvnf/readline.vim'
 " Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
-Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
+" Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 Plug 'sheerun/vim-polyglot'
 " Plug 'ShirajG/golden-ratio'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
@@ -1571,16 +1572,16 @@ if s:completion_manager == 'coc'
     endfunction
 
     nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-    nmap <leader>P :<C-u>CocList files --ignore-case -u<CR>
+    nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
     nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
-    nmap <leader>B :<C-u>CocList mru --ignore-case<CR>
+    nmap <leader>b :<C-u>CocList mru --ignore-case -A<CR>
     vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
-    nmap <leader>* :exe 'CocList grep '.expand('<cword>')<CR>
-    nmap <leader># :exe 'CocList grep -w '.expand('<cword>')<CR>
-    nmap <leader>/ :<C-u>CocList -I grep<CR>
-    nmap <leader>? :<C-u>CocList -I grep -u<CR>
+    nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
+    nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
+    nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
+    nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
     nmap <leader>l :<C-u>CocList filetypes<CR>
-    nmap <leader>gg :<C-u>CocList grep\
+    nmap <leader>gg :<C-u>CocList grep\ 
   endif
 
   " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
@@ -1726,6 +1727,7 @@ if s:completion_manager == 'coc'
 
   " autocmd VimLeavePre * bufdo if &ft == 'coc-explorer' | bdelete | endif
   " autocmd VimLeave * NERDTreeClose
+  let g:node_client_debug = 1
 endif
 
 
@@ -1899,6 +1901,15 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 " -> nvim-colorizer.lua
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua require'colorizer'.setup()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vimspector
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-node-debug2', 'debugger-for-chrome' ]
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" :VimspectorInstall! --verbose --all
+" nvm install --lts 10; nvm use --lts 10; ./install_gadget.py --force-enable-node
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
