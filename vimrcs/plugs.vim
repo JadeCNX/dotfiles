@@ -246,6 +246,7 @@ Plug 'vim-scripts/utl.vim'
 " Plug 'vim-vdebug/vdebug'
 Plug 'vim/killersheep'
 Plug 'vimwiki/vimwiki'
+" Plug 'vn-ki/coc-clap'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
@@ -698,12 +699,23 @@ if s:search_manager == 'clap'
   nmap <silent> <leader>? :Clap grep2<cr>
   nmap <silent> <leader>* :Clap grep ++query=<cword><cr>
   vmap <silent> <leader>* :Clap grep ++query=@visual<cr>
+
+  " coc-clap
+  " nmap <leader>wa :<C-u>Clap coc_actions<CR>
+  " nmap <leader>wc :<C-u>Clap coc_commands<CR>
+  " nmap <leader>we :<C-u>Clap coc_diagnostics<cr>
+  " nmap <leader>o :<C-u>Clap coc_outline<CR>
+  " nmap <leader>O :<C-u>Clap coc_services<CR>
+
   " let g:clap_theme = 'material_design_dark'
+  let g:clap_layout = { 'relative': 'editor' }
   let g:clap_popup_border = 'nil'
   let g:clap_insert_mode_only = v:true
   " let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
   let g:clap_search_box_border_style = 'nil'
   let g:clap_disable_run_rooter = v:true
+
+  let g:clap_forerunner_status_sign = { 'running': '!', 'done': '•', 'using_cache': '*' }
 
   if has('nvim')
     autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
@@ -1582,7 +1594,14 @@ if s:completion_manager == 'coc'
     nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
     nmap <leader>l :<C-u>CocList filetypes<CR>
     nmap <leader>gg :<C-u>CocList grep\ 
+
   endif
+
+  nmap <leader>wa :<C-u>CocAction<CR>
+  nmap <leader>wc :<C-u>CocCommand<CR>
+  nmap <leader>we :<C-u>CocList diagnostics<cr>
+  nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
+  nmap <leader>O :<C-u>CocList symbols<CR>
 
   " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
@@ -1597,8 +1616,6 @@ if s:completion_manager == 'coc'
   nmap ]w <Plug>(coc-diagnostic-next)
 
   nmap <leader>w. :<C-u>CocListResume<CR>
-  nmap <leader>wa :<C-u>CocAction<CR>
-  nmap <leader>wc :<C-u>CocCommand<CR>
   nmap <leader>wn <Plug>(coc-rename)
   nmap <leader>wq <Plug>(coc-fix-current)
   nmap <leader>wh <Plug>(coc-float-hide)
@@ -1608,10 +1625,6 @@ if s:completion_manager == 'coc'
   " nmap <leader>wi <Plug>(coc-implementation)
   nmap <leader>wr <Plug>(coc-references)
 
-  nmap <leader>we :<C-u>CocList diagnostics<cr>
-
-  nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
-  nmap <leader>O :<C-u>CocList symbols<CR>
 
   " Remap for do action format
   nmap <leader>wf <Plug>(coc-format-selected)<CR>
