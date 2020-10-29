@@ -891,7 +891,7 @@ execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
 " let g:airline#extensions#tabline#left_sep = ' '
 
 " let g:airline#extensions#tmuxline#enabled = 1
-" let airline#extensions#tmuxline#color_template = 'insert'
+" let airline#extensions#tmuxline#color_template = 'visual'
 " let airline#extensions#tmuxline#snapshot_file = '~/.tmux-statusline-colors.conf'
 
 if !exists('g:airline_symbols')
