@@ -43,7 +43,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}  
+  Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}  
 endif
 
 
@@ -268,12 +268,12 @@ Plug 'yssl/QFEnter'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
 " Plug 'jaxbot/semantic-highlight.vim'
-" Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'phanviet/vim-monokai-pro'
-" Plug 'rakr/vim-one'
+Plug 'rakr/vim-one'
 " Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
 Plug 'srcery-colors/srcery-vim'
@@ -288,7 +288,7 @@ call plug#end()
 
 " call glaive#Install()
 
-let g:srcery_italic = 1
+" let g:srcery_italic = 1
 " let g:PaperColor_Theme_Options = {
 "   \   'theme': {
 "   \     'default': {
@@ -311,7 +311,7 @@ let g:onedark_hide_endofbuffer = 1
 
 " Colorscheme
 set background=dark
-colorscheme srcery
+colorscheme onedark
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -690,7 +690,7 @@ if s:search_manager == 'clap'
   nmap <silent> <leader>p :Clap files<CR>
   nmap <silent> <leader>P :Clap files --type f -uu -g "!.git/" .<cr>
   nmap <silent> <leader>b :Clap buffers<cr>
-  nmap <silent> <leader>B :Clap gfiles<cr>
+  nmap <silent> <leader>B :Clap history<cr>
   nmap <silent> <leader>l :Clap filetypes<cr>
   nmap <silent> <leader>: :Clap command<cr>
   nmap <silent> <leader>; :Clap command_history<cr>
@@ -814,7 +814,7 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let airline_theme='srcery'
+let airline_theme='onedark'
 " let g:airline#extensions#ale#enabled = 0
 let g:airline#extensions#coc#enabled = 0
 " let g:airline#extensions#tabline#alt_sep = 1
@@ -869,12 +869,12 @@ set statusline+=%3*%{get(b:,'coc_current_function','')}\  " current function
 " set statusline+=%1*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}" Encoding
 " set statusline+=%1*\ %<%f%h%m%r%b\ 0x%B\ \ %l,%c%V\ %P\ %* " character under cursor
 
-let s:color1='#fce8c3'
-let s:color2='#918175'
-let s:color3='#2d2c29'
-let s:color4='#1c1b19'
+let s:color1='#E06C75'
+let s:color2='#3E4452'
+let s:color3='#282C34'
+let s:color4='#ABB2BF'
 
-execute 'hi User1 guifg=' . s:color4 . ' guibg=' . s:color1
+execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
 execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
 execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
 execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
@@ -1927,9 +1927,9 @@ hi Whitespace guifg=gray30
 
 " transparent background
 if !has('gui_running') && !has('gui_vimr')
-  hi Normal guibg=NONE ctermbg=NONE
-  hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
-  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  " hi Normal guibg=NONE ctermbg=NONE
+  " hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
+  " hi EndOfBuffer guibg=NONE ctermbg=NONE
 
   " hi LineNr guibg=NONE ctermbg=NONE
   " hi SignColumn guibg=NONE ctermbg=NONE
