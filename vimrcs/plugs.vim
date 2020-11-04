@@ -19,7 +19,7 @@ endif
 " endif
 
 let s:completion_manager = ''
-let s:search_manager = 'clap'
+let s:search_manager = 'coc'
 
 if executable('node')
   let s:completion_manager = 'coc'
@@ -169,7 +169,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
 " Plug 'mhartington/deoplete-typescript'
-" Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 " Plug 'mileszs/ack.vim'
