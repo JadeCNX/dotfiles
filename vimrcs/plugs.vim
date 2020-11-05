@@ -1938,6 +1938,9 @@ hi Function gui=italic
 hi Italic gui=italic
 hi Whitespace guifg=gray30
 
+" disable underline in colorscheme onedark
+hi DiffChange gui=NONE
+
 " transparent background
 if !has('gui_running') && !has('gui_vimr')
   " hi Normal guibg=NONE ctermbg=NONE

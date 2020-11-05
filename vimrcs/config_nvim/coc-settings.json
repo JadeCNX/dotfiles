@@ -7,7 +7,7 @@
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.showCommandsInEditorContextMenu": false,
   "git.addGBlameToVirtualText": true,
-  /* "git.addGBlameToBufferVar": true,   */
+  "git.addGBlameToBufferVar": false,
   "git.enableGutters": false,
   "json.enable": true,
   "list.indicator": ">",
