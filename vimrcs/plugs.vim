@@ -890,6 +890,8 @@ execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
 execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
 execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
 execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
+execute 'hi StatusLineNC guibg=' . s:color2
+execute 'hi StatusLineTermNC guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
 " execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
