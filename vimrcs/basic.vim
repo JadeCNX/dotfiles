@@ -195,35 +195,36 @@ autocmd BufWinLeave * call clearmatches()
 " map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+noremap <silent> <leader><cr> :noh<cr>
 
 " Close the current buffer
-" map <leader>bd :Bclose<cr>:tabclose<cr>gT
+noremap <leader>bd :<c-u>Bclose<cr>
+" :tabclose<cr>gT
 
 " Close all the buffers
-" map <leader>ba :bufdo bd<cr>
+" noremap <leader>ba :bufdo bd<cr>
 
-map <c-q> :Bclose<cr>
-" map <c-l> :bnext<cr>
-" map <c-h> :bprevious<cr>
+" noremap <leader>bd :<C-u>Bclose<cr>
+" noremap <c-l> :bnext<cr>
+" noremap <c-h> :bprevious<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <space>t<space> :tabnext<space>
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove
+noremap <space>t<space> :tabnext<space>
 
-map <space>1 :tabnext 1<cr>
-map <space>2 :tabnext 2<cr>
-map <space>3 :tabnext 3<cr>
-map <space>4 :tabnext 4<cr>
-map <space>5 :tabnext 5<cr>
-map <space>6 :tabnext 6<cr>
-map <space>7 :tabnext 7<cr>
-map <space>8 :tabnext 8<cr>
-map <space>9 :tabnext 9<cr>
-map <space>0 :tabnext 10<cr>
+noremap <space>1 :tabnext 1<cr>
+noremap <space>2 :tabnext 2<cr>
+noremap <space>3 :tabnext 3<cr>
+noremap <space>4 :tabnext 4<cr>
+noremap <space>5 :tabnext 5<cr>
+noremap <space>6 :tabnext 6<cr>
+noremap <space>7 :tabnext 7<cr>
+noremap <space>8 :tabnext 8<cr>
+noremap <space>9 :tabnext 9<cr>
+noremap <space>0 :tabnext 10<cr>
 
 
 " Let 'tl' toggle between this and the last accessed tab
@@ -234,10 +235,10 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<CR>
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>
 
 " Switch CWD to the directory of the open buffer
-" map <leader>pwd :cd %:p:h<cr>:pwd<cr>
+" noremap <leader>pwd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
@@ -298,7 +299,7 @@ inoremap fd <ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>zz :setlocal spell!<cr>
+noremap <leader>zz :setlocal spell!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -314,13 +315,13 @@ nnoremap Q @@
 " noremap <Leader>. mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-" map <leader>q :e ~/buffer<cr>
+" noremap <leader>q :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
-" map <leader>x :e ~/buffer.md<cr>
+" noremap <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
-" map <leader>pp :setlocal paste!<cr>
+" noremap <leader>pp :setlocal paste!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -352,7 +353,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <leader>e :e! ~/.vim/my_configs.vim<cr>
+" noremap <leader>e :e! ~/.vim/my_configs.vim<cr>
 " autocmd! bufwritepost ~/.vim/my_configs.vim source ~/.vim/my_configs.vim
 
 

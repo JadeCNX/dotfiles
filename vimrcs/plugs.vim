@@ -1372,8 +1372,8 @@ let g:AutoPairsShortcutToggle = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>ff :<C-u>Autoformat<CR>
-vmap <leader>ff :<C-u>'<,'>Autoformat<CR>
+noremap <leader>ff :<C-u>Autoformat<CR>
+vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
 " let g:autoformat_verbosemode=1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")." --tab-width=".shiftwidth()'
