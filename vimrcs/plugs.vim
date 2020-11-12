@@ -230,8 +230,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-jp/vital.vim'
 Plug 'vim-pandoc/vim-pandoc'
@@ -867,8 +867,9 @@ set statusline=
 set statusline+=%1*\ #%n\                                 " buffernr
 set statusline+=%2*\\ %*                                 " split
 set statusline+=%3*\ %<%f%h%m%r                           " file
-set statusline+=%4*%=%{!airline#check_mode(winnr())}      " check mode for airline
-set statusline+=%3*%{get(b:,'coc_current_function','')}\  " current function
+" set statusline+=%4*%=%{!airline#check_mode(winnr())}      " check mode for airline
+set statusline+=%4*%=%3*%{get(b:,'coc_current_function','')}\  " current function
+set statusline+=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
 
 " set statusline+=%5*                                        " split
 " set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
@@ -1588,7 +1589,7 @@ if s:completion_manager == 'coc'
     nmap <leader>p :<C-u>CocList files --ignore-case<CR>
     nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
     nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
-    nmap <leader>b :<C-u>CocList mru --ignore-case -A<CR>
+    nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
     vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
     nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
     nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
