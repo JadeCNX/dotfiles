@@ -89,6 +89,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
+Plug 'bagrat/vim-buffet'
 " Plug 'bagrat/vim-workspace'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
@@ -862,41 +863,6 @@ function! StatusDiagnostic() abort
   endif
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
-
-set statusline=
-set statusline+=%1*\ #%n\                                 " buffernr
-set statusline+=%2*\\ %*                                 " split
-set statusline+=%3*\ %<%f%h%m%r                           " file
-" set statusline+=%4*%=%{!airline#check_mode(winnr())}      " check mode for airline
-set statusline+=%4*%=%3*%{get(b:,'coc_current_function','')}\  " current function
-set statusline+=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
-
-" set statusline+=%5*                                        " split
-" set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
-" set statusline+=%2*\ %l,%c\ %P\ %*                          " rownumber,colnumber
-" set statusline+=%6*                                        " split
-" set statusline+=%4*\ \ %{&spelllang}\                       " Spellanguage & Highlight on?
-" set statusline+=%1*\ %{StatusDiagnostic()}                  " diagnostic info
-" set statusline+=%1*%=%{get(b:,'coc_current_function','')}\  " current function
-" set statusline^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
-" set statusline+=%1*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}" Encoding
-" set statusline+=%1*\ %<%f%h%m%r%b\ 0x%B\ \ %l,%c%V\ %P\ %* " character under cursor
-
-let s:color1='#E06C75'
-let s:color2='#3E4452'
-let s:color3='#282C34'
-let s:color4='#ABB2BF'
-
-execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
-execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
-execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
-execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
-execute 'hi StatusLineNC guibg=' . s:color2
-execute 'hi StatusLineTermNC guibg=' . s:color2
-" execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
-" execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
-" execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
-" execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
 
 " let g:airline#extensions#tabline#buf_label_first = 1
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -1926,6 +1892,59 @@ lua require'colorizer'.setup()
 " let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 " :VimspectorInstall! --verbose --all
 " nvm install --lts 10; nvm use --lts 10; ./install_gadget.py --force-enable-node
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline=
+set statusline+=%1*\ %{WebDevIconsGetFileTypeSymbol()}\                                 " buffernr
+set statusline+=%2*\\ %*                                 " split
+set statusline+=%3*\ %<%f%h%m%r                           " file
+" set statusline+=%4*%=%{!airline#check_mode(winnr())}      " check mode for airline
+set statusline+=%4*%=%3*%{get(b:,'coc_current_function','')}\  " current function
+set statusline+=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
+
+" set statusline+=%5*                                        " split
+" set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
+" set statusline+=%2*\ %l,%c\ %P\ %*                          " rownumber,colnumber
+" set statusline+=%6*                                        " split
+" set statusline+=%4*\ \ %{&spelllang}\                       " Spellanguage & Highlight on?
+" set statusline+=%1*\ %{StatusDiagnostic()}                  " diagnostic info
+" set statusline+=%1*%=%{get(b:,'coc_current_function','')}\  " current function
+" set statusline^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
+" set statusline+=%1*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}" Encoding
+" set statusline+=%1*\ %<%f%h%m%r%b\ 0x%B\ \ %l,%c%V\ %P\ %* " character under cursor
+
+let s:color1='#E06C75'
+let s:color2='#3E4452'
+let s:color3='#282C34'
+let s:color4='#ABB2BF'
+
+execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
+execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
+execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
+execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
+execute 'hi StatusLineNC guibg=' . s:color2
+execute 'hi StatusLineTermNC guibg=' . s:color2
+" execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
+" execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
+" execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
+" execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-buffet
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:buffet_powerline_separators = 1
+let g:buffet_tab_icon = " "
+" let g:buffet_left_trunc_icon = " "
+" let g:buffet_right_trunc_icon = " "
+function! g:BuffetSetCustomColors()
+  execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
+  execute 'hi BuffetBuffer guifg=' . s:color4 . ' guibg=' . s:color3
+  execute 'hi BuffetTab guifg=' . s:color4 . ' guibg=' . s:color2
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
