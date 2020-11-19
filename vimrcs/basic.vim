@@ -198,7 +198,7 @@ autocmd BufWinLeave * call clearmatches()
 noremap <silent> <leader><cr> :noh<cr>
 
 " Close the current buffer
-noremap <leader>bd :<c-u>Bclose<cr>
+noremap <c-q> :<c-u>Bclose<cr>
 " :tabclose<cr>gT
 
 " Close all the buffers

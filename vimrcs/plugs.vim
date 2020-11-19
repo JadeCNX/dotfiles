@@ -7,6 +7,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'ryanoasis/vim-devicons'
 if !has('nvim')
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'roxma/nvim-yarp'
@@ -43,7 +44,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}  
+  Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}
 endif
 
 
@@ -172,10 +173,10 @@ Plug 'metakirby5/codi.vim'
 " Plug 'mhartington/deoplete-typescript'
 Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
-Plug 'michaeljsmith/vim-indent-object'
+" Plug 'michaeljsmith/vim-indent-object'
 " Plug 'mileszs/ack.vim'
 " Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
-" Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/jsonc.vim'
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
@@ -196,7 +197,6 @@ Plug 'preservim/nerdcommenter'
 " Plug 'rstacruz/vim-closer'
 " Plug 'rstacruz/vim-hyperstyle'
 " Plug 'rust-lang/rust.vim'
-Plug 'ryanoasis/vim-devicons'
 " Plug 'ryvnf/readline.vim'
 " Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
 " Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
@@ -257,7 +257,7 @@ Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-session'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'yssl/QFEnter'
 " Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
 " Plug 'zhou13/vim-easyescape'
@@ -1121,23 +1121,24 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> indentline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indentLine_enabled = 1
-let g:indentLine_char = "│"
-let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista', 'help', 'coc-explorer']
-let g:indentLine_color_gui = '#333333'
+" let g:indentLine_enabled = 1
+" let g:indentLine_char = "│"
+" let g:indentLine_fileTypeExclude = ['calendar', 'fzf', 'nerdtree', 'Mundo', 'list', 'quickfix', 'vista', 'help', 'coc-explorer']
+" let g:indentLine_color_gui = '#333333'
 " let g:indentLine_setColors = 0
 
-" for 'tab' indent line
-set list lcs=tab:\│\  " Last one is space!
+"" for 'tab' indent line
+" set list lcs=tab:\│\  " Last one is space!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> indent guides
+" -> vim-indent-guides
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_default_mapping = 0
+let g:indent_guides_auto_colors = 0
 " let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', 'quickfix', 'MundoDiff', 'coc-explorer']
-" let g:indent_guides_default_mapping = 0
-" let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = 1
 " let g:indent_guides_start_level = 2
 
 
@@ -1562,7 +1563,7 @@ if s:completion_manager == 'coc'
     nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
     nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
     nmap <leader>l :<C-u>CocList filetypes<CR>
-    nmap <leader>gg :<C-u>CocList grep\ 
+    nmap <leader>gg :<C-u>CocList grep\
 
   endif
 
@@ -1932,18 +1933,25 @@ execute 'hi StatusLineTermNC guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
 " execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
 
+" indent guides
+execute 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#30343c'
+execute 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#30343c'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-buffet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:buffet_powerline_separators = 1
-let g:buffet_tab_icon = " "
-" let g:buffet_left_trunc_icon = " "
-" let g:buffet_right_trunc_icon = " "
+let g:buffet_tab_icon = "離"
+let g:buffet_left_trunc_icon = ""
+let g:buffet_right_trunc_icon = ""
+let g:buffet_new_buffer_name = 'ﱐ'
+let g:buffet_modified_icon = ' '
 function! g:BuffetSetCustomColors()
   execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
   execute 'hi BuffetBuffer guifg=' . s:color4 . ' guibg=' . s:color3
   execute 'hi BuffetTab guifg=' . s:color4 . ' guibg=' . s:color2
+  execute 'hi BuffetActiveBuffer guifg=' . s:color3 . ' guibg=' . s:color4
+  execute 'hi BuffetTrunc guifg=' . s:color4 . ' guibg=#30343c'
 endfunction
 
 
