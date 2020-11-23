@@ -1944,7 +1944,7 @@ let g:buffet_powerline_separators = 1
 let g:buffet_tab_icon = "離"
 let g:buffet_left_trunc_icon = ""
 let g:buffet_right_trunc_icon = ""
-let g:buffet_new_buffer_name = 'ﱐ'
+let g:buffet_new_buffer_name = ''
 let g:buffet_modified_icon = ' '
 function! g:BuffetSetCustomColors()
   execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
