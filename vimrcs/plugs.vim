@@ -1411,6 +1411,36 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+let g:easy_align_delimiters = {
+      \ '>': { 'pattern': '>>\|=>\|>' },
+      \ '/': {
+      \     'pattern':         '//\+\|/\*\|\*/',
+      \     'delimiter_align': 'l',
+      \     'ignore_groups':   ['!Comment'] },
+      \ ']': {
+      \     'pattern':       '[[\]]',
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'stick_to_left': 0
+      \   },
+      \ ')': {
+      \     'pattern':       '[()]',
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'stick_to_left': 0
+      \   },
+      \ 'd': {
+      \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+      \     'left_margin':  0,
+      \     'right_margin': 0
+      \   },
+      \ 't': {
+      \     'pattern':      ' ',
+      \     'left_margin':  0,
+      \     'right_margin': 0
+      \   }
+      \ }
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> rainbow
@@ -1840,12 +1870,12 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> blamer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:blamer_enabled = 1
-let g:blamer_delay = 500
-let g:blamer_show_in_visual_modes = 0
-" let g:blamer_prefix = ' > '
-let g:blamer_relative_time = 1
-highlight Blamer guifg=gray30 gui=italic
+" let g:blamer_enabled = 1
+" let g:blamer_delay = 500
+" let g:blamer_show_in_visual_modes = 0
+" " let g:blamer_prefix = ' > '
+" let g:blamer_relative_time = 1
+" highlight Blamer guifg=gray30 gui=italic
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1870,7 +1900,7 @@ highlight Blamer guifg=gray30 gui=italic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-hexokinase
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Hexokinase_highlighters = ['backgroundfull']
+" let g:Hexokinase_highlighters = ['backgroundfull']
 " let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 " let g:Hexokinase_highlighters = ['sign_column']
 " set signcolumn=yes:9 " Neovim only

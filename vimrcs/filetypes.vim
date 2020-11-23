@@ -89,6 +89,7 @@ autocmd BufRead *.twig set syntax=html filetype=html
 augroup XML
     autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
     autocmd FileType xml set nofoldenable
+    autocmd FileType xml set nowrap
 augroup END
 
 
