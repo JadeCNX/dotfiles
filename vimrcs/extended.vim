@@ -130,6 +130,8 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 else
   set term=screen-256color
+  set t_ZH=[3m
+  set t_ZR=[23m
 endif
 
 if exists('$TMUX') || !has('nvim')

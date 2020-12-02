@@ -1740,7 +1740,7 @@ if s:completion_manager == 'coc'
 
   " autocmd VimLeavePre * bufdo if &ft == 'coc-explorer' | bdelete | endif
   " autocmd VimLeave * NERDTreeClose
-  let g:node_client_debug = 1
+  " let g:node_client_debug = 1
 endif
 
 
@@ -1913,7 +1913,9 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> nvim-colorizer.lua
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-lua require'colorizer'.setup()
+if has('nvim')
+  lua require'colorizer'.setup()
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
