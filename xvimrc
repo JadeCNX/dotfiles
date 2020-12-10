@@ -17,7 +17,8 @@ nnoremap <C-l> <C-w>l
 nnoremap n nzz
 nnoremap N Nzz
 
-nmap <space>h :normal<space>
+map <space>nn :<c-u>%normal<space>
+vmap <space>nn :<c-u>'<,'>normal<space>
 
 nnoremap c* *Ncgn
 

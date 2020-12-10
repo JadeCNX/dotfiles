@@ -23,6 +23,7 @@ map <c-l> <C-W>l
 
 map Y "*y
 
-map <space>h :normal<space>
+map <space>nn :<c-u>%normal<space>
+vmap <space>nn :<c-u>'<,'>normal<space>
 
 nnoremap c* *Ncgn

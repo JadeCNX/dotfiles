@@ -84,7 +84,8 @@ vmap , <Plug>(sneak-prev)
 " omap z <Plug>(sneak_s)
 " omap Z <Plug>(sneak_S)
 
-map <leader>h :normal<Space>
+map <leader>nn :<c-u>%normal<space>
+vmap <leader>nn :<c-u>'<,'>normal<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> *Ncgn https://youtu.be/YwMgnmZNWXA

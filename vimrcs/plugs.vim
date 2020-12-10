@@ -44,7 +44,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}
 endif
 
 
@@ -850,19 +850,6 @@ let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 1
 
 let g:airline_statusline_ontop = 1
-
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
 
 " let g:airline#extensions#tabline#buf_label_first = 1
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -1930,13 +1917,27 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, ' ' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, ' ' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
+
 set statusline=
 set statusline+=%1*\ %{WebDevIconsGetFileTypeSymbol()}\                                 " buffernr
 set statusline+=%2*\\ %*                                 " split
 set statusline+=%3*\ %<%f%h%m%r                           " file
 " set statusline+=%4*%=%{!airline#check_mode(winnr())}      " check mode for airline
 set statusline+=%4*%=%3*%{get(b:,'coc_current_function','')}\  " current function
-set statusline+=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
+set statusline+=%5*%{StatusDiagnostic()}\ %3*%{get(b:,'coc_git_status','')}\ %{get(g:,'coc_git_status','')}
 
 " set statusline+=%5*                                        " split
 " set statusline+=%2*\ \ %r%w%P                               " Modified? Readonly? Top/bot.
@@ -1958,6 +1959,7 @@ execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
 execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
 execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
 execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
+execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color2
 execute 'hi StatusLineNC guibg=' . s:color2
 execute 'hi StatusLineTermNC guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3

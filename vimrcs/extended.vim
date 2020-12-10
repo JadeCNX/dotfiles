@@ -696,8 +696,8 @@ nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> quick normal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>h :<c-u>normal<Space>
-vmap <leader>h :<c-u>normal<Space>
+map <leader>nn :<c-u>%normal<space>
+vmap <leader>nn :<c-u>'<,'>normal<space>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
