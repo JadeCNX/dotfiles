@@ -45,7 +45,7 @@ let maplocalleader = "\""
 " Fast saving
 " nmap <leader>w :w!<cr>
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute w !sudo tee % >' /dev/null' <bar> edit!>''>
 
@@ -146,6 +146,19 @@ endif
 set nowritebackup
 set noswapfile
 set nobackup
+
+
+" dependency
+let g:loaded_python_provider = 0
+let s:python_path = '/usr/local/bin/python3'
+if !empty(glob(s:python_path))
+  let g:python3_host_prog = s:python_path
+endif
+
+let s:ruby_path ='/usr/local/opt/ruby/bin/ruby'
+if !empty(glob(s:ruby_path))
+  let g:ruby_host_prog = s:ruby_path
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -417,17 +430,17 @@ if exists(':terminal')
   " To simulate |i_CTRL-R| in terminal-mode: >
   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
-" To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
-" tnoremap <A-h> <C-\><C-N><C-w>h
-" tnoremap <A-j> <C-\><C-N><C-w>j
-" tnoremap <A-k> <C-\><C-N><C-w>k
-" tnoremap <A-l> <C-\><C-N><C-w>l
-" inoremap <A-h> <C-\><C-N><C-w>h
-" inoremap <A-j> <C-\><C-N><C-w>j
-" inoremap <A-k> <C-\><C-N><C-w>k
-" inoremap <A-l> <C-\><C-N><C-w>l
-" :nnoremap <A-h> <C-w>h
-" :nnoremap <A-j> <C-w>j
-" :nnoremap <A-k> <C-w>k
-" :nnoremap <A-l> <C-w>l
+  " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >
+  " tnoremap <A-h> <C-\><C-N><C-w>h
+  " tnoremap <A-j> <C-\><C-N><C-w>j
+  " tnoremap <A-k> <C-\><C-N><C-w>k
+  " tnoremap <A-l> <C-\><C-N><C-w>l
+  " inoremap <A-h> <C-\><C-N><C-w>h
+  " inoremap <A-j> <C-\><C-N><C-w>j
+  " inoremap <A-k> <C-\><C-N><C-w>k
+  " inoremap <A-l> <C-\><C-N><C-w>l
+  " :nnoremap <A-h> <C-w>h
+  " :nnoremap <A-j> <C-w>j
+  " :nnoremap <A-k> <C-w>k
+  " :nnoremap <A-l> <C-w>l
 endif

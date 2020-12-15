@@ -1525,6 +1525,7 @@ if s:completion_manager == 'coc'
         \ 'coc-rls',
         \ 'coc-snippets',
         \ 'coc-spell-checker',
+        \ 'coc-stylelint',
         \ 'coc-tag',
         \ 'coc-tailwindcss',
         \ 'coc-template',
