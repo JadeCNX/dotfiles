@@ -148,7 +148,9 @@ set noswapfile
 set nobackup
 
 
-" dependency
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> dependency path
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:loaded_python_provider = 0
 let s:python_path = '/usr/local/bin/python3'
 if !empty(glob(s:python_path))
