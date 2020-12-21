@@ -212,7 +212,7 @@ Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'terryma/vim-expand-region'
-" Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'

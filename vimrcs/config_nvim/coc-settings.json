@@ -1,6 +1,6 @@
 {
   "coc.preferences.colorSupport": true,
-  "coc.preferences.extensionUpdateCheck": "weekly",
+  "coc.preferences.extensionUpdateCheck": "never",
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   /* "codeLens.enable": true, */
   "cSpell.enabled": false,
@@ -33,6 +33,9 @@
   "snippets.autoTrigger": true,
   "snippets.enableStatusItem": true,
   "tsserver.enable": true,
+  "tsserver.log": "verbose",
+  "tsserver.trace.server": "verbose",
+  "tailwindCSS.trace.server": "verbose",
   "yank.enableCompletion": true,
   /* "coc.preferences.hoverTarget": "echo", */
   /* "suggest.floatEnable": false, */
