@@ -1581,7 +1581,7 @@ if s:completion_manager == 'coc'
     nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
     nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
     nmap <leader>l :<C-u>CocList filetypes<CR>
-    nmap <leader>gg :<C-u>CocList grep\
+    nmap <leader>gg :<C-u>CocList grep\ 
 
   endif
 
