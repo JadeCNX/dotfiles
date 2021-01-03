@@ -44,7 +44,7 @@ if s:completion_manager == 'deoplete'
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
 elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'} " {'do': ':call coc#util#install()'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
 
@@ -79,6 +79,14 @@ if has('nvim')
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
   endif
   Plug 'norcalli/nvim-colorizer.lua'
+  " Plug 'nvim-treesitter/nvim-treesitter-refactor'
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  " Plug 'nvim-treesitter/playground'
+  " Plug 'p00f/nvim-ts-rainbow'
+  " Plug 'romgrk/nvim-treesitter-context'
+" else
+"   Plug 'sheerun/vim-polyglot'
 endif
 
 " Plug 'airblade/vim-gitgutter'
@@ -159,7 +167,7 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 " Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 " Plug 'lornix/vim-scrollbar'
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
 " Plug 'machakann/vim-sandwich'
@@ -231,6 +239,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
+Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
@@ -248,6 +257,7 @@ Plug 'vim-scripts/utl.vim'
 Plug 'vim/killersheep'
 Plug 'vimwiki/vimwiki'
 " Plug 'vn-ki/coc-clap'
+" Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
@@ -265,20 +275,26 @@ Plug 'yssl/QFEnter'
 " Color schemes
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'arzg/vim-colors-xcode'
+" Plug 'ayu-theme/ayu-vim'
 " Plug 'challenger-deep-theme/vim'
 " Plug 'chriskempson/base16-vim'
+" Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
 " Plug 'jaxbot/semantic-highlight.vim'
 Plug 'joshdick/onedark.vim'
+" Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'phanviet/vim-monokai-pro'
-Plug 'rakr/vim-one'
+" Plug 'rakr/vim-one'
+" Plug 'raphamorim/lucario'
+" Plug 'sainnhe/edge'
+" Plug 'sainnhe/sonokai'
 " Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
-Plug 'srcery-colors/srcery-vim'
+" Plug 'srcery-colors/srcery-vim'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
@@ -310,6 +326,7 @@ let g:onedark_hide_endofbuffer = 1
 " let g:solarized_termcolors=256
 " let g:solarized_visibility = 'high'
 " let g:one_allow_italics = 1
+" let ayucolor="mirage"
 
 " Colorscheme
 set background=dark
@@ -809,6 +826,7 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 " -> vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:multi_cursor_next_key="\<C-s>"
+let g:multi_cursor_quit_key='<Esc>'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1432,28 +1450,28 @@ let g:easy_align_delimiters = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
-"  '#98BC37'
-let g:rainbow_conf = {
-      \   'separately': {
-      \       'csv': {
-      \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend']
-      \       },
-      \       'html': {
-      \           'parentheses': 0
-      \       },
-      \       'mxml': {
-      \           'parentheses': 0
-      \       },
-      \       'xml': {
-      \           'parentheses': 0
-      \       },
-      \       'bak': {
-      \           'parentheses': 0
-      \       }
-      \   }
-      \}
-" \   'guifgs': ['#F75341', '#FCE8C3', '#FED06E', '#68A8E4', '#FF5C8F', '#53FDE9'],
+" let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
+" "  '#98BC37'
+" let g:rainbow_conf = {
+"       \   'separately': {
+"       \       'csv': {
+"       \           'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend']
+"       \       },
+"       \       'html': {
+"       \           'parentheses': 0
+"       \       },
+"       \       'mxml': {
+"       \           'parentheses': 0
+"       \       },
+"       \       'xml': {
+"       \           'parentheses': 0
+"       \       },
+"       \       'bak': {
+"       \           'parentheses': 0
+"       \       }
+"       \   }
+"       \}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> markdown
@@ -1899,14 +1917,6 @@ augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> nvim-colorizer.lua
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  lua require'colorizer'.setup()
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vimspector
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-node-debug2', 'debugger-for-chrome' ]
@@ -2025,5 +2035,55 @@ if !has('gui_running') && !has('gui_vimr')
   " hi CursorLine guibg=NONE
   " hi CursorLineNr guibg=NONE
   " hi StatusLine guibg=NONE
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> lua
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim')
+
+lua <<EOF
+-- nvim-colorizer.lua
+require'colorizer'.setup()
+
+-- nvim-treesitter
+--[[
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+  },
+  refactor = {
+    highlight_definitions = { enable = true },
+    -- highlight_current_scope = { enable = true },
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  },
+  rainbow = {
+    enable = true,
+    disable = {'bash'}
+  },
+  playground = {
+    enable = true,
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  },
+}
+--]]
+EOF
+
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 endif
 

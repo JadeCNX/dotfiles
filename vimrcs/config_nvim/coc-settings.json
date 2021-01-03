@@ -1,6 +1,6 @@
 {
   "coc.preferences.colorSupport": true,
-  "coc.preferences.extensionUpdateCheck": "never",
+  /* "coc.preferences.extensionUpdateCheck": "never", */
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   /* "codeLens.enable": true, */
   "cSpell.enabled": false,
