@@ -85,8 +85,6 @@ if has('nvim')
   " Plug 'nvim-treesitter/playground'
   " Plug 'p00f/nvim-ts-rainbow'
   " Plug 'romgrk/nvim-treesitter-context'
-" else
-"   Plug 'sheerun/vim-polyglot'
 endif
 
 " Plug 'airblade/vim-gitgutter'
