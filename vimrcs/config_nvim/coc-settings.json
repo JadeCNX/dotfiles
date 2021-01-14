@@ -43,6 +43,7 @@
   /* "diagnostic.checkCurrentLine": true, */
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.enableSign": true,
+  "diagnostic.locationlistUpdate":true,
   /* "diagnostic.messageTarget": "echo", */
   "diagnostic.refreshOnInsertMode": true,
   "html.autoClosingTags": true,

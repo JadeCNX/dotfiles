@@ -2016,9 +2016,9 @@ hi DiffChange gui=NONE
 
 " transparent background
 if !has('gui_running') && !has('gui_vimr')
-  " hi Normal guibg=NONE ctermbg=NONE
-  " hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
-  " hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
 
   " hi LineNr guibg=NONE ctermbg=NONE
   " hi SignColumn guibg=NONE ctermbg=NONE
