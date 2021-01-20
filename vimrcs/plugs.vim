@@ -95,6 +95,7 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
+Plug 'aperezdc/vim-template'
 " Plug 'ashisha/image.vim'
 Plug 'bagrat/vim-buffet'
 " Plug 'bagrat/vim-workspace'
@@ -1544,7 +1545,6 @@ if s:completion_manager == 'coc'
         \ 'coc-stylelint',
         \ 'coc-tag',
         \ 'coc-tailwindcss',
-        \ 'coc-template',
         \ 'coc-tslint',
         \ 'coc-tsserver',
         \ 'coc-ultisnips',
@@ -1567,6 +1567,7 @@ if s:completion_manager == 'coc'
   " \ 'coc-python',
   " \ 'coc-tabnine',
   " \ 'coc-word',
+  " \ 'coc-template',
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -1603,7 +1604,7 @@ if s:completion_manager == 'coc'
 
   nmap <leader>wa :<C-u>CocAction<CR>
   nmap <leader>wc :<C-u>CocCommand<CR>
-  nmap <leader>we :<C-u>CocList diagnostics<cr>
+  nmap <leader>we :<C-u>CocDiagnostics<cr>
   nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
   nmap <leader>O :<C-u>CocList symbols<CR>
 

@@ -22,6 +22,7 @@
   "suggest.snippetIndicator": "⚡️",
   "suggest.triggerAfterInsertEnter": true,
   "explorer.icon.enableNerdfont": true,
+  "xml.completion.autoCloseTags": false,
   "snippets.extends": {
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
