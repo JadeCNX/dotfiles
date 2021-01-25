@@ -293,7 +293,7 @@ Plug 'joshdick/onedark.vim'
 " Plug 'sainnhe/sonokai'
 " Plug 'sainnhe/vim-color-vanilla-cake'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
-Plug 'srcery-colors/srcery-vim'
+" Plug 'srcery-colors/srcery-vim'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
@@ -305,7 +305,7 @@ call plug#end()
 
 " call glaive#Install()
 
-let g:srcery_italic = 1
+" let g:srcery_italic = 1
 " let g:PaperColor_Theme_Options = {
 "   \   'theme': {
 "   \     'default': {
@@ -329,7 +329,7 @@ let g:onedark_hide_endofbuffer = 1
 
 " Colorscheme
 set background=dark
-colorscheme srcery
+colorscheme onedark
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
