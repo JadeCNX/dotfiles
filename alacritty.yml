@@ -193,12 +193,12 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (One Dark)
+# Colors (Srcery)
 colors:
   # Default colors
   primary:
-    background: '0x282C34'
-    foreground: '0xabb2bf'
+    background: '#1C1B19'
+    foreground: '#FCE8C3'
 
     # Bright and dim foreground colors
     #
@@ -258,25 +258,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x282C34'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
+    black:   '#1C1B19'
+    red:     '#EF2F27'
+    green:   '#519F50'
+    yellow:  '#FBB829'
+    blue:    '#2C78BF'
+    magenta: '#E02C6D'
+    cyan:    '#0AAEB3'
+    white:   '#D0BFA1'
 
   # Bright colors
   bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
+    black:   '#918175'
+    red:     '#F75341'
+    green:   '#98BC37'
+    yellow:  '#FED06E'
+    blue:    '#68A8E4'
+    magenta: '#FF5C8F'
+    cyan:    '#53FDE9'
+    white:   '#FCE8C3'
 
   # Dim colors
   #
