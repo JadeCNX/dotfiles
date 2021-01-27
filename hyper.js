@@ -6,19 +6,20 @@ module.exports = {
   config: {
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
-    updateChannel: 'stable',
+    updateChannel: "stable",
 
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 12,
 
     // font family with optional fallbacks
-    fontFamily: '"VictorMono Nerd Font", "OperatorMonoSSmLig Nerd Font", "FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily:
+      '"OperatorMonoSSmLig Nerd Font", "VictorMono Nerd Font", "FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: 'normal',
+    fontWeight: "normal",
 
     // font weight for bold characters: 'normal' or 'bold'
-    fontWeightBold: 'bold',
+    fontWeightBold: "bold",
 
     // line height as a relative unit
     lineHeight: 1,
@@ -27,68 +28,68 @@ module.exports = {
     letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: '#FBB829',
+    cursorColor: "#FBB829",
 
     // terminal text color under BLOCK cursor
-    cursorAccentColor: '#1c1b19',
+    cursorAccentColor: "#1c1b19",
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: 'BLOCK',
+    cursorShape: "BLOCK",
 
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: true,
 
     // color of the text
-    foregroundColor: '#fce8c3',
+    foregroundColor: "#fce8c3",
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: 'rgba(28,27,25,0.888)',
+    backgroundColor: "rgba(28,27,25,0.888)",
 
     // terminal selection color
-    selectionColor: '#FCE8C3',
+    selectionColor: "#FCE8C3",
 
     // border color (window, tabs)
-    borderColor: 'rgba(28,27,25,0.888)',
+    borderColor: "rgba(28,27,25,0.888)",
 
     // custom CSS to embed in the main window
-    css: '',
+    css: "",
 
     // custom CSS to embed in the terminal window
-    termCSS: '',
+    termCSS: "",
 
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
-    showHamburgerMenu: '',
+    showHamburgerMenu: "",
 
     // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
     // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
-    showWindowControls: '',
+    showWindowControls: "",
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '12px 14px',
+    padding: "12px 14px",
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black:   '#1C1B19',
-      red:     '#EF2F27',
-      green:   '#519F50',
-      yellow:  '#FBB829',
-      blue:    '#2C78BF',
-      magenta: '#E02C6D',
-      cyan:    '#0AAEB3',
-      white:   '#D0BFA1',
-      lightBlack:   '#918175',
-      lightRed:     '#F75341',
-      lightGreen:   '#98BC37',
-      lightYellow:  '#FED06E',
-      lightBlue:    '#68A8E4',
-      lightMagenta: '#FF5C8F',
-      lightCyan:    '#53FDE9',
-      lightWhite:   '#FCE8C3',
+      black: "#1C1B19",
+      red: "#EF2F27",
+      green: "#519F50",
+      yellow: "#FBB829",
+      blue: "#2C78BF",
+      magenta: "#E02C6D",
+      cyan: "#0AAEB3",
+      white: "#D0BFA1",
+      lightBlack: "#918175",
+      lightRed: "#F75341",
+      lightGreen: "#98BC37",
+      lightYellow: "#FED06E",
+      lightBlue: "#68A8E4",
+      lightMagenta: "#FF5C8F",
+      lightCyan: "#53FDE9",
+      lightWhite: "#FCE8C3",
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -103,17 +104,17 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '',
+    shell: "",
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
-    shellArgs: ['--login'],
+    shellArgs: ["--login"],
 
     // for environment variables
     env: {},
 
     // set to `false` for no bell
-    bell: 'SOUND',
+    bell: "SOUND",
 
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
     copyOnSelect: true,
@@ -128,7 +129,7 @@ module.exports = {
     // choose either `'vertical'`, if you want the column mode when Option key is hold during selection (Default)
     // or `'force'`, if you want to force selection regardless of whether the terminal is in mouse events mode
     // (inside tmux or vim with mouse mode enabled for example).
-    macOptionSelectionMode: 'vertical',
+    macOptionSelectionMode: "vertical",
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
@@ -138,34 +139,31 @@ module.exports = {
     webGLRenderer: true,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-/*
- *     verminal: {
- *       fontFamily: '"LigaOperatorMono Nerd Font Mono"',
- *       fontSize: 14
- *     },
- *     materialBox: {
- *       scheme: 'one-dark',
- *     },
- *     MaterialTheme: {
- *       // Set the theme variant,
- *       // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
- *       theme: '',
- *
- *       // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
- *       // OPTIONS: From 0.1 to 1
- *       backgroundOpacity: '.4',
- *
- *       // [Optional] Set the accent color for the current active tab
- *       accentColor: '#64FFDA',
- *
- *       // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
- *       // OPTIONS: 'dark', 'ultra-dark', 'bright'
- *       // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
- *       vibrancy: 'ultra-dark',
- *     },
- */
-  },
+    verminal: {
+      fontFamily: '"OperatorMonoSSmLig Nerd Font"',
+      fontSize: 12,
+    },
+    materialBox: {
+      scheme: "one-dark",
+    },
+    MaterialTheme: {
+      // Set the theme variant,
+      // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
+      theme: "",
 
+      // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
+      // OPTIONS: From 0.1 to 1
+      backgroundOpacity: ".4",
+
+      // [Optional] Set the accent color for the current active tab
+      accentColor: "#64FFDA",
+
+      // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
+      // OPTIONS: 'dark', 'ultra-dark', 'bright'
+      // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
+      vibrancy: "ultra-dark",
+    },
+  },
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
@@ -174,8 +172,9 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'git-falcon9',
+    "git-falcon9",
     // 'gitrocket',
+    // 'hyper-rose-pine',
     // 'hyper-atom-dark-transparent',
     // 'hyper-atom-dark-vibrancy',
     // 'hyper-cat',
@@ -190,15 +189,16 @@ module.exports = {
     // 'hyper-solarized-dark',
     // 'hyper-spotify',
     // 'hyper-statusline',
+    // 'hyperborder',
     // 'hypercwd',
-    'hyperline',
+    "hyperline",
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
     // 'hyperterm-monokai',
     // 'hyperterm-new-moon-theme',
     // 'space-pull',
-    // 'verminal',
+    "verminal",
   ],
 
   // in development, you can create a directory under

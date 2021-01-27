@@ -21,11 +21,17 @@ endif
 
 let s:completion_manager = ''
 let s:search_manager = 'coc'
+let s:syntax_manager = ''
 
 if executable('node')
   let s:completion_manager = 'coc'
 elseif has('python3')
   let s:completion_manager = 'deoplete'
+endif
+
+if has('nvim')
+  " let s:syntax_manager = 'treesitter'
+  " let s:completion_manager = 'nvim'
 endif
 
 if s:completion_manager == 'deoplete'
@@ -45,8 +51,29 @@ if s:completion_manager == 'deoplete'
 
 elseif s:completion_manager == 'coc'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+elseif s:completion_manager == 'nvim'
+  " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+  " Plug 'albertoCaroM/completion-tmux'
+  " Plug 'kristijanhusak/completion-tags'
+  " Plug 'kristijanhusak/vim-dadbod-completion'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  " Plug 'steelsojka/completion-buffers'
+  " Plug 'prabirshrestha/vim-lsp'
+  " Plug 'mattn/vim-lsp-settings'
 endif
 
+if s:syntax_manager == 'treesitter'
+  " Plug 'nvim-treesitter/nvim-treesitter-refactor'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  " Plug 'nvim-treesitter/playground'
+  Plug 'p00f/nvim-ts-rainbow'
+  " Plug 'romgrk/nvim-treesitter-context'
+else
+  Plug 'sheerun/vim-polyglot'
+endif
 
 if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
@@ -79,12 +106,6 @@ if has('nvim')
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
   endif
   Plug 'norcalli/nvim-colorizer.lua'
-  " Plug 'nvim-treesitter/nvim-treesitter-refactor'
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  " Plug 'nvim-treesitter/playground'
-  " Plug 'p00f/nvim-ts-rainbow'
-  " Plug 'romgrk/nvim-treesitter-context'
 endif
 
 " Plug 'airblade/vim-gitgutter'
@@ -207,7 +228,6 @@ Plug 'preservim/nerdcommenter'
 " Plug 'ryvnf/readline.vim'
 " Plug 'segeljakt/vim-isotope' " Insert superscripts and subscripts with ease
 " Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
-Plug 'sheerun/vim-polyglot'
 " Plug 'ShirajG/golden-ratio'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
 Plug 'skywind3000/asyncrun.vim'
@@ -286,7 +306,7 @@ Plug 'joshdick/onedark.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
 " Plug 'NLKNguyen/papercolor-theme'
-" Plug 'phanviet/vim-monokai-pro'
+Plug 'phanviet/vim-monokai-pro'
 " Plug 'rakr/vim-one'
 " Plug 'raphamorim/lucario'
 " Plug 'sainnhe/edge'
@@ -1145,6 +1165,9 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'vista', 'Mundo', '
 let g:indent_guides_guide_size = 1
 " let g:indent_guides_start_level = 2
 
+" indent guides
+execute 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#30343c'
+execute 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#30343c'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> devicons
@@ -1369,6 +1392,10 @@ let g:formatters_json = [
       \ 'fixjson',
       \ ]
 let g:formatters_python = ['black', 'yapf', 'autopep8']
+let g:formatdef_luaformatter = '"lua-format ".expand("%:p")'
+let g:formatters_lua = ['luaformatter']
+let g:formatdef_yq = '"yq e ".expand("%:p")'
+let g:formatters_yaml = ['yq']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1528,6 +1555,7 @@ if s:completion_manager == 'coc'
         \ 'coc-cmake',
         \ 'coc-css',
         \ 'coc-cssmodules',
+        \ 'coc-db',
         \ 'coc-docker',
         \ 'coc-eslint',
         \ 'coc-explorer',
@@ -1598,7 +1626,7 @@ if s:completion_manager == 'coc'
     nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
     nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
     nmap <leader>l :<C-u>CocList filetypes<CR>
-    nmap <leader>gg :<C-u>CocList grep\ 
+    nmap <leader>gg :<C-u>CocList grep\
 
   endif
 
@@ -1977,10 +2005,6 @@ execute 'hi StatusLineTermNC guibg=' . s:color2
 " execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
 " execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
 
-" indent guides
-execute 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#30343c'
-execute 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#30343c'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-buffet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2018,13 +2042,14 @@ hi DiffChange gui=NONE
 " transparent background
 if !has('gui_running') && !has('gui_vimr')
   hi Normal guibg=NONE ctermbg=NONE
-  hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
+  hi NonText guibg=NONE ctermbg=NONE
+  " hi NonText guibg=NONE ctermbg=NONE guifg=#FBB829
   hi EndOfBuffer guibg=NONE ctermbg=NONE
 
   " hi LineNr guibg=NONE ctermbg=NONE
   " hi SignColumn guibg=NONE ctermbg=NONE
-  " hi Normal guibg=#212121
-  " hi NonText guibg=#212121
+  " " hi Normal guibg=#212121
+  " " hi NonText guibg=#212121
   " hi VertSplit guibg=NONE
   " hi Statement guibg=NONE
   " hi Title guibg=NONE
@@ -2036,53 +2061,29 @@ if !has('gui_running') && !has('gui_vimr')
   " hi StatusLine guibg=NONE
 endif
 
+" " set foldmethod=expr
+" " set foldexpr=nvim_treesitter#foldexpr()
+" endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> lua
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
+if s:completion_manager == 'nvim'
+  imap <tab> <Plug>(completion_smart_tab)
+  imap <s-tab> <Plug>(completion_smart_s_tab)
 
-lua <<EOF
--- nvim-colorizer.lua
-require'colorizer'.setup()
+  " let g:completion_enable_auto_popup = 0
+  let g:completion_enable_snippet = 'UltiSnips'
 
--- nvim-treesitter
---[[
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  highlight = {
-    enable = true,
-  },
-  refactor = {
-    highlight_definitions = { enable = true },
-    -- highlight_current_scope = { enable = true },
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-  indent = {
-    enable = true
-  },
-  rainbow = {
-    enable = true,
-    disable = {'bash'}
-  },
-  playground = {
-    enable = true,
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
-  },
-}
---]]
-EOF
+  let g:completion_confirm_key = "\<C-j>"
+  let g:completion_matching_smart_case = 1
 
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
+
+  " Use <Tab> and <S-Tab> to navigate through popup menu
+  " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+  " Set completeopt to have a better completion experience
+  set completeopt=menuone,noinsert,noselect
+
+  " Avoid showing message extra message when using completion
+  set shortmess+=c
+
 endif
-
