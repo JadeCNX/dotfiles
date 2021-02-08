@@ -14,10 +14,10 @@ if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-" if has('python3')
-"   Plug 'SirVer/ultisnips' " ultimate snippet
+if has('python3')
+  Plug 'SirVer/ultisnips' " ultimate snippet
 "   Plug 'Valloric/MatchTagAlways'
-" endif
+endif
 
 let s:completion_manager = ''
 let s:search_manager = 'coc'
@@ -1944,6 +1944,13 @@ augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-template
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:templates_directory = ['~/.vim/templates']
+let g:templates_detect_git = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vimspector
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-node-debug2', 'debugger-for-chrome' ]
@@ -2070,7 +2077,7 @@ if s:completion_manager == 'nvim'
   imap <s-tab> <Plug>(completion_smart_s_tab)
 
   " let g:completion_enable_auto_popup = 0
-  let g:completion_enable_snippet = 'UltiSnips'
+  " let g:completion_enable_snippet = 'UltiSnips'
 
   let g:completion_confirm_key = "\<C-j>"
   let g:completion_matching_smart_case = 1

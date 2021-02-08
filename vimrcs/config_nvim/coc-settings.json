@@ -1,23 +1,42 @@
 {
+  "clangd.semanticHighlighting": true,
   "coc.preferences.colorSupport": true,
-  /* "coc.preferences.extensionUpdateCheck": "never", */
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-  /* "codeLens.enable": true, */
   "coc.preferences.hoverTarget": "float",
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.enabled": false,
   "cSpell.showCommandsInEditorContextMenu": false,
+  "diagnostic.enableHighlightLineNumber": true,
+  "diagnostic.enableSign": true,
+  "diagnostic.locationlistUpdate":true,
+  "diagnostic.refreshOnInsertMode": true,
   "explorer.file.autoReveal": true,
   "explorer.icon.enableNerdfont": true,
   "git.addGBlameToBufferVar": false,
   "git.addGBlameToVirtualText": true,
   "git.enableGutters": false,
   "json.enable": true,
+  "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    }
+  },
   "list.indicator": ">",
   "list.nextKeymap": "<c-n>",
   "list.previousKeymap": "<c-p>",
   "python.pythonPath": "python3",
   "signature.target": "float",
+  "snippets.autoTrigger": true,
+  "snippets.enableStatusItem": true,
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "suggest.autoTrigger": "always",
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
@@ -25,44 +44,10 @@
   "suggest.noselect": true,
   "suggest.snippetIndicator": "⚡️",
   "suggest.triggerAfterInsertEnter": true,
-  "xml.completion.autoCloseTags": false,
-  "snippets.extends": {
-    "cpp": ["c"],
-    "javascriptreact": ["javascript"],
-    "typescriptreact": ["javascript"],
-    "typescript": ["javascript"]
-  },
-  "clangd.semanticHighlighting": true,
-  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
-  "snippets.autoTrigger": true,
-  "snippets.enableStatusItem": true,
+  "tailwindCSS.trace.server": "verbose",
   "tsserver.enable": true,
   "tsserver.log": "verbose",
   "tsserver.trace.server": "verbose",
-  "tailwindCSS.trace.server": "verbose",
-  "yank.enableCompletion": true,
-  /* "coc.preferences.hoverTarget": "echo", */
-  /* "suggest.floatEnable": false, */
-  /* "diagnostic.virtualText": true, */
-  /* "diagnostic.checkCurrentLine": true, */
-  "diagnostic.enableHighlightLineNumber": true,
-  "diagnostic.enableSign": true,
-  "diagnostic.locationlistUpdate":true,
-  /* "diagnostic.messageTarget": "echo", */
-  "diagnostic.refreshOnInsertMode": true,
-  "html.autoClosingTags": true,
-  "html.filetypes": [
-    "html",
-    "handlebars",
-    "htmldjango",
-    "typescriptreact",
-    "javascriptreact"
-  ],
-  "languageserver": {
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
-    }
-  }
+  "xml.completion.autoCloseTags": false,
+  "yank.enableCompletion": true
 }
