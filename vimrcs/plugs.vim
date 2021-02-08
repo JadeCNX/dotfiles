@@ -246,6 +246,7 @@ Plug 'tommcdo/vim-exchange'
 " Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish' " Abbreviation substitution
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
@@ -1550,7 +1551,6 @@ let g:fzf_layout = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if s:completion_manager == 'coc'
   let g:coc_global_extensions = [
-        \ 'coc-actions',
         \ 'coc-clangd',
         \ 'coc-cmake',
         \ 'coc-css',
@@ -1573,9 +1573,7 @@ if s:completion_manager == 'coc'
         \ 'coc-stylelint',
         \ 'coc-tag',
         \ 'coc-tailwindcss',
-        \ 'coc-tslint',
         \ 'coc-tsserver',
-        \ 'coc-ultisnips',
         \ 'coc-vimlsp',
         \ 'coc-xml',
         \ 'coc-yaml',
@@ -1584,6 +1582,8 @@ if s:completion_manager == 'coc'
         \ 'https://github.com/infeng/vscode-react-typescript',
         \ 'https://github.com/xabikos/vscode-javascript'
         \ ]
+
+  " \ 'coc-actions',
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
   " \ 'coc-emmet',
@@ -1594,8 +1594,10 @@ if s:completion_manager == 'coc'
   " \ 'coc-prettier',
   " \ 'coc-python',
   " \ 'coc-tabnine',
-  " \ 'coc-word',
   " \ 'coc-template',
+  " \ 'coc-tslint',
+  " \ 'coc-ultisnips',
+  " \ 'coc-word',
 
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
