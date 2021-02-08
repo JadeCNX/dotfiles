@@ -1370,7 +1370,7 @@ noremap <leader>ff :<C-u>Autoformat<CR>
 vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
 " let g:autoformat_verbosemode=1
-let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")." --tab-width=".shiftwidth()'
+let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
 " let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=true --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
@@ -2034,7 +2034,7 @@ hi Type gui=italic
 hi Underlined gui=underline
 hi Function gui=italic
 hi Italic gui=italic
-hi Whitespace guifg=gray30
+" hi Whitespace guifg=gray30
 
 " disable underline in colorscheme onedark
 hi DiffChange gui=NONE
