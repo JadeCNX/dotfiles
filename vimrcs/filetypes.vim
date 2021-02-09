@@ -1,16 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Python section
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let python_highlight_all = 1
-au FileType go setlocal expandtab shiftwidth=4 tabstop=4
-au FileType python syn keyword pythonDecorator True None False self
-
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-au BufNewFile,BufRead *.mako set filetype=mako
-au BufNewFile,BufRead *.as set filetype=actionscript
-
-" au FileType python map <buffer> F :set foldmethod=indent<cr>
-
 " au FileType python inoremap <buffer> $r return
 " au FileType python inoremap <buffer> $i import
 " au FileType python inoremap <buffer> $p print
@@ -68,8 +58,6 @@ function! CoffeeScriptFold()
 endfunction
 " au FileType coffee call CoffeeScriptFold()
 
-au FileType gitcommit call setpos('.', [0, 1, 1, 0])
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> GO
@@ -96,7 +84,7 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> SCSS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType scss setl iskeyword+=@-@
+" autocmd FileType scss setl iskeyword+=@-@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

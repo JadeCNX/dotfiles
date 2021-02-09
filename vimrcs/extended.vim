@@ -123,20 +123,18 @@ nnoremap <leader>ap :cp<cr>
 " Format the status line
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Shell section
+" -> term italic support
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-else
+if !has('nvim')
   set term=screen-256color
   set t_ZH=[3m
   set t_ZR=[23m
-endif
-
-if exists('$TMUX') || !has('nvim')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  if exists('$TMUX')
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  endif
 endif
 
 

@@ -269,15 +269,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
-
-" neovim specified commands
-if has('nvim')
-
-  " inccommand shows you in realtime what changes your ex command should make
-  set inccommand=nosplit
-
-endif
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -389,17 +380,17 @@ endtry
 set mouse=a
 
 if has('nvim') && !has("gui_vimr")
-  hi Cursor guifg='fg' guibg='Green'
-  hi Cursor1 guifg='fg' guibg='Blue'
-  hi Cursor2 guifg='fg' guibg='Red'
-  set guicursor=
-        \n-c:block-Cursor,
-        \i-ve-ci:ver25,
-        \r-cr:hor20,
-        \o:hor50,
-        \v-ve:block,
-        \a:blinkwait280-blinkoff225-blinkon225,
-        \sm:block-blinkwait175-blinkoff150-blinkon175
+  " hi Cursor guifg='fg' guibg='Green'
+  " hi Cursor1 guifg='fg' guibg='Blue'
+  " hi Cursor2 guifg='fg' guibg='Red'
+  " set guicursor=
+  "       \n-c:block-Cursor,
+  "       \i-ve-ci:ver25,
+  "       \r-cr:hor20,
+  "       \o:hor50,
+  "       \v-ve:block,
+  "       \a:blinkwait280-blinkoff225-blinkon225,
+  "       \sm:block-blinkwait175-blinkoff150-blinkon175
 
   " hi Cursor gui=NONE guifg=bg guibg=fg
   " hi Cursor2 gui=NONE guifg=bg guibg=fg
