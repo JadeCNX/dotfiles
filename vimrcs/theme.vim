@@ -82,7 +82,7 @@ execute 'hi StatusLineTermNC guibg=' . s:color2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> Override colorscheme
+" -> Override highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi Comment gui=italic
 hi Identifier gui=italic
