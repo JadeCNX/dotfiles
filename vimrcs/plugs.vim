@@ -15,7 +15,7 @@ if !has('nvim')
 endif
 
 if has('python3')
-  Plug 'SirVer/ultisnips' " ultimate snippet
+"   Plug 'SirVer/ultisnips' " ultimate snippet
 "   Plug 'Valloric/MatchTagAlways'
 endif
 
@@ -116,7 +116,6 @@ Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'andymass/vim-matchup'
-Plug 'aperezdc/vim-template'
 " Plug 'ashisha/image.vim'
 Plug 'bagrat/vim-buffet'
 " Plug 'bagrat/vim-workspace'
@@ -168,6 +167,7 @@ Plug 'itchyny/calendar.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Plug 'JadeCNX/diffchar.vim'
 Plug 'JadeCNX/vim-sleuth'
+Plug 'JadeCNX/vim-template'
 Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 " Plug 'jlanzarotta/bufexplorer'
@@ -2033,6 +2033,33 @@ endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> nvim-completion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if s:completion_manager == 'nvim'
+  imap <tab> <Plug>(completion_smart_tab)
+  imap <s-tab> <Plug>(completion_smart_s_tab)
+
+  " let g:completion_enable_auto_popup = 0
+  " let g:completion_enable_snippet = 'UltiSnips'
+
+  let g:completion_confirm_key = "\<C-j>"
+  let g:completion_matching_smart_case = 1
+
+
+  " Use <Tab> and <S-Tab> to navigate through popup menu
+  " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+  " Set completeopt to have a better completion experience
+  set completeopt=menuone,noinsert,noselect
+
+  " Avoid showing message extra message when using completion
+  set shortmess+=c
+
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Override color
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi Comment gui=italic
@@ -2070,29 +2097,3 @@ if !has('gui_running') && !has('gui_vimr')
   " hi StatusLine guibg=NONE
 endif
 
-" " set foldmethod=expr
-" " set foldexpr=nvim_treesitter#foldexpr()
-" endif
-
-if s:completion_manager == 'nvim'
-  imap <tab> <Plug>(completion_smart_tab)
-  imap <s-tab> <Plug>(completion_smart_s_tab)
-
-  " let g:completion_enable_auto_popup = 0
-  " let g:completion_enable_snippet = 'UltiSnips'
-
-  let g:completion_confirm_key = "\<C-j>"
-  let g:completion_matching_smart_case = 1
-
-
-  " Use <Tab> and <S-Tab> to navigate through popup menu
-  " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-  " Set completeopt to have a better completion experience
-  set completeopt=menuone,noinsert,noselect
-
-  " Avoid showing message extra message when using completion
-  set shortmess+=c
-
-endif
