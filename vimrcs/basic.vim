@@ -6,7 +6,7 @@ colorscheme slate
 set number
 
 " Show relative line number
-" set relativenumber
+set relativenumber
 
 " yank copy to clipboard
 " set clipboard=unnamed
@@ -132,9 +132,9 @@ syntax enable
 
 " set extra options when running in GUI mode
 if has("gui_running")
+  " set t_Co=256
   set guioptions-=T
   set guioptions-=e
-  set t_Co=256
   set guitablabel=%M\ %t
 endif
 
@@ -176,15 +176,15 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 80*2 characters
 set linebreak
 set breakindent
 set textwidth=160
 let &showbreak='↳ '
 " set cpoptions+=n
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 
 " You will have bad experience for diagnostic messages when it's default 4000.
@@ -230,21 +230,21 @@ noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove
 noremap <space>t<space> :tabnext<space>
 
-noremap <space>1 :tabnext 1<cr>
-noremap <space>2 :tabnext 2<cr>
-noremap <space>3 :tabnext 3<cr>
-noremap <space>4 :tabnext 4<cr>
-noremap <space>5 :tabnext 5<cr>
-noremap <space>6 :tabnext 6<cr>
-noremap <space>7 :tabnext 7<cr>
-noremap <space>8 :tabnext 8<cr>
-noremap <space>9 :tabnext 9<cr>
-noremap <space>0 :tabnext 10<cr>
+noremap <leader>1 :tabnext 1<cr>
+noremap <leader>2 :tabnext 2<cr>
+noremap <leader>3 :tabnext 3<cr>
+noremap <leader>4 :tabnext 4<cr>
+noremap <leader>5 :tabnext 5<cr>
+noremap <leader>6 :tabnext 6<cr>
+noremap <leader>7 :tabnext 7<cr>
+noremap <leader>8 :tabnext 8<cr>
+noremap <leader>9 :tabnext 9<cr>
+noremap <leader>0 :tabnext 10<cr>
 
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 
@@ -258,7 +258,7 @@ noremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
-  set stal=2
+  set showtabline=2
 catch
 endtry
 
@@ -359,8 +359,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" noremap <leader>e :e! ~/.vim/my_configs.vim<cr>
-" autocmd! bufwritepost ~/.vim/my_configs.vim source ~/.vim/my_configs.vim
+" noremap <leader>e :e! ~/.vimrc<cr>
+" autocmd! bufwritepost ~/.vimrc source ~/.vim/.vimrc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

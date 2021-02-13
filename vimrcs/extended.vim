@@ -351,7 +351,7 @@ augroup LargeFile
     " no undo possible
     setlocal undolevels=-1
     " display message
-    autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+    autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see extended.vim for details)."
   endfu
 augroup END
 
@@ -486,7 +486,7 @@ function! Ludicrous(enable)
       RainbowToggleOn
     endif
     if exists(":ALEEnable")
-      ALEDisable
+      ALEEnable
     endif
     if exists(":SignifyEnable")
       SignifyEnable
@@ -694,7 +694,7 @@ nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> quick normal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>nn :<c-u>%normal<space>
+map <leader>nn :<c-u>normal<space>
 vmap <leader>nn :<c-u>'<,'>normal<space>
 
 

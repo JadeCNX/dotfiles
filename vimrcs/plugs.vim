@@ -33,6 +33,16 @@ endif
 if has('nvim')
   " let s:syntax_manager = 'treesitter'
   " let s:completion_manager = 'nvim'
+
+  " Plug 'APZelos/blamer.nvim'
+  " Plug 'bfredl/nvim-miniyank'
+  " Plug 'kassio/neoterm'
+  Plug 'gennaro-tedesco/nvim-peekup'
+  Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
+  if s:search_manager == 'clap'
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  endif
+  Plug 'norcalli/nvim-colorizer.lua'
 endif
 
 if s:completion_manager == 'deoplete'
@@ -98,16 +108,6 @@ endif
 " if executable('go') && (has('nvim') || has('sign'))
 "   Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " endif
-
-if has('nvim')
-  " Plug 'APZelos/blamer.nvim'
-  " Plug 'bfredl/nvim-miniyank'
-  " Plug 'kassio/neoterm'
-  if s:search_manager == 'clap'
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-  endif
-  Plug 'norcalli/nvim-colorizer.lua'
-endif
 
 " Plug 'airblade/vim-gitgutter'
 " Plug 'alvan/vim-closetag'
@@ -260,7 +260,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
-Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
@@ -1539,6 +1538,7 @@ if s:completion_manager == 'coc'
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
+        \ 'coc-marketplace',
         \ 'coc-phpls',
         \ 'coc-pyright',
         \ 'coc-rls',
