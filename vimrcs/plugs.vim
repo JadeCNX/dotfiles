@@ -1633,6 +1633,7 @@ if s:completion_manager == 'coc'
   " nmap <leader>wt <Plug>(coc-type-definition)
   " nmap <leader>wi <Plug>(coc-implementation)
   nmap <leader>wr <Plug>(coc-references)
+  nmap <leader>wi :<C-u>CocCommand editor.action.organizeImport<CR>
 
 
   " Remap for do action format
