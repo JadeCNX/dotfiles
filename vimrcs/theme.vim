@@ -32,6 +32,23 @@ colorscheme onedark
 " -> statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if v:true
+  let s:color1='#E06C75'
+  let s:color2='#3E4452'
+  let s:color3='#282C34'
+  let s:color4='#ABB2BF'
+
+  execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
+  execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
+  execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
+  execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
+  execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color2
+  execute 'hi StatusLineNC guibg=' . s:color2
+  execute 'hi StatusLineTermNC guibg=' . s:color2
+  " execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
+  " execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
+  " execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
+  " execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
+
   function! StatusDiagnostic() abort
     let info = get(b:, 'coc_diagnostic_info', {})
     if empty(info) | return '' | endif
@@ -63,23 +80,6 @@ if v:true
   " set statusline^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}\ %{StatusDiagnostic()}
   " set statusline+=%1*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}" Encoding
   " set statusline+=%1*\ %<%f%h%m%r%b\ 0x%B\ \ %l,%c%V\ %P\ %* " character under cursor
-
-  let s:color1='#E06C75'
-  let s:color2='#3E4452'
-  let s:color3='#282C34'
-  let s:color4='#ABB2BF'
-
-  execute 'hi User1 guifg=' . s:color3 . ' guibg=' . s:color1
-  execute 'hi User2 guifg=' . s:color2 . ' guibg=' . s:color1
-  execute 'hi User3 guifg=' . s:color4 . ' guibg=' . s:color2
-  execute 'hi User4 guifg=' . s:color2 . ' guibg=' . s:color2
-  execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color2
-  execute 'hi StatusLineNC guibg=' . s:color2
-  execute 'hi StatusLineTermNC guibg=' . s:color2
-  " execute 'hi User5 guifg=' . s:color1 . ' guibg=' . s:color3
-  " execute 'hi User4 guifg=' . s:color4 . ' guibg=' . s:color2
-  " execute 'hi User5 guifg=' . s:color3 . ' guibg=' . s:color1
-  " execute 'hi User6 guifg=' . s:color3 . ' guibg=' . s:color2
 endif
 
 

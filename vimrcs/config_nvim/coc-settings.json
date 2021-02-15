@@ -37,11 +37,11 @@
     "typescript": ["javascript"]
   },
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
-  "suggest.autoTrigger": "always",
+  // "suggest.autoTrigger": "always",
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
-  "suggest.noselect": true,
+  // "suggest.noselect": true,
   "suggest.snippetIndicator": "⚡️",
   "suggest.triggerAfterInsertEnter": true,
   "tailwindCSS.trace.server": "verbose",
