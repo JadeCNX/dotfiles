@@ -1346,6 +1346,7 @@ let g:AutoPairsShortcutToggle = ''
 " -> vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <leader>ff :<C-u>Autoformat<CR>
+noremap <leader>fl :<C-u>AutoformatLine<CR>
 vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
 " let g:autoformat_verbosemode=1
@@ -1963,6 +1964,16 @@ function! g:BuffetSetCustomColors()
   execute 'hi BuffetActiveBuffer guifg=' . s:color3 . ' guibg=' . s:color4
   execute 'hi BuffetTrunc guifg=' . s:color4 . ' guibg=#30343c'
 endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> minimap-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+let g:minimap_width = 5
+let g:minimap_highlight = 'Error'
+let g:minimap_block_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff', 'coc-explorer']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
