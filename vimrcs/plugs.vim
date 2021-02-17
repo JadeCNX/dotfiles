@@ -36,13 +36,15 @@ if has('nvim')
 
   " Plug 'APZelos/blamer.nvim'
   " Plug 'bfredl/nvim-miniyank'
-  " Plug 'kassio/neoterm'
   Plug 'gennaro-tedesco/nvim-peekup'
+  " Plug 'kassio/neoterm'
+  Plug 'norcalli/nvim-colorizer.lua'
   Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
+  " Plug 'Xuyuanp/scrollbar.nvim'
+
   if s:search_manager == 'clap'
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
   endif
-  Plug 'norcalli/nvim-colorizer.lua'
 endif
 
 if s:completion_manager == 'deoplete'
@@ -184,6 +186,7 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 " Plug 'kiteco/vim-plugin'
+" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Plug 'koron/minimap-vim'
 " Plug 'lifepillar/vim-colortemplate'
 " Plug 'lilydjwg/colorizer'
@@ -282,6 +285,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
+Plug 'wfxr/minimap.vim'
 " Plug 'wsdjeg/FlyGrep.vim'
 Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
@@ -1350,6 +1354,7 @@ let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
 let g:formatters_html = ['prettier']
+let g:formatters_toml = ['prettier']
 let g:formatters_typescript = ['prettier', 'tsfmt']
 let g:formatters_typescriptreact = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
