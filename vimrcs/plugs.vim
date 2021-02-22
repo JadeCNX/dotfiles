@@ -5,6 +5,11 @@ if empty(glob(s:plug_file))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+func! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunc
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'ryanoasis/vim-devicons'
@@ -88,9 +93,6 @@ else
   Plug 'sheerun/vim-polyglot'
 endif
 
-if executable('ctags')
-  Plug 'ludovicchabant/vim-gutentags'
-endif
 
 if s:search_manager == 'fzf'
   if empty(glob('/usr/local/opt/fzf'))
@@ -192,6 +194,7 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 " Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 " Plug 'lornix/vim-scrollbar'
+Plug 'ludovicchabant/vim-gutentags', Cond(executable('ctags'))
 " Plug 'luochen1990/rainbow'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
@@ -285,7 +288,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'wesQ3/vim-windowswap'
-Plug 'wfxr/minimap.vim'
+Plug 'wfxr/minimap.vim', Cond(exists('code-minimap'))
 " Plug 'wsdjeg/FlyGrep.vim'
 Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
