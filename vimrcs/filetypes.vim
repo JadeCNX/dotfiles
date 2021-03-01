@@ -97,3 +97,9 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufEnter *.png,*.jpg,*gif exec "! catimg ".expand("%") | :bw
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> DockerFile
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.dockerfile set filetype=dockerfile
+
