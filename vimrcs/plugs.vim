@@ -1973,8 +1973,8 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> minimap-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
+" let g:minimap_auto_start = 1
+" let g:minimap_auto_start_win_enter = 1
 let g:minimap_width = 5
 let g:minimap_highlight = 'Error'
 let g:minimap_block_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff', 'coc-explorer']
