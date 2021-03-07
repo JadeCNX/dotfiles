@@ -2,8 +2,8 @@
 " -> define plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:completion_manager = ['coc', 'deoplete', 'nvim'][0]
-let s:file_explorer = ['coc', 'nerdtree'][1]
-let s:search_manager = ['coc', 'clap', 'fzf', 'telescope'][1]
+let s:file_explorer = ['coc', 'nerdtree'][0]
+let s:search_manager = ['coc', 'clap', 'fzf', 'telescope'][0]
 let s:syntax_manager = ['polyglot', 'treesitter'][0]
 
 if !has('nvim')
@@ -1391,7 +1391,7 @@ noremap <leader>ff :<C-u>Autoformat<CR>
 noremap <leader>fl :<C-u>AutoformatLine<CR>
 vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
-let g:autoformat_verbosemode=1
+" let g:autoformat_verbosemode=1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
 let g:formatdef_php_code_sniffer = '"phpcbf -q - < ".expand("%:p")." 2>&1 || true"'
 " let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=true --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
