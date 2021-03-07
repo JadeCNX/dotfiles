@@ -1,3 +1,40 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> define plugin manager
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:completion_manager = ['coc', 'deoplete', 'nvim'][0]
+let s:file_explorer = ['coc', 'nerdtree'][1]
+let s:search_manager = ['coc', 'clap', 'fzf', 'telescope'][1]
+let s:syntax_manager = ['polyglot', 'treesitter'][0]
+
+if !has('nvim')
+  if s:search_manager == 'clap' || s:search_manager == 'telescope'
+    s:search_manager = 'coc'
+  endif
+  if s:syntax_manager == 'treesitter'
+    s:systax_manager = 'polyglot'
+  endif
+endif
+
+if !executable('node')
+  if s:completion_manager == 'coc'
+    let s:completion_manager = 'deoplete'
+  endif
+  if s:file_explorer == 'coc'
+    let s:file_explorer = 'nerdtree'
+  endif
+  if s:search_manager == 'coc'
+    let s:search_manager = 'fzf'
+  endif
+endif
+
+if !has('python3') && s:completion_manager == 'deoplete'
+  let s:completion_manager = ''
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-plug
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:plug_file = '~/.vim/autoload/plug.vim'
 
 if empty(glob(s:plug_file))
@@ -14,25 +51,20 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ryanoasis/vim-devicons'
 
-if !has('nvim')
+if !has('nvim') && s:completion_manager == 'deoplete'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 if has('python3')
-"   Plug 'SirVer/ultisnips' " ultimate snippet
-"   Plug 'Valloric/MatchTagAlways'
+  " Plug 'SirVer/ultisnips' " ultimate snippet
+  " Plug 'Valloric/MatchTagAlways'
 endif
 
-let s:completion_manager = ''
-let s:search_manager = 'coc'
-let s:syntax_manager = ''
-
 if executable('node')
-  let s:completion_manager = 'coc'
-elseif has('python3')
-  let s:completion_manager = 'deoplete'
+  Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
+  " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 endif
 
 if has('nvim')
@@ -49,6 +81,11 @@ if has('nvim')
 
   if s:search_manager == 'clap'
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
+  elseif s:search_manager == 'telescope'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
   endif
 endif
 
@@ -67,9 +104,6 @@ if s:completion_manager == 'deoplete'
   Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
-elseif s:completion_manager == 'coc'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 elseif s:completion_manager == 'nvim'
   " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
   " Plug 'albertoCaroM/completion-tmux'
@@ -80,6 +114,10 @@ elseif s:completion_manager == 'nvim'
   " Plug 'steelsojka/completion-buffers'
   " Plug 'prabirshrestha/vim-lsp'
   " Plug 'mattn/vim-lsp-settings'
+endif
+
+if s:completion_manager == 'coc' || s:search_manager == 'coc' || s:file_explorer == 'coc'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
 if s:syntax_manager == 'treesitter'
@@ -102,7 +140,9 @@ if s:search_manager == 'fzf'
   endif
   Plug 'junegunn/fzf.vim'
   Plug 'tweekmonster/fzf-filemru'
+endif
 
+if s:file_explorer == 'nerdtree'
   " Plug 'jistr/vim-nerdtree-tabs'
   Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': ['NERDTree', 'NERDTreeFind', 'NERDTreeToggle', 'NERDTreeFocus']}
@@ -174,7 +214,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Plug 'JadeCNX/diffchar.vim'
 Plug 'JadeCNX/vim-sleuth'
 Plug 'JadeCNX/vim-template'
-Plug 'jceb/vim-orgmode', {'for': 'org'}
+" Plug 'jceb/vim-orgmode', {'for': 'org'}
 Plug 'jiangmiao/auto-pairs'
 " Plug 'jlanzarotta/bufexplorer'
 Plug 'jph00/swift-apple', {'for': 'swift'}
@@ -186,7 +226,7 @@ Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Snea
 " Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
+" Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 " Plug 'kiteco/vim-plugin'
 " Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Plug 'koron/minimap-vim'
@@ -239,13 +279,12 @@ Plug 'preservim/nerdcommenter'
 " Plug 'ShirajG/golden-ratio'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
 Plug 'skywind3000/asyncrun.vim'
-Plug 'soywod/kronos.vim', {'on': ['Kronos']}
+" Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'svermeulen/vim-easyclip'
 " Plug 'svermeulen/vim-extended-ft'
 " Plug 'szw/vim-maximizer'
 " Plug 'tacahiroy/ctrlp-funky'
-" Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'timcharper/textile.vim', {'for': ['textile']}
@@ -275,26 +314,26 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
+
 " Plug 'vim-scripts/mru.vim' " most recently use
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/utl.vim'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-vdebug/vdebug'
-Plug 'vim/killersheep'
+" Plug 'vim/killersheep'
 Plug 'vimwiki/vimwiki'
 " Plug 'vn-ki/coc-clap'
 " Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
-Plug 'wesQ3/vim-windowswap'
+" Plug 'wesQ3/vim-windowswap'
 Plug 'wfxr/minimap.vim', Cond(exists('code-minimap'))
 " Plug 'wsdjeg/FlyGrep.vim'
-Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install', 'on': ['ImportCont']}
 " Plug 'Yggdroot/indentLine'
 Plug 'yssl/QFEnter'
 " Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
@@ -698,7 +737,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> fzf-filemru
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:search_manager != 'fzf'
+if s:search_manager == 'fzf'
   let g:fzf_filemru_bufwrite = 1
 endif
 
@@ -772,7 +811,7 @@ let g:user_emmet_mode='a'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:completion_manager != 'coc'
+if s:file_explorer == 'nerdtree'
   " let g:NERDTreeWinPos = "right"
   let NERDTreeShowHidden=1
   let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\~$']
@@ -1352,14 +1391,15 @@ noremap <leader>ff :<C-u>Autoformat<CR>
 noremap <leader>fl :<C-u>AutoformatLine<CR>
 vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
-" let g:autoformat_verbosemode=1
+let g:autoformat_verbosemode=1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
+let g:formatdef_php_code_sniffer = '"phpcbf -q - < ".expand("%:p")." 2>&1 || true"'
 " let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=true --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
 let g:formatters_html = ['prettier']
 let g:formatters_toml = ['prettier']
-let g:formatters_php = ['prettier']
+let g:formatters_php = ['php_code_sniffer']
 let g:formatters_typescript = ['prettier', 'tsfmt']
 let g:formatters_typescriptreact = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
@@ -1587,36 +1627,6 @@ if s:completion_manager == 'coc'
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  if s:search_manager == 'coc'
-    function! s:cocGrepFromSelected(type)
-      let saved_unnamed_register = @@
-      if a:type ==# 'v'
-        normal! `<v`>y
-      elseif a:type ==# 'char'
-        normal! `[v`]y
-      else
-        return
-      endif
-      let word = substitute(@@, '\n$', '', 'g')
-      let word = escape(word, '| ')
-      let @@ = saved_unnamed_register
-      execute 'CocList grep '.word
-    endfunction
-
-    nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-    nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
-    nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
-    nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
-    vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
-    nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
-    nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
-    nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
-    nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
-    nmap <leader>l :<C-u>CocList filetypes<CR>
-    nmap <leader>gg :<C-u>CocList grep\
-
-  endif
-
   nmap <leader>wa :<C-u>CocAction<CR>
   nmap <leader>wc :<C-u>CocCommand<CR>
   nmap <leader>we :<C-u>CocDiagnostics<cr>
@@ -1703,24 +1713,25 @@ if s:completion_manager == 'coc'
     endfor
   endfunction
 
-  " Use <C-l> for trigger snippet expand.
-  " imap <C-l> <Plug>(coc-snippets-expand)
+  " Trigger snippet expand.
+  " inomap <C-l> <Plug>(coc-snippets-expand)
 
-  " Use <C-j> for select text for visual placeholder of snippet.
+  " Select text for visual placeholder of snippet.
   " vnoremap <C-j> <Plug>(coc-snippets-select)
 
-  " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-  let g:coc_snippet_next = '<c-j>'
+  " Jump to next placeholder, it's default of coc.nvim
+  let g:coc_snippet_next = '<TAB>'
 
-  " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-  let g:coc_snippet_prev = '<c-k>'
+  " Jump to previous placeholder, it's default of coc.nvim
+  let g:coc_snippet_prev = '<S-TAB>'
 
   " Use <C-j> for both expand and jump (make expand higher priority.)
   " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
 
   " Enter for expand.
   " inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
-  inoremap <expr> <c-j> pumvisible() ? coc#_select_confirm() : coc#refresh()
+  " inoremap <expr> <c-j> pumvisible() ? coc#_select_confirm() : coc#refresh()
+  inoremap <expr> <TAB> pumvisible() ? coc#_select_confirm() : <TAB>
 
 
   " inoremap <silent><expr> <TAB>
@@ -1757,11 +1768,43 @@ if s:completion_manager == 'coc'
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   augroup end
 
-  nmap <leader>ee :CocCommand explorer --toggle --sources=file+<CR>
-
   " autocmd VimLeavePre * bufdo if &ft == 'coc-explorer' | bdelete | endif
   " autocmd VimLeave * NERDTreeClose
   " let g:node_client_debug = 1
+endif
+
+if s:search_manager == 'coc'
+  function! s:cocGrepFromSelected(type)
+    let saved_unnamed_register = @@
+    if a:type ==# 'v'
+      normal! `<v`>y
+    elseif a:type ==# 'char'
+      normal! `[v`]y
+    else
+      return
+    endif
+    let word = substitute(@@, '\n$', '', 'g')
+    let word = escape(word, '| ')
+    let @@ = saved_unnamed_register
+    execute 'CocList grep '.word
+  endfunction
+
+  nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+  nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
+  nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
+  nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
+  vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
+  nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
+  nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
+  nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
+  nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
+  nmap <leader>l :<C-u>CocList filetypes<CR>
+  nmap <leader>gg :<C-u>CocList grep\
+
+endif
+
+if s:file_explorer == 'coc'
+  nmap <leader>ee :CocCommand explorer --toggle --sources=file+<CR>
 endif
 
 
@@ -1826,6 +1869,29 @@ autocmd FileType javascriptreact,typescriptreact let b:switch_custom_definitions
 "           \       '๐ฎฑธํ๊ณฯญฐฤฆฏโฌ็๋ษศซฉฮฺ์ฒฬฦ'.
 "           \       'ๅภถุึคตจขช๑๒๓๔ู฿๕๖๗๘๙'}
 "           \ }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> vim-telescope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if s:search_manager == 'telescope'
+  nnoremap <leader>p <cmd>Telescope find_files<cr>
+  nnoremap <leader>/ <cmd>Telescope live_grep<cr>
+  nnoremap <leader>b <cmd>Telescope buffers<cr>
+  nnoremap <leader>ph <cmd>Telescope help_tags<cr>
+
+  " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+  " nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
+  " nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
+  " nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
+  " vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
+  " nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
+  " nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
+  " nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
+  " nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
+  " nmap <leader>l :<C-u>CocList filetypes<CR>
+  " nmap <leader>gg :<C-u>CocList grep\
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
