@@ -30,8 +30,8 @@ threshold = 80
 
 [character]
 success_symbol = "[](green)"
-error_symbol = "[ ](red)"
-vicmd_symbol = "[](yellow)"
+error_symbol = "[](red)"
+vicmd_symbol = "[](yellow)"
 # use_symbol_for_status = true
 
 [cmd_duration]
@@ -101,6 +101,9 @@ symbol = " "
 
 [package]
 symbol = " "
+
+[perl]
+symbol = " "
 
 [php]
 symbol = " "
