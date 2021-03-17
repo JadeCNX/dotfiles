@@ -1731,7 +1731,7 @@ if s:completion_manager == 'coc'
   " Enter for expand.
   " inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
   " inoremap <expr> <c-j> pumvisible() ? coc#_select_confirm() : coc#refresh()
-  inoremap <expr> <TAB> pumvisible() ? coc#_select_confirm() : <TAB>
+  inoremap <expr> <TAB> pumvisible() ? coc#_select_confirm() : '<TAB>'
 
 
   " inoremap <silent><expr> <TAB>
