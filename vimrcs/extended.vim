@@ -699,6 +699,24 @@ vmap <leader>nn :<c-u>'<,'>normal<space>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> split lines
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! SplitLine()
+    " Save previous value of last search register
+    let saved_last_search_pattern = @/
+
+    " :substitute replaces the content of the search register with the `\s\+` 
+    " pattern highlighting all whitespaces in the file
+    substitute /\s\+/\r/g
+
+    " Restore previous search register
+    let @/ = saved_last_search_pattern
+endfunction
+
+command! -nargs=0 -range SplitLine call SplitLine()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Clean up on leave
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function!  <SID>DeleteBufferByExtension(strExt)
