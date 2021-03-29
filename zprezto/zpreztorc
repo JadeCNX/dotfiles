@@ -37,7 +37,6 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'homebrew' \
   'osx' \
-  'yum' \
   'python' \
   'rsync' \
   'archive' \
@@ -49,7 +48,6 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
-  'tmux' \
   'contrib-prompt' \
   'prompt'
 
@@ -58,7 +56,7 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the query found color.
-# zstyle ':prezto:module:autosuggestions' color 'yes'
+zstyle ':prezto:module:autosuggestions' color 'yes'
 # zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
@@ -117,7 +115,7 @@ zstyle ':prezto:module:editor' ps-context 'yes'
 #
 
 # Set the keyword used by `mand` to open man pages in Dash.app
-zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
+# zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
 
 #
 # Pacman
@@ -149,10 +147,10 @@ zstyle ':prezto:module:prompt' theme 'starship'
 #
 
 # Auto switch the Python virtualenv on directory change.
-# zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 
 # Automatically initialize virtualenvwrapper if pre-requisites are met.
-# zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+zstyle ':prezto:module:python:virtualenv' initialize 'no'
 
 #
 # Ruby
