@@ -248,7 +248,7 @@ Plug 'mattn/emmet-vim'
 Plug 'metakirby5/codi.vim'
 " Plug 'mhartington/deoplete-typescript'
 Plug 'mhinz/vim-signify'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 " Plug 'michaeljsmith/vim-indent-object'
 " Plug 'mileszs/ack.vim'
 " Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
