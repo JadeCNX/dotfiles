@@ -40,15 +40,13 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'rsync' \
   'archive' \
-  'git-contrib' \
-  'forgit' \
+  'git' \
   'docker' \
   'alias-tips' \
   'command-not-found' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
-  'contrib-prompt' \
   'prompt'
 
 #
@@ -131,7 +129,7 @@ zstyle ':prezto:module:editor' ps-context 'yes'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'starship'
+zstyle ':prezto:module:prompt' theme 'pure'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
