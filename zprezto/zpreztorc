@@ -32,12 +32,15 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'tmux' \
   'ssh' \
   'fasd' \
+  'fzf' \
   'completion' \
   'homebrew' \
   'osx' \
   'python' \
+  'ruby' \
   'rsync' \
   'archive' \
   'git' \
