@@ -41,6 +41,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'python' \
   'ruby' \
+  'node' \
   'rsync' \
   'archive' \
   'git' \
