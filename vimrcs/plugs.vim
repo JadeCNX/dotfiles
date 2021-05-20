@@ -73,7 +73,7 @@ if has('nvim')
 
   " Plug 'APZelos/blamer.nvim'
   " Plug 'bfredl/nvim-miniyank'
-  Plug 'gennaro-tedesco/nvim-peekup'
+  " Plug 'gennaro-tedesco/nvim-peekup'
   " Plug 'kassio/neoterm'
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
@@ -160,7 +160,7 @@ endif
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'andymass/vim-matchup'
+" Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
 Plug 'bagrat/vim-buffet'
 " Plug 'bagrat/vim-workspace'
@@ -1596,7 +1596,6 @@ if s:completion_manager == 'coc'
         \ 'coc-snippets',
         \ 'coc-spell-checker',
         \ 'coc-stylelint',
-        \ 'coc-tag',
         \ 'coc-tailwindcss',
         \ 'coc-tsserver',
         \ 'coc-vimlsp',
@@ -1608,6 +1607,7 @@ if s:completion_manager == 'coc'
         \ 'https://github.com/xabikos/vscode-javascript'
         \ ]
 
+  " \ 'coc-tag',
   " \ 'coc-actions',
   " \ 'coc-ccls',
   " \ 'coc-dictionary',
@@ -1666,8 +1666,8 @@ if s:completion_manager == 'coc'
   " show documentation in preview window
   nnoremap <leader>wh :call <SID>show_documentation()<CR>
 
-  nnoremap <leader>wj :<C-u>CocNext<CR>
-  nnoremap <leader>wk :<C-u>CocPrev<CR>
+  nnoremap <leader>[ :<C-u>CocPrev<CR>
+  nnoremap <leader>] :<C-u>CocNext<CR>
 
   " Create mappings for function text object, requires document symbols feature of languageserver.
   xmap if <Plug>(coc-funcobj-i)
