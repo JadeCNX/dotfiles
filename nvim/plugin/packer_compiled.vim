@@ -96,11 +96,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
   },
-  ["nvcode-color-schemes.vim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvcode-color-schemes.vim"
-  },
   ["nvim-autopairs"] = {
     loaded = false,
     needs_bufread = false,
@@ -183,6 +178,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
+  },
+  ["which-key.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/which-key.nvim"
   }
 }
 

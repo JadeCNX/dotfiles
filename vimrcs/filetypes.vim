@@ -1,17 +1,17 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Python section
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" au FileType python inoremap <buffer> $r return
-" au FileType python inoremap <buffer> $i import
-" au FileType python inoremap <buffer> $p print
-" au FileType python inoremap <buffer> $f # --- <esc>a
-" au FileType python map <buffer> <leader>1 /class
-" au FileType python map <buffer> <leader>2 /def
-" au FileType python map <buffer> <leader>C ?class
-" au FileType python map <buffer> <leader>D ?def
-" au FileType python set cindent
-" au FileType python set cinkeys-=0#
-" au FileType python set indentkeys-=0#
+" autocmd FileType python inoremap <buffer> $r return
+" autocmd FileType python inoremap <buffer> $i import
+" autocmd FileType python inoremap <buffer> $p print
+" autocmd FileType python inoremap <buffer> $f # --- <esc>a
+" autocmd FileType python map <buffer> <leader>1 /class
+" autocmd FileType python map <buffer> <leader>2 /def
+" autocmd FileType python map <buffer> <leader>C ?class
+" autocmd FileType python map <buffer> <leader>D ?def
+" autocmd FileType python set cindent
+" autocmd FileType python set cinkeys-=0#
+" autocmd FileType python set indentkeys-=0#
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,16 +26,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> JavaScript section
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" au FileType javascript call JavaScriptFold()
-" au FileType javascript setl foldenable
-" au FileType javascript setl nocindent
-" au FileType javascript setl expandtab shiftwidth=4 tabstop=4
+" autocmd FileType javascript call JavaScriptFold()
+" autocmd FileType javascript setl foldenable
+" autocmd FileType javascript setl nocindent
+" autocmd FileType javascript setl expandtab shiftwidth=4 tabstop=4
 
-" au FileType javascript imap <c-t> console.log();<esc>hi
-" au FileType javascript imap <c-a> alert();<esc>hi
+" autocmd FileType javascript imap <c-t> console.log();<esc>hi
+" autocmd FileType javascript imap <c-a> alert();<esc>hi
 
-" au FileType javascript inoremap <buffer> $r return
-" au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
+" autocmd FileType javascript inoremap <buffer> $r return
+" autocmd FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
 
 " function! JavaScriptFold()
 "     setl foldmethod=syntax
@@ -56,13 +56,13 @@ function! CoffeeScriptFold()
     setl foldmethod=indent
     setl foldlevelstart=1
 endfunction
-" au FileType coffee call CoffeeScriptFold()
+" autocmd FileType coffee call CoffeeScriptFold()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> GO
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au FileType go setlocal noexpandtab shiftwidth=4 tabstop=4
+autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,7 +90,7 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Actionscript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.as set filetype=actionscript
+autocmd BufNewFile,BufRead *.as set filetype=actionscript
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Image
@@ -101,5 +101,12 @@ autocmd BufEnter *.png,*.jpg,*gif exec "! catimg ".expand("%") | :bw
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> DockerFile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.dockerfile set filetype=dockerfile
+autocmd BufNewFile,BufRead *.dockerfile set filetype=dockerfile
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> env file
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead .env,.env.* set filetype=sh
+
 

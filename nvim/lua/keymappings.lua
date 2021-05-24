@@ -9,7 +9,8 @@ local opt_silent = { silent = true }
 -- vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', opt)
 
 -- explorer
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', opt_noremap_silent)
+vim.api.nvim_set_keymap('n', '<Leader>ee', ':NvimTreeToggle<CR>', opt_noremap_silent)
+vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<CR>', opt_noremap_silent)
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>', opt_noremap_silent)
@@ -77,9 +78,10 @@ vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 -- LSP
 vim.api.nvim_set_keymap('n', '<leader>la', '<cmd>Lspsaga code_action<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>lA', '<cmd>Lspsaga range_code_action<cr>', opt_noremap_silent)
-vim.api.nvim_set_keymap('n', '<leader>ld', '<cmd>LspHover<cr>', opt_noremap_silent)
+vim.api.nvim_set_keymap('n', '<leader>ld', '<cmd>Telescope lsp_document_diagnostics<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>lD', '<cmd>Telescope lsp_workspace_diagnostics<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>lf', '<cmd>LspFormatting<cr>', opt_noremap_silent)
+vim.api.nvim_set_keymap('n', '<leader>lh', '<cmd>LspHover<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>li', '<cmd>LspInfo<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>Lspsaga lsp_finder<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>lL', '<cmd>Lspsaga show_line_diagnostics<cr>', opt_noremap_silent)
@@ -88,8 +90,8 @@ vim.api.nvim_set_keymap('n', '<leader>lq', '<cmd>Telescope quickfix<cr>', opt_no
 vim.api.nvim_set_keymap('n', '<leader>lr', '<cmd>Lspsaga rename<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>lt', '<cmd>LspTypeDefinition<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '<leader>lx', '<cmd>cclose<cr>', opt_noremap_silent)
-vim.api.nvim_set_keymap('n', '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', opt_noremap_silent)
-vim.api.nvim_set_keymap('n', '<leader>lS', '<cmd>Telescope lsp_workspace_symbols<cr>', opt_noremap_silent)
+vim.api.nvim_set_keymap('n', '<leader>o', '<cmd>Telescope lsp_document_symbols<cr>', opt_noremap_silent)
+vim.api.nvim_set_keymap('n', '<leader>O', '<cmd>Telescope lsp_workspace_symbols<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>', opt_noremap_silent)
 vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>', opt_noremap_silent)
 

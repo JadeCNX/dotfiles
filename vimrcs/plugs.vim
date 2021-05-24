@@ -642,7 +642,7 @@ if s:search_manager  == 'fzf'
   nmap <silent> <leader>P :History<cr>
   nmap <silent> <leader>b :Buffers<cr>
   nmap <silent> <leader>B :GFiles<cr>
-  nmap <silent> <leader>l :Filetypes<cr>
+  nmap <silent> <leader>sl :Filetypes<cr>
 
   " Mapping selecting mappings
   " nmap <leader><tab> <plug>(fzf-maps-n)
@@ -760,9 +760,9 @@ endif
 "   vmap <silent> <leader>* :Clap grep ++query=@visual<cr>
 " 
 "   " coc-clap
-"   " nmap <leader>wa :<C-u>Clap coc_actions<CR>
-"   " nmap <leader>wc :<C-u>Clap coc_commands<CR>
-"   " nmap <leader>we :<C-u>Clap coc_diagnostics<cr>
+"   " nmap <leader>la :<C-u>Clap coc_actions<CR>
+"   " nmap <leader>lc :<C-u>Clap coc_commands<CR>
+"   " nmap <leader>le :<C-u>Clap coc_diagnostics<cr>
 "   " nmap <leader>o :<C-u>Clap coc_outline<CR>
 "   " nmap <leader>O :<C-u>Clap coc_services<CR>
 " 
@@ -1239,12 +1239,12 @@ if s:completion_manager == 'deoplete'
   " echo 'javascript-typescript-stdio not installed!\n'
   " endif
 
-  nnoremap <silent> <leader>wa :call LanguageClient_contextMenu()<CR>
-  nnoremap <silent> <leader>wh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> <leader>wd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> <leader>wn :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent> <leader>la :call LanguageClient_contextMenu()<CR>
+  nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <leader>ln :call LanguageClient#textDocument_rename()<CR>
   nnoremap <silent> <leader>O :Denite documentSymbol -highlight-mode-insert=Search -mode=insert<CR>
-  nnoremap <silent> <leader>wS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
+  nnoremap <silent> <leader>lS :Denite workspaceSymbol -highlight-mode-insert=Search -mode=insert<CR>
 
   augroup LanguageClient_config_ccls
     au!
@@ -1255,10 +1255,10 @@ if s:completion_manager == 'deoplete'
     au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
     au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
 
-    " nnoremap <silent> <leader>wxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
-    " nnoremap <silent> <leader>wxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
-    " nnoremap <silent> <leader>wxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
-    " nnoremap <silent> <leader>wxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+    " nnoremap <silent> <leader>lxh  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+    " nnoremap <silent> <leader>lxj  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+    " nnoremap <silent> <leader>lxk  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+    " nnoremap <silent> <leader>lxl  :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
   augroup END
 
 endif
@@ -1628,9 +1628,9 @@ if s:completion_manager == 'coc'
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  nmap <leader>wa :<C-u>CocAction<CR>
-  nmap <leader>wc :<C-u>CocCommand<CR>
-  nmap <leader>we :<C-u>CocDiagnostics<cr>
+  nmap <leader>la :<C-u>CocAction<CR>
+  nmap <leader>lc :<C-u>CocCommand<CR>
+  nmap <leader>lD :<C-u>CocDiagnostics<cr>
   nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
   nmap <leader>O :<C-u>CocList symbols<CR>
 
@@ -1646,26 +1646,26 @@ if s:completion_manager == 'coc'
   nmap [w <Plug>(coc-diagnostic-prev)
   nmap ]w <Plug>(coc-diagnostic-next)
 
-  nmap <leader>w. :<C-u>CocListResume<CR>
-  nmap <leader>wn <Plug>(coc-rename)
-  nmap <leader>wq <Plug>(coc-fix-current)
-  nmap <leader>wh <Plug>(coc-float-hide)
+  nmap <leader>l. :<C-u>CocListResume<CR>
+  nmap <leader>lr <Plug>(coc-rename)
+  nmap <leader>lq <Plug>(coc-fix-current)
+  nmap <leader>lh <Plug>(coc-float-hide)
 
-  nmap <leader>wd <Plug>(coc-definition)
-  " nmap <leader>wt <Plug>(coc-type-definition)
-  " nmap <leader>wi <Plug>(coc-implementation)
-  nmap <leader>wr <Plug>(coc-references)
-  nmap <leader>wi :<C-u>CocCommand editor.action.organizeImport<CR>
+  nmap <leader>ld <Plug>(coc-definition)
+  " nmap <leader>lt <Plug>(coc-type-definition)
+  " nmap <leader>li <Plug>(coc-implementation)
+  nmap <leader>lR <Plug>(coc-references)
+  nmap <leader>li :<C-u>CocCommand editor.action.organizeImport<CR>
 
 
   " Remap for do action format
-  nmap <leader>wf <Plug>(coc-format-selected)<CR>
-  vmap <leader>wf <Plug>(coc-format-selected)<CR>
+  nmap <leader>lf <Plug>(coc-format-selected)<CR>
+  vmap <leader>lf <Plug>(coc-format-selected)<CR>
 
   nmap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
 
   " show documentation in preview window
-  nnoremap <leader>wh :call <SID>show_documentation()<CR>
+  nnoremap <leader>lh :call <SID>show_documentation()<CR>
 
   nnoremap <leader>[ :<C-u>CocPrev<CR>
   nnoremap <leader>] :<C-u>CocNext<CR>
@@ -1689,9 +1689,9 @@ if s:completion_manager == 'coc'
   omap ag <Plug>(coc-git-chunk-outer)
   xmap ag <Plug>(coc-git-chunk-outer)
 
-  nnoremap <silent> <leader>wy :call StatusDiagnosticToClipboard()<CR>
+  nnoremap <silent> <leader>ly :call StatusDiagnosticToClipboard()<CR>
 
-  nmap <leader>w; :<C-u>CocCommand clangd.switchSourceHeader<CR>
+  nmap <leader>l; :<C-u>CocCommand clangd.switchSourceHeader<CR>
 
   function! s:show_documentation()
     if &filetype == 'vim'
@@ -1923,7 +1923,7 @@ let g:matchup_matchpref = {
 let g:windowswap_map_keys = 0 "prevent default bindings
 " nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
 " nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
-nnoremap <silent> <leader>wx :call WindowSwap#EasyWindowSwap()<CR>
+nnoremap <silent> <leader>lx :call WindowSwap#EasyWindowSwap()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
