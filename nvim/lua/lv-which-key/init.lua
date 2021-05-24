@@ -51,10 +51,20 @@ local opts = {
 -- vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
 -- explorer
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>ee', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
 
 -- telescope
+vim.api.nvim_set_keymap('n', '<Leader>o', ':Telescope lsp_document_symbols<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>O', ':Telescope lsp_workspace_symbols<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>P', ':Telescope oldfiles<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>/', ':Telescope live_grep<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>?', ':Telescope live_grep<CR>', {noremap = true, silent = true})
+
+-- Lsp
+vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>', {noremap = true, silent = true})
 
 -- dashboard
 -- vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})
@@ -104,6 +114,7 @@ local mappings = {
         d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
         D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
         f = {"<cmd>LspFormatting<cr>", "Format"},
+        h = {"<cmd>LspHover<cr>", "Hover"},
         i = {"<cmd>LspInfo<cr>", "Info"},
         l = {"<cmd>Lspsaga lsp_finder<cr>", "LSP Finder"},
         L = {"<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics"},
