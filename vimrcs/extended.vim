@@ -736,6 +736,6 @@ function!  <SID>DeleteBufferByExtension(strExt)
   endwhile
 endfunction
 
-map <leader>et :call <SID>DeleteBufferByExtension("txt")
+" map <leader>et :call <SID>DeleteBufferByExtension("txt")
 
 " autocmd VimLeavePre :bufdo if &ft == 'coc-explorer' | doautocmd FileType | endif

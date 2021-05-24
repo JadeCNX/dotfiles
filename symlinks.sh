@@ -51,11 +51,11 @@ link $PWD/xvimrc ~/.xvimrc
 backup ~/.vimrc
 backup ~/.config/nvim
 mkdir -pv ~/.config
-link $PWD/vimrcs/config_nvim ~/.config/nvim
+link $PWD/nvim ~/.config/nvim
 link $PWD/vimrcs/vimrc.vim ~/.vimrc
-mkdir -pv ~/.vim
-link $PWD/vimrcs/templates ~/.vim/templates
-link $PWD/vimrcs/UltiSnips ~/.vim/UltiSnips
+# mkdir -pv ~/.vim
+# link $PWD/vimrcs/templates ~/.vim/templates
+# link $PWD/vimrcs/UltiSnips ~/.vim/UltiSnips
 
 # htop
 backup ~/.config/htop/htoprc

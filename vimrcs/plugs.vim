@@ -1,18 +1,18 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> define plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:completion_manager = ['coc', 'deoplete', 'nvim'][0]
+let s:completion_manager = ['coc', 'deoplete'][0]
 let s:file_explorer = ['coc', 'nerdtree'][0]
-let s:search_manager = ['coc', 'clap', 'fzf', 'telescope'][0]
-let s:syntax_manager = ['polyglot', 'treesitter'][0]
+let s:search_manager = ['coc', 'fzf'][0]
+let s:syntax_manager = ['polyglot'][0]
 
-if !has('nvim')
-  if s:search_manager == 'clap' || s:search_manager == 'telescope'
-    s:search_manager = 'coc'
-  endif
-  if s:syntax_manager == 'treesitter'
-    s:systax_manager = 'polyglot'
-  endif
+let s:nvim_nightly = has('nvim-0.5')
+
+if s:nvim_nightly
+  let s:completion_manager = ''
+  let s:file_explorer = ''
+  let s:search_manager = ''
+  let s:syntax_manager = ''
 endif
 
 if !executable('node')
@@ -79,14 +79,14 @@ if has('nvim')
   Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
   " Plug 'Xuyuanp/scrollbar.nvim'
 
-  if s:search_manager == 'clap'
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  " if s:search_manager == 'clap'
+  "   Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
-  elseif s:search_manager == 'telescope'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-  endif
+  " elseif s:search_manager == 'telescope'
+  "   Plug 'nvim-lua/plenary.nvim'
+  "   Plug 'nvim-lua/popup.nvim'
+  "   Plug 'nvim-telescope/telescope.nvim'
+  " endif
 endif
 
 if s:completion_manager == 'deoplete'
@@ -104,13 +104,13 @@ if s:completion_manager == 'deoplete'
   Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
-elseif s:completion_manager == 'nvim'
+" elseif s:completion_manager == 'nvim'
   " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
   " Plug 'albertoCaroM/completion-tmux'
   " Plug 'kristijanhusak/completion-tags'
   " Plug 'kristijanhusak/vim-dadbod-completion'
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/completion-nvim'
+  " Plug 'neovim/nvim-lspconfig'
+  " Plug 'nvim-lua/completion-nvim'
   " Plug 'steelsojka/completion-buffers'
   " Plug 'prabirshrestha/vim-lsp'
   " Plug 'mattn/vim-lsp-settings'
@@ -120,14 +120,13 @@ if s:completion_manager == 'coc' || s:search_manager == 'coc' || s:file_explorer
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
-if s:syntax_manager == 'treesitter'
+if s:syntax_manager == 'polyglot'
   " Plug 'nvim-treesitter/nvim-treesitter-refactor'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   " Plug 'nvim-treesitter/playground'
-  Plug 'p00f/nvim-ts-rainbow'
+  " Plug 'p00f/nvim-ts-rainbow'
   " Plug 'romgrk/nvim-treesitter-context'
-else
   Plug 'sheerun/vim-polyglot'
 endif
 
@@ -162,7 +161,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 " Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
-Plug 'bagrat/vim-buffet'
+if !s:nvim_nightly
+  Plug 'bagrat/vim-buffet'
+endif
 " Plug 'bagrat/vim-workspace'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
@@ -181,7 +182,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'dahu/vim-fanfingtastic'
-Plug 'dart-lang/dart-vim-plugin'
+" Plug 'dart-lang/dart-vim-plugin'
 Plug 'dbakker/vim-paragraph-motion'
 Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'dense-analysis/ale'
@@ -189,7 +190,7 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'dimonomid/auto-pairs-gentle'
-Plug 'dyng/ctrlsf.vim'
+Plug 'dyng/ctrlsf.vim', {'on': ['CtrlSF']}
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'edkolev/tmuxline.vim'
@@ -745,46 +746,46 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-clap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:search_manager == 'clap'
-  nmap <silent> <leader>p :Clap files<CR>
-  nmap <silent> <leader>P :Clap files --type f -uu -g "!.git/" .<cr>
-  nmap <silent> <leader>b :Clap buffers<cr>
-  nmap <silent> <leader>B :Clap history<cr>
-  nmap <silent> <leader>l :Clap filetypes<cr>
-  nmap <silent> <leader>: :Clap command<cr>
-  nmap <silent> <leader>; :Clap command_history<cr>
-  nmap <silent> <leader>/ :Clap grep<cr>
-  nmap <silent> <leader>? :Clap grep2<cr>
-  nmap <silent> <leader>* :Clap grep ++query=<cword><cr>
-  vmap <silent> <leader>* :Clap grep ++query=@visual<cr>
-
-  " coc-clap
-  " nmap <leader>wa :<C-u>Clap coc_actions<CR>
-  " nmap <leader>wc :<C-u>Clap coc_commands<CR>
-  " nmap <leader>we :<C-u>Clap coc_diagnostics<cr>
-  " nmap <leader>o :<C-u>Clap coc_outline<CR>
-  " nmap <leader>O :<C-u>Clap coc_services<CR>
-
-  " let g:clap_theme = 'material_design_dark'
-  let g:clap_layout = { 'relative': 'editor' }
-  let g:clap_popup_border = 'nil'
-  let g:clap_insert_mode_only = v:true
-  " let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
-  let g:clap_search_box_border_style = 'nil'
-  let g:clap_disable_run_rooter = v:true
-
-  let g:clap_forerunner_status_sign = { 'running': '!', 'done': '•', 'using_cache': '*' }
-
-  if has('nvim')
-    autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
-    autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
-  else
-    let g:clap_popup_move_manager = {
-          \ "\<C-N>": "\<Down>",
-          \ "\<C-P>": "\<Up>",
-          \ }
-  endif
-endif
+" if s:search_manager == 'clap'
+"   nmap <silent> <leader>p :Clap files<CR>
+"   nmap <silent> <leader>P :Clap files --type f -uu -g "!.git/" .<cr>
+"   nmap <silent> <leader>b :Clap buffers<cr>
+"   nmap <silent> <leader>B :Clap history<cr>
+"   nmap <silent> <leader>l :Clap filetypes<cr>
+"   nmap <silent> <leader>: :Clap command<cr>
+"   nmap <silent> <leader>; :Clap command_history<cr>
+"   nmap <silent> <leader>/ :Clap grep<cr>
+"   nmap <silent> <leader>? :Clap grep2<cr>
+"   nmap <silent> <leader>* :Clap grep ++query=<cword><cr>
+"   vmap <silent> <leader>* :Clap grep ++query=@visual<cr>
+" 
+"   " coc-clap
+"   " nmap <leader>wa :<C-u>Clap coc_actions<CR>
+"   " nmap <leader>wc :<C-u>Clap coc_commands<CR>
+"   " nmap <leader>we :<C-u>Clap coc_diagnostics<cr>
+"   " nmap <leader>o :<C-u>Clap coc_outline<CR>
+"   " nmap <leader>O :<C-u>Clap coc_services<CR>
+" 
+"   " let g:clap_theme = 'material_design_dark'
+"   let g:clap_layout = { 'relative': 'editor' }
+"   let g:clap_popup_border = 'nil'
+"   let g:clap_insert_mode_only = v:true
+"   " let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
+"   let g:clap_search_box_border_style = 'nil'
+"   let g:clap_disable_run_rooter = v:true
+" 
+"   let g:clap_forerunner_status_sign = { 'running': '!', 'done': '•', 'using_cache': '*' }
+" 
+"   if has('nvim')
+"     autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
+"     autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
+"   else
+"     let g:clap_popup_move_manager = {
+"           \ "\<C-N>": "\<Down>",
+"           \ "\<C-P>": "\<Up>",
+"           \ }
+"   endif
+" endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1874,24 +1875,24 @@ autocmd FileType javascriptreact,typescriptreact let b:switch_custom_definitions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-telescope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:search_manager == 'telescope'
-  nnoremap <leader>p <cmd>Telescope find_files<cr>
-  nnoremap <leader>/ <cmd>Telescope live_grep<cr>
-  nnoremap <leader>b <cmd>Telescope buffers<cr>
-  nnoremap <leader>ph <cmd>Telescope help_tags<cr>
-
-  " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-  " nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
-  " nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
-  " nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
-  " vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
-  " nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
-  " nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
-  " nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
-  " nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
-  " nmap <leader>l :<C-u>CocList filetypes<CR>
-  " nmap <leader>gg :<C-u>CocList grep\
-endif
+" if s:search_manager == 'telescope'
+"   nnoremap <leader>p <cmd>Telescope find_files<cr>
+"   nnoremap <leader>/ <cmd>Telescope live_grep<cr>
+"   nnoremap <leader>b <cmd>Telescope buffers<cr>
+"   nnoremap <leader>ph <cmd>Telescope help_tags<cr>
+" 
+"   " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
+"   " nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
+"   " nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
+"   " nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
+"   " vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
+"   " nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
+"   " nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
+"   " nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
+"   " nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
+"   " nmap <leader>l :<C-u>CocList filetypes<CR>
+"   " nmap <leader>gg :<C-u>CocList grep\
+" endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2016,24 +2017,26 @@ let g:templates_detect_git = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-buffet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:color1='#E06C75'
-let s:color2='#3E4452'
-let s:color3='#282C34'
-let s:color4='#ABB2BF'
+if !s:nvim_nightly
+  let s:color1='#E06C75'
+  let s:color2='#3E4452'
+  let s:color3='#282C34'
+  let s:color4='#ABB2BF'
 
-let g:buffet_powerline_separators = 1
-let g:buffet_tab_icon = "離"
-let g:buffet_left_trunc_icon = ""
-let g:buffet_right_trunc_icon = ""
-let g:buffet_new_buffer_name = ''
-let g:buffet_modified_icon = ' '
-function! g:BuffetSetCustomColors()
-  execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
-  execute 'hi BuffetBuffer guifg=' . s:color4 . ' guibg=' . s:color3
-  execute 'hi BuffetTab guifg=' . s:color4 . ' guibg=' . s:color2
-  execute 'hi BuffetActiveBuffer guifg=' . s:color3 . ' guibg=' . s:color4
-  execute 'hi BuffetTrunc guifg=' . s:color4 . ' guibg=#30343c'
-endfunction
+  let g:buffet_powerline_separators = 1
+  let g:buffet_tab_icon = "離"
+  let g:buffet_left_trunc_icon = ""
+  let g:buffet_right_trunc_icon = ""
+  let g:buffet_new_buffer_name = ''
+  let g:buffet_modified_icon = ' '
+  function! g:BuffetSetCustomColors()
+    execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
+    execute 'hi BuffetBuffer guifg=' . s:color4 . ' guibg=' . s:color3
+    execute 'hi BuffetTab guifg=' . s:color4 . ' guibg=' . s:color2
+    execute 'hi BuffetActiveBuffer guifg=' . s:color3 . ' guibg=' . s:color4
+    execute 'hi BuffetTrunc guifg=' . s:color4 . ' guibg=#30343c'
+  endfunction
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2049,25 +2052,25 @@ let g:minimap_block_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> nvim-completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if s:completion_manager == 'nvim'
-  imap <tab> <Plug>(completion_smart_tab)
-  imap <s-tab> <Plug>(completion_smart_s_tab)
-
-  " let g:completion_enable_auto_popup = 0
-  " let g:completion_enable_snippet = 'UltiSnips'
-
-  let g:completion_confirm_key = "\<C-j>"
-  let g:completion_matching_smart_case = 1
-
-
-  " Use <Tab> and <S-Tab> to navigate through popup menu
-  " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-  " Set completeopt to have a better completion experience
-  set completeopt=menuone,noinsert,noselect
-
-  " Avoid showing message extra message when using completion
-  set shortmess+=c
-
-endif
+" if s:completion_manager == 'nvim'
+"   imap <tab> <Plug>(completion_smart_tab)
+"   imap <s-tab> <Plug>(completion_smart_s_tab)
+" 
+"   " let g:completion_enable_auto_popup = 0
+"   " let g:completion_enable_snippet = 'UltiSnips'
+" 
+"   let g:completion_confirm_key = "\<C-j>"
+"   let g:completion_matching_smart_case = 1
+" 
+" 
+"   " Use <Tab> and <S-Tab> to navigate through popup menu
+"   " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"   " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" 
+"   " Set completeopt to have a better completion experience
+"   set completeopt=menuone,noinsert,noselect
+" 
+"   " Avoid showing message extra message when using completion
+"   set shortmess+=c
+" 
+" endif

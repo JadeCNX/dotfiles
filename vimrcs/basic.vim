@@ -379,39 +379,40 @@ endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a
 
-if has('nvim') && !has("gui_vimr")
-  " hi Cursor guifg='fg' guibg='Green'
-  " hi Cursor1 guifg='fg' guibg='Blue'
-  " hi Cursor2 guifg='fg' guibg='Red'
-  " set guicursor=
-  "       \n-c:block-Cursor,
-  "       \i-ve-ci:ver25,
-  "       \r-cr:hor20,
-  "       \o:hor50,
-  "       \v-ve:block,
-  "       \a:blinkwait280-blinkoff225-blinkon225,
-  "       \sm:block-blinkwait175-blinkoff150-blinkon175
+if !has("gui_vimr")
+  if has('nvim')
+    " hi Cursor guifg='fg' guibg='Green'
+    " hi Cursor1 guifg='fg' guibg='Blue'
+    " hi Cursor2 guifg='fg' guibg='Red'
+    " set guicursor=
+    "       \n-c:block-Cursor,
+    "       \i-ve-ci:ver25,
+    "       \r-cr:hor20,
+    "       \o:hor50,
+    "       \v-ve:block,
+    "       \a:blinkwait280-blinkoff225-blinkon225,
+    "       \sm:block-blinkwait175-blinkoff150-blinkon175
 
-  " hi Cursor gui=NONE guifg=bg guibg=fg
-  " hi Cursor2 gui=NONE guifg=bg guibg=fg
-  " hi lCursor1 gui=NONE guifg=bg guibg=fg
-  " hi lCursor2 gui=NONE guifg=bg guibg=fg
+    " hi Cursor gui=NONE guifg=bg guibg=fg
+    " hi Cursor2 gui=NONE guifg=bg guibg=fg
+    " hi lCursor1 gui=NONE guifg=bg guibg=fg
+    " hi lCursor2 gui=NONE guifg=bg guibg=fg
 
-  au VimLeave * set guicursor=a:block-blinkon0
-elseif exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  au InsertEnter * set cul
-  au InsertLeave * set nocul
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  au InsertEnter * set cul
-  au InsertLeave * set nocul
+    au VimLeave * set guicursor=a:block-blinkon0
+  elseif exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    au InsertEnter * set cul
+    au InsertLeave * set nocul
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    au InsertEnter * set cul
+    au InsertLeave * set nocul
+  endif
 endif
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
