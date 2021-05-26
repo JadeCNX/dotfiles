@@ -51,8 +51,8 @@ O.lua.autoformat = false
 
 -- javascript
 O.tsserver.formatter = 'prettier'
-O.tsserver.linter = nil
-O.tsserver.autoformat = true
+O.tsserver.linter = 'eslint'
+O.tsserver.autoformat = false
 
 -- json
 O.json.autoformat = true

@@ -51,8 +51,8 @@ local opts = {
 -- vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
 -- explorer
-vim.api.nvim_set_keymap('n', '<Leader>ee', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>ee', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<Leader>o', ':Telescope lsp_document_symbols<cr>', {noremap = true, silent = true})
@@ -81,9 +81,13 @@ vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>', {noremap = true, sile
 local mappings = {
     ["/"] = "Comment",
     ["c"] = "Close Buffer",
-    ["e"] = "Explorer",
     ["p"] = "Find File",
     ["h"] = "No Highlight",
+    e = {
+        name = "+Explorer",
+        e = {"<cmd>NERDTreeToggle<cr>", "Open Explorer"},
+        f = {"<cmd>NERDTreeFind<cr>", "Reveal in Explorer"},
+    },
     d = {
         name = "+Debug",
         b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},

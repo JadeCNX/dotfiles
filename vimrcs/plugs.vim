@@ -10,7 +10,7 @@ let s:nvim_nightly = has('nvim-0.5')
 
 if s:nvim_nightly
   let s:completion_manager = ''
-  let s:file_explorer = ''
+  let s:file_explorer = 'nerdtree'
   let s:search_manager = ''
   let s:syntax_manager = ''
 endif
@@ -75,8 +75,8 @@ if has('nvim')
   " Plug 'bfredl/nvim-miniyank'
   " Plug 'gennaro-tedesco/nvim-peekup'
   " Plug 'kassio/neoterm'
-  Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
+  " Plug 'norcalli/nvim-colorizer.lua'
+  " Plug 'vigoux/LanguageTool.nvim', {'on': ['LanguageToolCheck', 'LanguageToolSummary']}
   " Plug 'Xuyuanp/scrollbar.nvim'
 
   " if s:search_manager == 'clap'
@@ -163,6 +163,7 @@ Plug 'AndrewRadev/switch.vim'
 " Plug 'ashisha/image.vim'
 if !s:nvim_nightly
   Plug 'bagrat/vim-buffet'
+  Plug 'jiangmiao/auto-pairs'
 endif
 " Plug 'bagrat/vim-workspace'
 " Plug 'blindFS/vim-taskwarrior'
@@ -216,7 +217,6 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'JadeCNX/vim-sleuth'
 Plug 'JadeCNX/vim-template'
 " Plug 'jceb/vim-orgmode', {'for': 'org'}
-Plug 'jiangmiao/auto-pairs'
 " Plug 'jlanzarotta/bufexplorer'
 Plug 'jph00/swift-apple', {'for': 'swift'}
 Plug 'Julian/vim-textobj-variable-segment'
@@ -1159,9 +1159,19 @@ let g:gutentags_ctags_exclude = ['none_modules/*', '.*']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 " noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
-" let g:comfortable_motion_interval = 9000 / 60
-" let g:comfortable_motion_friction = 0.0
-" let g:comfortable_motion_air_drag = 4.0
+" let g:comfortable_motion_interval = 1000 / 25
+" let g:comfortable_motion_friction = 200.0
+" let g:comfortable_motion_air_drag = 0.0
+" " let g:comfortable_motion_friction = 0.0
+" " let g:comfortable_motion_air_drag = 4.0
+" " let g:comfortable_motion_scroll_down_key = "j"
+" " let g:comfortable_motion_scroll_up_key = "k"
+" let g:comfortable_motion_no_default_key_mappings = 1
+" let g:comfortable_motion_impulse_multiplier = 1  " Feel free to increase/decrease this value.
+" nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
+" nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
+" nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
+" nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

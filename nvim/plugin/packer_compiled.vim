@@ -47,8 +47,8 @@ local function save_profiles(threshold)
 end
 
 time("Luarocks path setup", true)
-local package_path_str = "/Users/tc6/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/tc6/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/tc6/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/tc6/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/tc6/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/jade/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/jade/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/jade/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/jade/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/jade/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,118 +71,123 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
+  ["LanguageTool.nvim"] = {
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/LanguageTool.nvim"
+  },
   ["barbar.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/barbar.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/barbar.nvim"
   },
   ["friendly-snippets"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/friendly-snippets"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/friendly-snippets"
   },
   ["galaxyline.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
-  },
-  ["gitsigns.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-bqf"] = {
     loaded = false,
     needs_bufread = true,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
   },
-  ["nvim-compe"] = {
-    after_files = { "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_buffer.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_calc.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_emoji.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_luasnip.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lsp.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lua.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_omni.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_path.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_snippets_nvim.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_spell.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_tags.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_treesitter.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_ultisnips.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsc.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsp.vim", "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vsnip.vim" },
+  ["nvim-colorizer.lua"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-compe"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
+  },
+  ["nvim-compe"] = {
+    after_files = { "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_buffer.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_calc.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_emoji.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_luasnip.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lsp.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lua.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_omni.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_path.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_snippets_nvim.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_spell.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_tags.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_treesitter.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_ultisnips.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsc.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsp.vim", "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vsnip.vim" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-compe"
   },
   ["nvim-dap"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-dap"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-dap"
   },
   ["nvim-lspconfig"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
   },
-  ["nvim-tree.lua"] = {
+  ["nvim-scrollview"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-scrollview"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-ts-autotag"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/plenary.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/popup.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/popup.nvim"
   },
   rnvimr = {
     loaded = true,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/start/rnvimr"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/start/rnvimr"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/telescope-fzy-native.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/telescope-fzy-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
   },
   ["vim-vsnip"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
   },
   ["which-key.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/tc6/.local/share/nvim/site/pack/packer/opt/which-key.nvim"
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/which-key.nvim"
   }
 }
 
