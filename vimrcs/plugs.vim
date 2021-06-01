@@ -279,7 +279,7 @@ Plug 'preservim/nerdcommenter'
 " Plug 'severin-lemaignan/vim-minimap', {'on': ['Minimap', 'MinimapToggle']}
 " Plug 'ShirajG/golden-ratio'
 Plug 'simnalamburt/vim-mundo', {'on': ['MundoToggle']}
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asyncrun.vim'
 " Plug 'soywod/kronos.vim', {'on': ['Kronos']}
 Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'svermeulen/vim-easyclip'
@@ -1613,6 +1613,7 @@ if s:completion_manager == 'coc'
         \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank',
+        \ 'coc-vetur',
         \ 'https://github.com/cstrap/python-snippets',
         \ 'https://github.com/infeng/vscode-react-typescript',
         \ 'https://github.com/xabikos/vscode-javascript'
@@ -1880,30 +1881,6 @@ autocmd FileType javascriptreact,typescriptreact let b:switch_custom_definitions
 "           \       '๐ฎฑธํ๊ณฯญฐฤฆฏโฌ็๋ษศซฉฮฺ์ฒฬฦ'.
 "           \       'ๅภถุึคตจขช๑๒๓๔ู฿๕๖๗๘๙'}
 "           \ }
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> vim-telescope
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" if s:search_manager == 'telescope'
-"   nnoremap <leader>p <cmd>Telescope find_files<cr>
-"   nnoremap <leader>/ <cmd>Telescope live_grep<cr>
-"   nnoremap <leader>b <cmd>Telescope buffers<cr>
-"   nnoremap <leader>ph <cmd>Telescope help_tags<cr>
-" 
-"   " nmap <leader>p :<C-u>CocList files --ignore-case<CR>
-"   " nmap <leader>P :<C-u>CocList files --ignore-case -uu<CR>
-"   " nmap <leader>b :<C-u>CocList buffers --ignore-case<CR>
-"   " nmap <leader>B :<C-u>CocList mru --ignore-case -A<CR>
-"   " vmap <leader>* :<C-u>call <SID>cocGrepFromSelected(visualmode())<CR>
-"   " nmap <leader>* :exe 'CocList grep --smart-case '.expand('<cword>')<CR>
-"   " nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
-"   " nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
-"   " nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
-"   " nmap <leader>l :<C-u>CocList filetypes<CR>
-"   " nmap <leader>gg :<C-u>CocList grep\
-" endif
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-latex-live-preview

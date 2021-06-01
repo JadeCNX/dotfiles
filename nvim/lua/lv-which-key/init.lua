@@ -55,12 +55,15 @@ local opts = {
 -- vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
 
 -- telescope
+vim.api.nvim_set_keymap('n', '<Leader>b', ':Telescope buffers<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>o', ':Telescope lsp_document_symbols<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>O', ':Telescope lsp_workspace_symbols<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>P', ':Telescope oldfiles<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>/', ':Telescope live_grep<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>?', ':Telescope live_grep<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>?', ':Telescope live_grep grep_open_files=true<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>*', ':Telescope grep_string search=<C-R><C-W><CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>#', ':Telescope grep_string search=<C-R><C-A><CR>', {noremap = true, silent = true})
 
 -- Lsp
 vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>', {noremap = true, silent = true})
@@ -79,7 +82,9 @@ vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>', {noremap = true, sile
 -- TODO create entire treesitter section
 
 local mappings = {
-    ["/"] = "Comment",
+    ["/"] = "Live grep",
+    ["?"] = "Live grep",
+    ["*"] = "Search word under cursor",
     ["c"] = "Close Buffer",
     ["p"] = "Find File",
     ["h"] = "No Highlight",
@@ -104,10 +109,10 @@ local mappings = {
         p = {"<cmd>PreviewHunk<cr>", "Preview Hunk"},
         r = {"<cmd>ResetHunk<cr>", "Reset Hunk"},
         R = {"<cmd>ResetBuffer<cr>", "Reset Buffer"},
-        s = {"<cmd>StageHunk<cr>", "Stage Hunk"},
+        -- s = {"<cmd>StageHunk<cr>", "Stage Hunk"},
         u = {"<cmd>UndoStageHunk<cr>", "Undo Stage Hunk"},
         o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
-        b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+        -- b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
         C = {"<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)"},
     },
@@ -142,7 +147,7 @@ local mappings = {
         M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
         r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
         R = {"<cmd>Telescope registers<cr>", "Registers"},
-        t = {"<cmd>Telescope live_grep<cr>", "Text"}
+        t = {"<cmd>Telescope filetypes<cr>", "File Type"}
     },
     S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}}
 }
