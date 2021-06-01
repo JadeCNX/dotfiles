@@ -4,7 +4,10 @@ local actions = require('telescope.actions')
 -- '--color=never',
 require('telescope').setup {
     defaults = {
-        find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
+        find_command = {
+            'rg', '--no-heading', '--with-filename', '--line-number',
+            '--column', '--smart-case'
+        },
         prompt_position = "bottom",
         -- prompt_prefix = " ",
         prompt_prefix = " ",
@@ -14,7 +17,10 @@ require('telescope').setup {
         selection_strategy = "reset",
         sorting_strategy = "descending",
         layout_strategy = "horizontal",
-        layout_defaults = {horizontal = {mirror = false}, vertical = {mirror = false}},
+        layout_defaults = {
+            horizontal = {mirror = false},
+            vertical = {mirror = false}
+        },
         file_sorter = require'telescope.sorters'.get_fuzzy_file,
         file_ignore_patterns = {},
         generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
@@ -57,7 +63,7 @@ require('telescope').setup {
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
 
                 -- ["<C-i>"] = my_cool_custom_action,
             }
@@ -66,7 +72,7 @@ require('telescope').setup {
     extensions = {
         fzy_native = {
             override_generic_sorter = false,
-            override_file_sorter = true,
+            override_file_sorter = true
         }
     }
 }

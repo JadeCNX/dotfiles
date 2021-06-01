@@ -55,10 +55,11 @@ return require("packer").startup(function(use)
     -- Treesitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use {"windwp/nvim-ts-autotag", opt = true}
+    use {'JoosepAlviste/nvim-ts-context-commentstring', opt = true}
 
     -- Explorer
     -- use {"kyazdani42/nvim-tree.lua", opt = true}
-    -- TODO remove when open on dir is supported by nvimtree
+    -- use {"ahmedkhalf/lsp-rooter.nvim", opt = true}
     use "kevinhwang91/rnvimr"
 
     -- use {'lukas-reineke/indent-blankline.nvim', opt=true, branch = 'lua'}
@@ -86,6 +87,9 @@ return require("packer").startup(function(use)
     -- coloring
     use {"norcalli/nvim-colorizer.lua", opt = true}
 
+    use {"nacro90/numb.nvim", opt = true}
+
+    use {"windwp/nvim-spectre", opt = true}
     -- use {"vigoux/LanguageTool.nvim", opt = true}
 
     require_plugin("nvim-lspconfig")
@@ -100,6 +104,7 @@ return require("packer").startup(function(use)
     require_plugin("vim-vsnip")
     require_plugin("nvim-treesitter")
     require_plugin("nvim-ts-autotag")
+    require_plugin("nvim-ts-context-commentstring")
     -- require_plugin("nvim-tree.lua")
     -- require_plugin("gitsigns.nvim")
     require_plugin("which-key.nvim")
@@ -113,5 +118,7 @@ return require("packer").startup(function(use)
     require_plugin("barbar.nvim")
     require_plugin("nvim-scrollview")
     require_plugin("nvim-colorizer.lua")
+    require_plugin("numb.nvim")
+    require_plugin("windwp/nvim-spectre")
     -- require_plugin("LanguageTool.nvim")
 end)

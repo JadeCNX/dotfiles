@@ -26,9 +26,9 @@ vim.fn.sign_define(
 -- vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
 -- vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
 -- scroll down hover doc or scroll in definition preview
-vim.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
+vim.cmd("nnoremap <silent> <C-u> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(0.5)<CR>")
 -- scroll up hover doc
-vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+vim.cmd("nnoremap <silent> <C-d> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-0.5)<CR>")
 vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
 -- Set Default Prefix.
