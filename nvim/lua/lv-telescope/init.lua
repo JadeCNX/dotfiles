@@ -1,4 +1,6 @@
 local actions = require('telescope.actions')
+local trouble = require("trouble.providers.telescope")
+
 -- Global remapping
 ------------------------------
 -- '--color=never',
@@ -63,6 +65,7 @@ require('telescope').setup {
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
+                ["<C-t>"] = trouble.open_with_trouble,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
 
                 -- ["<C-i>"] = my_cool_custom_action,

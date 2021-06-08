@@ -1,0 +1,52 @@
+{
+  "clangd.semanticHighlighting": true,
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.enabled": false,
+  "cSpell.showCommandsInEditorContextMenu": false,
+  "diagnostic.enableHighlightLineNumber": true,
+  "diagnostic.enableSign": true,
+  "diagnostic.locationlistUpdate":true,
+  "diagnostic.refreshOnInsertMode": true,
+  "explorer.file.autoReveal": true,
+  "explorer.icon.enableNerdfont": true,
+  "git.addGBlameToBufferVar": false,
+  "git.addGBlameToVirtualText": true,
+  "git.enableGutters": false,
+  "json.enable": true,
+  "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    }
+  },
+  "list.indicator": ">",
+  "list.nextKeymap": "<c-n>",
+  "list.previousKeymap": "<c-p>",
+  "python.pythonPath": "python3",
+  "signature.target": "float",
+  "snippets.autoTrigger": true,
+  "snippets.enableStatusItem": true,
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  // "suggest.autoTrigger": "always",
+  "suggest.echodocSupport": true,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  // "suggest.noselect": true,
+  "suggest.snippetIndicator": "   (Snippet)",
+  "suggest.triggerAfterInsertEnter": true,
+  "tailwindCSS.trace.server": "verbose",
+  "tsserver.enable": true,
+  "tsserver.log": "verbose",
+  "tsserver.trace.server": "verbose",
+  "xml.completion.autoCloseTags": false,
+  "yank.enableCompletion": true
+}

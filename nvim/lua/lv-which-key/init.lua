@@ -50,24 +50,38 @@ local opts = {
 -- no hl
 -- vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
--- explorer
--- vim.api.nvim_set_keymap('n', '<Leader>ee', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
-
 -- telescope
-vim.api.nvim_set_keymap('n', '<Leader>b', ':Telescope buffers<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>o', ':Telescope lsp_document_symbols<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>O', ':Telescope lsp_workspace_symbols<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>P', ':Telescope oldfiles<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>/', ':Telescope live_grep<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>?', ':Telescope live_grep grep_open_files=true<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>*', ':Telescope grep_string search=<C-R><C-W><CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>#', ':Telescope grep_string search=<C-R><C-A><CR>', {noremap = true, silent = true})
+if vim.g.neovim_builtin_feature_enable then
+    vim.api.nvim_set_keymap('n', '<Leader>b', ':Telescope buffers<CR>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>o',
+                            ':Telescope lsp_document_symbols<cr>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>O',
+                            ':Telescope lsp_workspace_symbols<cr>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>P', ':Telescope oldfiles<CR>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>/', ':Telescope live_grep<CR>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>?',
+                            ':Telescope live_grep grep_open_files=true<CR>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>*',
+                            ':Telescope grep_string search=<C-R><C-W><CR>',
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>#',
+                            ':Telescope grep_string search=<C-R><C-A><CR>',
+                            {noremap = true, silent = true})
+end
 
 -- Lsp
-vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>',
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>',
+                        {noremap = true, silent = true})
 
 -- dashboard
 -- vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})
@@ -90,8 +104,17 @@ local mappings = {
     ["h"] = "No Highlight",
     e = {
         name = "+Explorer",
-        e = {"<cmd>NERDTreeToggle<cr>", "Open Explorer"},
-        f = {"<cmd>NERDTreeFind<cr>", "Reveal in Explorer"},
+        e = {"<cmd>NvimTreeToggle<cr>", "Open Explorer"},
+        f = {"<cmd>NvimTreeFindFile<cr>", "Reveal in Explorer"},
+    },
+    t = {
+        name = "+Trouble",
+        t = {"<cmd>TroubleToggle<cr>", "trouble"},
+        w = {"<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace"},
+        d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document"},
+        q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
+        l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
+        r = {"<cmd>TroubleToggle lsp_references<cr>", "references"},
     },
     d = {
         name = "+Debug",
@@ -114,14 +137,23 @@ local mappings = {
         o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
         -- b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
-        C = {"<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)"},
+        C = {
+            "<cmd>Telescope git_bcommits<cr>",
+            "Checkout commit(for current file)"
+        }
     },
-    l = {
+    l = not vim.g.neovim_builtin_feature_enable and {name = "+LSP"} or {
         name = "+LSP",
         a = {"<cmd>Lspsaga code_action<cr>", "Code Action"},
         A = {"<cmd>Lspsaga range_code_action<cr>", "Selected Action"},
-        d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
-        D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
+        d = {
+            "<cmd>Telescope lsp_document_diagnostics<cr>",
+            "Document Diagnostics"
+        },
+        D = {
+            "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+            "Workspace Diagnostics"
+        },
         f = {"<cmd>LspFormatting<cr>", "Format"},
         h = {"<cmd>LspHover<cr>", "Hover"},
         i = {"<cmd>LspInfo<cr>", "Info"},
@@ -136,12 +168,18 @@ local mappings = {
         S = {"<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols"}
     },
 
-    s = {
+    s = not vim.g.neovim_builtin_feature_enable and {name = "+Search"} or {
         name = "+Search",
         b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-        d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
-        D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
+        d = {
+            "<cmd>Telescope lsp_document_diagnostics<cr>",
+            "Document Diagnostics"
+        },
+        D = {
+            "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+            "Workspace Diagnostics"
+        },
         f = {"<cmd>Telescope find_files<cr>", "Find File"},
         m = {"<cmd>Telescope marks<cr>", "Marks"},
         M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
@@ -149,7 +187,11 @@ local mappings = {
         R = {"<cmd>Telescope registers<cr>", "Registers"},
         t = {"<cmd>Telescope filetypes<cr>", "File Type"}
     },
-    S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}}
+    S = {
+        name = "+Session",
+        s = {"<cmd>SessionSave<cr>", "Save Session"},
+        l = {"<cmd>SessionLoad<cr>", "Load Session"}
+    }
 }
 
 local wk = require("which-key")

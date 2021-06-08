@@ -21,6 +21,59 @@ local colors = {
     error_red = '#F44747',
     info_yellow = '#FFCC66'
 }
+
+local function lsp_status(status)
+    shorter_stat = ''
+    for match in string.gmatch(status, "[^%s]+")  do
+        err_warn = string.find(match, "^[WE]%d+", 0)
+        if not err_warn then
+            shorter_stat = shorter_stat .. ' ' .. match
+        end
+    end
+    return shorter_stat
+end
+
+
+local function get_coc_lsp()
+  local status = vim.fn['coc#status']()
+  if not status or status == '' then
+      return ''
+  end
+  return lsp_status(status)
+end
+
+function get_diagnostic_info()
+  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+    return get_coc_lsp()
+    end
+  return ''
+end
+
+local function get_current_func()
+  local has_func, func_name = pcall(vim.fn.nvim_buf_get_var,0,'coc_current_function')
+  if not has_func then return end
+      return func_name
+  end
+
+function get_function_info()
+  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+    return get_current_func()
+    end
+  return ''
+end
+
+local function trailing_whitespace()
+    local trail = vim.fn.search("\\s$", "nw")
+    if trail ~= 0 then
+        return ' '
+    else
+        return nil
+    end
+end
+
+CocStatus = get_diagnostic_info
+CocFunc = get_current_func
+
 local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
@@ -107,20 +160,27 @@ gls.left[6] = {
     }
 }
 
-gls.right[1] = {
+local glsr = 1
+
+gls.right[glsr] = {
     DiagnosticError = {provider = 'DiagnosticError', icon = '  ', highlight = {colors.error_red, colors.bg}}
 }
-gls.right[2] = {DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.orange, colors.bg}}}
+glsr = glsr + 1
 
-gls.right[3] = {
+gls.right[glsr] = {DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.orange, colors.bg}}}
+glsr = glsr + 1
+
+gls.right[glsr] = {
     DiagnosticHint = {provider = 'DiagnosticHint', icon = '  ', highlight = {colors.vivid_blue, colors.bg}}
 }
+glsr = glsr + 1
 
-gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
+gls.right[glsr] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
+glsr = glsr + 1
 
-gls.right[5] = {
-    ShowLspClient = {
-        provider = 'GetLspClient',
+gls.right[glsr] = {
+    LSP = {
+        provider = vim.g.neovim_builtin_feature_enable and 'GetLspClient' or CocFunc,
         condition = function()
             local tbl = {['dashboard'] = true, [' '] = true}
             if tbl[vim.bo.filetype] then return false end
@@ -130,8 +190,9 @@ gls.right[5] = {
         highlight = {colors.grey, colors.bg}
     }
 }
+glsr = glsr + 1
 
-gls.right[6] = {
+gls.right[glsr] = {
     LineInfo = {
         provider = 'LineColumn',
         separator = '  ',
@@ -139,8 +200,9 @@ gls.right[6] = {
         highlight = {colors.grey, colors.bg}
     }
 }
+glsr = glsr + 1
 
-gls.right[7] = {
+gls.right[glsr] = {
     PerCent = {
         provider = 'LinePercent',
         separator = ' ',
@@ -148,8 +210,9 @@ gls.right[7] = {
         highlight = {colors.grey, colors.bg}
     }
 }
+glsr = glsr + 1
 
-gls.right[8] = {
+gls.right[glsr] = {
     Tabstop = {
         provider = function()
             return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
@@ -160,8 +223,9 @@ gls.right[8] = {
         highlight = {colors.grey, colors.bg}
     }
 }
+glsr = glsr + 1
 
-gls.right[9] = {
+gls.right[glsr] = {
     BufferType = {
         provider = 'FileTypeName',
         condition = condition.hide_in_width,
@@ -170,8 +234,9 @@ gls.right[9] = {
         highlight = {colors.grey, colors.bg}
     }
 }
+glsr = glsr + 1
 
-gls.right[10] = {
+gls.right[glsr] = {
     FileEncode = {
         provider = 'FileEncode',
         condition = condition.hide_in_width,
@@ -180,8 +245,9 @@ gls.right[10] = {
         highlight = {colors.grey, colors.bg}
     }
 }
+glsr = glsr + 1
 
-gls.right[11] = {
+gls.right[glsr] = {
     Space = {
         provider = function()
             return ' '
@@ -191,6 +257,7 @@ gls.right[11] = {
         highlight = {colors.orange, colors.bg}
     }
 }
+glsr = glsr + 1
 
 gls.short_line_left[1] = {
     BufferType = {

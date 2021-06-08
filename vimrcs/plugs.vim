@@ -1,16 +1,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> define plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neovim_builtin_feature_enable = has('nvim-0.5')
+
 let s:completion_manager = ['coc', 'deoplete'][0]
 let s:file_explorer = ['coc', 'nerdtree'][0]
 let s:search_manager = ['coc', 'fzf'][0]
 let s:syntax_manager = ['polyglot'][0]
 
-let s:nvim_nightly = has('nvim-0.5')
-
-if s:nvim_nightly
+if g:neovim_builtin_feature_enable
   let s:completion_manager = ''
-  let s:file_explorer = 'nerdtree'
+  let s:file_explorer = ''
   let s:search_manager = ''
   let s:syntax_manager = ''
 endif
@@ -148,6 +148,9 @@ if s:file_explorer == 'nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
+if !g:neovim_builtin_feature_enable
+  Plug 'jiangmiao/auto-pairs'
+endif
 " if executable('go') && (has('nvim') || has('sign'))
 "   Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " endif
@@ -161,16 +164,13 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 " Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
-if !s:nvim_nightly
-  Plug 'bagrat/vim-buffet'
-  Plug 'jiangmiao/auto-pairs'
-endif
+" Plug 'bagrat/vim-buffet'
 " Plug 'bagrat/vim-workspace'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
 Plug 'bps/vim-textobj-python'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
+" Plug 'camspiers/animate.vim'
+" Plug 'camspiers/lens.vim'
 Plug 'chamindra/marvim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 " Plug 'chr4/nginx.vim'
@@ -341,6 +341,11 @@ Plug 'yssl/QFEnter'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
+if has('nvim-0.5.0')
+  Plug 'ii14/onedark.nvim'
+else
+  Plug 'joshdick/onedark.vim'
+endif
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'ayu-theme/ayu-vim'
@@ -350,12 +355,11 @@ Plug 'yssl/QFEnter'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
 " Plug 'jaxbot/semantic-highlight.vim'
-Plug 'joshdick/onedark.vim'
 " Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'morhetz/gruvbox'
 " Plug 'NLKNguyen/papercolor-theme'
-Plug 'phanviet/vim-monokai-pro'
+" Plug 'phanviet/vim-monokai-pro'
 " Plug 'rakr/vim-one'
 " Plug 'raphamorim/lucario'
 " Plug 'sainnhe/edge'
@@ -1389,8 +1393,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> auto-pairs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:AutoPairsShortcutBackInsert = ''
-let g:AutoPairsShortcutToggle = ''
+" let g:AutoPairsShortcutBackInsert = ''
+" let g:AutoPairsShortcutToggle = ''
 " let g:AutoPairsMapSpace = 0
 " let g:AutoPairsFlyMode = 0
 
@@ -1402,7 +1406,7 @@ noremap <leader>ff :<C-u>Autoformat<CR>
 noremap <leader>fl :<C-u>AutoformatLine<CR>
 vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
 
-" let g:autoformat_verbosemode=1
+let g:autoformat_verbosemode=1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
 let g:formatdef_php_code_sniffer = '"phpcbf -q - < ".expand("%:p")." 2>&1 || true"'
 " let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=true --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
@@ -1413,6 +1417,7 @@ let g:formatters_toml = ['prettier']
 let g:formatters_php = ['php_code_sniffer']
 let g:formatters_typescript = ['prettier', 'tsfmt']
 let g:formatters_typescriptreact = ['prettier', 'tsfmt']
+let g:formatters_vue = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
 let g:formatters_javascript = [
       \ 'prettier',
@@ -1558,20 +1563,20 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> lens.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:animate#easing_func = 'animate#ease_out_cubic'
-let g:lens#disabled_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff', 'coc-explorer', 'startify']
-" let g:lens#disabled_buftypes = ['quickfix', 'terminal']
-let g:lens#disabled = 1
+" let g:animate#easing_func = 'animate#ease_out_cubic'
+" let g:lens#disabled_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDiff', 'coc-explorer', 'startify']
+" " let g:lens#disabled_buftypes = ['quickfix', 'terminal']
+" let g:lens#disabled = 1
 
-nnoremap <silent> <M-k> :<C-u>call animate#window_delta_height(10)<CR>
-nnoremap <silent> <M-j> :<C-u>call animate#window_delta_height(-10)<CR>
-nnoremap <silent> <M-h> :<C-u>call animate#window_delta_width(10)<CR>
-nnoremap <silent> <M-l> :<C-u>call animate#window_delta_width(-10)<CR>
-nnoremap <silent> <M-;> :<C-u>call lens#run()<CR>
+" nnoremap <silent> <M-k> :<C-u>call animate#window_delta_height(10)<CR>
+" nnoremap <silent> <M-j> :<C-u>call animate#window_delta_height(-10)<CR>
+" nnoremap <silent> <M-h> :<C-u>call animate#window_delta_width(10)<CR>
+" nnoremap <silent> <M-l> :<C-u>call animate#window_delta_width(-10)<CR>
+" nnoremap <silent> <M-;> :<C-u>call lens#run()<CR>
 
-let g:fzf_layout = {
-      \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
-      \ }
+" let g:fzf_layout = {
+"       \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.5)'
+"       \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1639,12 +1644,6 @@ if s:completion_manager == 'coc'
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  nmap <leader>la :<C-u>CocAction<CR>
-  nmap <leader>lc :<C-u>CocCommand<CR>
-  nmap <leader>lD :<C-u>CocDiagnostics<cr>
-  nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
-  nmap <leader>O :<C-u>CocList symbols<CR>
-
   " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
   " function! s:GrepArgs(...)
@@ -1654,29 +1653,29 @@ if s:completion_manager == 'coc'
   " endfunction
 
   " navigate diagnostics
-  nmap [w <Plug>(coc-diagnostic-prev)
-  nmap ]w <Plug>(coc-diagnostic-next)
+  nnoremap [w <Plug>(coc-diagnostic-prev)
+  nnoremap ]w <Plug>(coc-diagnostic-next)
 
-  nmap <leader>l. :<C-u>CocListResume<CR>
-  nmap <leader>lr <Plug>(coc-rename)
-  nmap <leader>lq <Plug>(coc-fix-current)
-  nmap <leader>lh <Plug>(coc-float-hide)
-
-  nmap <leader>ld <Plug>(coc-definition)
-  " nmap <leader>lt <Plug>(coc-type-definition)
-  " nmap <leader>li <Plug>(coc-implementation)
-  nmap <leader>lR <Plug>(coc-references)
-  nmap <leader>li :<C-u>CocCommand editor.action.organizeImport<CR>
-
-
-  " Remap for do action format
-  nmap <leader>lf <Plug>(coc-format-selected)<CR>
-  vmap <leader>lf <Plug>(coc-format-selected)<CR>
-
-  nmap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
-
-  " show documentation in preview window
+  nnoremap <leader>l. :<C-u>CocListResume<CR>
+  nnoremap <leader>la :<C-u>CocAction<CR>
+  nnoremap <leader>lc :<C-u>CocCommand<CR>
+  nnoremap <leader>lD :<C-u>CocDiagnostics<cr>
+  nnoremap <leader>ld <Plug>(coc-definition)
   nnoremap <leader>lh :call <SID>show_documentation()<CR>
+  nnoremap <leader>lh <Plug>(coc-float-hide)
+  nnoremap <leader>li <Plug>(coc-implementation)
+  nnoremap <leader>lo :<C-u>CocCommand editor.action.organizeImport<CR>
+  nnoremap <leader>lq <Plug>(coc-fix-current)
+  nnoremap <leader>lR <Plug>(coc-references)
+  nnoremap <leader>lr <Plug>(coc-rename)
+  nnoremap <leader>lt <Plug>(coc-type-definition)
+  nnoremap <leader>o :<C-u>CocList outline --ignore-case<CR>
+  nnoremap <leader>O :<C-u>CocList symbols<CR>
+
+  nnoremap <leader>lf <Plug>(coc-format-selected)<CR>
+  vnoremap <leader>lf <Plug>(coc-format-selected)<CR>
+
+  nnoremap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
 
   nnoremap <leader>[ :<C-u>CocPrev<CR>
   nnoremap <leader>] :<C-u>CocNext<CR>
@@ -1740,12 +1739,6 @@ if s:completion_manager == 'coc'
   " Use <C-j> for both expand and jump (make expand higher priority.)
   " inoremap <C-j> <Plug>(coc-snippets-expand-jump)
 
-  " Enter for expand.
-  " inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : '<cr>'
-  " inoremap <expr> <c-j> pumvisible() ? coc#_select_confirm() : coc#refresh()
-  inoremap <expr> <TAB> pumvisible() ? coc#_select_confirm() : '<TAB>'
-
-
   " inoremap <silent><expr> <TAB>
   "       \ pumvisible() ? '<C-y>' :
   "       \ <SID>check_back_space() ? '<TAB>' :
@@ -1753,6 +1746,10 @@ if s:completion_manager == 'coc'
   " inoremap <expr> <S-TAB> pumvisible() ? '<C-p>' : '<C-h>'
   inoremap <expr> <C-n> pumvisible() ? '<C-n>' : coc#refresh()
   inoremap <expr> <C-p> pumvisible() ? '<C-p>' : coc#refresh()
+
+  " Make <CR> auto-select the first completion item and notify coc.nvim to
+  " format on enter, <cr> could be remapped by other vim plugin
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " inoremap <silent><expr> <TAB> pumvisible()  ? coc#_select_confirm() : '<TAB>'
   " \ <SID>check_back_space() ? '<TAB>' :
@@ -1810,13 +1807,25 @@ if s:search_manager == 'coc'
   nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
   nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
   nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
-  nmap <leader>l :<C-u>CocList filetypes<CR>
-  nmap <leader>gg :<C-u>CocList grep\
+  nmap <leader>lf :<C-u>CocList filetypes<CR>
+  nmap <leader>gg :<C-u>CocList grep\ 
+
+    " Remap <C-f> and <C-b> for scroll float windows/popups.
+  if has('nvim-0.4.0') || has('patch-8.2.0750')
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  endif
 
 endif
 
 if s:file_explorer == 'coc'
-  nmap <leader>ee :CocCommand explorer --toggle --sources=file+<CR>
+  nnoremap <leader>ee :CocCommand explorer --toggle --no-focus --sources=file+<CR>
+  nnoremap <Leader>er :call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
+  nnoremap <Leader>ef :CocCommand explorer --no-toggle --sources=file+<CR>
 endif
 
 
@@ -2004,26 +2013,24 @@ let g:templates_detect_git = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-buffet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !s:nvim_nightly
-  let s:color1='#E06C75'
-  let s:color2='#3E4452'
-  let s:color3='#282C34'
-  let s:color4='#ABB2BF'
+" let s:color1='#E06C75'
+" let s:color2='#3E4452'
+" let s:color3='#282C34'
+" let s:color4='#ABB2BF'
 
-  let g:buffet_powerline_separators = 1
-  let g:buffet_tab_icon = "離"
-  let g:buffet_left_trunc_icon = ""
-  let g:buffet_right_trunc_icon = ""
-  let g:buffet_new_buffer_name = ''
-  let g:buffet_modified_icon = ' '
-  function! g:BuffetSetCustomColors()
-    execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
-    execute 'hi BuffetBuffer guifg=' . s:color4 . ' guibg=' . s:color3
-    execute 'hi BuffetTab guifg=' . s:color4 . ' guibg=' . s:color2
-    execute 'hi BuffetActiveBuffer guifg=' . s:color3 . ' guibg=' . s:color4
-    execute 'hi BuffetTrunc guifg=' . s:color4 . ' guibg=#30343c'
-  endfunction
-endif
+" let g:buffet_powerline_separators = 1
+" let g:buffet_tab_icon = "離"
+" let g:buffet_left_trunc_icon = ""
+" let g:buffet_right_trunc_icon = ""
+" let g:buffet_new_buffer_name = ''
+" let g:buffet_modified_icon = ' '
+" function! g:BuffetSetCustomColors()
+"   execute 'hi BuffetCurrentBuffer guifg=' . s:color3 . ' guibg=' . s:color1
+"   execute 'hi BuffetBuffer guifg=' . s:color4 . ' guibg=' . s:color3
+"   execute 'hi BuffetTab guifg=' . s:color4 . ' guibg=' . s:color2
+"   execute 'hi BuffetActiveBuffer guifg=' . s:color3 . ' guibg=' . s:color4
+"   execute 'hi BuffetTrunc guifg=' . s:color4 . ' guibg=#30343c'
+" endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -86,10 +86,20 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
   },
+  ["git-blame.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/git-blame.nvim"
+  },
   ["lspsaga.nvim"] = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
+  },
+  ["numb.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/numb.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = false,
@@ -132,6 +142,16 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-scrollview"
   },
+  ["nvim-spectre"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-spectre"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
@@ -140,6 +160,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = false,
@@ -173,6 +198,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/trouble.nvim"
   },
   ["vim-vsnip"] = {
     loaded = false,

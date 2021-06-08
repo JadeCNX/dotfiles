@@ -37,6 +37,7 @@ return require("packer").startup(function(use)
     use {"neovim/nvim-lspconfig", opt = true}
     use {"glepnir/lspsaga.nvim", opt = true}
     use {"kabouzeid/nvim-lspinstall", opt = true}
+    use {"folke/trouble.nvim", opt = true}
 
     -- Telescope
     use {"nvim-lua/popup.nvim", opt = true}
@@ -58,7 +59,7 @@ return require("packer").startup(function(use)
     use {'JoosepAlviste/nvim-ts-context-commentstring', opt = true}
 
     -- Explorer
-    -- use {"kyazdani42/nvim-tree.lua", opt = true}
+    use {"kyazdani42/nvim-tree.lua", opt = true}
     -- use {"ahmedkhalf/lsp-rooter.nvim", opt = true}
     use "kevinhwang91/rnvimr"
 
@@ -67,7 +68,7 @@ return require("packer").startup(function(use)
     -- use {"liuchengxu/vim-which-key", opt = true}
     use {"folke/which-key.nvim", opt = true}
     -- use {"ChristianChiarulli/dashboard-nvim", opt = true}
-    use {"windwp/nvim-autopairs", opt = true}
+    -- use {"windwp/nvim-autopairs", opt = true}
     -- use {"terrortylor/nvim-comment", opt = true}
     use {"kevinhwang91/nvim-bqf", opt = true}
 
@@ -90,11 +91,15 @@ return require("packer").startup(function(use)
     use {"nacro90/numb.nvim", opt = true}
 
     use {"windwp/nvim-spectre", opt = true}
+
+    -- use {"APZelos/blamer.nvim", opt = true}
+    use {"f-person/git-blame.nvim", opt = true}
     -- use {"vigoux/LanguageTool.nvim", opt = true}
 
     require_plugin("nvim-lspconfig")
     require_plugin("lspsaga.nvim")
     require_plugin("nvim-lspinstall")
+    require_plugin('trouble.nvim')
     require_plugin("friendly-snippets")
     require_plugin("popup.nvim")
     require_plugin("plenary.nvim")
@@ -105,11 +110,11 @@ return require("packer").startup(function(use)
     require_plugin("nvim-treesitter")
     require_plugin("nvim-ts-autotag")
     require_plugin("nvim-ts-context-commentstring")
-    -- require_plugin("nvim-tree.lua")
+    require_plugin("nvim-tree.lua")
     -- require_plugin("gitsigns.nvim")
     require_plugin("which-key.nvim")
     -- require_plugin("dashboard-nvim")
-    require_plugin("nvim-autopairs")
+    -- require_plugin("nvim-autopairs")
     -- require_plugin("nvim-comment")
     require_plugin("nvim-bqf")
     -- require_plugin("nvcode-color-schemes.vim")
@@ -120,5 +125,6 @@ return require("packer").startup(function(use)
     require_plugin("nvim-colorizer.lua")
     require_plugin("numb.nvim")
     require_plugin("windwp/nvim-spectre")
+    require_plugin("gitblame")
     -- require_plugin("LanguageTool.nvim")
 end)

@@ -47,8 +47,8 @@ vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv-gv', opt_noremap_silent)
 vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv-gv', opt_noremap_silent)
 
 -- Better nav for omnicomplete
-vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
-vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
+-- vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
+-- vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 -- vim.cmd('inoremap <expr> <TAB> (\"\\<C-n>\")')
 -- vim.cmd('inoremap <expr> <S-TAB> (\"\\<C-p>\")')
 
