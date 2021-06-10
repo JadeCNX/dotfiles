@@ -62,8 +62,9 @@ time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
@@ -86,11 +87,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
   },
-  ["git-blame.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/git-blame.nvim"
-  },
   ["lspsaga.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -100,11 +96,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/numb.nvim"
-  },
-  ["nvim-autopairs"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/jade/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-bqf"] = {
     loaded = false,

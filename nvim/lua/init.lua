@@ -17,7 +17,7 @@ require('lv-which-key')
 require('lv-scrollview')
 require('lv-colorizer')
 require('lv-numb')
-require('lv-gitblame')
+-- require('lv-gitblame')
 
 -- TODO is there a way to do this without vimscript
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')

@@ -93,7 +93,7 @@ return require("packer").startup(function(use)
     use {"windwp/nvim-spectre", opt = true}
 
     -- use {"APZelos/blamer.nvim", opt = true}
-    use {"f-person/git-blame.nvim", opt = true}
+    -- use {"f-person/git-blame.nvim", opt = true}
     -- use {"vigoux/LanguageTool.nvim", opt = true}
 
     require_plugin("nvim-lspconfig")

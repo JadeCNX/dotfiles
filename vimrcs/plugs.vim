@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> define plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neovim_builtin_feature_enable = has('nvim-0.5')
+let g:neovim_builtin_feature_enable = 0 " has('nvim-0.5')
 
 let s:completion_manager = ['coc', 'deoplete'][0]
 let s:file_explorer = ['coc', 'nerdtree'][0]
@@ -10,7 +10,7 @@ let s:syntax_manager = ['polyglot'][0]
 
 if g:neovim_builtin_feature_enable
   let s:completion_manager = ''
-  let s:file_explorer = ''
+  let s:file_explorer = 'nerdtree'
   let s:search_manager = ''
   let s:syntax_manager = ''
 endif
@@ -148,9 +148,6 @@ if s:file_explorer == 'nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
-if !g:neovim_builtin_feature_enable
-  Plug 'jiangmiao/auto-pairs'
-endif
 " if executable('go') && (has('nvim') || has('sign'))
 "   Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " endif
@@ -165,6 +162,7 @@ Plug 'AndrewRadev/switch.vim'
 " Plug 'andymass/vim-matchup'
 " Plug 'ashisha/image.vim'
 " Plug 'bagrat/vim-buffet'
+Plug 'jiangmiao/auto-pairs'
 " Plug 'bagrat/vim-workspace'
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'blueyed/vim-diminactive'
@@ -995,8 +993,8 @@ let g:airline#extensions#tabline#close_symbol = '⏻' " '﯇   X '
 " -> Fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set diffopt += vertical
-nnoremap  <silent> <leader>gs :Gstatus<cr>
-nnoremap  <silent> <leader>gb :Gblame<cr>
+nnoremap  <silent> <leader>gs :Git status<cr>
+nnoremap  <silent> <leader>gb :Git blame<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
