@@ -299,7 +299,7 @@ vnoremap j gj
 " noremap gl <C-W>l
 
 " remop escape key
-inoremap fd <ESC>
+inoremap jj <ESC>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

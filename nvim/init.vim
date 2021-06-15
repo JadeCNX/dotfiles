@@ -9,6 +9,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 source ~/.vimrc
 
-if has('nvim-0.5')
+if g:neovim_builtin_feature_enable
 	lua require("init")
 endif

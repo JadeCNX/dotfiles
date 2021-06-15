@@ -10,7 +10,7 @@ let s:syntax_manager = ['polyglot'][0]
 
 if g:neovim_builtin_feature_enable
   let s:completion_manager = ''
-  let s:file_explorer = 'nerdtree'
+  let s:file_explorer = ''
   let s:search_manager = ''
   let s:syntax_manager = ''
 endif
@@ -131,15 +131,13 @@ if s:syntax_manager == 'polyglot'
 endif
 
 
-if s:search_manager == 'fzf'
-  if empty(glob('/usr/local/opt/fzf'))
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  else
-    Plug '/usr/local/opt/fzf'
-  endif
-  Plug 'junegunn/fzf.vim'
-  Plug 'tweekmonster/fzf-filemru'
+if empty(glob('/usr/local/opt/fzf'))
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+else
+  Plug '/usr/local/opt/fzf'
 endif
+Plug 'junegunn/fzf.vim'
+" Plug 'tweekmonster/fzf-filemru'
 
 if s:file_explorer == 'nerdtree'
   " Plug 'jistr/vim-nerdtree-tabs'
@@ -240,6 +238,8 @@ Plug 'ludovicchabant/vim-gutentags', Cond(executable('ctags'))
 " Plug 'machakann/vim-sandwich'
 " Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gist'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
@@ -303,16 +303,19 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
+Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+if !g:neovim_builtin_feature_enable
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+endif
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-jp/vital.vim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc', {'for': ['markdown']}
+Plug 'vim-pandoc/vim-pandoc-syntax', {'for': ['markdown']}
 " Plug 'vim-scripts/auto-pairs-gentle'
-Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
+" Plug 'vim-scripts/Flex-4', {'for': 'actionscript'}
 
 " Plug 'vim-scripts/mru.vim' " most recently use
 " Plug 'vim-scripts/SyntaxRange'
@@ -321,7 +324,7 @@ Plug 'vim-scripts/utl.vim'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-vdebug/vdebug'
 " Plug 'vim/killersheep'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 " Plug 'vn-ki/coc-clap'
 " Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
@@ -638,6 +641,17 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Insert mode completion
+imap <c-x><c-w> <plug>(fzf-complete-word)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+if executable('fd')
+  imap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+else
+  imap <c-x><c-f> <plug>(fzf-complete-path)
+endif
+
 if s:search_manager  == 'fzf'
   " File search
   nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
@@ -650,17 +664,6 @@ if s:search_manager  == 'fzf'
   " nmap <leader><tab> <plug>(fzf-maps-n)
   " xmap <leader><tab> <plug>(fzf-maps-x)
   " omap <leader><tab> <plug>(fzf-maps-o)
-
-  " Insert mode completion
-  imap <c-x><c-w> <plug>(fzf-complete-word)
-  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-  imap <c-x><c-l> <plug>(fzf-complete-line)
-
-  if executable('fd')
-    imap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
-  else
-    imap <c-x><c-f> <plug>(fzf-complete-path)
-  endif
 
   if executable('rg')
     function! RipgrepFzf(query, fullscreen)
@@ -910,7 +913,7 @@ let g:webdevicons_enable = 1
 let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 1
 
-let g:airline_statusline_ontop = 1
+let g:airline_statusline_ontop = 0
 
 " let g:airline#extensions#tabline#buf_label_first = 1
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -928,10 +931,11 @@ if !exists('g:airline_symbols')
 endif
 
 " 
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = ' '
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = ' '
+"     
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 let g:airline#extensions#tabline#close_symbol = '⏻' " '﯇   X '
 
 " nmap <leader>1 <Plug>AirlineSelectTab1
@@ -1651,32 +1655,32 @@ if s:completion_manager == 'coc'
   " endfunction
 
   " navigate diagnostics
-  nnoremap [w <Plug>(coc-diagnostic-prev)
-  nnoremap ]w <Plug>(coc-diagnostic-next)
+  nmap [w <Plug>(coc-diagnostic-prev)
+  nmap ]w <Plug>(coc-diagnostic-next)
 
-  nnoremap <leader>l. :<C-u>CocListResume<CR>
-  nnoremap <leader>la :<C-u>CocAction<CR>
-  nnoremap <leader>lc :<C-u>CocCommand<CR>
-  nnoremap <leader>lD :<C-u>CocDiagnostics<cr>
-  nnoremap <leader>ld <Plug>(coc-definition)
-  nnoremap <leader>lh :call <SID>show_documentation()<CR>
-  nnoremap <leader>lh <Plug>(coc-float-hide)
-  nnoremap <leader>li <Plug>(coc-implementation)
-  nnoremap <leader>lo :<C-u>CocCommand editor.action.organizeImport<CR>
-  nnoremap <leader>lq <Plug>(coc-fix-current)
-  nnoremap <leader>lR <Plug>(coc-references)
-  nnoremap <leader>lr <Plug>(coc-rename)
-  nnoremap <leader>lt <Plug>(coc-type-definition)
-  nnoremap <leader>o :<C-u>CocList outline --ignore-case<CR>
-  nnoremap <leader>O :<C-u>CocList symbols<CR>
+  nmap <leader>l. :<C-u>CocListResume<CR>
+  nmap <leader>la :<C-u>CocAction<CR>
+  nmap <leader>lc :<C-u>CocCommand<CR>
+  nmap <leader>lD :<C-u>CocDiagnostics<cr>
+  nmap <leader>ld <Plug>(coc-definition)
+  nmap <leader>lh :call <SID>show_documentation()<CR>
+  nmap <leader>lH <Plug>(coc-float-hide)
+  nmap <leader>li <Plug>(coc-implementation)
+  nmap <leader>lo :<C-u>CocCommand editor.action.organizeImport<CR>
+  nmap <leader>lq <Plug>(coc-fix-current)
+  nmap <leader>lR <Plug>(coc-references)
+  nmap <leader>lr <Plug>(coc-rename)
+  nmap <leader>lt <Plug>(coc-type-definition)
+  nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
+  nmap <leader>O :<C-u>CocList symbols<CR>
 
-  nnoremap <leader>lf <Plug>(coc-format-selected)<CR>
-  vnoremap <leader>lf <Plug>(coc-format-selected)<CR>
+  nmap <leader>lf <Plug>(coc-format-selected)<CR>
+  vmap <leader>lf <Plug>(coc-format-selected)<CR>
 
-  nnoremap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
+  nmap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
 
-  nnoremap <leader>[ :<C-u>CocPrev<CR>
-  nnoremap <leader>] :<C-u>CocNext<CR>
+  nmap <leader>[ :<C-u>CocPrev<CR>
+  nmap <leader>] :<C-u>CocNext<CR>
 
   " Create mappings for function text object, requires document symbols feature of languageserver.
   xmap if <Plug>(coc-funcobj-i)
@@ -1924,12 +1928,13 @@ nnoremap <silent> <leader>lx :call WindowSwap#EasyWindowSwap()<CR>
 " -> vim-wiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:vimwiki_list = [{'path': '~/Dropbox/.notes'}]
-let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
-      \ 'syntax': 'markdown', 'ext': '.md'}]
+" nmap <silent> <leader>ww :VimwikiIndex<CR>
+" let g:vimwiki_list = [{'path': '~/Dropbox/.notes',
+"       \ 'syntax': 'markdown', 'ext': '.md'}]
 
-augroup pandoc_syntax
-  autocmd! FileType vimwiki set syntax=markdown.pandoc
-augroup END
+" augroup pandoc_syntax
+"   autocmd! FileType vimwiki set syntax=markdown.pandoc
+" augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2034,7 +2039,7 @@ let g:templates_detect_git = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> minimap-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:minimap_auto_start = 1
+let g:minimap_auto_start = 1
 " let g:minimap_auto_start_win_enter = 1
 let g:minimap_width = 5
 let g:minimap_highlight = 'Error'
@@ -2042,27 +2047,7 @@ let g:minimap_block_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> nvim-completion
+" -> vim-gist
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" if s:completion_manager == 'nvim'
-"   imap <tab> <Plug>(completion_smart_tab)
-"   imap <s-tab> <Plug>(completion_smart_s_tab)
-" 
-"   " let g:completion_enable_auto_popup = 0
-"   " let g:completion_enable_snippet = 'UltiSnips'
-" 
-"   let g:completion_confirm_key = "\<C-j>"
-"   let g:completion_matching_smart_case = 1
-" 
-" 
-"   " Use <Tab> and <S-Tab> to navigate through popup menu
-"   " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"   " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" 
-"   " Set completeopt to have a better completion experience
-"   set completeopt=menuone,noinsert,noselect
-" 
-"   " Avoid showing message extra message when using completion
-"   set shortmess+=c
-" 
-" endif
+let g:gist_post_private = 1
+let g:gist_show_privates = 1

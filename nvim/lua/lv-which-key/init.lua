@@ -105,7 +105,7 @@ local mappings = {
     e = {
         name = "+Explorer",
         e = {"<cmd>NvimTreeToggle<cr>", "Open Explorer"},
-        f = {"<cmd>NvimTreeFindFile<cr>", "Reveal in Explorer"},
+        f = {"<cmd>NvimTreeFindFile<cr>", "Reveal in Explorer"}
     },
     t = {
         name = "+Trouble",
@@ -114,7 +114,7 @@ local mappings = {
         d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document"},
         q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
         l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
-        r = {"<cmd>TroubleToggle lsp_references<cr>", "references"},
+        r = {"<cmd>TroubleToggle lsp_references<cr>", "references"}
     },
     d = {
         name = "+Debug",
@@ -146,11 +146,11 @@ local mappings = {
         name = "+LSP",
         a = {"<cmd>Lspsaga code_action<cr>", "Code Action"},
         A = {"<cmd>Lspsaga range_code_action<cr>", "Selected Action"},
-        d = {
+        e = {
             "<cmd>Telescope lsp_document_diagnostics<cr>",
             "Document Diagnostics"
         },
-        D = {
+        E = {
             "<cmd>Telescope lsp_workspace_diagnostics<cr>",
             "Workspace Diagnostics"
         },
@@ -162,7 +162,7 @@ local mappings = {
         p = {"<cmd>Lspsaga preview_definition<cr>", "Preview Definition"},
         q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
         r = {"<cmd>Lspsaga rename<cr>", "Rename"},
-        t = {"<cmd>LspTypeDefinition<cr>", "Type Definition"},
+        d = {"<cmd>LspTypeDefinition<cr>", "Type Definition"},
         x = {"<cmd>cclose<cr>", "Close Quickfix"},
         s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
         S = {"<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols"}
