@@ -38,6 +38,21 @@ typeset -gU cdpath fpath mailpath path
 #
 [[ -e "/usr/libexec/java_home" ]] && export JAVA_HOME="$(/usr/libexec/java_home)"
 
+#
+# ruby
+#
+[[ -e "/usr/local/opt/ruby/bin" ]] && export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+#
+# Android
+#
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+#
+# Golang
+#
+export GOPATH="$HOME/Develops/Go"
+
 # Set the list of directories that cd searches.
 # cdpath=(
 #   $cdpath
@@ -55,6 +70,13 @@ path=(
   $HOME/.fastlane/bin
   $HOME/.iterm2
   $HOME/.local/share/solana/install/active_release/bin
+  $GoPATH/bin
+  $GOROOT/bin
+  $GEM_HOME/bin
+  $ANDROID_HOME/emulator
+  $ANDROID_HOME/tools
+  $ANDROID_HOME/tools/bin
+  $ANDROID_HOME/platform-tools
 )
 
 
@@ -80,8 +102,8 @@ fi
 
 
 # Fix git auto-complete to search only local files
-__git_files () { 
-    _wanted files expl 'local files' _files  
+__git_files () {
+  _wanted files expl 'local files' _files
 }
 
 
