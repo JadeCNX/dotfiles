@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> define plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neovim_builtin_feature_enable = 0 " has('nvim-0.5')
+let g:neovim_builtin_feature_enable = has('nvim-0.5')
 
 let s:completion_manager = ['coc', 'deoplete'][0]
 let s:file_explorer = ['coc', 'nerdtree'][0]
