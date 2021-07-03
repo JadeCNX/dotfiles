@@ -110,3 +110,8 @@ autocmd BufNewFile,BufRead *.dockerfile set filetype=dockerfile
 autocmd BufNewFile,BufRead .env,.env.* set filetype=sh
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> objc file
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.mm set filetype=objc
+

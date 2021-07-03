@@ -39,9 +39,11 @@ local opts = {
     prefix = "<leader>",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
+    noremap = false, -- use `noremap` when creating keymaps
     nowait = false -- use `nowait` when creating keymaps
 }
+
+local silent_opts = {silent = true}
 
 -- Set leader
 -- vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true})
@@ -53,35 +55,31 @@ local opts = {
 -- telescope
 if vim.g.neovim_builtin_feature_enable then
     vim.api.nvim_set_keymap('n', '<Leader>b', ':Telescope buffers<CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>o',
-                            ':Telescope lsp_document_symbols<cr>',
-                            {noremap = true, silent = true})
+                            ':Telescope lsp_document_symbols<cr>', silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>O',
-                            ':Telescope lsp_workspace_symbols<cr>',
-                            {noremap = true, silent = true})
+                            ':Telescope lsp_workspace_symbols<cr>', silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>P', ':Telescope oldfiles<CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>/', ':Telescope live_grep<CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>?',
                             ':Telescope live_grep grep_open_files=true<CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>*',
                             ':Telescope grep_string search=<C-R><C-W><CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
     vim.api.nvim_set_keymap('n', '<Leader>#',
                             ':Telescope grep_string search=<C-R><C-A><CR>',
-                            {noremap = true, silent = true})
+                            silent_opts)
 end
 
 -- Lsp
-vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>',
-                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ']l', '<cmd>LspGotoNext<cr>', silent_opts)
+vim.api.nvim_set_keymap('n', '[l', '<cmd>LspGotoPrev<cr>', silent_opts)
 
 -- dashboard
 -- vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})

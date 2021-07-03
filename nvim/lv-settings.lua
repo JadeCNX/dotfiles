@@ -36,7 +36,7 @@ O.python.formatter = 'black'
 -- O.python.linter = 'flake8'
 O.python.isort = true
 O.python.autoformat = false
-O.python.diagnostics.virtual_text = true
+O.python.diagnostics.virtual_text = false
 O.python.diagnostics.signs = true
 O.python.diagnostics.underline = true
 O.python.analysis.type_checking = "off"
@@ -53,7 +53,7 @@ O.lua.autoformat = false
 O.tsserver.formatter = 'prettier'
 O.tsserver.linter = 'eslint'
 O.tsserver.autoformat = false
-O.tsserver.diagnostics.virtual_text = true
+O.tsserver.diagnostics.virtual_text = false
 
 -- json
 O.json.autoformat = false

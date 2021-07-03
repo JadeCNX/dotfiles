@@ -63,6 +63,7 @@ path=(
   $path
   /usr/local/{bin,sbin}
   /usr/local/opt/llvm/bin
+  $HOME/.bin
   $HOME/.cargo/bin
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin
@@ -77,7 +78,6 @@ path=(
   $ANDROID_HOME/tools
   $ANDROID_HOME/tools/bin
   $ANDROID_HOME/platform-tools
-  $HOME/Develops/flutter/.pub-cache/bin
 )
 
 

@@ -15,6 +15,8 @@
   "git.addGBlameToVirtualText": true,
   "git.enableGutters": false,
   "json.enable": true,
+  "tailwindCSS.headwind.removeDuplicates": true,
+  "tailwindCSS.headwind.runOnSave": false,
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",

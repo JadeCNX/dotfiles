@@ -1661,7 +1661,6 @@ if s:completion_manager == 'coc'
   nmap <leader>l. :<C-u>CocListResume<CR>
   nmap <leader>la :<C-u>CocAction<CR>
   nmap <leader>lc :<C-u>CocCommand<CR>
-  nmap <leader>lD :<C-u>CocDiagnostics<cr>
   nmap <leader>ld <Plug>(coc-definition)
   nmap <leader>lh :call <SID>show_documentation()<CR>
   nmap <leader>lH <Plug>(coc-float-hide)
@@ -1673,6 +1672,8 @@ if s:completion_manager == 'coc'
   nmap <leader>lt <Plug>(coc-type-definition)
   nmap <leader>o :<C-u>CocList outline --ignore-case<CR>
   nmap <leader>O :<C-u>CocList symbols<CR>
+
+  nmap <leader>td :<C-u>CocDiagnostics<cr>
 
   nmap <leader>lf <Plug>(coc-format-selected)<CR>
   vmap <leader>lf <Plug>(coc-format-selected)<CR>

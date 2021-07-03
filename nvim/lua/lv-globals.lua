@@ -26,7 +26,7 @@ O = {
         formatter = '',
         autoformat = false,
         isort = false,
-        diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true},
+        diagnostics = {virtual_text = false, signs = true, underline = false},
 		analysis = {type_checking = "basic", auto_search_paths = true, use_library_code_types = true}
     },
     dart = {sdk_path = '/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot'},
@@ -34,7 +34,7 @@ O = {
         -- @usage can be 'lua-format'
         formatter = '',
         autoformat = false,
-        diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}
+        diagnostics = {virtual_text = false, signs = true, underline = false}
     },
     sh = {
         -- @usage can be 'shellcheck'
@@ -42,7 +42,7 @@ O = {
         -- @usage can be 'shfmt'
         formatter = '',
         autoformat = false,
-        diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}
+        diagnostics = {virtual_text = false, signs = true, underline = false}
     },
     tsserver = {
         -- @usage can be 'eslint'
@@ -50,18 +50,26 @@ O = {
         -- @usage can be 'prettier'
         formatter = '',
         autoformat = false,
-        diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}
+        diagnostics = {virtual_text = false, signs = true, underline = false}
+    },
+    vue = {
+        -- @usage can be 'eslint'
+        linter = '',
+        -- @usage can be 'prettier'
+        formatter = '',
+        autoformat = false,
+        diagnostics = {virtual_text = false, signs = true, underline = false}
     },
     json = {
         -- @usage can be 'prettier'
         formatter = '',
         autoformat = false,
-        diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}
+        diagnostics = {virtual_text = false, signs = true, underline = false}
     },
     tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
-    clang = {diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}},
+    clang = {diagnostics = {virtual_text = false, signs = true, underline = false}},
 	ruby = {
-		diagnostics = {virtualtext = {spacing = 0, prefix = ""}, signs = true, underline = true},
+		diagnostics = {virtual_text = false, signs = true, underline = false},
 		filetypes = {'rb', 'erb', 'rakefile'}
 	},
     -- css = {formatter = '', autoformat = false, virtual_text = true},
