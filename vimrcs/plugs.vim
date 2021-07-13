@@ -997,7 +997,7 @@ let g:airline#extensions#tabline#close_symbol = '⏻' " '﯇   X '
 " -> Fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set diffopt += vertical
-nnoremap  <silent> <leader>gs :Git status<cr>
+nnoremap  <silent> <leader>gs :Git<cr>
 nnoremap  <silent> <leader>gb :Git blame<cr>
 
 
@@ -1151,6 +1151,7 @@ let g:NERDDefaultAlign = 'both'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:EditorConfig_verbose = 1
+let g:EditorConfig_max_line_indicator = "none"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1655,8 +1656,8 @@ if s:completion_manager == 'coc'
   " endfunction
 
   " navigate diagnostics
-  nmap [w <Plug>(coc-diagnostic-prev)
-  nmap ]w <Plug>(coc-diagnostic-next)
+  nmap [l <Plug>(coc-diagnostic-prev)
+  nmap ]l <Plug>(coc-diagnostic-next)
 
   nmap <leader>l. :<C-u>CocListResume<CR>
   nmap <leader>la :<C-u>CocAction<CR>
@@ -2052,3 +2053,6 @@ let g:minimap_block_filetypes = ['nerdtree', 'vista', 'Mundo', 'list', 'MundoDif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
+nnoremap <leader>Gl :<C-u>Gist -l<cr>
+nnoremap <leader>Gs :<C-u>Gist<cr>
+nnoremap <leader>Ge :<C-u>Gist -e
