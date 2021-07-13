@@ -1594,6 +1594,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if s:completion_manager == 'coc'
   let g:coc_global_extensions = [
+        \ 'coc-angular',
         \ 'coc-clangd',
         \ 'coc-cmake',
         \ 'coc-css',
@@ -1611,17 +1612,19 @@ if s:completion_manager == 'coc'
         \ 'coc-marketplace',
         \ 'coc-phpls',
         \ 'coc-pyright',
+        \ 'coc-react-refactor',
         \ 'coc-rls',
         \ 'coc-snippets',
         \ 'coc-spell-checker',
+        \ 'coc-styled-components',
         \ 'coc-stylelint',
         \ 'coc-tailwindcss',
         \ 'coc-tsserver',
+        \ 'coc-vetur',
         \ 'coc-vimlsp',
         \ 'coc-xml',
         \ 'coc-yaml',
         \ 'coc-yank',
-        \ 'coc-vetur',
         \ 'https://github.com/cstrap/python-snippets',
         \ 'https://github.com/infeng/vscode-react-typescript',
         \ 'https://github.com/xabikos/vscode-javascript'

@@ -9,7 +9,7 @@
   "diagnostic.enableSign": true,
   "diagnostic.locationlistUpdate":true,
   "diagnostic.refreshOnInsertMode": true,
-  "explorer.file.autoReveal": true,
+  "explorer.file.reveal.auto": true,
   "explorer.icon.enableNerdfont": true,
   "git.addGBlameToBufferVar": false,
   "git.addGBlameToVirtualText": true,
@@ -38,17 +38,9 @@
     "typescript": ["javascript"]
   },
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
-  // "suggest.autoTrigger": "always",
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
-  // "suggest.noselect": true,
   "suggest.snippetIndicator": "   (Snippet)",
-  "suggest.triggerAfterInsertEnter": true,
-  "tailwindCSS.trace.server": "verbose",
-  "tsserver.enable": true,
-  "tsserver.log": "verbose",
-  "tsserver.trace.server": "verbose",
-  "xml.completion.autoCloseTags": false,
-  "yank.enableCompletion": true
+  "suggest.triggerAfterInsertEnter": true
 }
