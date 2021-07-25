@@ -63,12 +63,6 @@ path=(
   $path
   /usr/local/{bin,sbin}
   /usr/local/opt/llvm/bin
-  $HOME/.bin
-  $HOME/.cargo/bin
-  $HOME/.yarn/bin
-  $HOME/.config/yarn/global/node_modules/.bin
-  $HOME/.node_modules/bin
-  $HOME/.fastlane/bin
   $HOME/.iterm2
   $HOME/.local/share/solana/install/active_release/bin
   $GoPATH/bin
@@ -130,14 +124,3 @@ setopt ignore_eof
 
 export GTAGSLABEL=pygments
 
-#
-# powerlevel10k
-#
-export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-
-
-#
-# zsh-iterm-touchbar
-#
-export TOUCHBAR_GIT_ENABLED=true
-export YARN_ENABLED=true

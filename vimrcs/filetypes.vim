@@ -121,3 +121,9 @@ autocmd BufNewFile,BufRead *.mm set filetype=objc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=pandoc
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> .prettierrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead .prettierrc set filetype=yaml
+

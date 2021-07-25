@@ -1,9 +1,6 @@
 " Automatically generated packer.nvim plugin loader code
 
-if !has('nvim-0.5')
-  echohl WarningMsg
-  echom "Invalid Neovim version for packer.nvim!"
-  echohl None
+if !g:neovim_builtin_feature_enable
   finish
 endif
 

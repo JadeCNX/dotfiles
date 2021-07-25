@@ -342,11 +342,7 @@ Plug 'yssl/QFEnter'
 " Plug 'zhou13/vim-easyescape'
 
 " Color schemes
-if has('nvim-0.5.0')
-  Plug 'ii14/onedark.nvim'
-else
-  Plug 'joshdick/onedark.vim'
-endif
+Plug 'joshdick/onedark.vim'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'ayu-theme/ayu-vim'
@@ -355,6 +351,7 @@ endif
 " Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
+" Plug 'ii14/onedark.nvim'
 " Plug 'jaxbot/semantic-highlight.vim'
 " Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'lifepillar/vim-solarized8'
