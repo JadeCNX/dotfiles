@@ -1,6 +1,32 @@
 # Don't print a new line at the start of the prompt
 add_newline = true
 scan_timeout = 1
+format = """
+$username\
+$hostname\
+$shlvl\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$nodejs\
+$python\
+$ruby\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$shell\
+$character
+"""
 
 [aws]
 symbol = " "
@@ -50,9 +76,11 @@ only_with_files = true
 
 [erlang]
 symbol = " "
+disabled = true
 
 [elixir]
 symbol = " "
+disabled = true
 
 [git_branch]
 symbol = " "
@@ -80,12 +108,15 @@ untracked = "[$count ](purple)"
 
 [golang]
 symbol = "ﳑ "
+disabled = true
 
 [java]
 symbol = " "
+disabled = true
 
 [kubernetes]
 symbol = "ﴱ "
+disabled = true
 
 [memory_usage]
 disabled = true
@@ -101,12 +132,15 @@ symbol = " "
 
 [package]
 symbol = " "
+disabled = true
 
 [perl]
 symbol = " "
+disabled = true
 
 [php]
 symbol = " "
+disabled = true
 
 [python]
 symbol = " "
@@ -116,6 +150,7 @@ symbol = " "
 
 [rust]
 symbol = " "
+disabled = true
 
 [time]
 disabled = true

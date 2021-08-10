@@ -104,7 +104,7 @@ if s:completion_manager == 'deoplete'
   Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
   Plug 'nixprime/cpsm', { 'do': 'bash install.sh' }
 
-" elseif s:completion_manager == 'nvim'
+  " elseif s:completion_manager == 'nvim'
   " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
   " Plug 'albertoCaroM/completion-tmux'
   " Plug 'kristijanhusak/completion-tags'
@@ -192,7 +192,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
-Plug 'fatih/vim-go', {'for': 'go'}
+" Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'glts/vim-textobj-comment'
 Plug 'godlygeek/tabular'
 " Plug 'google/vim-codefmt'
@@ -261,6 +261,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
+Plug 'ptzz/lf.vim'
 " Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall --verbose' }
 " Plug 'Quramy/tsuquyomi'
 " Plug 'Raimondi/delimitMate'
@@ -326,6 +327,7 @@ Plug 'vim-scripts/utl.vim'
 " Plug 'vim/killersheep'
 " Plug 'vimwiki/vimwiki'
 " Plug 'vn-ki/coc-clap'
+Plug 'voldikss/vim-floaterm'
 " Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
@@ -352,6 +354,7 @@ Plug 'joshdick/onedark.vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'gregsexton/Atom'
 " Plug 'ii14/onedark.nvim'
+" Plug 'jacoborus/tender.vim'
 " Plug 'jaxbot/semantic-highlight.vim'
 " Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'lifepillar/vim-solarized8'
@@ -366,6 +369,7 @@ Plug 'joshdick/onedark.vim'
 " Plug 'sonph/onehalf', {'rtp': 'vim' }
 " Plug 'srcery-colors/srcery-vim'
 " Plug 'tomasiser/vim-code-dark'
+" Plug 'tomasr/molokai'
 " Plug 'vim-scripts/mayansmoke'
 " Plug 'vim-scripts/peaksea'
 " Plug 'vim-scripts/pyte'
@@ -760,14 +764,14 @@ endif
 "   nmap <silent> <leader>? :Clap grep2<cr>
 "   nmap <silent> <leader>* :Clap grep ++query=<cword><cr>
 "   vmap <silent> <leader>* :Clap grep ++query=@visual<cr>
-" 
+"
 "   " coc-clap
 "   " nmap <leader>la :<C-u>Clap coc_actions<CR>
 "   " nmap <leader>lc :<C-u>Clap coc_commands<CR>
 "   " nmap <leader>le :<C-u>Clap coc_diagnostics<cr>
 "   " nmap <leader>o :<C-u>Clap coc_outline<CR>
 "   " nmap <leader>O :<C-u>Clap coc_services<CR>
-" 
+"
 "   " let g:clap_theme = 'material_design_dark'
 "   let g:clap_layout = { 'relative': 'editor' }
 "   let g:clap_popup_border = 'nil'
@@ -775,9 +779,9 @@ endif
 "   " let g:clap_provider_grep_opts = '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
 "   let g:clap_search_box_border_style = 'nil'
 "   let g:clap_disable_run_rooter = v:true
-" 
+"
 "   let g:clap_forerunner_status_sign = { 'running': '!', 'done': '•', 'using_cache': '*' }
-" 
+"
 "   if has('nvim')
 "     autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
 "     autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
@@ -928,7 +932,7 @@ if !exists('g:airline_symbols')
 endif
 
 " 
-"     
+"    
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -1010,7 +1014,7 @@ nnoremap  <silent> <leader>gb :Git blame<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> Vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = 'goimports'
+" let g:go_fmt_command = 'goimports'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1402,9 +1406,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <leader>ff :<C-u>Autoformat<CR>
-noremap <leader>fl :<C-u>AutoformatLine<CR>
-vnoremap <leader>ff :<C-u>'<,'>Autoformat<CR>
+noremap <leader>lf :<C-u>Autoformat<CR>
+vnoremap <leader>lf :<C-u>'<,'>Autoformat<CR>
 
 let g:autoformat_verbosemode=1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
@@ -1602,7 +1605,7 @@ if s:completion_manager == 'coc'
         \ 'coc-explorer',
         \ 'coc-flutter',
         \ 'coc-git',
-        \ 'coc-gocode',
+        \ 'coc-go',
         \ 'coc-html',
         \ 'coc-json',
         \ 'coc-lists',
@@ -1647,6 +1650,13 @@ if s:completion_manager == 'coc'
   " To enable highlight current symbol on CursorHold, add:
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
+  " Add missing imports on save
+  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+  autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+  autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+  autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
+
   " command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
   " function! s:GrepArgs(...)
@@ -1676,8 +1686,8 @@ if s:completion_manager == 'coc'
 
   nmap <leader>td :<C-u>CocDiagnostics<cr>
 
-  nmap <leader>lf <Plug>(coc-format-selected)<CR>
-  vmap <leader>lf <Plug>(coc-format-selected)<CR>
+  nmap <leader>lF <Plug>(coc-format-selected)<CR>
+  vmap <leader>lF <Plug>(coc-format-selected)<CR>
 
   nmap <leader>zz :<C-u>CocCommand cSpell.toggleEnableSpellChecker<CR>
 
@@ -1811,18 +1821,18 @@ if s:search_manager == 'coc'
   nmap <leader># :exe 'CocList grep -w --smart-case '.expand('<cword>')<CR>
   nmap <leader>/ :<C-u>CocList -I grep --smart-case<CR>
   nmap <leader>? :<C-u>CocList -I grep -u --smart-case<CR>
-  nmap <leader>lf :<C-u>CocList filetypes<CR>
-  nmap <leader>gg :<C-u>CocList grep\ 
+  nmap <leader>ll :<C-u>CocList filetypes<CR>
+  nmap <leader>gg :<C-u>CocList grep\
 
-    " Remap <C-f> and <C-b> for scroll float windows/popups.
-  if has('nvim-0.4.0') || has('patch-8.2.0750')
-    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  endif
+  " Remap <C-f> and <C-b> for scroll float windows/popups.
+  " if has('nvim-0.4.0') || has('patch-8.2.0750')
+  "   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  "   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  "   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  "   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  "   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  "   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  " endif
 
 endif
 
@@ -2056,3 +2066,10 @@ let g:gist_show_privates = 1
 nnoremap <leader>Gl :<C-u>Gist -l<cr>
 nnoremap <leader>Gs :<C-u>Gist<cr>
 nnoremap <leader>Ge :<C-u>Gist -e
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> lf.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lf_map_keys = 0
+let g:lf_replace_netrw = 1

@@ -92,3 +92,9 @@ backup ~/.config/starship.toml
 link $PWD/starship.toml ~/.config/starship.toml
 
 
+backup ~/.config/lf/lfrc
+backup ~/.config/lf/pv.sh
+link $PWD/lf/lfrc ~/.config/lf/lfrc
+link $PWD/lf/pv.sh ~/.config/lf/pv.sh
+
+

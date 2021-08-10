@@ -17,6 +17,7 @@
   "json.enable": true,
   "tailwindCSS.headwind.removeDuplicates": true,
   "tailwindCSS.headwind.runOnSave": false,
+  "typescript.preferences.importModuleSpecifier": "relative",
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",

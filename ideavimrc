@@ -14,7 +14,7 @@ set incsearch
 set ignorecase
 
 
-imap fd <C-c>
+imap jj <C-c>
 
 map <c-h> <C-W>h
 map <c-j> <C-W>j

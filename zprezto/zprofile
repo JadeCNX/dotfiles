@@ -13,6 +13,7 @@ fi
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
+export OPENER='open'
 
 #
 # Language
@@ -28,7 +29,7 @@ export LC_ALL=en_US.UTF-8
 #
 # Paths
 #
-fpath=(~/.zsh/completion $fpath)
+fpath=($HOME/.zsh/completion $fpath)
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -53,6 +54,10 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 #
 export GOPATH="$HOME/Develops/Go"
 
+
+export GEM_HOME=/usr/local/opt/ruby
+
+
 # Set the list of directories that cd searches.
 # cdpath=(
 #   $cdpath
@@ -68,6 +73,7 @@ path=(
   $GoPATH/bin
   $GOROOT/bin
   $GEM_HOME/bin
+  $GEM_HOME/gems/3.0.0/bin
   $ANDROID_HOME/emulator
   $ANDROID_HOME/tools
   $ANDROID_HOME/tools/bin
