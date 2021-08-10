@@ -1489,32 +1489,32 @@ nmap ga <Plug>(EasyAlign)
 let g:easy_align_delimiters = {
       \ '>': { 'pattern': '>>\|=>\|>' },
       \ '/': {
-      \     'pattern':         '//\+\|/\*\|\*/',
-      \     'delimiter_align': 'l',
-      \     'ignore_groups':   ['!Comment'] },
-      \ ']': {
-      \     'pattern':       '[[\]]',
-      \     'left_margin':   0,
-      \     'right_margin':  0,
-      \     'stick_to_left': 0
-      \   },
-      \ ')': {
-      \     'pattern':       '[()]',
-      \     'left_margin':   0,
-      \     'right_margin':  0,
-      \     'stick_to_left': 0
-      \   },
-      \ 'd': {
-      \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
-      \     'left_margin':  0,
-      \     'right_margin': 0
-      \   },
-      \ 't': {
-      \     'pattern':      ' ',
-      \     'left_margin':  0,
-      \     'right_margin': 0
-      \   }
-      \ }
+        \     'pattern':         '//\+\|/\*\|\*/',
+        \     'delimiter_align': 'l',
+        \     'ignore_groups':   ['!Comment'] },
+        \ ']': {
+          \     'pattern':       '[[\]]',
+          \     'left_margin':   0,
+          \     'right_margin':  0,
+          \     'stick_to_left': 0
+          \   },
+          \ ')': {
+            \     'pattern':       '[()]',
+            \     'left_margin':   0,
+            \     'right_margin':  0,
+            \     'stick_to_left': 0
+            \   },
+            \ 'd': {
+              \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+              \     'left_margin':  0,
+              \     'right_margin': 0
+              \   },
+              \ 't': {
+                \     'pattern':      ' ',
+                \     'left_margin':  0,
+                \     'right_margin': 0
+                \   }
+                \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1879,12 +1879,12 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType javascriptreact,typescriptreact let b:switch_custom_definitions = [
       \ {
-      \   '\(\k\+=\){\(\w[a-zA-Z0-9.]*\)}':      '\1{`${\2}`}',
-      \   '\(\k\+=\){`${\(\w[a-zA-Z0-9.]*\)}`}': '\1{\2}',
-      \ },
-      \ ['let', 'const', 'var'],
-      \ ['else', 'else if']
-      \ ]
+        \   '\(\k\+=\){\(\w[a-zA-Z0-9.]*\)}':      '\1{`${\2}`}',
+        \   '\(\k\+=\){`${\(\w[a-zA-Z0-9.]*\)}`}': '\1{\2}',
+        \ },
+        \ ['let', 'const', 'var'],
+        \ ['else', 'else if']
+        \ ]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1917,14 +1917,14 @@ let g:livepreview_engine = 'mactex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:matchup_matchpref = {
       \ 'html': {
-      \ 'tagnameonly' : 1,
-      \ 'nolist' : 1
-      \ },
-      \ 'xml': {
-      \ 'tagnameonly' : 1,
-      \ 'nolist' : 1
-      \ }
-      \ }
+        \ 'tagnameonly' : 1,
+        \ 'nolist' : 1
+        \ },
+        \ 'xml': {
+          \ 'tagnameonly' : 1,
+          \ 'nolist' : 1
+          \ }
+          \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2073,3 +2073,10 @@ nnoremap <leader>Ge :<C-u>Gist -e
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lf_map_keys = 0
 let g:lf_replace_netrw = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -> floaterm
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
