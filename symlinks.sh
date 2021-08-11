@@ -91,10 +91,12 @@ link $PWD/bat ~/.config/bat
 backup ~/.config/starship.toml
 link $PWD/starship.toml ~/.config/starship.toml
 
-
+# lf
 backup ~/.config/lf/lfrc
 backup ~/.config/lf/pv.sh
 link $PWD/lf/lfrc ~/.config/lf/lfrc
 link $PWD/lf/pv.sh ~/.config/lf/pv.sh
 
-
+# kitty
+backup ~/.config/kitty/kitty.conf
+link $PWD/kitty.conf ~/.config/kitty/kitty.conf
