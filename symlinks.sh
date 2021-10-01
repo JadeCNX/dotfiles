@@ -59,6 +59,7 @@ link $PWD/vimrcs/vimrc.vim ~/.vimrc
 
 # htop
 backup ~/.config/htop/htoprc
+mkdir -pv ~/.config/htop
 link $PWD/htoprc ~/.config/htop/htoprc
 
 # zprezto
@@ -94,9 +95,11 @@ link $PWD/starship.toml ~/.config/starship.toml
 # lf
 backup ~/.config/lf/lfrc
 backup ~/.config/lf/pv.sh
+mkdir -pv ~/.config/lf
 link $PWD/lf/lfrc ~/.config/lf/lfrc
 link $PWD/lf/pv.sh ~/.config/lf/pv.sh
 
 # kitty
 backup ~/.config/kitty/kitty.conf
+mkdir -pv ~/.config/kitty
 link $PWD/kitty.conf ~/.config/kitty/kitty.conf
