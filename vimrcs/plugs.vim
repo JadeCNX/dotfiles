@@ -1422,6 +1422,14 @@ let g:formatters_typescript = ['prettier', 'tsfmt']
 let g:formatters_typescriptreact = ['prettier', 'tsfmt']
 let g:formatters_vue = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
+let g:formatters_javascriptreact = [
+      \ 'prettier',
+      \ 'eslint_local',
+      \ 'jsbeautify_javascript',
+      \ 'jscs',
+      \ 'standard_javascript',
+      \ 'xo_javascript',
+      \ ]
 let g:formatters_javascript = [
       \ 'prettier',
       \ 'eslint_local',
@@ -1786,7 +1794,7 @@ if s:completion_manager == 'coc'
     autocmd!
     " Setup formatexpr specified filetype(s).
     " autocmd set formatexpr=CocAction('formatSelected')
-    autocmd FileType typescriptreact,typescript,json setl formatexpr=CocAction('formatSelected')
+    autocmd FileType javascriptreact,typescriptreact,typescript,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   augroup end
