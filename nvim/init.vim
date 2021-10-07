@@ -8,7 +8,3 @@ set inccommand=split
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 source ~/.vimrc
-
-if g:neovim_builtin_feature_enable
-	lua require("init")
-endif

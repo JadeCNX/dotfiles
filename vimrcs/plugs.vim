@@ -1,19 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -> define plugin manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neovim_builtin_feature_enable = 0 "has('nvim-0.5')
 
 let s:completion_manager = ['coc', 'deoplete'][0]
 let s:file_explorer = ['coc', 'nerdtree'][0]
 let s:search_manager = ['coc', 'fzf'][0]
 let s:syntax_manager = ['polyglot'][0]
-
-if g:neovim_builtin_feature_enable
-  let s:completion_manager = ''
-  let s:file_explorer = ''
-  let s:search_manager = ''
-  let s:syntax_manager = ''
-endif
 
 if !executable('node')
   if s:completion_manager == 'coc'
@@ -167,13 +159,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'bps/vim-textobj-python'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
-Plug 'chamindra/marvim'
+" Plug 'chamindra/marvim'
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 " Plug 'chr4/nginx.vim'
 " Plug 'chrisbra/Colorizer'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'chrisbra/NrrwRgn'
-Plug 'chrisbra/unicode.vim'
+" Plug 'chrisbra/unicode.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'cohama/lexima.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -181,13 +173,13 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Plug 'dahu/vim-fanfingtastic'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'dbakker/vim-paragraph-motion'
-Plug 'dbeniamine/cheat.sh-vim'
+" Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'dense-analysis/ale'
 " Plug 'devjoe/vim-codequery'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'digitaltoad/vim-pug' " syntax highlighing for Pug (formerly Jade)
 " Plug 'dimonomid/auto-pairs-gentle'
-Plug 'dyng/ctrlsf.vim', {'on': ['CtrlSF']}
+" Plug 'dyng/ctrlsf.vim', {'on': ['CtrlSF']}
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'edkolev/tmuxline.vim'
@@ -199,27 +191,27 @@ Plug 'godlygeek/tabular'
 " Plug 'google/vim-glaive'
 " Plug 'google/vim-maktaba'
 " Plug 'google/vim-searchindex'
-Plug 'groenewege/vim-less', {'for': 'less'}
+" Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'guns/xterm-color-table.vim', {'on': 'XtermColorTable'}
 " Plug 'haya14busa/is.vim'
 " Plug 'haya14busa/vim-asterisk'
 Plug 'honza/vim-snippets'
-Plug 'idanarye/vim-vebugger'
-Plug 'inkarkat/vim-ReplaceWithRegister'
-Plug 'itchyny/calendar.vim'
+" Plug 'idanarye/vim-vebugger'
+" Plug 'inkarkat/vim-ReplaceWithRegister'
+" Plug 'itchyny/calendar.vim'
 " Plug 'itchyny/lightline.vim'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Plug 'JadeCNX/diffchar.vim'
 Plug 'JadeCNX/vim-sleuth'
-Plug 'JadeCNX/vim-template'
+" Plug 'JadeCNX/vim-template'
 " Plug 'jceb/vim-orgmode', {'for': 'org'}
 " Plug 'jlanzarotta/bufexplorer'
-Plug 'jph00/swift-apple', {'for': 'swift'}
+" Plug 'jph00/swift-apple', {'for': 'swift'}
 Plug 'Julian/vim-textobj-variable-segment'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 " Plug 'junegunn/vim-peekaboo'
-Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
+" Plug 'justinmk/vim-sneak', {'on': ['<Plug>Sneak_f', '<Plug>Sneak_F', '<Plug>Sneak_t', '<Plug>Sneak_T']}
 " Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
@@ -231,14 +223,14 @@ Plug 'kana/vim-textobj-user'
 " Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 " Plug 'lornix/vim-scrollbar'
-Plug 'ludovicchabant/vim-gutentags', Cond(executable('ctags'))
+" Plug 'ludovicchabant/vim-gutentags', Cond(executable('ctags'))
 " Plug 'luochen1990/rainbow'
 " Plug 'lvht/mru'
 " Plug 'lyokha/vim-xkbswitch'
 " Plug 'machakann/vim-sandwich'
 " Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
-Plug 'mattn/webapi-vim'
+" Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'maximbaz/lightline-ale'
@@ -255,10 +247,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/jsonc.vim'
 " Plug 'nsf/gocode'
 " Plug 'osyo-manga/vim-anzu'
-Plug 'osyo-manga/vim-over'
+" Plug 'osyo-manga/vim-over'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
 " Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
+" Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for':['javascript', 'javascript.jsx', 'typescript', 'typescriptreact', 'json', 'html']}
 Plug 'ptzz/lf.vim'
@@ -307,10 +299,8 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 " Plug 'unblevable/quick-scope' " highlight f,t move
 " Plug 'Valloric/YouCompleteMe'
-if !g:neovim_builtin_feature_enable
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-endif
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
 " Plug 'vim-jp/vital.vim'
 Plug 'vim-pandoc/vim-pandoc', {'for': ['markdown']}
@@ -321,23 +311,23 @@ Plug 'vim-pandoc/vim-pandoc-syntax', {'for': ['markdown']}
 " Plug 'vim-scripts/mru.vim' " most recently use
 " Plug 'vim-scripts/SyntaxRange'
 " Plug 'vim-scripts/taglist.vim'
-Plug 'vim-scripts/utl.vim'
+" Plug 'vim-scripts/utl.vim'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-vdebug/vdebug'
 " Plug 'vim/killersheep'
 " Plug 'vimwiki/vimwiki'
 " Plug 'vn-ki/coc-clap'
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
 " Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 " Plug 'wesQ3/vim-windowswap'
-Plug 'wfxr/minimap.vim', Cond(exists('code-minimap'))
+" Plug 'wfxr/minimap.vim', Cond(exists('code-minimap'))
 " Plug 'wsdjeg/FlyGrep.vim'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " Plug 'xolox/vim-session'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " Plug 'Yggdroot/indentLine'
 Plug 'yssl/QFEnter'
 " Plug 'yuttie/comfortable-motion.vim' " Inertial-scroll
@@ -2080,7 +2070,7 @@ nnoremap <leader>Ge :<C-u>Gist -e
 " -> lf.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lf_map_keys = 0
-let g:lf_replace_netrw = 1
+let g:lf_replace_netrw = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
