@@ -68,8 +68,7 @@ path=(
   $path
   /usr/local/{bin,sbin}
   /usr/local/opt/llvm/bin
-  $HOME/.iterm2
-  $HOME/.local/share/solana/install/active_release/bin
+  $HOME/.local/bin
   $GoPATH/bin
   $GOROOT/bin
   $GEM_HOME/bin

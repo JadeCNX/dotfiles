@@ -1,15 +1,13 @@
 #!/bin/bash
 
-backup()
-{
+backup() {
 	file=$1
-	if [[ -e $file ]] && [[ ! -L $file ]] ; then
+	if [[ -e $file ]] && [[ ! -L $file ]]; then
 		mv -iv $file{,.old}
 	fi
 }
 
-link()
-{
+link() {
 	ln -sfnv $1 $2
 }
 
@@ -34,18 +32,18 @@ backup ~/.tmux.conf
 link $PWD/tmux.conf ~/.tmux.conf
 
 # eclipse - vrapper
-backup ~/.vrapperrc
-link $PWD/vrapperrc ~/.vrapperrc
+# backup ~/.vrapperrc
+# link $PWD/vrapperrc ~/.vrapperrc
 
 # w3m
-backup ~/.w3m
-mkdir -pv ~/.w3m
-link $PWD/w3m/w3m_config ~/.w3m/config
-link $PWD/w3m/w3m_keymap ~/.w3m/keymap
+# backup ~/.w3m
+# mkdir -pv ~/.w3m
+# link $PWD/w3m/w3m_config ~/.w3m/config
+# link $PWD/w3m/w3m_keymap ~/.w3m/keymap
 
 # xcode - xvim2
-backup ~/.xvimrc
-link $PWD/xvimrc ~/.xvimrc
+# backup ~/.xvimrc
+# link $PWD/xvimrc ~/.xvimrc
 
 # vim
 backup ~/.vimrc
@@ -81,8 +79,8 @@ backup ~/.fzf_git.zsh
 link $PWD/scripts/fzf_git.zsh ~/.fzf_git.zsh
 
 # hammperspoon
-backup ~/.hammerspoon
-link $PWD/hammerspoon ~/.hammerspoon
+# backup ~/.hammerspoon
+# link $PWD/hammerspoon ~/.hammerspoon
 
 # bat
 backup ~/.config/bat
