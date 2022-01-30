@@ -696,6 +696,8 @@ nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>nn :<c-u>normal<space>
 vmap <leader>nn :<c-u>'<,'>normal<space>
+map <leader>nq :<c-u>normal<space>@q<cr>
+vmap <leader>nq :<c-u>'<,'>normal<space>@q<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
