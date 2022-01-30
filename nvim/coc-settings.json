@@ -43,5 +43,11 @@
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
   "suggest.snippetIndicator": "   (Snippet)",
-  "suggest.triggerAfterInsertEnter": true
+  "suggest.triggerAfterInsertEnter": true,
+  "cSpell.userWords": [
+    "Unmount",
+    "resizer",
+    "semibold",
+    "toastify"
+  ]
 }
