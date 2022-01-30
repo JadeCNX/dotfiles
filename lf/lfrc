@@ -136,5 +136,3 @@ map se :set sortby ext; set info
 map gh cd ~
 map D trash
 map <space> :toggle; down
-
-
