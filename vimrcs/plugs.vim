@@ -1433,6 +1433,11 @@ let g:formatters_json = [
       \ 'jsbeautify_json',
       \ 'fixjson',
       \ ]
+let g:formatters_jsonc = [
+      \ 'prettier',
+      \ 'jsbeautify_json',
+      \ 'fixjson',
+      \ ]
 let g:formatters_python = ['black', 'yapf', 'autopep8']
 let g:formatdef_luaformatter = '"lua-format ".expand("%:p")'
 let g:formatters_lua = ['luaformatter']
