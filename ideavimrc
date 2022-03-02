@@ -1,18 +1,23 @@
 " set extensions
-set easymotion
-set surround
-set multiple-cursors
-set commentary
-set ReplaceWithRegister
 set argtextobj
-set textobj-entire
+set commentary
+set easymotion
+set exchange
+set highlightedyank
+set matchit
+set multiple-cursors
+set NERDTree
+set ReplaceWithRegister
+set surround
+set textobj-indent
+set vim-paragraph-motion
+set ideajoin
 
 " set options
 set hlsearch
 set history
 set incsearch
 set ignorecase
-
 
 imap jj <C-c>
 
@@ -27,3 +32,11 @@ map <space>nn :<c-u>%normal<space>
 vmap <space>nn :<c-u>'<,'>normal<space>
 
 nnoremap c* *Ncgn
+
+vnoremap <silent> * "cy/c<cr>
+vnoremap <silent> # "cy/c<cr>
+
+nmap <space>ee :<C-u>:NERDTreeToggle<cr>
+nmap <space>ef :<C-u>:NERDTreeFocus<cr>
+
+nmap Q @@

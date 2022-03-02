@@ -249,6 +249,7 @@ Plug 'neoclide/jsonc.vim'
 " Plug 'osyo-manga/vim-anzu'
 " Plug 'osyo-manga/vim-over'
 " Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
+Plug 'pantharshit00/vim-prisma'
 " Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 " Plug 'plytophogy/vim-virtualenv', {'for': 'python'}
 Plug 'preservim/nerdcommenter'
@@ -257,6 +258,7 @@ Plug 'ptzz/lf.vim'
 " Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall --verbose' }
 " Plug 'Quramy/tsuquyomi'
 " Plug 'Raimondi/delimitMate'
+Plug 'rbong/vim-flog'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'rhysd/clever-f.vim'
 " Plug 'rhysd/git-messenger.vim'
@@ -1614,6 +1616,7 @@ if s:completion_manager == 'coc'
         \ 'coc-lists',
         \ 'coc-marketplace',
         \ 'coc-phpls',
+        \ 'coc-prisma',
         \ 'coc-pyright',
         \ 'coc-react-refactor',
         \ 'coc-rls',
