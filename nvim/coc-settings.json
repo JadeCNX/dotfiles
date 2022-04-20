@@ -1,7 +1,8 @@
 {
-  "clangd.semanticHighlighting": true,
-  "coc.preferences.colorSupport": true,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "prisma"
+  ],
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.enabled": false,
   "cSpell.showCommandsInEditorContextMenu": false,
@@ -31,7 +32,6 @@
   "python.pythonPath": "python3",
   "signature.target": "float",
   "snippets.autoTrigger": true,
-  "snippets.enableStatusItem": true,
   "snippets.extends": {
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
@@ -45,6 +45,7 @@
   "suggest.snippetIndicator": "   (Snippet)",
   "suggest.triggerAfterInsertEnter": true,
   "cSpell.userWords": [
+    "JWKS",
     "Unmount",
     "resizer",
     "semibold",

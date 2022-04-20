@@ -1404,6 +1404,7 @@ vnoremap <leader>lf :<C-u>'<,'>Autoformat<CR>
 let g:autoformat_verbosemode=1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
 let g:formatdef_php_code_sniffer = '"phpcbf -q - < ".expand("%:p")." 2>&1 || true"'
+let g:formatdef_prisma = '"npx prisma format"'
 " let g:formatdef_prettier_ts = '"prettier --parser=typescript --semi=true --single-quote=true --bracket-spacing=true --jsx-bracket-same-line=false --arrow-parens=avoid --trailing-comma=none --config-precedence=file-override --prose-wrap=preserve --html-whitespace-sensitivity css --stdin --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:formatters_css = ['prettier', 'cssbeautify']
 let g:formatters_scss = ['prettier', 'sassconvert']
@@ -1414,6 +1415,7 @@ let g:formatters_typescript = ['prettier', 'tsfmt']
 let g:formatters_typescriptreact = ['prettier', 'tsfmt']
 let g:formatters_vue = ['prettier', 'tsfmt']
 let g:formatters_markdown = ['prettier', 'remark_markdown']
+let g:formatters_prisma = ['prisma']
 let g:formatters_javascriptreact = [
       \ 'prettier',
       \ 'eslint_local',
@@ -1440,7 +1442,7 @@ let g:formatters_jsonc = [
       \ 'jsbeautify_json',
       \ 'fixjson',
       \ ]
-let g:formatters_python = ['black', 'yapf', 'autopep8']
+let g:formatters_python = ['black']
 let g:formatdef_luaformatter = '"lua-format ".expand("%:p")'
 let g:formatters_lua = ['luaformatter']
 let g:formatdef_yq = '"yq e ".expand("%:p")'

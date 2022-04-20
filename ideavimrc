@@ -26,7 +26,8 @@ map <c-j> <C-W>j
 map <c-k> <C-W>k
 map <c-l> <C-W>l
 
-map Y "*y
+nnoremap Y "*y
+vnoremap Y "*y
 
 map <space>nn :<c-u>%normal<space>
 vmap <space>nn :<c-u>'<,'>normal<space>
@@ -40,3 +41,6 @@ nmap <space>ee :<C-u>:NERDTreeToggle<cr>
 nmap <space>ef :<C-u>:NERDTreeFocus<cr>
 
 nmap Q @@
+
+nnoremap - $
+vnoremap - $
