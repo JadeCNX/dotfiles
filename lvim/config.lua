@@ -14,7 +14,7 @@ vim.opt.timeoutlen = 1000
 vim.opt.number = true
 
 -- Show relative line number
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- show command
 vim.opt.showcmd = true
@@ -66,6 +66,7 @@ lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
@@ -82,14 +83,14 @@ lvim.autocommands.auto_read_notification = {
   { "FileChangedShellPost", "*", "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None" },
 }
 
-lvim.autocommands.clear_matches = {
-  { "BufWinLeave", "*", "call clearmatches()" },
-}
+-- lvim.autocommands.clear_matches = {
+--   { "BufWinLeave", "*", "call clearmatches()" },
+-- }
 
--- Return to last edit position when opening files (You want this!)
-lvim.autocommands.last_edit_position = {
-  { "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]] },
-}
+-- -- Return to last edit position when opening files (You want this!)
+-- lvim.autocommands.last_edit_position = {
+--   { "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]] },
+-- }
 
 -- Disable automatic comment insertion
 lvim.autocommands.disable_comment_insertion = {
@@ -98,7 +99,7 @@ lvim.autocommands.disable_comment_insertion = {
 
 -- DockerFile
 lvim.autocommands.dockerfile = {
-  { "BufNewFile,BufRead", "*.dockerfile", [[set filetype=dockerfile]] },
+  { "BufNewFile,BufRead", "*.dockerfile,Dockerfile.*", [[set filetype=dockerfile]] },
 }
 
 -- env file
@@ -156,12 +157,21 @@ lvim.builtin.which_key.mappings["c"] = {
   name = "Commenter"
 }
 
+lvim.builtin.which_key.mappings["e"] = {
+  name = "Explorer",
+  e = { "<cmd>NvimTreeToggle<CR>", "Explorer pane" },
+  t = { "<cmd>Lf<CR>", "LF" }
+}
+
 lvim.builtin.which_key.mappings["S"] = {
   name = "Session",
   c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
   l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
+
+lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require('spectre').open()<CR>", "Search" }
+
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 -- local _, actions = pcall(require, "telescope.actions")
@@ -200,7 +210,12 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
-lvim.builtin.comment.active = false
+lvim.builtin.gitsigns.current_line_blame_opts = {
+  virt_text = true,
+  virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+  delay = 180,
+  ignore_whitespace = true,
+}
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -292,6 +307,12 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
   {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+  },
+  {
     "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
@@ -304,7 +325,7 @@ lvim.plugins = {
     module = "persistence",
     config = function()
       require("persistence").setup {
-        dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+        dir = vim.fn.expand("~/.cache/lvim/session/"),
         options = { "buffers", "curdir", "tabpages", "winsize" },
       }
     end,
@@ -367,6 +388,12 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
       require("spectre").setup()
+      vim.cmd [[
+        nnoremap <leader>* <cmd>lua require('spectre').open_visual({select_word=true})<CR>
+        vnoremap <leader>* <cmd>lua require('spectre').open_visual()<CR>
+      ]]
+      -- nnoremap <leader># <cmd>lua require('spectre').open()<CR>
+      -- nnoremap <leader>P viw:lua require('spectre').open_file_seainitrch()<cr>
     end,
   },
   {
@@ -375,6 +402,7 @@ lvim.plugins = {
       "G",
       "Git",
       "Gdiffsplit",
+      "Gvdiffsplit",
       "Gread",
       "Gwrite",
       "Ggrep",
@@ -384,6 +412,7 @@ lvim.plugins = {
       "GRemove",
       "GRename",
       "Glgrep",
+      "GBlame",
       "Gedit"
     },
     ft = { "fugitive" }
@@ -475,7 +504,7 @@ lvim.plugins = {
     "ptzz/lf.vim",
     config = function()
       vim.g.lf_map_keys = 0
-      vim.g.lf_replace_netrw = 0
+      vim.g.lf_replace_netrw = 1
     end
   },
   {
@@ -513,17 +542,49 @@ lvim.plugins = {
     end,
   },
   {
-    "lewis6991/gitsigns.nvim",
+    "romgrk/nvim-treesitter-context",
     config = function()
-      require('gitsigns').setup {
-        current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-        current_line_blame_opts = {
-          virt_text = true,
-          virt_text_pos = 'overlay', -- 'eol' | 'overlay' | 'right_align'
-          delay = 225,
-          ignore_whitespace = true,
+      require("treesitter-context").setup {
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        throttle = true, -- Throttles plugin updates (may improve performance)
+        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- For all filetypes
+          -- Note that setting an entry here replaces all other patterns for this entry.
+          -- By setting the 'default' entry below, you can control which nodes you want to
+          -- appear in the context window.
+          default = {
+            'class',
+            'function',
+            'method',
+          },
         },
       }
+    end
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "*" }, {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      })
+    end,
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function()
+      require "lsp_signature".setup()
     end
   },
   { "AndrewRadev/linediff.vim" },
@@ -538,20 +599,19 @@ lvim.plugins = {
   { "junegunn/vim-easy-align" },
   { "kana/vim-textobj-indent" },
   { "kana/vim-textobj-user" },
+  { "p00f/nvim-ts-rainbow" },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
-  { "stefandtw/quickfix-reflector.vim" },
   { "terryma/vim-multiple-cursors" },
   { "tmux-plugins/vim-tmux-focus-events" },
   { "tpope/vim-abolish" },
   { "tpope/vim-dadbod" },
-  { "tpope/vim-obsession" },
   { "tpope/vim-repeat" },
   { "tpope/vim-rsi" },
   { "tpope/vim-unimpaired" },
+  { "voldikss/vim-floaterm" }, -- required by lf.vim
   { "wellle/targets.vim" },
   { "wellle/visual-split.vim" },
-  { "yssl/QFEnter" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

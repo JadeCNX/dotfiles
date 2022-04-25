@@ -55,6 +55,7 @@ link $PWD/vimrcs/vimrc.vim ~/.vimrc
 # link $PWD/vimrcs/templates ~/.vim/templates
 # link $PWD/vimrcs/UltiSnips ~/.vim/UltiSnips
 
+# lvim
 backup ~/.config/lvim/config.lua
 mkdir ~/.config/lvim
 link $PWD/lvim/config.lua ~/.config/lvim/config.lua
