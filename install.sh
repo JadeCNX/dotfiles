@@ -57,7 +57,7 @@ link $PWD/vimrcs/vimrc.vim ~/.vimrc
 
 # lvim
 backup ~/.config/lvim/config.lua
-mkdir ~/.config/lvim
+mkdir -pv ~/.config/lvim
 link $PWD/lvim/config.lua ~/.config/lvim/config.lua
 
 # htop
@@ -106,3 +106,7 @@ link $PWD/lf/pv.sh ~/.config/lf/pv.sh
 backup ~/.config/kitty/kitty.conf
 mkdir -pv ~/.config/kitty
 link $PWD/kitty.conf ~/.config/kitty/kitty.conf
+
+#mpv
+backup ~/.config/mpv
+link $PWD/htoprc ~/.config/mpv
