@@ -136,6 +136,9 @@ vim.api.nvim_set_keymap("n", "Q", "@@", { noremap = true })
 vim.api.nvim_set_keymap("c", "<C-P>", "<UP>", { noremap = true })
 vim.api.nvim_set_keymap("c", "<C-N>", "<DOWN>", { noremap = true })
 
+vim.api.nvim_set_keymap("n", "Y", '"*y', { noremap = true })
+vim.api.nvim_set_keymap("v", "Y", '"*y', { noremap = true })
+
 -- https://youtu.be/YwMgnmZNWXA
 vim.api.nvim_set_keymap("n", "c*", "*Ncgn", { noremap = true })
 vim.api.nvim_set_keymap("v", "*", "y/0<cr>", { noremap = true, silent = true })
@@ -151,7 +154,7 @@ vim.api.nvim_set_keymap("n", "<leader>DQ", [[:exe ":profile pause"<cr>:noautocmd
 -- unmap a default keymapping
 lvim.keys.normal_mode["<leader>c"] = false
 -- edit a default keymapping
-lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<CR>"
+lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferClose!<CR>"
 
 lvim.builtin.which_key.mappings["c"] = {
   name = "Commenter"
@@ -170,7 +173,8 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
-lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require('spectre').open()<CR>", "Search" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>Telescope live_grep<cr>", "Search" }
+lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<CR>", "Search & Replace" }
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -202,12 +206,15 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 }
 
+lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
+lvim.builtin.dap.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.gitsigns.current_line_blame_opts = {
@@ -231,13 +238,14 @@ lvim.builtin.treesitter.ensure_installed = {
   "rust",
   "java",
   "yaml",
+  "go"
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- Disable virtual text
-lvim.lsp.diagnostics.virtual_text = false
+-- lvim.lsp.diagnostics.virtual_text = false
 
 -- generic LSP settings
 
@@ -412,7 +420,6 @@ lvim.plugins = {
       "GRemove",
       "GRename",
       "Glgrep",
-      "GBlame",
       "Gedit"
     },
     ft = { "fugitive" }
