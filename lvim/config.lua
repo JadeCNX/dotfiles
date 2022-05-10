@@ -61,7 +61,7 @@ end
 
 -- general
 lvim.log.level = "warn"
--- lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -154,7 +154,9 @@ vim.api.nvim_set_keymap("n", "<leader>DQ", [[:exe ":profile pause"<cr>:noautocmd
 -- unmap a default keymapping
 lvim.keys.normal_mode["<leader>c"] = false
 -- edit a default keymapping
-lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferClose!<CR>"
+lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<CR>"
+
+lvim.builtin.which_key.setup.plugins.registers = false
 
 lvim.builtin.which_key.mappings["c"] = {
   name = "Commenter"
@@ -175,6 +177,8 @@ lvim.builtin.which_key.mappings["S"] = {
 
 lvim.builtin.which_key.mappings["/"] = { "<cmd>Telescope live_grep<cr>", "Search" }
 lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<CR>", "Search & Replace" }
+lvim.builtin.which_key.mappings["."] = { "<cmd>Telescope resume<cr>", "Search Resume" }
+lvim.builtin.which_key.mappings["sT"] = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search Current File" }
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -258,6 +262,74 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
+local lspconfig = require("lspconfig")
+lspconfig.tsserver.setup({
+  -- Needed for inlayHints. Merge this table with your settings or copy
+  -- it from the source if you want to add your own init_options.
+  init_options = require("nvim-lsp-ts-utils").init_options,
+  --
+  on_attach = function(client, bufnr)
+    local ts_utils = require("nvim-lsp-ts-utils")
+
+    -- required to fix code action ranges and filter diagnostics
+    ts_utils.setup_client(client)
+
+    -- defaults
+    ts_utils.setup({
+      debug = false,
+      disable_commands = false,
+      enable_import_on_completion = false,
+
+      -- import all
+      import_all_timeout = 5000, -- ms
+      -- lower numbers = higher priority
+      import_all_priorities = {
+        same_file = 1, -- add to existing import statement
+        local_files = 2, -- git files or files with relative path markers
+        buffer_content = 3, -- loaded buffer content
+        buffers = 4, -- loaded buffer names
+      },
+      import_all_scan_buffers = 100,
+      import_all_select_source = false,
+      -- if false will avoid organizing imports
+      always_organize_imports = true,
+
+      -- filter diagnostics
+      filter_out_diagnostics_by_severity = {},
+      filter_out_diagnostics_by_code = {},
+
+      -- inlay hints
+      auto_inlay_hints = true,
+      inlay_hints_highlight = "Comment",
+      inlay_hints_priority = 200, -- priority of the hint extmarks
+      inlay_hints_throttle = 150, -- throttle the inlay hint request
+      inlay_hints_format = { -- format options for individual hint kind
+        Type = {},
+        Parameter = {},
+        Enum = {},
+        -- Example format customization for `Type` kind:
+        -- Type = {
+        --     highlight = "Comment",
+        --     text = function(text)
+        --         return "->" .. text:sub(2)
+        --     end,
+        -- },
+      },
+
+      -- update imports on file move
+      update_imports_on_move = false,
+      require_confirmation_on_move = false,
+      watch_dir = nil,
+    })
+
+    -- no default maps, so you may want to define some here
+    local opts = { silent = true }
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", ":TSLspOrganize<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lR", ":TSLspRenameFile<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lO", ":TSLspImportAll<CR>", opts)
+  end,
+})
+
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skiipped for the current filetype
 -- vim.tbl_map(function(server)
@@ -274,19 +346,23 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
+-- null-ls timeout
+vim.lsp.buf.formatting_sync(nil, 5000)
+
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  { command = "isort", filetypes = { "python" } },
+  { command = "black", timeout = 10000, filetypes = { "python" } },
+  -- { command = "isort", filetypes = { "python" } },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
+    timeout = 10000,
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    -- extra_args = { "--print-with", "100" },
+    extra_args = { "--bracket-same-line" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    -- filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", 'scss', 'css', 'markdown', "html", "json" },
   },
 }
 
@@ -299,13 +375,13 @@ linters.setup {
     command = "shellcheck",
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--severity", "warning" },
+    -- extra_args = { "--severity", "warning" },
   },
   {
     command = "codespell",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    -- filetypes = { "javascript", "python" },
-  },
+    filetypes = {},
+  }
 }
 
 -- Additional Plugins
@@ -338,10 +414,10 @@ lvim.plugins = {
       }
     end,
   },
-  {
-    "ggandor/lightspeed.nvim",
-    event = "BufRead",
-  },
+  -- {
+  --   "ggandor/lightspeed.nvim",
+  --   event = "BufRead",
+  -- },
   {
     'wfxr/minimap.vim',
     run = "cargo install --locked code-minimap",
@@ -393,7 +469,6 @@ lvim.plugins = {
   },
   {
     "windwp/nvim-spectre",
-    event = "BufRead",
     config = function()
       require("spectre").setup()
       vim.cmd [[
@@ -594,14 +669,81 @@ lvim.plugins = {
       require "lsp_signature".setup()
     end
   },
+  { "gbprod/yanky.nvim",
+    config = function()
+
+      local mapping = require("yanky.telescope.mapping")
+
+      require("yanky").setup({
+        highlight = {
+          on_put = true,
+          on_yank = true,
+          timer = 500,
+        },
+        picker = {
+          telescope = {
+            mappings = {
+              default = mapping.put("p"),
+              i = {
+                ["<c-p>"] = mapping.put("p"),
+                ["<c-k>"] = mapping.put("P"),
+              },
+              n = {
+                ["p"] = mapping.put("p"),
+                ["P"] = mapping.put("P"),
+              },
+            }
+          }
+        }
+      })
+
+      vim.api.nvim_set_keymap("n", "p", "<Plug>(YankyPutAfter)", {})
+      vim.api.nvim_set_keymap("n", "P", "<Plug>(YankyPutBefore)", {})
+      vim.api.nvim_set_keymap("x", "p", "<Plug>(YankyPutAfter)", {})
+      vim.api.nvim_set_keymap("x", "P", "<Plug>(YankyPutBefore)", {})
+      vim.api.nvim_set_keymap("n", "gp", "<Plug>(YankyGPutAfter)", {})
+      vim.api.nvim_set_keymap("n", "gP", "<Plug>(YankyGPutBefore)", {})
+      vim.api.nvim_set_keymap("x", "gp", "<Plug>(YankyGPutAfter)", {})
+      vim.api.nvim_set_keymap("x", "gP", "<Plug>(YankyGPutBefore)", {})
+
+      vim.api.nvim_set_keymap("n", "<c-p>", "<Plug>(YankyCycleForward)", {})
+      vim.api.nvim_set_keymap("n", "<c-n>", "<Plug>(YankyCycleBackward)", {})
+    end
+  },
+  { "ThePrimeagen/refactoring.nvim",
+    config = function()
+      require('refactoring').setup({})
+
+      -- Remaps for the refactoring operations currently offered by the plugin
+      vim.api.nvim_set_keymap("v", "<leader>le", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>lf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>lv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>li", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], { noremap = true, silent = true, expr = false })
+
+      -- Extract block doesn't need visual mode
+      vim.api.nvim_set_keymap("n", "<leader>lb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("n", "<leader>lbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], { noremap = true, silent = true, expr = false })
+
+      -- Inline variable can also pick up the identifier currently under the cursor without visual mode
+      vim.api.nvim_set_keymap("n", "<leader>lv", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], { noremap = true, silent = true, expr = false })
+
+      -- load refactoring Telescope extension
+      require("telescope").load_extension("refactoring")
+
+      -- remap to open the Telescope refactoring menu in visual mode
+      vim.api.nvim_set_keymap("v", "<leader>sr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", { noremap = true })
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
   { "chrisbra/NrrwRgn" },
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
+  { "folke/lsp-colors.nvim" },
   { "glts/vim-textobj-comment" },
   { "jiangmiao/auto-pairs" },
+  { "jose-elias-alvarez/nvim-lsp-ts-utils" },
   { "Julian/vim-textobj-variable-segment" },
   { "junegunn/vim-easy-align" },
   { "kana/vim-textobj-indent" },
@@ -609,13 +751,13 @@ lvim.plugins = {
   { "p00f/nvim-ts-rainbow" },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
-  { "terryma/vim-multiple-cursors" },
   { "tmux-plugins/vim-tmux-focus-events" },
   { "tpope/vim-abolish" },
   { "tpope/vim-dadbod" },
   { "tpope/vim-repeat" },
   { "tpope/vim-rsi" },
   { "tpope/vim-unimpaired" },
+  { "troydm/zoomwintab.vim" },
   { "voldikss/vim-floaterm" }, -- required by lf.vim
   { "wellle/targets.vim" },
   { "wellle/visual-split.vim" },
