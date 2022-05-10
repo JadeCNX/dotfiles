@@ -8,9 +8,11 @@ backup() {
 }
 
 link() {
-  backup "$2"
-  mkdir "$(dirname "$1")"
-	ln -sfnv "$1" "$2"
+  source=$1
+  destination=$2
+  backup "$destination"
+  mkdir -p "$(dirname "$destination")"
+	ln -sfnv "$source" "$destination"
 }
 
 # alacritty
@@ -27,16 +29,6 @@ link "$PWD"/spacemacs.d ~/.spacemacs.d
 
 # tmux
 link "$PWD"/tmux.conf ~/.tmux.conf
-
-# eclipse - vrapper
-# link "$PWD"/vrapperrc ~/.vrapperrc
-
-# w3m
-# link "$PWD"/w3m/w3m_config ~/.w3m/config
-# link "$PWD"/w3m/w3m_keymap ~/.w3m/keymap
-
-# xcode - xvim2
-# link "$PWD"/xvimrc ~/.xvimrc
 
 # vim
 link "$PWD"/vimrcs/vimrc.vim ~/.vimrc
@@ -58,14 +50,10 @@ link "$PWD"/zprezto/zpreztorc ~/.zpreztorc
 link "$PWD"/zprezto/zprofile ~/.zprofile
 link "$PWD"/zprezto/zshenv ~/.zshenv
 link "$PWD"/zprezto/zshrc ~/.zshrc
-
 link "$PWD"/scripts/fzf_git.zsh ~/.fzf_git.zsh
 
-# hammperspoon
-# link "$PWD"/hammerspoon ~/.hammerspoon
-
 # bat
-link "$PWD"/bat ~/.config/bat
+link "$PWD"/bat/config ~/.config/bat/config
 
 # starship https://starship.rs
 link "$PWD"/starship.toml ~/.config/starship.toml
@@ -77,5 +65,6 @@ link "$PWD"/lf/pv.sh ~/.config/lf/pv.sh
 # kitty
 link "$PWD"/kitty.conf ~/.config/kitty/kitty.conf
 
-#mpv
-link "$PWD"/htoprc ~/.config/mpv
+# mpv
+link "$PWD"/mpv/mpv.conf ~/.config/mpv/mpv.conf
+link "$PWD"/mpv/input.conf ~/.config/mpv/input.conf
