@@ -70,6 +70,9 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+lvim.keys.visual_block_mode["J"] = false
+lvim.keys.visual_block_mode["K"] = false
+
 -- Trigger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 -- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
@@ -587,7 +590,8 @@ lvim.plugins = {
     config = function()
       vim.g.lf_map_keys = 0
       vim.g.lf_replace_netrw = 1
-    end
+    end,
+    requires = "voldikss/vim-floaterm"
   },
   {
     "preservim/nerdcommenter",
@@ -734,10 +738,15 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("v", "<leader>sr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", { noremap = true })
     end
   },
+  { "chrisbra/NrrwRgn",
+    config = function()
+      vim.g.nrrw_rgn_nomap_nr = 1
+      vim.g.nrrw_rgn_nomap_Nr = 1
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
-  { "chrisbra/NrrwRgn" },
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
   { "folke/lsp-colors.nvim" },
@@ -758,9 +767,7 @@ lvim.plugins = {
   { "tpope/vim-rsi" },
   { "tpope/vim-unimpaired" },
   { "troydm/zoomwintab.vim" },
-  { "voldikss/vim-floaterm" }, -- required by lf.vim
   { "wellle/targets.vim" },
-  { "wellle/visual-split.vim" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
