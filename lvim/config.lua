@@ -44,6 +44,18 @@ vim.opt.clipboard = ""
 
 vim.opt.listchars = "tab:>-,trail:.,precedes:,extends:"
 
+vim.g.tokyonight_style = 'storm'
+vim.g.tokyonight_italic_functions = true
+
+-- For neovide
+if os.getenv("NEOVIDE") then
+  vim.o.guifont = "DankMono Nerd Font"
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  -- vim.g.neovide_transparency = 0.8
+else
+  vim.g.tokyonight_transparent = true
+end
+
 local function file_exists(name)
   local f = io.open(name, "r")
   if f ~= nil then io.close(f) return true else return false end
@@ -62,7 +74,7 @@ end
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "tokyonight"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -750,6 +762,7 @@ lvim.plugins = {
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
   { "folke/lsp-colors.nvim" },
+  { "folke/tokyonight.nvim" },
   { "glts/vim-textobj-comment" },
   { "jiangmiao/auto-pairs" },
   { "jose-elias-alvarez/nvim-lsp-ts-utils" },
