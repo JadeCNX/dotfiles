@@ -9,8 +9,21 @@
 [[ -o INTERACTIVE && -t 2 ]] && {
 
 SAYINGS=(
-    "So long and thanks for all the fish.\n  -- Douglas Adams"
+    "Get on board or Namaste out of our way!\n --Brooke"
     "Good morning! And in case I don't see ya, good afternoon, good evening and goodnight.\n  --Truman Burbank"
+    "I came down here to say goodbye to you. So, goodbye, good luck and good riddance!\n --Miss Kelly"
+    "I do wish we could chat longer, but I'm having an old friend for dinner...\n --Hannibal Lector"
+    "I have been - and always shall be - your friend.\n --Spock"
+    "I know now why you cry. But it’s something I can never do. Goodbye.\n --T-800"
+    "I'll be right here...\n --E.T."
+    "I’ll see you in another life. When we are both cats.\n --David Aames"
+    "No goodbye, you know I don't like goodbyes. See you later!\n --Michael 'Mike' Archibald"
+    "Now, where was I?.\n --Leonard"
+    "Ogata, it worked! Both of you, be happy. Goodbye...farewell.\n --Dr. Daisuke Serizawa"
+    "So long and thanks for all the fish.\n  -- Douglas Adams"
+    "So long... partner.\n --Woody"
+    "The truth is...I am Iron Man.\n --Tony Stark"
+    "Where we go from there is a choice I leave to you.\n --Neo"
 )
 
 # Print a randomly-chosen message:
