@@ -126,16 +126,18 @@ font:
     # family: JetBrainsMono Nerd Font
     # family: LigaOperatorMono Nerd Font Mono
     # family: mplus Nerd Font Mono
-    family: OperatorMonoSSmLig Nerd Font
+    # family: OperatorMonoSSmLig Nerd Font
+    # family: OperatorMono Nerd Font
     # family: SFmono Nerd Font
     # family: Source Code Pro
     # family: VictorMono Nerd Font
+    family: DankMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     # style: Regular
 
   # Bold font face
-  #bold:
+  # bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
@@ -143,10 +145,10 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    # style: Bold
 
   # Italic font face
-  #italic:
+  # italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
@@ -168,7 +170,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
