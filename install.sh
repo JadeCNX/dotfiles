@@ -25,7 +25,7 @@ link "$PWD"/gitignore_global ~/.gitignore_global
 link "$PWD"/hyper.js ~/.hyper.js
 
 # emacs
-link "$PWD"/spacemacs.d ~/.spacemacs.d
+link "$PWD"/spacemacs.d/init.el ~/.spacemacs.d/init.el
 
 # tmux
 link "$PWD"/tmux.conf ~/.tmux.conf
