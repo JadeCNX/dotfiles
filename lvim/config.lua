@@ -38,14 +38,25 @@ vim.opt.showbreak = "↳ "
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 vim.opt.clipboard = ""
 
 vim.opt.listchars = "tab:>-,trail:.,precedes:,extends:"
 
-vim.g.tokyonight_style = 'storm'
+vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_italic_functions = true
+
+vim.g.VM_theme = "ocean"
+vim.g.VM_skip_empty_lines = true
+vim.g.VM_maps = {
+  ["Add Cursor Down"] = "<m-n>",
+  ["Add Cursor Up"] = "<m-p>",
+  ["Select Right"] = "<m-l>",
+  ["Select Left"] = "<m-h>"
+}
+vim.g.AutoPairsShortcutToggle = ""
+vim.g.AutoPairsShortcutJump = ""
 
 -- For neovide
 if os.getenv("NEOVIDE") then
@@ -722,8 +733,8 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("x", "gp", "<Plug>(YankyGPutAfter)", {})
       vim.api.nvim_set_keymap("x", "gP", "<Plug>(YankyGPutBefore)", {})
 
-      vim.api.nvim_set_keymap("n", "<c-p>", "<Plug>(YankyCycleForward)", {})
-      vim.api.nvim_set_keymap("n", "<c-n>", "<Plug>(YankyCycleBackward)", {})
+      vim.api.nvim_set_keymap("n", "]p", "<Plug>(YankyCycleForward)", {})
+      vim.api.nvim_set_keymap("n", "[p", "<Plug>(YankyCycleBackward)", {})
     end
   },
   { "ThePrimeagen/refactoring.nvim",
@@ -770,10 +781,12 @@ lvim.plugins = {
   { "junegunn/vim-easy-align" },
   { "kana/vim-textobj-indent" },
   { "kana/vim-textobj-user" },
+  { "mg979/vim-visual-multi" },
   { "p00f/nvim-ts-rainbow" },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
   { "tmux-plugins/vim-tmux-focus-events" },
+  { "tommcdo/vim-exchange" },
   { "tpope/vim-abolish" },
   { "tpope/vim-dadbod" },
   { "tpope/vim-repeat" },
