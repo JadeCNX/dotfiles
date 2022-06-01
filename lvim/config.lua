@@ -8,7 +8,7 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
-vim.opt.timeoutlen = 1000
+vim.opt.timeoutlen = 2000
 
 -- Show line number
 vim.opt.number = true
@@ -435,7 +435,7 @@ lvim.plugins = {
     module = "persistence",
     config = function()
       require("persistence").setup {
-        dir = vim.fn.expand("~/.cache/lvim/session/"),
+        dir = vim.fn.expand("~/.cache/lvim/session/", nil, nil),
         options = { "buffers", "curdir", "tabpages", "winsize" },
       }
     end,
