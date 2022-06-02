@@ -1,5 +1,10 @@
 #!/bin/bash
 
+specific_config=$1
+if [[ -n "$specific_config" ]]; then
+  echo "specific config: $specific_config"
+fi
+
 backup() {
 	file=$1
 	if [[ -e $file ]] && [[ ! -L $file ]]; then
@@ -8,63 +13,73 @@ backup() {
 }
 
 link() {
-  source=$1
-  destination=$2
+  config=$1
+  source=$2
+  destination=$3
+  if [[ -n "$specific_config" ]] && [[ "$specific_config" != "$config" ]]; then
+    echo "SKIP: $config"
+    return
+  fi
+  echo "SET: $config - $destination"
   backup "$destination"
   mkdir -p "$(dirname "$destination")"
-	ln -sfnv "$source" "$destination"
+  ln -sfn "$source" "$destination"
 }
 
 # alacritty
-link "$PWD"/alacritty.yml ~/.alacritty.yml
+link alacritty "$PWD"/alacritty.yml ~/.alacritty.yml
 
 # git
-link "$PWD"/gitignore_global ~/.gitignore_global
+link git "$PWD"/gitignore_global ~/.gitignore_global
 
 # hyper
-link "$PWD"/hyper.js ~/.hyper.js
+link hyper "$PWD"/hyper.js ~/.hyper.js
 
 # emacs
-link "$PWD"/spacemacs.d/init.el ~/.spacemacs.d/init.el
+link emacs "$PWD"/spacemacs.d/init.el ~/.spacemacs.d/init.el
 
 # tmux
-link "$PWD"/tmux.conf ~/.tmux.conf
+link tmux "$PWD"/tmux.conf ~/.tmux.conf
 
 # vim
-link "$PWD"/vimrcs/vimrc.vim ~/.vimrc
+link vim "$PWD"/vimrcs/vimrc.vim ~/.vimrc
 
 # nvim
-link "$PWD"/nvim/init.vim ~/.config/nvim/init.vim
-link "$PWD"/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+link nvim "$PWD"/nvim/init.vim ~/.config/nvim/init.vim
+link nvim "$PWD"/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # lvim
-link "$PWD"/lvim/config.lua ~/.config/lvim/config.lua
+link lvim "$PWD"/lvim/config.lua ~/.config/lvim/config.lua
 
 # htop
-link "$PWD"/htoprc ~/.config/htop/htoprc
+link htop "$PWD"/htoprc ~/.config/htop/htoprc
 
 # zprezto
-link "$PWD"/zprezto/zlogin ~/.zlogin
-link "$PWD"/zprezto/zlogout ~/.zlogout
-link "$PWD"/zprezto/zpreztorc ~/.zpreztorc
-link "$PWD"/zprezto/zprofile ~/.zprofile
-link "$PWD"/zprezto/zshenv ~/.zshenv
-link "$PWD"/zprezto/zshrc ~/.zshrc
-link "$PWD"/scripts/fzf_git.zsh ~/.fzf_git.zsh
+link zprezto "$PWD"/zprezto/zlogin ~/.zlogin
+link zprezto "$PWD"/zprezto/zlogout ~/.zlogout
+link zprezto "$PWD"/zprezto/zpreztorc ~/.zpreztorc
+link zprezto "$PWD"/zprezto/zprofile ~/.zprofile
+link zprezto "$PWD"/zprezto/zshenv ~/.zshenv
+link zprezto "$PWD"/zprezto/zshrc ~/.zshrc
+link zprezto "$PWD"/scripts/fzf_git.zsh ~/.fzf_git.zsh
 
 # bat
-link "$PWD"/bat/config ~/.config/bat/config
+link bat "$PWD"/bat/config ~/.config/bat/config
 
 # starship https://starship.rs
-link "$PWD"/starship.toml ~/.config/starship.toml
+link starship  "$PWD"/starship.toml ~/.config/starship.toml
 
 # lf
-link "$PWD"/lf/lfrc ~/.config/lf/lfrc
-link "$PWD"/lf/pv.sh ~/.config/lf/pv.sh
+link lf "$PWD"/lf/lfrc ~/.config/lf/lfrc
+link lf "$PWD"/lf/pv.sh ~/.config/lf/pv.sh
 
 # kitty
-link "$PWD"/kitty.conf ~/.config/kitty/kitty.conf
+link kitty "$PWD"/kitty.conf ~/.config/kitty/kitty.conf
 
 # mpv
-link "$PWD"/mpv/mpv.conf ~/.config/mpv/mpv.conf
-link "$PWD"/mpv/input.conf ~/.config/mpv/input.conf
+link mpv "$PWD"/mpv/mpv.conf ~/.config/mpv/mpv.conf
+link mpv "$PWD"/mpv/input.conf ~/.config/mpv/input.conf
+
+# fish
+link fish "$PWD"/fish/config.fish ~/.config/fish/config.fish
+link fish "$PWD"/fish/fish_plugins ~/.config/fish/fish_plugins

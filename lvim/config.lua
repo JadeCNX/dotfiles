@@ -144,6 +144,13 @@ lvim.autocommands.prettierrc_file = {
 }
 
 
+-- fish
+lvim.autocommands.fish_file = {
+  { "BufNewFile,BufRead", "fish_variables", [[set filetype=fish]] },
+  { "BufNewFile,BufRead", "*.fish", [[compiler fish]] },
+  { "BufNewFile,BufRead", "*.fish", [[set foldmethod=expr]] },
+}
+
 -- scroll off
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 3
@@ -770,6 +777,7 @@ lvim.plugins = {
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
+  { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
   { "folke/lsp-colors.nvim" },
