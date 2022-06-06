@@ -27,7 +27,7 @@ if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
 if [[ -z "$OPENER" ]]; then
-export OPENER='open'
+  export OPENER='open'
 fi
 
 #
@@ -85,7 +85,7 @@ path=(
   /usr/local/{,s}bin(N)
   /usr/local/opt/llvm/bin
   $HOME/.local/bin
-  $GoPATH/bin
+  $GOPATH/bin
   $GOROOT/bin
   $GEM_HOME/bin
   $GEM_HOME/gems/3.0.0/bin
