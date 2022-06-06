@@ -2,9 +2,9 @@
 
 GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
 
-if [[ "$GIT_REMOTE" =~ "github" ]] || [[ "$GIT_REMOTE" =~ "gh1" ]] || [[ "$GIT_REMOTE" =~ "gh2" ]]; then
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
     GIT_REMOTE_SYMBOL=" "
-elif [[ "$GIT_REMOTE" =~ "gitlab" ]] || [[ "$GIT_REMOTE" =~ git.alm.set ]]; then
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
     GIT_REMOTE_SYMBOL=" "
 elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
     GIT_REMOTE_SYMBOL=" "
