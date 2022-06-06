@@ -5,28 +5,30 @@ end
 set -x LC_CTYPE en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 
-if test -z "$__fish_dotfile_inited"
+if test -z "$__fish_config_inited"
 
   if not type -q fisher
     curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher
   end
   fisher update
 
-  cd (dirname (realpath (status -f)))
+  set FISH_DOTFILES (dirname (realpath (status -f)))
 
-  set -Up fish_function_path "$PWD/functions"
+  echo "fish dotfiles : $FISH_DOTFILES"
 
-  fish_add_path -a "$PWD/bin"
+  set -Up fish_function_path "$FISH_DOTFILES/functions"
 
-  for f in $DOTFILES/*/conf.d/*.fish
-    ln -sf "$f" "$HOME/.config/fish/conf.d/(basename $f)"
+  fish_add_path -a "$FISH_DOTFILE"
+
+  for f in $FISH_DOTFILES/config.d/*.fish
+    ln -sf $f $HOME/.config/fish/conf.d/(basename $f)
   end
 
-  source "$PWD/setup.fish"
+  source "$FISH_DOTFILES/setup.fish"
 
-  set -U __fish_dotfile_inited true
+  set -U __fish_config_inited true
 
-  echo "fish shell initialized"
+  echo "fish config initialized"
 end
 
 if test -f ~/.local.fish

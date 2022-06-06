@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-set -Ue __fish_dotfile_inited
+set -Ue __fish_config_inited
 
 source $HOME/.config/fish/config.fish update
 
