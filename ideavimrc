@@ -34,7 +34,7 @@ vnoremap Y "*y
 map <space>nn :<c-u>%normal<space>
 vmap <space>nn :<c-u>'<,'>normal<space>
 
-map <space><cr> :<c-u>noh<cr>
+map <space>h :<c-u>noh<cr>
 
 nnoremap c* *Ncgn
 
