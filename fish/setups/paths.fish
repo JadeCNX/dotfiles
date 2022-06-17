@@ -1,12 +1,5 @@
 
 #
-# Key bind
-#
-
-bind \cd delete-char  # Don't exit on accidental Ctrl-D
-bind \cd\cd\cd delete-or-exit  # Exit on the third one
-
-#
 # Browser
 #
 if test -z "$BROWSER"
@@ -65,8 +58,6 @@ if type -q go
   set -gx GOPATH "$HOME/.go"
   fish_add_path -ga "$GOPATH/bin"
 end
-
-
 
 #
 # Less

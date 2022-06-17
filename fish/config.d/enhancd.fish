@@ -1,4 +1,0 @@
-
-set -gx ENHANCD_DISABLE_DOT 1
-set -gx ENHANCD_DISABLE_HOME 1
-set -gx ENHANCD_FILTER "peco:fzf"

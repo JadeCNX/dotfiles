@@ -2,7 +2,7 @@
 # based on https://twitter.com/thorstenball/status/1293181225280999431
 git log \
 	--since '30 days ago' \
-	--author (git config --global user.name) \
+	--author (git config user.name) \
 	--pretty=tformat: --numstat |
 		awk '{
 			add += $1; subs += $2; loc += $1 - $2
