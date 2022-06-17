@@ -208,9 +208,9 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
-lvim.builtin.which_key.mappings["/"] = { "<cmd>Telescope live_grep<cr>", "Search" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require('telescope.builtin').live_grep({ debounce = 100 })<cr>", "Search" }
 lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<CR>", "Search & Replace" }
-lvim.builtin.which_key.mappings["."] = { "<cmd>Telescope resume<cr>", "Search Resume" }
+lvim.builtin.which_key.mappings["s."] = { "<cmd>Telescope resume<cr>", "Search Resume" }
 lvim.builtin.which_key.mappings["sT"] = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search Current File" }
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
@@ -253,7 +253,6 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.gitsigns.current_line_blame_opts = {
   virt_text = true,
   virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -777,6 +776,7 @@ lvim.plugins = {
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
+  { "benknoble/vim-racket" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
