@@ -12,6 +12,8 @@ set surround
 set textobj-indent
 set vim-paragraph-motion
 set ideajoin
+set number
+set relativenumber
 
 " set options
 set hlsearch
@@ -31,6 +33,8 @@ vnoremap Y "*y
 
 map <space>nn :<c-u>%normal<space>
 vmap <space>nn :<c-u>'<,'>normal<space>
+
+map <space><cr> :<c-u>noh<cr>
 
 nnoremap c* *Ncgn
 
