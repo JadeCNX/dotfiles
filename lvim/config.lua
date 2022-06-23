@@ -181,8 +181,12 @@ vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
 vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
 
 -- profiling
-vim.api.nvim_set_keymap("n", "<leader>DD", [[:exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>]], { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>DQ", [[:exe ":profile pause"<cr>:noautocmd qall!<cr>]], { noremap = true })
+lvim.builtin.which_key.mappings["D"] = {
+  name = "Profiling",
+  D = { [[:exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>]], "Start profiling" },
+  Q = { [[:exe ":profile pause"<cr>:noautocmd qall!<cr>]], "Quit profiling" }
+}
+
 
 -- unmap a default keymapping
 lvim.keys.normal_mode["<leader>c"] = false
@@ -208,7 +212,8 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
-lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require('telescope.builtin').live_grep({ debounce = 100 })<cr>", "Search" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require('telescope.builtin').live_grep({ debounce = 100 })<cr>",
+  "Search" }
 lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<CR>", "Search & Replace" }
 lvim.builtin.which_key.mappings["s."] = { "<cmd>Telescope resume<cr>", "Search Resume" }
 lvim.builtin.which_key.mappings["sT"] = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search Current File" }
@@ -247,8 +252,8 @@ lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.alpha.active = false
+-- lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
@@ -279,6 +284,32 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+local function dump(o)
+  if type(o) == 'table' then
+    local s = '{ '
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
+end
+
+-- print("lvim.builtin.telescope.defaults.vimgrep_arguments", dump(lvim.builtin.telescope.defaults.vimgrep_arguments))
+
+lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions").close
+lvim.builtin.telescope.defaults.vimgrep_arguments = {
+  "rg",
+  "--color=never",
+  "--no-heading",
+  "--with-filename",
+  "--line-number",
+  "--column",
+  "--smart-case",
+}
 
 -- Disable virtual text
 -- lvim.lsp.diagnostics.virtual_text = false
@@ -748,29 +779,56 @@ lvim.plugins = {
       require('refactoring').setup({})
 
       -- Remaps for the refactoring operations currently offered by the plugin
-      vim.api.nvim_set_keymap("v", "<leader>le", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], { noremap = true, silent = true, expr = false })
-      vim.api.nvim_set_keymap("v", "<leader>lf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], { noremap = true, silent = true, expr = false })
-      vim.api.nvim_set_keymap("v", "<leader>lv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], { noremap = true, silent = true, expr = false })
-      vim.api.nvim_set_keymap("v", "<leader>li", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>le",
+        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
+        { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>lf",
+        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
+        { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>lv",
+        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
+        { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("v", "<leader>li",
+        [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+        { noremap = true, silent = true, expr = false })
 
       -- Extract block doesn't need visual mode
-      vim.api.nvim_set_keymap("n", "<leader>lb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], { noremap = true, silent = true, expr = false })
-      vim.api.nvim_set_keymap("n", "<leader>lbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("n", "<leader>lb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
+        { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("n", "<leader>lbf",
+        [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
+        { noremap = true, silent = true, expr = false })
 
       -- Inline variable can also pick up the identifier currently under the cursor without visual mode
-      vim.api.nvim_set_keymap("n", "<leader>lv", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], { noremap = true, silent = true, expr = false })
+      vim.api.nvim_set_keymap("n", "<leader>lv", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+        { noremap = true, silent = true, expr = false })
 
       -- load refactoring Telescope extension
       require("telescope").load_extension("refactoring")
 
       -- remap to open the Telescope refactoring menu in visual mode
-      vim.api.nvim_set_keymap("v", "<leader>sr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", { noremap = true })
+      vim.api.nvim_set_keymap("v", "<leader>sr",
+        "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", { noremap = true })
     end
   },
   { "chrisbra/NrrwRgn",
     config = function()
       vim.g.nrrw_rgn_nomap_nr = 1
       vim.g.nrrw_rgn_nomap_Nr = 1
+    end
+  },
+  { "p00f/nvim-ts-rainbow",
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        rainbow = {
+          enable = true,
+          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+          max_file_lines = nil, -- Do not enable for files with more than n lines, int
+          -- colors = {}, -- table of hex strings
+          -- termcolors = {} -- table of colour name strings
+        }
+      }
     end
   },
   { "AndrewRadev/linediff.vim" },
@@ -790,7 +848,6 @@ lvim.plugins = {
   { "kana/vim-textobj-indent" },
   { "kana/vim-textobj-user" },
   { "mg979/vim-visual-multi" },
-  { "p00f/nvim-ts-rainbow" },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
   { "tmux-plugins/vim-tmux-focus-events" },
