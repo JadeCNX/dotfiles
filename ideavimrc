@@ -12,16 +12,24 @@ set surround
 set textobj-indent
 set vim-paragraph-motion
 set ideajoin
-set number
-set relativenumber
 
 " set options
-set hlsearch
 set history
-set incsearch
+set hlsearch
 set ignorecase
+set incsearch
+set number
+set scrolljump 1
+set scrolloff 3
+set smartcase
+set wrapscan
 
 imap jj <C-c>
+
+let mapleader=" "
+
+map s <Plug>(easymotion-s2)
+map S <Plug>(easymotion-s2)
 
 map <c-h> <C-W>h
 map <c-j> <C-W>j

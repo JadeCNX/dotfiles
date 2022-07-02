@@ -477,10 +477,14 @@ lvim.plugins = {
       }
     end,
   },
-  -- {
-  --   "ggandor/lightspeed.nvim",
-  --   event = "BufRead",
-  -- },
+  {
+    "ggandor/lightspeed.nvim",
+    event = "BufRead",
+    config = function()
+      vim.api.nvim_set_keymap("n", "s", "<Plug>Lightspeed_omni_s", { noremap = true })
+      vim.api.nvim_set_keymap("n", "S", "<Plug>Lightspeed_omni_gs", { noremap = true })
+    end
+  },
   {
     'wfxr/minimap.vim',
     run = "cargo install --locked code-minimap",
@@ -628,17 +632,12 @@ lvim.plugins = {
         },
       }
 
-      vim.cmd [[
-        nmap <C-a> <Plug>(dial-increment)
-        nmap <C-x> <Plug>(dial-decrement)
-        vmap <C-a> <Plug>(dial-increment)
-        vmap <C-x> <Plug>(dial-decrement)
-        vmap g<C-a> <Plug>(dial-increment-additional)
-        vmap g<C-x> <Plug>(dial-decrement-additional)
-        
-        autocmd FileType typescript lua vim.api.nvim_buf_set_keymap(0, "n", "<C-a>", require("dial.map").inc_normal("typescript"), {noremap = true})
-      ]]
-
+      vim.api.nvim_set_keymap("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
+      vim.api.nvim_set_keymap("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
+      vim.api.nvim_set_keymap("v", "<C-a>", require("dial.map").inc_visual(), { noremap = true })
+      vim.api.nvim_set_keymap("v", "<C-x>", require("dial.map").dec_visual(), { noremap = true })
+      vim.api.nvim_set_keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = true })
+      vim.api.nvim_set_keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
     end,
   },
   {
