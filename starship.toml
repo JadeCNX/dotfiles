@@ -62,6 +62,20 @@ truncate_to_repo = false
 home_symbol = " "
 read_only = " "
 
+[directory.substitutions]
+" /Documents" = " "
+" /Movies" = " "
+" /Music" = " "
+" /Downloads" = " "
+" /Develops" = "גּ "
+" /Pictures" = " "
+" /Applications" = " "
+" /Desktop" = " "
+" /Dropbox" = " "
+" /Library" = " "
+"/Applications" = " "
+".git" = ". "
+
 [docker_context]
 symbol = " "
 only_with_files = true
