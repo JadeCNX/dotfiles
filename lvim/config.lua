@@ -285,18 +285,18 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
-local function dump(o)
-  if type(o) == 'table' then
-    local s = '{ '
-    for k, v in pairs(o) do
-      if type(k) ~= 'number' then k = '"' .. k .. '"' end
-      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
-    end
-    return s .. '} '
-  else
-    return tostring(o)
-  end
-end
+-- local function dump(o)
+--   if type(o) == 'table' then
+--     local s = '{ '
+--     for k, v in pairs(o) do
+--       if type(k) ~= 'number' then k = '"' .. k .. '"' end
+--       s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+--     end
+--     return s .. '} '
+--   else
+--     return tostring(o)
+--   end
+-- end
 
 -- print("lvim.builtin.telescope.defaults.vimgrep_arguments", dump(lvim.builtin.telescope.defaults.vimgrep_arguments))
 
@@ -472,7 +472,7 @@ lvim.plugins = {
     module = "persistence",
     config = function()
       require("persistence").setup {
-        dir = vim.fn.expand("~/.cache/lvim/session/", nil, nil),
+        dir = vim.fn.expand("~/.cache/lvim/session/", nil),
         options = { "buffers", "curdir", "tabpages", "winsize" },
       }
     end,
