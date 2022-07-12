@@ -14,7 +14,7 @@ vim.opt.timeoutlen = 2000
 vim.opt.number = true
 
 -- Show relative line number
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- show command
 vim.opt.showcmd = true
@@ -121,34 +121,6 @@ lvim.autocommands.auto_read_notification = {
 -- Disable automatic comment insertion
 lvim.autocommands.disable_comment_insertion = {
   { "FileType", "*", [[setlocal formatoptions-=c formatoptions-=r formatoptions-=o]] },
-}
-
--- DockerFile
-lvim.autocommands.dockerfile = {
-  { "BufNewFile,BufRead", "*.dockerfile,Dockerfile.*", [[set filetype=dockerfile]] },
-}
-
--- env file
-lvim.autocommands.env_file = {
-  { "BufNewFile,BufRead", ".env,.env.*", [[set filetype=sh]] },
-}
-
--- objc file
-lvim.autocommands.objc_file = {
-  { "BufNewFile,BufRead", "*.mm", [[set filetype=objc]] },
-}
-
--- .prettierrc
-lvim.autocommands.prettierrc_file = {
-  { "BufNewFile,BufRead", ".prettierrc", [[set filetype=yaml]] },
-}
-
-
--- fish
-lvim.autocommands.fish_file = {
-  { "BufNewFile,BufRead", "fish_variables", [[set filetype=fish]] },
-  { "BufNewFile,BufRead", "*.fish", [[compiler fish]] },
-  { "BufNewFile,BufRead", "*.fish", [[set foldmethod=expr]] },
 }
 
 -- scroll off
@@ -828,6 +800,38 @@ lvim.plugins = {
           -- termcolors = {} -- table of colour name strings
         }
       }
+    end
+  },
+  { "nathom/filetype.nvim",
+    config = function()
+      -- In init.lua or filetype.nvim's config file
+      require("filetype").setup({
+        overrides = {
+          extensions = {
+            mm = "objc",
+          },
+          literal = {
+            ["Dockerfile"] = "dockerfile",
+            [".prettierrc"] = "yaml",
+            [".env"] = "sh",
+            ["fish_variables"] = "fish",
+          },
+          complex = {
+            ["Dockerfile*"] = "dockerfile",
+            [".env.*"] = "sh",
+          },
+          function_complex = {
+            ["*.fish"] = function()
+              vim.cmd("compiler fish")
+              vim.cmd("set foldmethod=expr")
+            end,
+          },
+          shebang = {
+            -- Set the filetype of files with a dash shebang to sh
+            dash = "sh",
+          },
+        },
+      })
     end
   },
   { "AndrewRadev/linediff.vim" },
