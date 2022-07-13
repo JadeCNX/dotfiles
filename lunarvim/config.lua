@@ -1,13 +1,4 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
+-- timeout before show which_key and also exit current command chain
 vim.opt.timeoutlen = 2000
 
 -- Show line number
@@ -100,6 +91,9 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 lvim.keys.visual_block_mode["J"] = false
 lvim.keys.visual_block_mode["K"] = false
+
+lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile" }
+lvim.builtin.project.silent_chdir = false
 
 -- Trigger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
@@ -231,40 +225,29 @@ lvim.builtin.which_key.mappings["t"] = {
 
 lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
--- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = false
 -- lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
+
 lvim.builtin.nvimtree.setup.view.side = "left"
+
+lvim.builtin.gitsigns.word_diff = true
+lvim.builtin.gitsigns.current_line_blame = true
 lvim.builtin.gitsigns.current_line_blame_opts = {
   virt_text = true,
-  virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+  virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
   delay = 180,
   ignore_whitespace = true
 }
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "css",
-  "rust",
-  "java",
-  "yaml",
-  "go"
-}
-
+lvim.builtin.treesitter.ensure_installed = { "maintained" }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.rainbow.enable = true
 
 -- local function dump(o)
 --   if type(o) == 'table' then
@@ -769,21 +752,6 @@ lvim.plugins = {
     config = function()
       vim.g.nrrw_rgn_nomap_nr = 1
       vim.g.nrrw_rgn_nomap_Nr = 1
-    end
-  },
-  {
-    "p00f/nvim-ts-rainbow",
-    config = function()
-      require("nvim-treesitter.configs").setup {
-        rainbow = {
-          enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          max_file_lines = nil -- Do not enable for files with more than n lines, int
-          -- colors = {}, -- table of hex strings
-          -- termcolors = {} -- table of colour name strings
-        }
-      }
     end
   },
   {
