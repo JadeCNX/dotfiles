@@ -45,11 +45,11 @@ link tmux "$PWD"/tmux.conf ~/.tmux.conf
 link vim "$PWD"/vimrcs/vimrc.vim ~/.vimrc
 
 # nvim
-link nvim "$PWD"/nvim/init.vim ~/.config/nvim/init.vim
-link nvim "$PWD"/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+link nvim "$PWD"/neovim/init.vim ~/.config/neovim/init.vim
+link nvim "$PWD"/neovim/coc-settings.json ~/.config/neovim/coc-settings.json
 
 # lvim
-link lvim "$PWD"/lvim/config.lua ~/.config/lvim/config.lua
+link lvim "$PWD"/lunarvim/config.lua ~/.config/lunarvim/config.lua
 
 # htop
 link htop "$PWD"/htoprc ~/.config/htop/htoprc
