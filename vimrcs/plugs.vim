@@ -237,6 +237,7 @@ Plug 'mattn/vim-gist'
 " Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'javascript.jsx', 'typescript', 'typescriptreact']}
 " Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'metakirby5/codi.vim'
+Plug 'mg979/vim-visual-multi'
 " Plug 'mhartington/deoplete-typescript'
 Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
@@ -280,7 +281,6 @@ Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'szw/vim-maximizer'
 " Plug 'tacahiroy/ctrlp-funky'
 Plug 'terryma/vim-expand-region'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'timcharper/textile.vim', {'for': ['textile']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-exchange'
@@ -1401,7 +1401,7 @@ endif
 noremap <leader>lf :<C-u>Autoformat<CR>
 vnoremap <leader>lf :<C-u>'<,'>Autoformat<CR>
 
-let g:autoformat_verbosemode=1
+let g:autoformat_verbosemode = 1
 let g:formatdef_prettier = '"prettier --stdin-filepath=".expand("%:p")'
 let g:formatdef_php_code_sniffer = '"phpcbf -q - < ".expand("%:p")." 2>&1 || true"'
 let g:formatdef_prisma = '"npx prisma format"'
@@ -1443,8 +1443,6 @@ let g:formatters_jsonc = [
       \ 'fixjson',
       \ ]
 let g:formatters_python = ['black']
-let g:formatdef_luaformatter = '"lua-format ".expand("%:p")'
-let g:formatters_lua = ['luaformatter']
 let g:formatdef_yq = '"yq e ".expand("%:p")'
 let g:formatters_yaml = ['yq']
 
@@ -1626,6 +1624,7 @@ if s:completion_manager == 'coc'
         \ 'coc-spell-checker',
         \ 'coc-styled-components',
         \ 'coc-stylelint',
+        \ 'coc-sumneko-lua',
         \ 'coc-tailwindcss',
         \ 'coc-tsserver',
         \ 'coc-vetur',
