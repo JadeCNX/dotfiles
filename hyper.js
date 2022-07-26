@@ -163,6 +163,7 @@ module.exports = {
       // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
       vibrancy: "ultra-dark",
     },
+    catppuccinTheme: 'moccha',
   },
 
   // a list of plugins to fetch and install from npm
@@ -173,6 +174,7 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     "git-falcon9",
+    "hypurr#latest",
     // 'gitrocket',
     // 'hyper-rose-pine',
     // 'hyper-atom-dark-transparent',

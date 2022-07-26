@@ -1,5 +1,5 @@
 -- timeout before show which_key and also exit current command chain
-vim.opt.timeoutlen = 2000
+vim.opt.timeoutlen = 1000
 
 -- Show line number
 vim.opt.number = true
@@ -81,7 +81,7 @@ end
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "onedark"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -92,8 +92,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.visual_block_mode["J"] = false
 lvim.keys.visual_block_mode["K"] = false
 
-lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile" }
-lvim.builtin.project.silent_chdir = false
+lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "*.go" }
 
 -- Trigger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
@@ -132,6 +131,7 @@ vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
 vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("v", "j", "gj", { noremap = true })
 vim.api.nvim_set_keymap("v", "k", "gk", { noremap = true })
+vim.api.nvim_set_keymap("i", "<C-c>", "<Esc>", { noremap = false, silent = true })
 
 -- quick marco
 vim.api.nvim_set_keymap("n", "Q", "@@", { noremap = true })
@@ -185,13 +185,12 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" }
 }
 
-lvim.builtin.which_key.mappings["/"] = {
-  "<cmd>lua require('telescope.builtin').live_grep({ debounce = 100 })<cr>",
-  "Search"
-}
-lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<CR>", "Search & Replace" }
-lvim.builtin.which_key.mappings["s."] = { "<cmd>Telescope resume<cr>", "Search Resume" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>FzfLua live_grep_native<cr>", "Search" }
+lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<cr>", "Search & Replace" }
+lvim.builtin.which_key.mappings["s."] = { "<cmd>FzfLua live_resume_grep<cr>", "Search Resume" }
 lvim.builtin.which_key.mappings["sT"] = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search Current File" }
+lvim.builtin.which_key.mappings["f"] = { "<cmd>FzfLua files<cr>", "Search Files" }
+lvim.builtin.which_key.mappings["F"] = { "<cmd>FzfLua git_files<cr>", "Search Git Files" }
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -264,16 +263,8 @@ lvim.builtin.treesitter.rainbow.enable = true
 
 -- print("lvim.builtin.telescope.defaults.vimgrep_arguments", dump(lvim.builtin.telescope.defaults.vimgrep_arguments))
 
+lvim.builtin.telescope.defaults.preview = { treesitter = false }
 lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions").close
-lvim.builtin.telescope.defaults.vimgrep_arguments = {
-  "rg",
-  "--color=never",
-  "--no-heading",
-  "--with-filename",
-  "--line-number",
-  "--column",
-  "--smart-case"
-}
 
 -- Disable virtual text
 -- lvim.lsp.diagnostics.virtual_text = false
@@ -349,12 +340,12 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle"
   },
-  {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-    event = "InsertEnter"
-  },
+  -- {
+  --   "tzachar/cmp-tabnine",
+  --   run = "./install.sh",
+  --   requires = "hrsh7th/nvim-cmp",
+  --   event = "InsertEnter"
+  -- },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
@@ -861,6 +852,14 @@ lvim.plugins = {
       )
     end
   },
+  { "navarasu/onedark.nvim",
+    config = function()
+      require('onedark').setup {
+        style = 'darker'
+      }
+      require('onedark').load()
+
+    end },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
@@ -871,11 +870,14 @@ lvim.plugins = {
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
   { "glts/vim-textobj-comment" },
+  { "ibhagwan/fzf-lua" },
   { "jiangmiao/auto-pairs" },
   { "Julian/vim-textobj-variable-segment" },
   { "junegunn/vim-easy-align" },
   { "kana/vim-textobj-indent" },
   { "kana/vim-textobj-user" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "mfussenegger/nvim-jdtls" },
   { "mg979/vim-visual-multi" },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
@@ -887,6 +889,7 @@ lvim.plugins = {
   { "tpope/vim-rsi" },
   { "tpope/vim-unimpaired" },
   { "troydm/zoomwintab.vim" },
+  { "vim-scripts/LargeFile" },
   { "wellle/targets.vim" }
 }
 

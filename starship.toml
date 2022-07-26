@@ -187,7 +187,7 @@ style = "purple"
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 
 [custom.git_email]
-command = 'echo "`git config user.email | cut -c1-6` "'
+command = 'echo "`git config user.email | cut -c1-6`..."'
 format = "﯑[$output]($style) "
 style = "bright-yellow bold"
 when = "git rev-parse --git-dir 2> /dev/null"

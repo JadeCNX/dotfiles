@@ -50,6 +50,7 @@ link nvim "$PWD"/neovim/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # lvim
 link lvim "$PWD"/lunarvim/config.lua ~/.config/lvim/config.lua
+link lvim "$PWD"/lunarvim/ftplugin/java.lua ~/.config/lvim/ftplugin/java.lua
 
 # htop
 link htop "$PWD"/htoprc ~/.config/htop/htoprc
@@ -83,3 +84,9 @@ link mpv "$PWD"/mpv/input.conf ~/.config/mpv/input.conf
 # fish
 link fish "$PWD"/fish/config.fish ~/.config/fish/config.fish
 link fish "$PWD"/fish/fish_plugins ~/.config/fish/fish_plugins
+
+# ideavimrc
+link ideavim "$PWD"/ideavimrc ~/.ideavimrc
+
+# vrapper
+link vrapper "$PWD"/vrapperrc ~/.vrapperrc

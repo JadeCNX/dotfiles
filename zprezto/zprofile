@@ -67,7 +67,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 #
 # Golang
 #
-export GOPATH="$HOME/Develops/Go"
+export GOPATH="$HOME/.go"
 
 
 export GEM_HOME=/usr/local/opt/ruby
@@ -86,9 +86,7 @@ path=(
   /usr/local/opt/llvm/bin
   $HOME/.local/bin
   $GOPATH/bin
-  $GOROOT/bin
   $GEM_HOME/bin
-  $GEM_HOME/gems/3.0.0/bin
   $ANDROID_HOME/emulator
   $ANDROID_HOME/tools
   $ANDROID_HOME/tools/bin
