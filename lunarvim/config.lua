@@ -5,7 +5,7 @@ vim.opt.timeoutlen = 1000
 vim.opt.number = true
 
 -- Show relative line number
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- show command
 vim.opt.showcmd = true
@@ -860,6 +860,25 @@ lvim.plugins = {
       require('onedark').load()
 
     end },
+  { "nvim-treesitter/nvim-treesitter-textobjects",
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+            },
+          },
+        },
+      }
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
@@ -876,7 +895,6 @@ lvim.plugins = {
   { "junegunn/vim-easy-align" },
   { "kana/vim-textobj-indent" },
   { "kana/vim-textobj-user" },
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "mfussenegger/nvim-jdtls" },
   { "mg979/vim-visual-multi" },
   { "pantharshit00/vim-prisma" },
