@@ -103,4 +103,12 @@ map Q gq
 " Use <leader><cr> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <leader><cr> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
+" Turn persistent undo on
+try
+  set undodir=~/.vim/undodir
+  set undofile
+catch
+endtry
+
+
 " vim:set ft=vim et sw=2 ts=2:
