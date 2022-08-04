@@ -50,6 +50,7 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'archive' \
   'git' \
+  'bat' \
   'forgit' \
   'docker' \
   'alias-tips' \
