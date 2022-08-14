@@ -48,6 +48,7 @@ vim.g.VM_maps = {
 }
 vim.g.AutoPairsShortcutToggle = ""
 vim.g.AutoPairsShortcutJump = ""
+vim.g.loaded_matchparen = 1
 
 -- For neovide
 if os.getenv("NEOVIDE") then
@@ -81,7 +82,7 @@ end
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedark"
+lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -165,6 +166,10 @@ lvim.builtin.which_key.mappings["D"] = {
 lvim.keys.normal_mode["<leader>c"] = false
 -- edit a default keymapping
 lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<CR>"
+
+-- clear highlight
+lvim.builtin.which_key.mappings["<CR>"] = { [[:noh<CR>]], "No Highlight" }
+
 
 lvim.builtin.which_key.setup.plugins.registers = false
 
@@ -621,7 +626,14 @@ lvim.plugins = {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup(
-        { "*" },
+        {
+          'css';
+          'html';
+          'javascript';
+          'javascriptreact';
+          'typescript';
+          'typescriptreact';
+        },
         {
           RGB = true, -- #RGB hex codes
           RRGGBB = true, -- #RRGGBB hex codes
@@ -643,49 +655,6 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
       require "lsp_signature".setup()
-    end
-  },
-  {
-    "gbprod/yanky.nvim",
-    config = function()
-      local mapping = require("yanky.telescope.mapping")
-
-      require("yanky").setup(
-        {
-          highlight = {
-            on_put = true,
-            on_yank = true,
-            timer = 500
-          },
-          picker = {
-            telescope = {
-              mappings = {
-                default = mapping.put("p"),
-                i = {
-                  ["<c-p>"] = mapping.put("p"),
-                  ["<c-k>"] = mapping.put("P")
-                },
-                n = {
-                  ["p"] = mapping.put("p"),
-                  ["P"] = mapping.put("P")
-                }
-              }
-            }
-          }
-        }
-      )
-
-      vim.api.nvim_set_keymap("n", "p", "<Plug>(YankyPutAfter)", {})
-      vim.api.nvim_set_keymap("n", "P", "<Plug>(YankyPutBefore)", {})
-      vim.api.nvim_set_keymap("x", "p", "<Plug>(YankyPutAfter)", {})
-      vim.api.nvim_set_keymap("x", "P", "<Plug>(YankyPutBefore)", {})
-      vim.api.nvim_set_keymap("n", "gp", "<Plug>(YankyGPutAfter)", {})
-      vim.api.nvim_set_keymap("n", "gP", "<Plug>(YankyGPutBefore)", {})
-      vim.api.nvim_set_keymap("x", "gp", "<Plug>(YankyGPutAfter)", {})
-      vim.api.nvim_set_keymap("x", "gP", "<Plug>(YankyGPutBefore)", {})
-
-      vim.api.nvim_set_keymap("n", "]p", "<Plug>(YankyCycleForward)", {})
-      vim.api.nvim_set_keymap("n", "[p", "<Plug>(YankyCycleBackward)", {})
     end
   },
   {
@@ -794,7 +763,8 @@ lvim.plugins = {
         }
       )
     end
-  }, {
+  },
+  {
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     config = function()
       local lspconfig = require("lspconfig")
@@ -867,14 +837,6 @@ lvim.plugins = {
       )
     end
   },
-  { "navarasu/onedark.nvim",
-    config = function()
-      require('onedark').setup {
-        style = 'darker'
-      }
-      require('onedark').load()
-
-    end },
   { "nvim-treesitter/nvim-treesitter-textobjects",
     config = function()
       require 'nvim-treesitter.configs'.setup {
@@ -894,6 +856,27 @@ lvim.plugins = {
       }
     end
   },
+  { "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+      require("scrollbar.handlers.search").setup()
+    end
+  },
+  { 'kevinhwang91/nvim-hlslens',
+    config = function()
+      local kopts = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap('n', 'n',
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        kopts)
+      vim.api.nvim_set_keymap('n', 'N',
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        kopts)
+      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
@@ -901,8 +884,6 @@ lvim.plugins = {
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
-  { "folke/lsp-colors.nvim" },
-  { "folke/tokyonight.nvim" },
   { "glts/vim-textobj-comment" },
   { "ibhagwan/fzf-lua" },
   { "jiangmiao/auto-pairs" },
