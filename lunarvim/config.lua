@@ -572,20 +572,20 @@ lvim.plugins = {
       vim.g.NERDDefaultAlign = "both"
     end
   },
-  {
-    "alexghergh/nvim-tmux-navigation",
-    config = function()
-      require("nvim-tmux-navigation").setup {
-        disable_when_zoomed = true
-      }
-      vim.cmd [[
-      nnoremap <silent> <C-h> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>
-      nnoremap <silent> <C-j> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>
-      nnoremap <silent> <C-k> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>
-      nnoremap <silent> <C-l> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>
-    ]]
-    end
-  },
+  -- {
+  --   "alexghergh/nvim-tmux-navigation",
+  --   config = function()
+  --     require("nvim-tmux-navigation").setup {
+  --       disable_when_zoomed = true
+  --     }
+  --     vim.cmd [[
+  --     nnoremap <silent> <C-h> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>
+  --     nnoremap <silent> <C-j> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>
+  --     nnoremap <silent> <C-k> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>
+  --     nnoremap <silent> <C-l> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>
+  --   ]]
+  --   end
+  -- },
   {
     "ellisonleao/glow.nvim",
     ft = { "markdown" }
@@ -881,6 +881,7 @@ lvim.plugins = {
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
   { "benknoble/vim-racket" },
+  { "christoomey/vim-tmux-navigator" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
