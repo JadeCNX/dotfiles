@@ -498,7 +498,15 @@ lvim.plugins = {
   },
   {
     "metakirby5/codi.vim",
-    cmd = "Codi"
+    config = function()
+      vim.g["codi#aliases"] = {
+        ["javascriptreact"] = 'javascript',
+        ["typescriptreact"] = 'typescript'
+      }
+      vim.g["codi#interpreters"] = {
+        ["python"] = { bin = 'python3' },
+      }
+    end
   },
   {
     "simnalamburt/vim-mundo",
@@ -875,6 +883,13 @@ lvim.plugins = {
       vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
       vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
       vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.cmd([[
+        aug VMlens
+            au!
+            au User visual_multi_start lua require('vmlens').start()
+            au User visual_multi_exit lua require('vmlens').exit()
+        aug END
+      ]])
     end
   },
   { "AndrewRadev/linediff.vim" },
@@ -907,8 +922,3 @@ lvim.plugins = {
   { "vim-scripts/LargeFile" },
   { "wellle/targets.vim" }
 }
-
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
