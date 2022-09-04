@@ -72,7 +72,9 @@ link starship  "$PWD"/starship.toml ~/.config/starship.toml
 
 # lf
 link lf "$PWD"/lf/lfrc ~/.config/lf/lfrc
-link lf "$PWD"/lf/pv.sh ~/.config/lf/pv.sh
+link lf "$PWD"/lf/preview ~/.config/lf/preview
+link lf "$PWD"/lf/cleaner ~/.config/lf/cleaner
+link lf "$PWD"/lf/lfrun ~/.local/bin/lfrun
 
 # kitty
 link kitty "$PWD"/kitty.conf ~/.config/kitty/kitty.conf

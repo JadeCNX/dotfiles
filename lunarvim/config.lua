@@ -5,7 +5,7 @@ vim.opt.timeoutlen = 1000
 vim.opt.number = true
 
 -- Show relative line number
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- show command
 vim.opt.showcmd = true
@@ -745,7 +745,8 @@ lvim.plugins = {
         {
           overrides = {
             extensions = {
-              mm = "objc"
+              mm = "objc",
+              conf = "sh"
             },
             literal = {
               ["Dockerfile"] = "dockerfile",

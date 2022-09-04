@@ -117,8 +117,9 @@ cmd on-cd &{{
 }}
 
 # previewer
-set previewer ~/.config/lf/pv.sh
-map i $LESSOPEN='| ~/.config/lf/pv.sh %s' less -R $f
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+set ratios 1:2:3
 
 # keymap
 map zh set hidden!
