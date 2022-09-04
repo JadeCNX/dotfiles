@@ -354,6 +354,29 @@ code_actions.setup {
   },
 }
 
+for _, language in ipairs({ "typescript", "javascript" }) do
+  require("dap").configurations[language] = {
+    {
+      name = 'Launch',
+      type = 'jsnode',
+      request = 'launch',
+      program = '${file}',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = 'inspector',
+      console = 'integratedTerminal',
+    },
+    {
+      -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+      name = 'Attach to process',
+      type = 'jsnode',
+      request = 'attach',
+      processId = require 'dap.utils'.pick_process,
+    },
+  }
+end
+
+
 -- Additional Plugins
 lvim.plugins = {
   {
@@ -580,20 +603,6 @@ lvim.plugins = {
       vim.g.NERDDefaultAlign = "both"
     end
   },
-  -- {
-  --   "alexghergh/nvim-tmux-navigation",
-  --   config = function()
-  --     require("nvim-tmux-navigation").setup {
-  --       disable_when_zoomed = true
-  --     }
-  --     vim.cmd [[
-  --     nnoremap <silent> <C-h> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>
-  --     nnoremap <silent> <C-j> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>
-  --     nnoremap <silent> <C-k> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>
-  --     nnoremap <silent> <C-l> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>
-  --   ]]
-  --   end
-  -- },
   {
     "ellisonleao/glow.nvim",
     ft = { "markdown" }
@@ -773,77 +782,21 @@ lvim.plugins = {
       )
     end
   },
-  {
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
+  { "jose-elias-alvarez/typescript.nvim",
+    ft = { "typescript", "typescriptreact" },
+    cmd = {
+      "TypescriptAddMissingImports",
+      "TypescriptOrganizeImports",
+      "TypescriptRemoveUnused",
+      "TypescriptFixAll",
+      "TypescriptRenameFile"
+    },
     config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.tsserver.setup(
-        {
-          -- Needed for inlayHints. Merge this table with your settings or copy
-          -- it from the source if you want to add your own init_options.
-          init_options = require("nvim-lsp-ts-utils").init_options,
-          --
-          on_attach = function(client, bufnr)
-            local ts_utils = require("nvim-lsp-ts-utils")
-
-            -- required to fix code action ranges and filter diagnostics
-            ts_utils.setup_client(client)
-
-            -- defaults
-            ts_utils.setup(
-              {
-                debug = false,
-                disable_commands = false,
-                enable_import_on_completion = false,
-                -- import all
-                import_all_timeout = 5000, -- ms
-                -- lower numbers = higher priority
-                import_all_priorities = {
-                  same_file = 1, -- add to existing import statement
-                  local_files = 2, -- git files or files with relative path markers
-                  buffer_content = 3, -- loaded buffer content
-                  buffers = 4 -- loaded buffer names
-                },
-                import_all_scan_buffers = 100,
-                import_all_select_source = false,
-                -- if false will avoid organizing imports
-                always_organize_imports = true,
-                -- filter diagnostics
-                filter_out_diagnostics_by_severity = {},
-                filter_out_diagnostics_by_code = {},
-                -- inlay hints
-                auto_inlay_hints = true,
-                inlay_hints_highlight = "Comment",
-                inlay_hints_priority = 200, -- priority of the hint extmarks
-                inlay_hints_throttle = 150, -- throttle the inlay hint request
-                inlay_hints_format = {
-                  -- format options for individual hint kind
-                  Type = {},
-                  Parameter = {},
-                  Enum = {}
-                  -- Example format customization for `Type` kind:
-                  -- Type = {
-                  --     highlight = "Comment",
-                  --     text = function(text)
-                  --         return "->" .. text:sub(2)
-                  --     end,
-                  -- },
-                },
-                -- update imports on file move
-                update_imports_on_move = false,
-                require_confirmation_on_move = false,
-                watch_dir = nil
-              }
-            )
-
-            -- no default maps, so you may want to define some here
-            local opts = { silent = true }
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", ":TSLspOrganize<CR>", opts)
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lR", ":TSLspRenameFile<CR>", opts)
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lO", ":TSLspImportAll<CR>", opts)
-          end
-        }
-      )
+      require("typescript").setup()
+      vim.api.nvim_set_keymap("n", "<space>lo", "<CMD>TypescriptAddMissingImports<CR>", {})
+      vim.api.nvim_set_keymap("n", "<space>lo", "<CMD>TypescriptRemoveUnused<CR>", {})
+      vim.api.nvim_set_keymap("n", "<space>lU", "<CMD>TypescriptFixAll<CR>", {})
+      vim.api.nvim_set_keymap("n", "<space>lr", "<CMD>TypescriptRenameFile<CR>", {})
     end
   },
   { "nvim-treesitter/nvim-treesitter-textobjects",
