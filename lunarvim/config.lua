@@ -35,6 +35,8 @@ vim.opt.clipboard = ""
 
 vim.opt.listchars = "tab:>-,trail:.,precedes:,extends:"
 
+vim.g.loaded_perl_provider = 0
+
 vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_italic_functions = true
 

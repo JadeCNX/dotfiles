@@ -23,7 +23,7 @@ set scrolljump 1
 set scrolloff 5
 set smartcase
 set wrapscan
-" set relativenumber
+set relativenumber
 
 imap jj <C-c>
 
