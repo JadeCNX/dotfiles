@@ -17,9 +17,9 @@ $all\
 $shell\
 $character
 """
-[hostname]
-ssh_only = true
-format = "[$ssh_symbol$hostname]($style)@"
+
+[username]
+format = "[$user]($style)@"
 
 [aws]
 symbol = " "
