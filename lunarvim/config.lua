@@ -340,7 +340,7 @@ linters.setup {
     filetypes = {}
   },
   {
-    command = "eslint_d",
+    command = "eslint",
     filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
   }
 }
@@ -351,7 +351,7 @@ code_actions.setup {
     exe = "refactoring",
   },
   {
-    exe = "eslint_d",
+    exe = "eslint",
     filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
   },
 }
@@ -785,7 +785,6 @@ lvim.plugins = {
     end
   },
   { "jose-elias-alvarez/typescript.nvim",
-    ft = { "typescript", "typescriptreact" },
     cmd = {
       "TypescriptAddMissingImports",
       "TypescriptOrganizeImports",
