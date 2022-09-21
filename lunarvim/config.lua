@@ -82,7 +82,8 @@ if file_exists(ruby_path) then
 end
 
 -- general
-lvim.log.level = "warn"
+lvim.log.level = "error"
+lvim.builtin.notify.opts.timeout = 2000
 lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
