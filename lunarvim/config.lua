@@ -33,7 +33,7 @@ vim.opt.wrap = false
 
 vim.opt.clipboard = ""
 
-vim.opt.listchars = "tab:>-,trail:.,precedes:,extends:"
+vim.opt.listchars = "tab:>-,trail:.,precedes:,extends:,space:⋅,eol:↴"
 
 vim.g.loaded_perl_provider = 0
 
@@ -255,6 +255,25 @@ lvim.builtin.gitsigns.current_line_blame_opts = {
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.rainbow.enable = true
 
+lvim.builtin.treesitter.textobjects.select = {
+  enable = true,
+  lookahead = true,
+  keymaps = {
+    -- You can use the capture groups defined in textobjects.scm
+    ["af"] = "@function.outer",
+    ["if"] = "@function.inner",
+    ["ac"] = "@class.outer",
+    -- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap
+    ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+  },
+  -- You can choose the select mode (default is charwise 'v')
+  selection_modes = {
+    ['@parameter.outer'] = 'v', -- charwise
+    ['@function.outer'] = 'V', -- linewise
+    ['@class.outer'] = '<c-v>', -- blockwise
+  }
+}
+
 -- local function dump(o)
 --   if type(o) == 'table' then
 --     local s = '{ '
@@ -418,6 +437,10 @@ lvim.plugins = {
     end
   },
   {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "BufRead",
+  },
+  {
     "kevinhwang91/nvim-bqf",
     event = { "BufRead", "BufNew" },
     config = function()
@@ -476,6 +499,12 @@ lvim.plugins = {
     end
   },
   {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
     "tpope/vim-fugitive",
     cmd = {
       "G",
@@ -499,12 +528,29 @@ lvim.plugins = {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufRead",
     setup = function()
-      vim.g.indentLine_enabled = 1
-      vim.g.indent_blankline_char = "▏"
-      vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard", "vista", "outline" }
-      vim.g.indent_blankline_buftype_exclude = { "terminal" }
-      vim.g.indent_blankline_show_trailing_blankline_indent = false
-      vim.g.indent_blankline_show_first_indent_level = false
+      require("indent_blankline").setup({
+        char = "▏",
+        filetype_exclude = {
+          "alpha",
+          "help",
+          "terminal",
+          "dashboard",
+          "lspinfo",
+          "lsp-installer",
+          "mason",
+          "vista",
+          "outline",
+        },
+        buftype_exclude = { "terminal" },
+        bufname_exclude = { "config.lua" },
+
+        show_current_context = true,
+        show_current_context_start = true,
+        show_first_indent_level = false,
+        show_trailing_blankline_indent = false,
+        space_char_blankline = " ",
+        -- use_treesitter = false,
+      })
     end
   },
   {
@@ -774,48 +820,32 @@ lvim.plugins = {
       )
     end
   },
-  { "jose-elias-alvarez/typescript.nvim",
-    cmd = {
-      "TypescriptAddMissingImports",
-      "TypescriptOrganizeImports",
-      "TypescriptRemoveUnused",
-      "TypescriptFixAll",
-      "TypescriptRenameFile"
-    },
+  {
+    "jose-elias-alvarez/typescript.nvim",
     config = function()
-      require("typescript").setup()
-      vim.api.nvim_set_keymap("n", "<space>lo", "<CMD>TypescriptAddMissingImports<CR>", {})
-      vim.api.nvim_set_keymap("n", "<space>lo", "<CMD>TypescriptRemoveUnused<CR>", {})
-      vim.api.nvim_set_keymap("n", "<space>lU", "<CMD>TypescriptFixAll<CR>", {})
-      vim.api.nvim_set_keymap("n", "<space>lr", "<CMD>TypescriptRenameFile<CR>", {})
+      require("typescript").setup({
+        disable_commands = false,
+        debug = true,
+        go_to_source_definition = {
+          fallback = true,
+        }
+      })
+
+      vim.api.nvim_set_keymap("n", "<space>lo", [[<CMD>lua require("typescript").actions.organizeImports()<CR>]], {})
+      vim.api.nvim_set_keymap("n", "<space>lO", [[<CMD>lua require("typescript").actions.fixAll()<CR>]], {})
+      vim.api.nvim_set_keymap("n", "<space>lm", [[<CMD>lua require("typescript").actions.addMissingImports()<CR>]], {})
+      vim.api.nvim_set_keymap("n", "<space>lM", [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], {})
     end
   },
-  { "nvim-treesitter/nvim-treesitter-textobjects",
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-        },
-      }
-    end
-  },
-  { "petertriho/nvim-scrollbar",
+  {
+    "petertriho/nvim-scrollbar",
     config = function()
       require("scrollbar").setup()
       require("scrollbar.handlers.search").setup()
     end
   },
-  { 'kevinhwang91/nvim-hlslens',
+  {
+    'kevinhwang91/nvim-hlslens',
     config = function()
       local kopts = { noremap = true, silent = true }
       vim.api.nvim_set_keymap('n', 'n',
@@ -855,6 +885,8 @@ lvim.plugins = {
   { "kristijanhusak/vim-dadbod-ui" },
   { "mfussenegger/nvim-jdtls" },
   { "mg979/vim-visual-multi" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "p00f/nvim-ts-rainbow", },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
   { "tmux-plugins/vim-tmux-focus-events" },
