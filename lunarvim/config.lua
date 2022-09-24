@@ -232,6 +232,13 @@ lvim.builtin.which_key.mappings["t"] = {
 
 lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
+lvim.builtin.which_key.mappings["lo"] = { [[<CMD>lua require("typescript").actions.organizeImports()<CR>]],
+  "Organiz Imports" }
+lvim.builtin.which_key.mappings["lO"] = { [[<CMD>lua require("typescript").actions.fixAll()<CR>]], "Fix All" }
+lvim.builtin.which_key.mappings["lm"] = { [[<CMD>lua require("typescript").actions.addMissingImports()<CR>]],
+  "Add Missing Imports" }
+lvim.builtin.which_key.mappings["lM"] = { [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], "Remove Unused" }
+
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = false
 -- lvim.builtin.alpha.mode = "dashboard"
@@ -255,6 +262,14 @@ lvim.builtin.gitsigns.current_line_blame_opts = {
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.rainbow.colors = {
+  "#a62e20",
+  "#018f3e",
+  "#e5c331",
+  "#69146b",
+  "#e57405",
+  "#1e3085",
+}
 
 lvim.builtin.treesitter.textobjects.select = {
   enable = true,
@@ -337,9 +352,10 @@ formatters.setup {
     timeout = 10000,
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--bracket-same-line" }
+    -- extra_args = { "--bracket-same-line" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    -- filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", 'scss', 'css', 'markdown', "html", "json" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", 'scss', 'css', 'markdown', "html",
+      "jsonc", "json" },
   }
 }
 
@@ -436,10 +452,6 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("n", "s", "<Plug>Lightspeed_omni_s", { noremap = true })
       vim.api.nvim_set_keymap("n", "S", "<Plug>Lightspeed_omni_gs", { noremap = true })
     end
-  },
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufRead",
   },
   {
     "kevinhwang91/nvim-bqf",
@@ -546,10 +558,10 @@ lvim.plugins = {
         bufname_exclude = { "config.lua" },
 
         show_current_context = true,
-        show_current_context_start = true,
-        show_first_indent_level = false,
-        show_trailing_blankline_indent = false,
-        space_char_blankline = " ",
+        -- show_first_indent_level = false,
+        -- show_current_context_start = true,
+        -- show_trailing_blankline_indent = false,
+        -- space_char_blankline = " ",
         -- use_treesitter = false,
       })
     end
@@ -579,32 +591,16 @@ lvim.plugins = {
     config = function()
       local augend = require("dial.augend")
       require("dial.config").augends:register_group {
-        -- default augends used when no group name is specified
         default = {
-          augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-          augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-          augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-          augend.constant.new {
-            elements = { "and", "or" },
-            word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
-            cyclic = true -- "or" is incremented into "and".
-          },
-          augend.constant.new {
-            elements = { "&&", "||" },
-            word = false,
-            cyclic = true
-          }
-        },
-        typescript = {
-          augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-          augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-          augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-          augend.constant.new { elements = { "let", "const" } },
-          augend.constant.new {
-            elements = { "&&", "||" },
-            word = false,
-            cyclic = true
-          }
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.date.alias["%Y/%m/%d"],
+          augend.constant.new { elements = { "and", "or" }, word = true, cyclic = true },
+          augend.constant.new { elements = { "&&", "||" }, word = false, cyclic = true },
+          augend.constant.new { elements = { "true", "false" }, word = false, cyclic = true },
+          augend.constant.new { elements = { "True", "False" }, word = false, cyclic = true },
+          augend.constant.new { elements = { "TRUE", "FALSE" }, word = false, cyclic = true },
+          augend.constant.new { elements = { "let", "const" }, cyclic = true },
         },
         visual = {
           augend.integer.alias.decimal,
@@ -612,7 +608,7 @@ lvim.plugins = {
           augend.date.alias["%Y/%m/%d"],
           augend.constant.alias.alpha,
           augend.constant.alias.Alpha
-        }
+        },
       }
 
       vim.api.nvim_set_keymap("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
@@ -826,16 +822,16 @@ lvim.plugins = {
     config = function()
       require("typescript").setup({
         disable_commands = false,
-        debug = true,
+        debug = false,
         go_to_source_definition = {
           fallback = true,
         }
       })
 
-      vim.api.nvim_set_keymap("n", "<space>lo", [[<CMD>lua require("typescript").actions.organizeImports()<CR>]], {})
-      vim.api.nvim_set_keymap("n", "<space>lO", [[<CMD>lua require("typescript").actions.fixAll()<CR>]], {})
-      vim.api.nvim_set_keymap("n", "<space>lm", [[<CMD>lua require("typescript").actions.addMissingImports()<CR>]], {})
-      vim.api.nvim_set_keymap("n", "<space>lM", [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], {})
+      -- vim.api.nvim_set_keymap("n", "<space>lo", [[<CMD>lua require("typescript").actions.organizeImports()<CR>]], {})
+      -- vim.api.nvim_set_keymap("n", "<space>lO", [[<CMD>lua require("typescript").actions.fixAll()<CR>]], {})
+      -- vim.api.nvim_set_keymap("n", "<space>lm", [[<CMD>lua require("typescript").actions.addMissingImports()<CR>]], {})
+      -- vim.api.nvim_set_keymap("n", "<space>lM", [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], {})
     end
   },
   {
@@ -844,6 +840,33 @@ lvim.plugins = {
       require("scrollbar").setup()
       require("scrollbar.handlers.search").setup()
     end
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+        hide_cursor = true, -- Hide cursor while scrolling
+        stop_eof = true, -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil, -- Default easing function
+        pre_hook = nil, -- Function to run before the scrolling animation starts
+        post_hook = nil, -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
   },
   {
     'kevinhwang91/nvim-hlslens',
@@ -871,7 +894,6 @@ lvim.plugins = {
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
-  { "benknoble/vim-racket" },
   { "christoomey/vim-tmux-navigator" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },

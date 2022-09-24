@@ -19,7 +19,11 @@ if [[ -o INTERACTIVE && -t 2 ]]; then
 
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
-    fortune -s
+    if (( $+commands[lolcat] )) && (( $+commands[cowsay] )); then
+      fortune -s | cowsay -f `echo "${$(cowsay -l | tail -n +2)// /\n}" | sort -R | tail -1` | lolcat
+    else
+      fortune -s
+    fi
     print
   fi
 
