@@ -239,6 +239,13 @@ lvim.builtin.which_key.mappings["lm"] = { [[<CMD>lua require("typescript").actio
   "Add Missing Imports" }
 lvim.builtin.which_key.mappings["lM"] = { [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], "Remove Unused" }
 
+lvim.builtin.which_key.mappings["l"]["f"] = {
+  function()
+    require("lvim.lsp.utils").format { timeout_ms = 5000 }
+  end,
+  "LSP format",
+}
+
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = false
 -- lvim.builtin.alpha.mode = "dashboard"
@@ -338,18 +345,15 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- null-ls timeout
-vim.lsp.buf.formatting_sync(nil, 5000)
-
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", timeout = 10000, filetypes = { "python" } },
+  { command = "black", timeout = 5000, filetypes = { "python" } },
   -- { command = "isort", filetypes = { "python" } },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
-    timeout = 10000,
+    timeout = 5000,
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     -- extra_args = { "--bracket-same-line" },
@@ -357,6 +361,11 @@ formatters.setup {
     filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", 'scss', 'css', 'markdown', "html",
       "jsonc", "json" },
   }
+}
+
+lvim.lsp.null_ls.setup = {
+  debug = false,
+  default_timeout = 5000,
 }
 
 -- -- set additional linters
@@ -854,9 +863,7 @@ lvim.plugins = {
         use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
         respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
         cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
+        easing_function = 'cubic'
       })
     end
   },
