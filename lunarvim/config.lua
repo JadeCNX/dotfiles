@@ -37,9 +37,6 @@ vim.opt.listchars = "tab:>-,trail:.,precedes:,extends:,space:⋅,eol:↴"
 
 vim.g.loaded_perl_provider = 0
 
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
-
 vim.g.VM_theme = "ocean"
 vim.g.VM_skip_empty_lines = true
 vim.g.VM_maps = {
@@ -52,13 +49,9 @@ vim.g.AutoPairsShortcutToggle = ""
 vim.g.AutoPairsShortcutJump = ""
 vim.g.loaded_matchparen = 1
 
--- For neovide
 if os.getenv("NEOVIDE") then
-  -- vim.g.neovide_transparency = 0.8
   vim.o.guifont = "DankMono Nerd Font"
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
-else
-  vim.g.tokyonight_transparent = true
 end
 
 local function file_exists(name)
@@ -76,7 +69,7 @@ if file_exists(python_path) then
   vim.g.python3_host_prog = python_path
 end
 
-local ruby_path = "/usr/local/bin/python3"
+local ruby_path = "/usr/local/opt/ruby/bin/ruby"
 if file_exists(ruby_path) then
   vim.g.ruby_host_prog = ruby_path
 end
@@ -87,14 +80,10 @@ lvim.builtin.notify.opts.timeout = 2000
 lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
--- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
-
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
-lvim.keys.visual_block_mode["J"] = false
-lvim.keys.visual_block_mode["K"] = false
+-- scroll off
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 3
+vim.opt.scrollopt:append "hor"
 
 lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "*.go" }
 
@@ -111,24 +100,23 @@ lvim.autocommands.auto_read_notification = {
   { "FileChangedShellPost", "*", "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None" }
 }
 
--- lvim.autocommands.clear_matches = {
---   { "BufWinLeave", "*", "call clearmatches()" },
--- }
-
--- -- Return to last edit position when opening files (You want this!)
--- lvim.autocommands.last_edit_position = {
---   { "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]] },
--- }
-
 -- Disable automatic comment insertion
 lvim.autocommands.disable_comment_insertion = {
   { "FileType", "*", [[setlocal formatoptions-=c formatoptions-=r formatoptions-=o]] }
 }
 
--- scroll off
-vim.opt.scrolloff = 3
-vim.opt.sidescrolloff = 3
-vim.opt.scrollopt:append "hor"
+-- keymappings
+
+lvim.leader = "space"
+
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
+lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<CR>"
+
+lvim.keys.normal_mode["<leader>c"] = false
+
+lvim.keys.visual_block_mode["J"] = false
+lvim.keys.visual_block_mode["K"] = false
 
 -- move counterlinewise
 vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
@@ -155,6 +143,10 @@ vim.api.nvim_set_keymap("v", "*", "y/0<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
 vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
 
+lvim.builtin.which_key.mappings["<CR>"] = { [[:noh<CR>]], "No Highlight" }
+
+lvim.builtin.which_key.setup.plugins.registers = false
+
 -- profiling
 lvim.builtin.which_key.mappings["D"] = {
   name = "Profiling",
@@ -164,17 +156,6 @@ lvim.builtin.which_key.mappings["D"] = {
   },
   Q = { [[:exe ":profile pause"<cr>:noautocmd qall!<cr>]], "Quit profiling" }
 }
-
--- unmap a default keymapping
-lvim.keys.normal_mode["<leader>c"] = false
--- edit a default keymapping
-lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<CR>"
-
--- clear highlight
-lvim.builtin.which_key.mappings["<CR>"] = { [[:noh<CR>]], "No Highlight" }
-
-
-lvim.builtin.which_key.setup.plugins.registers = false
 
 lvim.builtin.which_key.mappings["c"] = {
   name = "Commenter"
@@ -270,6 +251,18 @@ lvim.builtin.gitsigns.current_line_blame_opts = {
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.treesitter.rainbow.colors = {
+
+  -- -- oceanic-next
+  -- "#ec5f67",
+  -- "#f99157",
+  -- "#fac863",
+  -- "#99c794",
+  -- "#62b3b2",
+  -- "#6699cc",
+  -- "#c594c5",
+  -- "#ab7967",
+
+  -- -- monokai-pro
   "#fc618d",
   "#fd9353",
   "#fce566",
@@ -282,35 +275,17 @@ lvim.builtin.treesitter.textobjects.select = {
   enable = true,
   lookahead = true,
   keymaps = {
-    -- You can use the capture groups defined in textobjects.scm
     ["af"] = "@function.outer",
     ["if"] = "@function.inner",
     ["ac"] = "@class.outer",
-    -- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap
     ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
   },
-  -- You can choose the select mode (default is charwise 'v')
   selection_modes = {
-    ['@parameter.outer'] = 'v', -- charwise
-    ['@function.outer'] = 'V', -- linewise
-    ['@class.outer'] = '<c-v>', -- blockwise
+    ['@parameter.outer'] = 'v',
+    ['@function.outer'] = 'V',
+    ['@class.outer'] = '<c-v>',
   }
 }
-
--- local function dump(o)
---   if type(o) == 'table' then
---     local s = '{ '
---     for k, v in pairs(o) do
---       if type(k) ~= 'number' then k = '"' .. k .. '"' end
---       s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
---     end
---     return s .. '} '
---   else
---     return tostring(o)
---   end
--- end
-
--- print("lvim.builtin.telescope.defaults.vimgrep_arguments", dump(lvim.builtin.telescope.defaults.vimgrep_arguments))
 
 lvim.builtin.telescope.defaults.preview = { treesitter = false }
 lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions").close
@@ -348,18 +323,23 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", timeout = 5000, filetypes = { "python" } },
-  -- { command = "isort", filetypes = { "python" } },
+  { command = "black", filetypes = { "python" } },
+  { command = "isort", filetypes = { "python" } },
   {
-    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
-    timeout = 5000,
-    ---@usage arguments to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     -- extra_args = { "--bracket-same-line" },
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", 'scss', 'css', 'markdown', "html",
-      "jsonc", "json" },
+    filetypes = {
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact",
+      'scss',
+      'css',
+      'markdown',
+      "html",
+      "jsonc",
+      "json"
+    },
   }
 }
 
@@ -372,18 +352,8 @@ lvim.lsp.null_ls.setup = {
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { command = "pylama", filetypes = { "python" } },
-  {
-    -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "shellcheck"
-    ---@usage arguments to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    -- extra_args = { "--severity", "warning" },
-  },
-  {
-    command = "codespell",
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = {}
-  },
+  { command = "shellcheck" },
+  { command = "codespell" },
   {
     command = "eslint",
     filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
@@ -445,7 +415,7 @@ lvim.plugins = {
   },
   {
     "folke/persistence.nvim",
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    event = "BufReadPre",
     module = "persistence",
     config = function()
       require("persistence").setup {
@@ -516,8 +486,6 @@ lvim.plugins = {
         nnoremap <leader>* <cmd>lua require('spectre').open_visual({select_word=true})<CR>
         vnoremap <leader>* <cmd>lua require('spectre').open_visual()<CR>
       ]]
-      -- nnoremap <leader># <cmd>lua require('spectre').open()<CR>
-      -- nnoremap <leader>P viw:lua require('spectre').open_file_seainitrch()<cr>
     end
   },
   {
@@ -565,13 +533,7 @@ lvim.plugins = {
         },
         buftype_exclude = { "terminal" },
         bufname_exclude = { "config.lua" },
-
         show_current_context = true,
-        -- show_first_indent_level = false,
-        -- show_current_context_start = true,
-        -- show_trailing_blankline_indent = false,
-        -- space_char_blankline = " ",
-        -- use_treesitter = false,
       })
     end
   },
@@ -656,8 +618,8 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
       require("numb").setup {
-        show_numbers = true, -- Enable 'number' for the window while peeking
-        show_cursorline = true -- Enable 'cursorline' for the window while peeking
+        show_numbers = true,
+        show_cursorline = true
       }
     end
   },
@@ -665,15 +627,10 @@ lvim.plugins = {
     "romgrk/nvim-treesitter-context",
     config = function()
       require("treesitter-context").setup {
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-        throttle = true, -- Throttles plugin updates (may improve performance)
-        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+        enable = true,
+        throttle = true,
+        max_lines = 0,
         patterns = {
-          -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-          -- For all filetypes
-          -- Note that setting an entry here replaces all other patterns for this entry.
-          -- By setting the 'default' entry below, you can control which nodes you want to
-          -- appear in the context window.
           default = {
             "class",
             "function",
@@ -696,13 +653,13 @@ lvim.plugins = {
           'typescriptreact';
         },
         {
-          RGB = true, -- #RGB hex codes
-          RRGGBB = true, -- #RRGGBB hex codes
-          RRGGBBAA = true, -- #RRGGBBAA hex codes
-          rgb_fn = true, -- CSS rgb() and rgba() functions
-          hsl_fn = true, -- CSS hsl() and hsla() functions
-          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-          css_fn = true -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          RGB = true,
+          RRGGBB = true,
+          RRGGBBAA = true,
+          rgb_fn = true,
+          hsl_fn = true,
+          css = true,
+          css_fn = true
         }
       )
     end
@@ -723,7 +680,6 @@ lvim.plugins = {
     config = function()
       require("refactoring").setup({})
 
-      -- Remaps for the refactoring operations currently offered by the plugin
       vim.api.nvim_set_keymap(
         "v",
         "<leader>le",
@@ -749,7 +705,6 @@ lvim.plugins = {
         { noremap = true, silent = true, expr = false }
       )
 
-      -- Extract block doesn't need visual mode
       vim.api.nvim_set_keymap(
         "n",
         "<leader>lb",
@@ -762,8 +717,6 @@ lvim.plugins = {
         [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
         { noremap = true, silent = true, expr = false }
       )
-
-      -- Inline variable can also pick up the identifier currently under the cursor without visual mode
       vim.api.nvim_set_keymap(
         "n",
         "<leader>lv",
@@ -771,10 +724,8 @@ lvim.plugins = {
         { noremap = true, silent = true, expr = false }
       )
 
-      -- load refactoring Telescope extension
       require("telescope").load_extension("refactoring")
 
-      -- remap to open the Telescope refactoring menu in visual mode
       vim.api.nvim_set_keymap(
         "v",
         "<leader>sr",
@@ -793,7 +744,6 @@ lvim.plugins = {
   {
     "nathom/filetype.nvim",
     config = function()
-      -- In init.lua or filetype.nvim's config file
       require("filetype").setup(
         {
           overrides = {
@@ -818,7 +768,6 @@ lvim.plugins = {
               end
             },
             shebang = {
-              -- Set the filetype of files with a dash shebang to sh
               dash = "sh"
             }
           }
@@ -836,11 +785,6 @@ lvim.plugins = {
           fallback = true,
         }
       })
-
-      -- vim.api.nvim_set_keymap("n", "<space>lo", [[<CMD>lua require("typescript").actions.organizeImports()<CR>]], {})
-      -- vim.api.nvim_set_keymap("n", "<space>lO", [[<CMD>lua require("typescript").actions.fixAll()<CR>]], {})
-      -- vim.api.nvim_set_keymap("n", "<space>lm", [[<CMD>lua require("typescript").actions.addMissingImports()<CR>]], {})
-      -- vim.api.nvim_set_keymap("n", "<space>lM", [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], {})
     end
   },
   {
@@ -855,14 +799,13 @@ lvim.plugins = {
     event = "WinScrolled",
     config = function()
       require('neoscroll').setup({
-        -- All these keys will be mapped to their corresponding default scrolling animation
         mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
           '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        hide_cursor = true,
+        stop_eof = true,
+        use_local_scrolloff = false,
+        respect_scrolloff = false,
+        cursor_scrolls_alone = true,
         easing_function = 'cubic'
       })
     end
