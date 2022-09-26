@@ -270,12 +270,12 @@ lvim.builtin.gitsigns.current_line_blame_opts = {
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.treesitter.rainbow.colors = {
-  "#a62e20",
-  "#018f3e",
-  "#e5c331",
-  "#69146b",
-  "#e57405",
-  "#1e3085",
+  "#fc618d",
+  "#fd9353",
+  "#fce566",
+  "#7bd88f",
+  "#5ad4e6",
+  "#948ae3",
 }
 
 lvim.builtin.treesitter.textobjects.select = {
