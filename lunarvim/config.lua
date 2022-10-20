@@ -143,7 +143,7 @@ vim.api.nvim_set_keymap("v", "*", "y/0<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
 vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
 
-lvim.builtin.which_key.mappings["<CR>"] = { [[:noh<CR>]], "No Highlight" }
+lvim.builtin.which_key.mappings["<cr>"] = { "<cmd>noh<cr>", "No Highlight" }
 
 lvim.builtin.which_key.setup.plugins.registers = false
 
@@ -515,29 +515,6 @@ lvim.plugins = {
     ft = { "fugitive" }
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    setup = function()
-      require("indent_blankline").setup({
-        char = "▏",
-        filetype_exclude = {
-          "alpha",
-          "help",
-          "terminal",
-          "dashboard",
-          "lspinfo",
-          "lsp-installer",
-          "mason",
-          "vista",
-          "outline",
-        },
-        buftype_exclude = { "terminal" },
-        bufname_exclude = { "config.lua" },
-        show_current_context = true,
-      })
-    end
-  },
-  {
     "tpope/vim-surround",
     keys = { "c", "d", "y" }
   },
@@ -755,11 +732,13 @@ lvim.plugins = {
               ["Dockerfile"] = "dockerfile",
               [".prettierrc"] = "yaml",
               [".env"] = "sh",
-              ["fish_variables"] = "fish"
+              ["fish_variables"] = "fish",
+              ["Jenkinsfile"] = "groovy"
             },
             complex = {
               ["Dockerfile*"] = "dockerfile",
-              [".env.*"] = "sh"
+              [".env.*"] = "sh",
+              ["Jenkinsfile*"] = "groovy"
             },
             function_complex = {
               ["*.fish"] = function()
@@ -791,7 +770,6 @@ lvim.plugins = {
     "petertriho/nvim-scrollbar",
     config = function()
       require("scrollbar").setup()
-      require("scrollbar.handlers.search").setup()
     end
   },
   {
@@ -799,14 +777,13 @@ lvim.plugins = {
     event = "WinScrolled",
     config = function()
       require('neoscroll').setup({
-        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
-          '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
         hide_cursor = true,
         stop_eof = true,
         use_local_scrolloff = false,
         respect_scrolloff = false,
         cursor_scrolls_alone = true,
-        easing_function = 'cubic'
+        easing_function = 'circular'
       })
     end
   },
@@ -817,29 +794,6 @@ lvim.plugins = {
     config = function()
       vim.g.mkdp_auto_start = 1
     end,
-  },
-  {
-    'kevinhwang91/nvim-hlslens',
-    config = function()
-      local kopts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap('n', 'n',
-        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-        kopts)
-      vim.api.nvim_set_keymap('n', 'N',
-        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-        kopts)
-      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.cmd([[
-        aug VMlens
-            au!
-            au User visual_multi_start lua require('vmlens').start()
-            au User visual_multi_exit lua require('vmlens').exit()
-        aug END
-      ]])
-    end
   },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
