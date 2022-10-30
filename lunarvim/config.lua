@@ -29,7 +29,7 @@ vim.opt.showbreak = "↳ "
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.clipboard = ""
 
@@ -47,7 +47,9 @@ vim.g.VM_maps = {
 }
 vim.g.AutoPairsShortcutToggle = ""
 vim.g.AutoPairsShortcutJump = ""
-vim.g.loaded_matchparen = 1
+vim.g.loaded_matchit = 1
+-- vim.g.loaded_matchparen = 1
+
 
 if os.getenv("NEOVIDE") then
   vim.o.guifont = "DankMono Nerd Font"
@@ -81,8 +83,8 @@ lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
 -- scroll off
-vim.opt.scrolloff = 3
-vim.opt.sidescrolloff = 3
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
 vim.opt.scrollopt:append "hor"
 
 lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "*.go" }
@@ -111,7 +113,7 @@ lvim.leader = "space"
 
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
-lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<CR>"
+lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<cr>"
 
 lvim.keys.normal_mode["<leader>c"] = false
 
@@ -123,7 +125,7 @@ vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
 vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("v", "j", "gj", { noremap = true })
 vim.api.nvim_set_keymap("v", "k", "gk", { noremap = true })
-vim.api.nvim_set_keymap("i", "<C-c>", "<Esc>", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("i", "<C-c>", "<esc>", { noremap = false, silent = true })
 
 -- quick marco
 vim.api.nvim_set_keymap("n", "Q", "@@", { noremap = true })
@@ -163,8 +165,8 @@ lvim.builtin.which_key.mappings["c"] = {
 
 lvim.builtin.which_key.mappings["e"] = {
   name = "Explorer",
-  e = { "<cmd>NvimTreeToggle<CR>", "Explorer pane" },
-  t = { "<cmd>Lf<CR>", "LF" }
+  e = { "<cmd>NvimTreeToggle<cr>", "Explorer pane" },
+  t = { "<cmd>Lf<cr>", "LF" }
 }
 
 lvim.builtin.which_key.mappings["S"] = {
@@ -174,12 +176,18 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" }
 }
 
-lvim.builtin.which_key.mappings["/"] = { "<cmd>FzfLua live_grep_native<cr>", "Search" }
-lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<cr>", "Search & Replace" }
-lvim.builtin.which_key.mappings["s."] = { "<cmd>FzfLua live_resume_grep<cr>", "Search Resume" }
 lvim.builtin.which_key.mappings["sT"] = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search Current File" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>FzfLua files<cr>", "Search Files" }
-lvim.builtin.which_key.mappings["F"] = { "<cmd>FzfLua git_files<cr>", "Search Git Files" }
+
+lvim.builtin.which_key.mappings["?"] = { "<cmd>lua require('spectre').open()<cr>", "Search & Replace" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require'telescope.builtin'.live_grep{}<cr>", "Search" }
+
+lvim.builtin.which_key.mappings["F"] = { "<cmd>lua require'telescope.builtin'.find_files{}<cr>", "Search Files" }
+
+lvim.builtin.which_key.mappings["s."] = { "<cmd>lua require'telescope.builtin'.resume{ sources = {'gitmoji'}}<cr>",
+  "Search Resume" }
+lvim.builtin.which_key.mappings["se"] = { "<cmd>lua require'telescope.builtin'.symbols{ sources = {'gitmoji'}}<cr>",
+  "Search Emoji" }
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>", "Spell Suggest" }
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -200,7 +208,7 @@ lvim.builtin.which_key.mappings["F"] = { "<cmd>FzfLua git_files<cr>", "Search Gi
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<cr>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -213,12 +221,12 @@ lvim.builtin.which_key.mappings["t"] = {
 
 lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
-lvim.builtin.which_key.mappings["lo"] = { [[<CMD>lua require("typescript").actions.organizeImports()<CR>]],
+lvim.builtin.which_key.mappings["lo"] = { [[<cmd>lua require("typescript").actions.organizeImports()<cr>]],
   "Organiz Imports" }
-lvim.builtin.which_key.mappings["lO"] = { [[<CMD>lua require("typescript").actions.fixAll()<CR>]], "Fix All" }
-lvim.builtin.which_key.mappings["lm"] = { [[<CMD>lua require("typescript").actions.addMissingImports()<CR>]],
+lvim.builtin.which_key.mappings["lO"] = { [[<cmd>lua require("typescript").actions.fixAll()<cr>]], "Fix All" }
+lvim.builtin.which_key.mappings["lm"] = { [[<cmd>lua require("typescript").actions.addMissingImports()<cr>]],
   "Add Missing Imports" }
-lvim.builtin.which_key.mappings["lM"] = { [[<CMD>lua require("typescript").actions.removeUnused()<CR>]], "Remove Unused" }
+lvim.builtin.which_key.mappings["lM"] = { [[<cmd>lua require("typescript").actions.removeUnused()<cr>]], "Remove Unused" }
 
 lvim.builtin.which_key.mappings["l"]["f"] = {
   function()
@@ -228,8 +236,8 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 }
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.alpha.active = false
--- lvim.builtin.alpha.mode = "dashboard"
+-- lvim.builtin.alpha.active = false
+lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
@@ -271,6 +279,7 @@ lvim.builtin.treesitter.rainbow.colors = {
   "#948ae3",
 }
 
+lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.textobjects.select = {
   enable = true,
   lookahead = true,
@@ -323,10 +332,11 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  { command = "isort", filetypes = { "python" } },
+  { exe = "black", filetypes = { "python" } },
+  { exe = "isort", filetypes = { "python" } },
+  { exe = "beautysh" },
   {
-    command = "prettier",
+    exe = "prettier",
     -- extra_args = { "--bracket-same-line" },
     filetypes = {
       "typescript",
@@ -351,24 +361,16 @@ lvim.lsp.null_ls.setup = {
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "pylama", filetypes = { "python" } },
-  { command = "shellcheck" },
-  { command = "codespell" },
-  {
-    command = "eslint",
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-  }
+  { exe = "cspell" },
+  { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+  { exe = "pylama", filetypes = { "python" } },
+  { exe = "shellcheck", filetypes = { "sh", "bash" } },
+  { exe = "zsh" },
 }
 
 local code_actions = require "lvim.lsp.null-ls.code_actions"
 code_actions.setup {
-  {
-    exe = "refactoring",
-  },
-  {
-    exe = "eslint",
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-  },
+  { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
 }
 
 for _, language in ipairs({ "typescript", "javascript" }) do
@@ -483,8 +485,8 @@ lvim.plugins = {
     config = function()
       require("spectre").setup()
       vim.cmd [[
-        nnoremap <leader>* <cmd>lua require('spectre').open_visual({select_word=true})<CR>
-        vnoremap <leader>* <cmd>lua require('spectre').open_visual()<CR>
+        nnoremap <leader>* <cmd>lua require('spectre').open_visual({select_word=true})<cr>
+        vnoremap <leader>* <cmd>lua require('spectre').open_visual()<cr>
       ]]
     end
   },
@@ -660,44 +662,44 @@ lvim.plugins = {
       vim.api.nvim_set_keymap(
         "v",
         "<leader>le",
-        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Extract Function')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
       vim.api.nvim_set_keymap(
         "v",
         "<leader>lE",
-        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Extract Function To File')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
       vim.api.nvim_set_keymap(
         "v",
         "<leader>lv",
-        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Extract Variable')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
       vim.api.nvim_set_keymap(
         "v",
         "<leader>li",
-        [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Inline Variable')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
 
       vim.api.nvim_set_keymap(
         "n",
         "<leader>lb",
-        [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Extract Block')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
       vim.api.nvim_set_keymap(
         "n",
         "<leader>lbf",
-        [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Extract Block To File')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
       vim.api.nvim_set_keymap(
         "n",
         "<leader>lv",
-        [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+        [[ <esc><cmd>lua require('refactoring').refactor('Inline Variable')<cr>]],
         { noremap = true, silent = true, expr = false }
       )
 
@@ -706,7 +708,7 @@ lvim.plugins = {
       vim.api.nvim_set_keymap(
         "v",
         "<leader>sr",
-        "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+        "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>",
         { noremap = true }
       )
     end
@@ -772,21 +774,21 @@ lvim.plugins = {
       require("scrollbar").setup()
     end
   },
-  {
-    "karb94/neoscroll.nvim",
-    event = "WinScrolled",
-    config = function()
-      require('neoscroll').setup({
-        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
-        hide_cursor = true,
-        stop_eof = true,
-        use_local_scrolloff = false,
-        respect_scrolloff = false,
-        cursor_scrolls_alone = true,
-        easing_function = 'circular'
-      })
-    end
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   event = "WinScrolled",
+  --   config = function()
+  --     require('neoscroll').setup({
+  --       mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+  --       hide_cursor = true,
+  --       stop_eof = true,
+  --       use_local_scrolloff = false,
+  --       respect_scrolloff = false,
+  --       cursor_scrolls_alone = true,
+  --       easing_function = 'circular'
+  --     })
+  --   end
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
@@ -803,7 +805,6 @@ lvim.plugins = {
   { "dbakker/vim-paragraph-motion" },
   { "editorconfig/editorconfig-vim" },
   { "glts/vim-textobj-comment" },
-  { "ibhagwan/fzf-lua" },
   { "jiangmiao/auto-pairs" },
   { "Julian/vim-textobj-variable-segment" },
   { "junegunn/vim-easy-align" },
@@ -812,6 +813,7 @@ lvim.plugins = {
   { "kristijanhusak/vim-dadbod-ui" },
   { "mfussenegger/nvim-jdtls" },
   { "mg979/vim-visual-multi" },
+  { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "p00f/nvim-ts-rainbow", },
   { "pantharshit00/vim-prisma" },
