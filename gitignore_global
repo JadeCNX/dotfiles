@@ -18,3 +18,4 @@ private-*
 .private-*
 .jpb
 .node-version
+.luarc.json

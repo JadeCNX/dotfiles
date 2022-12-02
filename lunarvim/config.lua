@@ -78,16 +78,17 @@ end
 
 -- general
 lvim.log.level = "error"
-lvim.builtin.notify.opts.timeout = 2000
-lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "nightfox"
+lvim.format_on_save = {
+  pattern = "*.go",
+}
 
 -- scroll off
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.scrollopt:append "hor"
 
-lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "*.go" }
+lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "main.go" }
 
 -- Trigger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
@@ -238,7 +239,6 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 -- lvim.builtin.alpha.active = false
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 
@@ -361,16 +361,35 @@ lvim.lsp.null_ls.setup = {
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { exe = "cspell" },
-  { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+  -- { exe = "cspell",
+  --   diagnostic_config = {
+  --     -- see :help vim.diagnostic.config()
+  --     underline = true,
+  --     virtual_text = false,
+  --     signs = true,
+  --     update_in_insert = false,
+  --     severity_sort = true,
+  --   }
+  -- },
+  { exe = "eslint",
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+    diagnostic_config = {
+      underline = true,
+      virtual_text = true,
+      signs = true,
+      update_in_insert = false,
+      severity_sort = true,
+    }
+  },
   { exe = "pylama", filetypes = { "python" } },
   { exe = "shellcheck", filetypes = { "sh", "bash" } },
-  { exe = "zsh" },
+  { exe = "zsh", filetype = { "zsh" } },
 }
 
 local code_actions = require "lvim.lsp.null-ls.code_actions"
 code_actions.setup {
   { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+  -- { exe = "cspell" },
 }
 
 for _, language in ipairs({ "typescript", "javascript" }) do
@@ -424,14 +443,6 @@ lvim.plugins = {
         dir = vim.fn.expand("~/.cache/lvim/session/", nil),
         options = { "buffers", "curdir", "tabpages", "winsize" }
       }
-    end
-  },
-  {
-    "ggandor/lightspeed.nvim",
-    event = "BufRead",
-    config = function()
-      vim.api.nvim_set_keymap("n", "s", "<Plug>Lightspeed_omni_s", { noremap = true })
-      vim.api.nvim_set_keymap("n", "S", "<Plug>Lightspeed_omni_gs", { noremap = true })
     end
   },
   {
@@ -515,10 +526,6 @@ lvim.plugins = {
       "Gedit"
     },
     ft = { "fugitive" }
-  },
-  {
-    "tpope/vim-surround",
-    keys = { "c", "d", "y" }
   },
   {
     "metakirby5/codi.vim",
@@ -774,21 +781,6 @@ lvim.plugins = {
       require("scrollbar").setup()
     end
   },
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   event = "WinScrolled",
-  --   config = function()
-  --     require('neoscroll').setup({
-  --       mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
-  --       hide_cursor = true,
-  --       stop_eof = true,
-  --       use_local_scrolloff = false,
-  --       respect_scrolloff = false,
-  --       cursor_scrolls_alone = true,
-  --       easing_function = 'circular'
-  --     })
-  --   end
-  -- },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
@@ -797,12 +789,64 @@ lvim.plugins = {
       vim.g.mkdp_auto_start = 1
     end,
   },
+  { "ggandor/leap.nvim",
+    config = function()
+      require('leap').add_default_mappings()
+    end
+  },
+  { "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup()
+    end
+  },
+  { "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup {}
+    end
+  },
+  { "EdenEast/nightfox.nvim",
+    config = function()
+      require('nightfox').setup({
+        options = {
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          }
+        }
+      })
+    end
+  },
+  { "Wansmer/treesj",
+    config = function()
+      require 'treesj'.setup {
+        use_default_keymaps = false,
+      }
+
+      local langs = require 'treesj.langs'['presets']
+
+      vim.api.nvim_create_autocmd({ 'FileType' }, {
+        pattern = '*',
+        callback = function()
+          local opts = { buffer = true }
+          if langs[vim.bo.filetype] then
+            vim.keymap.set('n', 'gS', '<Cmd>TSJSplit<CR>', opts)
+            vim.keymap.set('n', 'gJ', '<Cmd>TSJJoin<CR>', opts)
+          else
+            vim.keymap.set('n', 'gS', '<Cmd>SplitjoinSplit<CR>', opts)
+            vim.keymap.set('n', 'gJ', '<Cmd>SplitjoinJoin<CR>', opts)
+          end
+        end,
+      })
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
   { "christoomey/vim-tmux-navigator" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
+  { "eandrju/cellular-automaton.nvim" },
   { "editorconfig/editorconfig-vim" },
   { "glts/vim-textobj-comment" },
   { "jiangmiao/auto-pairs" },
@@ -829,4 +873,6 @@ lvim.plugins = {
   { "troydm/zoomwintab.vim" },
   { "vim-scripts/LargeFile" },
   { "wellle/targets.vim" }
+  -- { "zbirenbaum/copilot." },
+  -- { "tpope/vim-surround" },
 }
