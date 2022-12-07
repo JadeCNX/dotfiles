@@ -392,8 +392,9 @@ code_actions.setup {
   -- { exe = "cspell" },
 }
 
+local dap = require "dap"
 for _, language in ipairs({ "typescript", "javascript" }) do
-  require("dap").configurations[language] = {
+  dap.configurations[language] = {
     {
       name = 'Launch',
       type = 'jsnode',
@@ -413,6 +414,40 @@ for _, language in ipairs({ "typescript", "javascript" }) do
     },
   }
 end
+
+dap.adapters.delve = {
+  type = 'server',
+  port = '${port}',
+  executable = {
+    command = 'dlv',
+    args = { 'dap', '-l', '127.0.0.1:${port}' },
+  }
+}
+
+-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+dap.configurations.go = {
+  {
+    type = "delve",
+    name = "Debug",
+    request = "launch",
+    program = "${file}"
+  },
+  {
+    type = "delve",
+    name = "Debug test", -- configuration for debugging test files
+    request = "launch",
+    mode = "test",
+    program = "${file}"
+  },
+  -- works with go.mod packages and sub packages
+  {
+    type = "delve",
+    name = "Debug test (go.mod)",
+    request = "launch",
+    mode = "test",
+    program = "./${relativeFileDirname}"
+  }
+}
 
 
 -- Additional Plugins
@@ -840,10 +875,26 @@ lvim.plugins = {
       })
     end
   },
+  { "christoomey/vim-tmux-navigator",
+    config = function()
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+      vim.g.tmux_navigator_preserve_zoom = 1
+    end
+  },
+  { "levouh/tint.nvim",
+    config = function()
+      require("tint").setup({
+        tint = -50,
+        saturation = 0.4,
+        transforms = require("tint").transforms.SATURATE_TINT,
+        tint_background_colors = false,
+        highlight_ignore_patterns = { "WinSeparator", "Status.*" }
+      })
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
-  { "christoomey/vim-tmux-navigator" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "eandrju/cellular-automaton.nvim" },
