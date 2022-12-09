@@ -883,13 +883,7 @@ lvim.plugins = {
   },
   { "levouh/tint.nvim",
     config = function()
-      require("tint").setup({
-        tint = -50,
-        saturation = 0.4,
-        transforms = require("tint").transforms.SATURATE_TINT,
-        tint_background_colors = false,
-        highlight_ignore_patterns = { "WinSeparator", "Status.*" }
-      })
+      require('tint').setup()
     end
   },
   { "AndrewRadev/linediff.vim" },
@@ -900,6 +894,7 @@ lvim.plugins = {
   { "eandrju/cellular-automaton.nvim" },
   { "editorconfig/editorconfig-vim" },
   { "glts/vim-textobj-comment" },
+  { "inkarkat/vim-CursorLineCurrentWindow" },
   { "jiangmiao/auto-pairs" },
   { "Julian/vim-textobj-variable-segment" },
   { "junegunn/vim-easy-align" },
