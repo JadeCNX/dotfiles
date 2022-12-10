@@ -781,7 +781,6 @@ lvim.plugins = {
             },
             complex = {
               ["Dockerfile*"] = "dockerfile",
-              [".env.*"] = "sh",
               ["Jenkinsfile*"] = "groovy"
             },
             function_complex = {
