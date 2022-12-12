@@ -50,10 +50,22 @@ vim.g.AutoPairsShortcutJump = ""
 vim.g.loaded_matchit = 1
 -- vim.g.loaded_matchparen = 1
 
+vim.opt.guicursor = [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-lCursor,sm:block-blinkwait175-blinkoff150-blinkon175]]
+--vim.api.nvim_set_hl(0, "lCursor", { reverse = true })
 
-if os.getenv("NEOVIDE") then
-  vim.o.guifont = "DankMono Nerd Font"
+if vim.g.neovide then
+  vim.opt.guifont = "DankMono Nerd Font:h16"
+  vim.g.neovide_refresh_rate = 60
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  vim.g.neovide_profiler = false
+  vim.g.neovide_input_macos_alt_is_meta = true
+  -- vim.g.neovide_transparency = 0.8
+  -- vim.g.neovide_floating_blur_amount_x = 8.0
+  -- vim.g.neovide_floating_blur_amount_y = 8.0
+
+  vim.keymap.set({ "n", "v" }, "<D-c>", [["*y]], { noremap = false })
+  vim.keymap.set({ "n", "v" }, "<D-v>", [["*p]], { noremap = false })
+  vim.keymap.set({ "c", "i" }, "<D-v>", "<C-R>*", { noremap = false })
 end
 
 local function file_exists(name)
@@ -115,6 +127,9 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<cr>"
+
+lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
+lvim.keys.normal_mode["<C-u>"] = "<C-u>zz"
 
 lvim.keys.normal_mode["<leader>c"] = false
 
@@ -882,7 +897,25 @@ lvim.plugins = {
   },
   { "levouh/tint.nvim",
     config = function()
-      require('tint').setup()
+      require('tint').setup({
+        tint_background_colors = false,
+      })
+    end
+  },
+  { "lunarvim/synthwave84.nvim",
+    config = function()
+      require 'synthwave84'.setup({
+        glow = {
+          error_msg = true,
+          type2 = true,
+          func = true,
+          keyword = true,
+          operator = false,
+          buffer_current_target = true,
+          buffer_visible_target = true,
+          buffer_inactive_target = true,
+        }
+      })
     end
   },
   { "AndrewRadev/linediff.vim" },
@@ -917,7 +950,7 @@ lvim.plugins = {
   { "tpope/vim-unimpaired" },
   { "troydm/zoomwintab.vim" },
   { "vim-scripts/LargeFile" },
-  { "wellle/targets.vim" }
+  { "wellle/targets.vim" },
   -- { "zbirenbaum/copilot." },
   -- { "tpope/vim-surround" },
 }
