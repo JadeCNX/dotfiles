@@ -19,3 +19,5 @@ private-*
 .jpb
 .node-version
 .luarc.json
+.sqlfluff
+.sourcery.yaml

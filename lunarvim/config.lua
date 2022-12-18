@@ -120,6 +120,14 @@ lvim.autocommands.disable_comment_insertion = {
   { "FileType", "*", [[setlocal formatoptions-=c formatoptions-=r formatoptions-=o]] }
 }
 
+-- BufOnly
+vim.cmd([[command! BufOnly execute ':bufdo! bd #']])
+
+-- Copilot
+-- lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
+-- table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
+
+
 -- keymappings
 
 lvim.leader = "space"
@@ -131,10 +139,9 @@ lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<cr>"
 lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
 lvim.keys.normal_mode["<C-u>"] = "<C-u>zz"
 
-lvim.keys.normal_mode["<leader>c"] = false
+lvim.keys.visual_mode["gp"] = [["_dP]]
 
-lvim.keys.visual_block_mode["J"] = false
-lvim.keys.visual_block_mode["K"] = false
+lvim.keys.normal_mode["<leader>c"] = false
 
 -- move counterlinewise
 vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
@@ -142,6 +149,10 @@ vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("v", "j", "gj", { noremap = true })
 vim.api.nvim_set_keymap("v", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-c>", "<esc>", { noremap = false, silent = true })
+
+-- move lines
+vim.api.nvim_set_keymap("v", "P", ":m '<-2<CR>gv=gv", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("v", "N", ":m '>+1<CR>gv=gv", { noremap = false, silent = true })
 
 -- quick marco
 vim.api.nvim_set_keymap("n", "Q", "@@", { noremap = true })
@@ -324,7 +335,44 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
+lvim.lsp.automatic_configuration.skipped_servers = {
+  "ansiblels",
+  "ccls",
+  "csharp_ls",
+  "cssmodules_ls",
+  "denols",
+  "ember",
+  "emmet_ls",
+  "glint",
+  "golangci_lint_ls",
+  "gradle_ls",
+  "jedi_language_server",
+  "ltex",
+  "neocmake",
+  "ocamlls",
+  "phpactor",
+  "psalm",
+  "pylsp",
+  "quick_lint_js",
+  "reason_ls",
+  "rome",
+  "ruby_ls",
+  "scry",
+  "solang",
+  "solc",
+  "solidity_ls",
+  "sorbet",
+  "sourcekit",
+  "sourcery",
+  "spectral",
+  "sqlls",
+  "sqls",
+  "stylelint_lsp",
+  "svlangserver",
+  "tflint",
+  "verible",
+}
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
@@ -344,33 +392,18 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
+lvim.lsp.null_ls.setup = {
+  debug = false,
+  default_timeout = 5000,
+}
+
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { exe = "black", filetypes = { "python" } },
   { exe = "isort", filetypes = { "python" } },
   { exe = "beautysh" },
-  {
-    exe = "prettier",
-    -- extra_args = { "--bracket-same-line" },
-    filetypes = {
-      "typescript",
-      "typescriptreact",
-      "javascript",
-      "javascriptreact",
-      'scss',
-      'css',
-      'markdown',
-      "html",
-      "jsonc",
-      "json"
-    },
-  }
-}
-
-lvim.lsp.null_ls.setup = {
-  debug = false,
-  default_timeout = 5000,
+  { exe = "prettier" },
 }
 
 -- -- set additional linters
@@ -386,26 +419,26 @@ linters.setup {
   --     severity_sort = true,
   --   }
   -- },
-  { exe = "eslint",
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-    diagnostic_config = {
-      underline = true,
-      virtual_text = true,
-      signs = true,
-      update_in_insert = false,
-      severity_sort = true,
-    }
-  },
+  -- { exe = "eslint",
+  --   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  --   diagnostic_config = {
+  --     underline = true,
+  --     virtual_text = true,
+  --     signs = true,
+  --     update_in_insert = false,
+  --     severity_sort = true,
+  --   }
+  -- },
   { exe = "pylama", filetypes = { "python" } },
   { exe = "shellcheck", filetypes = { "sh", "bash" } },
   { exe = "zsh", filetype = { "zsh" } },
 }
 
-local code_actions = require "lvim.lsp.null-ls.code_actions"
-code_actions.setup {
-  { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
-  -- { exe = "cspell" },
-}
+-- local code_actions = require "lvim.lsp.null-ls.code_actions"
+-- code_actions.setup {
+--   { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+--   -- { exe = "cspell" },
+-- }
 
 local dap = require "dap"
 for _, language in ipairs({ "typescript", "javascript" }) do
@@ -791,6 +824,7 @@ lvim.plugins = {
               ["Dockerfile"] = "dockerfile",
               [".prettierrc"] = "yaml",
               [".env"] = "sh",
+              [".sqlfluff"] = "toml",
               ["fish_variables"] = "fish",
               ["Jenkinsfile"] = "groovy"
             },
@@ -918,11 +952,35 @@ lvim.plugins = {
       })
     end
   },
+  -- { "zbirenbaum/copilot.lua",
+  --   event = { "VimEnter" },
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require("copilot").setup {
+  --         plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+  --       }
+  --     end, 100)
+  --   end,
+  -- },
+  -- { "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua", "nvim-cmp" },
+  -- },
+  { "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {}
+    end
+  },
+  { "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {}
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
+  { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
   { "editorconfig/editorconfig-vim" },
   { "glts/vim-textobj-comment" },
@@ -948,9 +1006,6 @@ lvim.plugins = {
   { "tpope/vim-rsi" },
   { "tpope/vim-sleuth" },
   { "tpope/vim-unimpaired" },
-  { "troydm/zoomwintab.vim" },
   { "vim-scripts/LargeFile" },
   { "wellle/targets.vim" },
-  -- { "zbirenbaum/copilot." },
-  -- { "tpope/vim-surround" },
 }
