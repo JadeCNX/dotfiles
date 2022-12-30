@@ -403,12 +403,21 @@ formatters.setup {
   { exe = "black", filetypes = { "python" } },
   { exe = "isort", filetypes = { "python" } },
   { exe = "beautysh" },
-  { exe = "prettier" },
+  { exe = "prettier" }, --[[  , args = "--bracket-same-line"  ]]
 }
 
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
+  {
+    exe = "golangci_lint",
+    args = {
+      "-E gocyclo",
+      "-E dupl",
+      "-E gocognit",
+      "-E wsl",
+    },
+  },
   -- { exe = "cspell",
   --   diagnostic_config = {
   --     -- see :help vim.diagnostic.config()
@@ -936,7 +945,8 @@ lvim.plugins = {
       })
     end
   },
-  { "lunarvim/synthwave84.nvim",
+  {
+    "lunarvim/synthwave84.nvim",
     config = function()
       require 'synthwave84'.setup({
         glow = {
@@ -948,9 +958,9 @@ lvim.plugins = {
           buffer_current_target = true,
           buffer_visible_target = true,
           buffer_inactive_target = true,
-        }
+        },
       })
-    end
+    end,
   },
   -- { "zbirenbaum/copilot.lua",
   --   event = { "VimEnter" },
@@ -965,15 +975,31 @@ lvim.plugins = {
   -- { "zbirenbaum/copilot-cmp",
   --   after = { "copilot.lua", "nvim-cmp" },
   -- },
-  { "folke/zen-mode.nvim",
+  {
+    "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup {}
-    end
+    end,
   },
-  { "folke/twilight.nvim",
+  {
+    "folke/twilight.nvim",
     config = function()
       require("twilight").setup {}
-    end
+    end,
+  },
+  {
+    "rareitems/printer.nvim",
+    config = function()
+      require('printer').setup {
+        keymap = "gp",
+      }
+    end,
+  },
+  {
+    "chentoast/marks.nvim",
+    config = function()
+      require 'marks'.setup {}
+    end,
   },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
@@ -998,6 +1024,8 @@ lvim.plugins = {
   { "p00f/nvim-ts-rainbow", },
   { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
+  { "sindrets/diffview.nvim" },
+  { "stevearc/dressing.nvim" },
   { "tmux-plugins/vim-tmux-focus-events" },
   { "tommcdo/vim-exchange" },
   { "tpope/vim-abolish" },
