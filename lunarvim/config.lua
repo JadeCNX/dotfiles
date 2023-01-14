@@ -395,6 +395,7 @@ lvim.lsp.automatic_configuration.skipped_servers = {
 lvim.lsp.null_ls.setup = {
   debug = false,
   default_timeout = 5000,
+  fallback_severity = vim.diagnostic.severity.INFO
 }
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
@@ -404,6 +405,7 @@ formatters.setup {
   { exe = "isort", filetypes = { "python" } },
   { exe = "beautysh" },
   { exe = "prettier" }, --[[  , args = "--bracket-same-line"  ]]
+  { exe = "phpcsfixer" }
 }
 
 -- -- set additional linters
@@ -418,36 +420,42 @@ linters.setup {
       "-E wsl",
     },
   },
-  -- { exe = "cspell",
+  -- {
+  --   exe = "cspell",
   --   diagnostic_config = {
   --     -- see :help vim.diagnostic.config()
+  --     signs = true,
   --     underline = true,
   --     virtual_text = false,
-  --     signs = true,
   --     update_in_insert = false,
   --     severity_sort = true,
+  --     diagnostics_postprocess = function(diagnostic)
+  --       diagnostic.severity = vim.diagnostic.severity.HINT
+  --     end
   --   }
   -- },
-  -- { exe = "eslint",
+  -- {
+  --   exe = "eslint",
   --   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-  --   diagnostic_config = {
-  --     underline = true,
-  --     virtual_text = true,
-  --     signs = true,
-  --     update_in_insert = false,
-  --     severity_sort = true,
-  --   }
+  --   -- diagnostic_config = {
+  --   --   underline = true,
+  --   --   virtual_text = true,
+  --   --   signs = true,
+  --   --   update_in_insert = false,
+  --   --   severity_sort = true,
+  --   -- }
   -- },
+  { exe = "php" },
   { exe = "pylama", filetypes = { "python" } },
   { exe = "shellcheck", filetypes = { "sh", "bash" } },
   { exe = "zsh", filetype = { "zsh" } },
 }
 
--- local code_actions = require "lvim.lsp.null-ls.code_actions"
--- code_actions.setup {
---   { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
---   -- { exe = "cspell" },
--- }
+--local code_actions = require "lvim.lsp.null-ls.code_actions"
+--code_actions.setup {
+  ---- { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+  --{ exe = "cspell" },
+--}
 
 local dap = require "dap"
 for _, language in ipairs({ "typescript", "javascript" }) do
@@ -506,6 +514,9 @@ dap.configurations.go = {
   }
 }
 
+local snip = require("luasnip")
+snip.filetype_extend("typescript", { "javascript" })
+snip.filetype_extend("typescriptreact", { "javascript" })
 
 -- Additional Plugins
 lvim.plugins = {
@@ -827,7 +838,9 @@ lvim.plugins = {
           overrides = {
             extensions = {
               mm = "objc",
-              conf = "sh"
+              conf = "sh",
+              php = "php",
+              tsv = "csv",
             },
             literal = {
               ["Dockerfile"] = "dockerfile",
@@ -960,6 +973,7 @@ lvim.plugins = {
           buffer_inactive_target = true,
         },
       })
+
     end,
   },
   -- { "zbirenbaum/copilot.lua",
@@ -1001,9 +1015,17 @@ lvim.plugins = {
       require 'marks'.setup {}
     end,
   },
+  {
+    "benfowler/telescope-luasnip.nvim",
+    module = "telescope._extensions.luasnip",
+    config = function()
+      require('telescope').load_extension('luasnip')
+    end
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
+  { "chrisbra/csv.vim" },
   { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
