@@ -29,7 +29,7 @@ vim.opt.showbreak = "↳ "
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 vim.opt.clipboard = ""
 
@@ -139,7 +139,7 @@ lvim.keys.normal_mode["<C-q>"] = "<cmd>BufferKill<cr>"
 lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
 lvim.keys.normal_mode["<C-u>"] = "<C-u>zz"
 
-lvim.keys.visual_mode["gp"] = [["_dP]]
+-- lvim.keys.visual_mode["gp"] = [["_dP]]
 
 lvim.keys.normal_mode["<leader>c"] = false
 
@@ -151,8 +151,8 @@ vim.api.nvim_set_keymap("v", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-c>", "<esc>", { noremap = false, silent = true })
 
 -- move lines
-vim.api.nvim_set_keymap("v", "P", ":m '<-2<CR>gv=gv", { noremap = false, silent = true })
-vim.api.nvim_set_keymap("v", "N", ":m '>+1<CR>gv=gv", { noremap = false, silent = true })
+-- vim.api.nvim_set_keymap("v", "P", ":m '<-2<CR>gv=gv", { noremap = false, silent = true })
+-- vim.api.nvim_set_keymap("v", "N", ":m '>+1<CR>gv=gv", { noremap = false, silent = true })
 
 -- quick marco
 vim.api.nvim_set_keymap("n", "Q", "@@", { noremap = true })
@@ -453,8 +453,8 @@ linters.setup {
 
 --local code_actions = require "lvim.lsp.null-ls.code_actions"
 --code_actions.setup {
-  ---- { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
-  --{ exe = "cspell" },
+---- { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+--{ exe = "cspell" },
 --}
 
 local dap = require "dap"
@@ -526,8 +526,8 @@ lvim.plugins = {
   },
   -- {
   --   "tzachar/cmp-tabnine",
-  --   run = "./install.sh",
-  --   requires = "hrsh7th/nvim-cmp",
+  --   build = "./install.sh",
+  --   dependencies = "hrsh7th/nvim-cmp",
   --   event = "InsertEnter"
   -- },
   {
@@ -540,7 +540,6 @@ lvim.plugins = {
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
-    module = "persistence",
     config = function()
       require("persistence").setup {
         dir = vim.fn.expand("~/.cache/lvim/session/", nil),
@@ -689,7 +688,9 @@ lvim.plugins = {
       vim.g.lf_map_keys = 0
       vim.g.lf_replace_netrw = 1
     end,
-    requires = "voldikss/vim-floaterm"
+    cmd = "Lf",
+    lazy = true,
+    dependencies = "voldikss/vim-floaterm"
   },
   {
     "preservim/nerdcommenter",
@@ -888,7 +889,7 @@ lvim.plugins = {
   },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
+    build = "cd app && npm install",
     ft = "markdown",
     config = function()
       vim.g.mkdp_auto_start = 1
@@ -1016,35 +1017,49 @@ lvim.plugins = {
     end,
   },
   {
-    "benfowler/telescope-luasnip.nvim",
-    module = "telescope._extensions.luasnip",
-    config = function()
-      require('telescope').load_extension('luasnip')
-    end
+    "chrisbra/csv.vim",
+    ft = { "csv", "tsv" },
+  },
+  {
+    "dag/vim-fish",
+    ft = { "fish" },
+  },
+  {
+    "pantharshit00/vim-prisma",
+    ft = { "prisma" },
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = { "java" }
+  },
+  {
+    "glts/vim-textobj-comment",
+    dependencies = "kana/vim-textobj-user",
+  },
+  {
+    "Julian/vim-textobj-variable-segment",
+    dependencies = "kana/vim-textobj-user",
+  },
+  {
+    "kana/vim-textobj-indent",
+    dependencies = "kana/vim-textobj-user",
   },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
-  { "chrisbra/csv.vim" },
-  { "dag/vim-fish" },
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
   { "editorconfig/editorconfig-vim" },
-  { "glts/vim-textobj-comment" },
   { "inkarkat/vim-CursorLineCurrentWindow" },
   { "jiangmiao/auto-pairs" },
-  { "Julian/vim-textobj-variable-segment" },
   { "junegunn/vim-easy-align" },
-  { "kana/vim-textobj-indent" },
   { "kana/vim-textobj-user" },
   { "kristijanhusak/vim-dadbod-ui" },
-  { "mfussenegger/nvim-jdtls" },
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "p00f/nvim-ts-rainbow", },
-  { "pantharshit00/vim-prisma" },
   { "rbong/vim-flog" },
   { "sindrets/diffview.nvim" },
   { "stevearc/dressing.nvim" },
