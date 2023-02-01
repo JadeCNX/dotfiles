@@ -206,6 +206,39 @@ font:
 # draw_bold_text_with_bright_colors: true
 
 color_schemes:
+  onedarkpro: &onedarkpro
+    primary:
+      background: "#282c34"
+      foreground: "#abb2bf"
+
+    normal:
+      black: "#282c34"
+      red: "#e06c75"
+      green: "#98c379"
+      yellow: "#e5c07b"
+      blue: "#61afef"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#abb2bf"
+
+    bright:
+      black: "#5d636f"
+      red: "#ee8288"
+      green: "#c0e79a"
+      yellow: "#f8d893"
+      blue: "#7bb9f9"
+      magenta: "#d88ef8"
+      cyan: "#85d7e5"
+      white: "#cfd6e4"
+
+    cursor:
+      text: CellBackground
+      cursor: CellForeground # syntax-cursor-color
+
+    selection:
+      text: CellForeground
+      background: "#3e4452"
+
   onedark: &onedark # Default colors
     primary:
       background: "0x1e2127"
@@ -520,7 +553,7 @@ color_schemes:
       - { index: 16, color: "#FAB387" }
       - { index: 17, color: "#F5E0DC" }
 
-colors: *nightfox
+colors: *onedarkpro
 
 # Bell
 #

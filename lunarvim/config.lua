@@ -90,7 +90,7 @@ end
 
 -- general
 lvim.log.level = "error"
-lvim.colorscheme = "nightfox"
+lvim.colorscheme = "onedark_vivid"
 lvim.format_on_save = {
   pattern = "*.go",
 }
@@ -241,15 +241,20 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>Trouble lsp_references<cr>", "References" },
   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" }
+  q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
+  l = { "<cmd>Trouble loclist<cr>", "Location List" },
+  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" }
 }
+
+lvim.builtin.which_key.mappings["zz"] = { "<cmd>ZenMode<cr>", "Zen Mode" }
+lvim.builtin.which_key.mappings["zr"] = { [[ <cmd>exec &rnu==0? "set relativenumber" : "set norelativenumber"<cr> ]],
+  "Toggle relative line numbers" }
+
 
 lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
 lvim.builtin.which_key.mappings["lo"] = { [[<cmd>lua require("typescript").actions.organizeImports()<cr>]],
-  "Organiz Imports" }
+  "Organize Imports" }
 lvim.builtin.which_key.mappings["lO"] = { [[<cmd>lua require("typescript").actions.fixAll()<cr>]], "Fix All" }
 lvim.builtin.which_key.mappings["lm"] = { [[<cmd>lua require("typescript").actions.addMissingImports()<cr>]],
   "Add Missing Imports" }
@@ -262,7 +267,7 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
   "LSP format",
 }
 
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+
 -- lvim.builtin.alpha.active = false
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
@@ -312,8 +317,10 @@ lvim.builtin.treesitter.textobjects.select = {
   keymaps = {
     ["af"] = "@function.outer",
     ["if"] = "@function.inner",
-    ["ac"] = "@class.outer",
-    ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+    ["aC"] = "@class.outer",
+    ["iC"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+    ["ac"] = "@comment.outer",
+    ["ic"] = "@comment.outer",
   },
   selection_modes = {
     ['@parameter.outer'] = 'v',
@@ -401,11 +408,16 @@ lvim.lsp.null_ls.setup = {
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
+  { exe = "beautysh" },
   { exe = "black", filetypes = { "python" } },
   { exe = "isort", filetypes = { "python" } },
-  { exe = "beautysh" },
-  { exe = "prettier" }, --[[  , args = "--bracket-same-line"  ]]
-  { exe = "phpcsfixer" }
+  { exe = "phpcsfixer" },
+  { exe = "prettier" },
+  {
+    exe = "tidy",
+    filetypes = { "html" },
+    extra_args = { "--show-body-only", "y" },
+  },
 }
 
 -- -- set additional linters
@@ -1030,19 +1042,38 @@ lvim.plugins = {
   },
   {
     "mfussenegger/nvim-jdtls",
-    ft = { "java" }
+    ft = { "java" },
   },
   {
-    "glts/vim-textobj-comment",
-    dependencies = "kana/vim-textobj-user",
+    "chrisgrieser/nvim-various-textobjs",
+    config = function() require "various-textobjs".setup({ useDefaultKeymaps = true }) end,
   },
   {
-    "Julian/vim-textobj-variable-segment",
-    dependencies = "kana/vim-textobj-user",
+    "echasnovski/mini.nvim",
+    version = false
   },
   {
-    "kana/vim-textobj-indent",
-    dependencies = "kana/vim-textobj-user",
+    "olimorris/onedarkpro.nvim",
+    config = function()
+      require("onedarkpro").setup({
+        styles = {
+          types = "NONE",
+          methods = "NONE",
+          numbers = "NONE",
+          strings = "NONE",
+          comments = "italic",
+          keywords = "bold,italic",
+          constants = "NONE",
+          functions = "italic",
+          operators = "NONE",
+          variables = "NONE",
+          parameters = "NONE",
+          conditionals = "italic",
+          virtual_text = "NONE",
+        }
+      })
+
+    end
   },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
@@ -1054,7 +1085,6 @@ lvim.plugins = {
   { "inkarkat/vim-CursorLineCurrentWindow" },
   { "jiangmiao/auto-pairs" },
   { "junegunn/vim-easy-align" },
-  { "kana/vim-textobj-user" },
   { "kristijanhusak/vim-dadbod-ui" },
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
