@@ -247,7 +247,7 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 lvim.builtin.which_key.mappings["zz"] = { "<cmd>ZenMode<cr>", "Zen Mode" }
-lvim.builtin.which_key.mappings["zr"] = { [[ <cmd>exec &rnu==0? "set relativenumber" : "set norelativenumber"<cr> ]],
+lvim.builtin.which_key.mappings["zr"] = { [[ <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr> ]],
   "Toggle relative line numbers" }
 
 

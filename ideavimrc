@@ -42,8 +42,8 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
-map <c-d> = c-dzz
-map <c-u> = c-uzz
+nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
 
 nnoremap Y "*y
 vnoremap Y "*y
@@ -68,8 +68,7 @@ vnoremap - $
 
 " UI
 map <leader>zz <Action>(ToggleDistractionFreeMode)
-map <leader>zr <cmd>set relative<cr>
-map <leader>zn <cmd>set norelative<cr>
+map <leader>zn <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr> 
 
 " Files
 map <leader>f <Action>(GotoFile)
@@ -91,4 +90,8 @@ map <leader>ls <Action>(FileStructurePopup)
 " Debug
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>dd <Action>(Stop)
+map <leader>di <Action>(StepInto)
+map <leader>do <Action>(StepOver)
 map <leader>ds <Action>(Debug)
+map <leader>dS <Action>(DebugClass)
+map <leader>du <Action>(StepOut)
