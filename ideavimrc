@@ -80,12 +80,17 @@ map <leader>gL <Action>(Switcher)
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
 
 " Language
+map <leader>la <Action>(QuickActions)
 map <leader>lf <Action>(ReformatCode)
 map <leader>li <Action>(Annotate)
 map <leader>lj <Action>(GotoNextError)
 map <leader>lk <Action>(GotoPrevError)
+map <leader>lk <Action>(GotoPreviousError)
 map <leader>lr <Action>(RenameElement)
 map <leader>ls <Action>(FileStructurePopup)
+map <leader>lS <Action>(GotoSymbol)
+map <leader>lS <Action>(Refactorings.QuickListPopupAction)
+map K <Action>(ShowErrorDescription)
 
 " Debug
 map <leader>db <Action>(ToggleLineBreakpoint)
