@@ -1045,10 +1045,6 @@ lvim.plugins = {
     ft = { "java" },
   },
   {
-    "chrisgrieser/nvim-various-textobjs",
-    config = function() require "various-textobjs".setup({ useDefaultKeymaps = true }) end,
-  },
-  {
     "echasnovski/mini.nvim",
     version = false
   },
@@ -1075,6 +1071,18 @@ lvim.plugins = {
 
     end
   },
+  {
+    "glts/vim-textobj-comment",
+    dependencies = "kana/vim-textobj-user",
+  },
+  {
+    "Julian/vim-textobj-variable-segment",
+    dependencies = "kana/vim-textobj-user",
+  },
+  {
+    "kana/vim-textobj-indent",
+    dependencies = "kana/vim-textobj-user",
+  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
@@ -1085,6 +1093,7 @@ lvim.plugins = {
   { "inkarkat/vim-CursorLineCurrentWindow" },
   { "jiangmiao/auto-pairs" },
   { "junegunn/vim-easy-align" },
+  { "kana/vim-textobj-user" },
   { "kristijanhusak/vim-dadbod-ui" },
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
