@@ -1049,6 +1049,7 @@ lvim.plugins = {
   { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user" },
   { "junegunn/vim-easy-align" },
   { "kana/vim-textobj-indent", dependencies = "kana/vim-textobj-user" },
+  { "kana/vim-textobj-line", dependencies = "kana/vim-textobj-user" },
   { "kana/vim-textobj-user" },
   { "kristijanhusak/vim-dadbod-ui" },
   { "mfussenegger/nvim-jdtls", ft = { "java" } },
@@ -1071,5 +1072,6 @@ lvim.plugins = {
   { "tpope/vim-sleuth" },
   { "tpope/vim-unimpaired" },
   { "vim-scripts/LargeFile" },
+  { "vimtaku/vim-textobj-keyvalue", dependencies = "kana/vim-textobj-user" },
   { "wellle/targets.vim" },
 }
