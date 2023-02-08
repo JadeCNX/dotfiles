@@ -318,9 +318,7 @@ lvim.builtin.treesitter.textobjects.select = {
     ["af"] = "@function.outer",
     ["if"] = "@function.inner",
     ["aC"] = "@class.outer",
-    ["iC"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-    ["ac"] = "@comment.outer",
-    ["ic"] = "@comment.outer",
+    ["iC"] = "@class.inner",
   },
   selection_modes = {
     ['@parameter.outer'] = 'v',
@@ -532,10 +530,6 @@ snip.filetype_extend("typescriptreact", { "javascript" })
 
 -- Additional Plugins
 lvim.plugins = {
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle"
-  },
   -- {
   --   "tzachar/cmp-tabnine",
   --   build = "./install.sh",
@@ -654,10 +648,6 @@ lvim.plugins = {
     end
   },
   {
-    "simnalamburt/vim-mundo",
-    cmd = "MundoToggle"
-  },
-  {
     "monaqa/dial.nvim",
     config = function()
       local augend = require("dial.augend")
@@ -691,10 +681,6 @@ lvim.plugins = {
     end
   },
   {
-    "felipec/vim-sanegx",
-    event = "BufRead"
-  },
-  {
     "ptzz/lf.vim",
     config = function()
       vim.g.lf_map_keys = 0
@@ -710,10 +696,6 @@ lvim.plugins = {
       vim.g.NERDSpaceDelims = 1
       vim.g.NERDDefaultAlign = "both"
     end
-  },
-  {
-    "ellisonleao/glow.nvim",
-    ft = { "markdown" }
   },
   {
     "nacro90/numb.nvim",
@@ -765,10 +747,6 @@ lvim.plugins = {
         }
       )
     end
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline"
   },
   {
     "ray-x/lsp_signature.nvim",
@@ -1029,26 +1007,6 @@ lvim.plugins = {
     end,
   },
   {
-    "chrisbra/csv.vim",
-    ft = { "csv", "tsv" },
-  },
-  {
-    "dag/vim-fish",
-    ft = { "fish" },
-  },
-  {
-    "pantharshit00/vim-prisma",
-    ft = { "prisma" },
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    ft = { "java" },
-  },
-  {
-    "echasnovski/mini.nvim",
-    version = false
-  },
-  {
     "olimorris/onedarkpro.nvim",
     config = function()
       require("onedarkpro").setup({
@@ -1071,35 +1029,37 @@ lvim.plugins = {
 
     end
   },
-  {
-    "glts/vim-textobj-comment",
-    dependencies = "kana/vim-textobj-user",
-  },
-  {
-    "Julian/vim-textobj-variable-segment",
-    dependencies = "kana/vim-textobj-user",
-  },
-  {
-    "kana/vim-textobj-indent",
-    dependencies = "kana/vim-textobj-user",
-  },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
+  { "chrisbra/csv.vim", ft = { "csv", "tsv" }, },
+  { "dag/vim-fish", ft = { "fish" } },
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
+  { "echasnovski/mini.nvim", version = false },
   { "editorconfig/editorconfig-vim" },
+  { "ellisonleao/glow.nvim", ft = { "markdown" } },
+  { "felipec/vim-sanegx", event = "BufRead" },
+  { "folke/trouble.nvim", cmd = "TroubleToggle" },
+  { "fvictorio/vim-textobj-backticks", dependencies = "kana/vim-textobj-user" },
+  { "glts/vim-textobj-comment", dependencies = "kana/vim-textobj-user" },
   { "inkarkat/vim-CursorLineCurrentWindow" },
   { "jiangmiao/auto-pairs" },
+  { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user" },
   { "junegunn/vim-easy-align" },
+  { "kana/vim-textobj-indent", dependencies = "kana/vim-textobj-user" },
   { "kana/vim-textobj-user" },
   { "kristijanhusak/vim-dadbod-ui" },
+  { "mfussenegger/nvim-jdtls", ft = { "java" } },
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "p00f/nvim-ts-rainbow", },
+  { "pantharshit00/vim-prisma", ft = { "prisma" } },
   { "rbong/vim-flog" },
+  { "simnalamburt/vim-mundo", cmd = "MundoToggle" },
+  { "simrat39/symbols-outline.nvim", cmd = "SymbolsOutline" },
   { "sindrets/diffview.nvim" },
   { "stevearc/dressing.nvim" },
   { "tmux-plugins/vim-tmux-focus-events" },
