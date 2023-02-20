@@ -55,8 +55,8 @@ map <space>h :<c-u>noh<cr>
 
 nnoremap c* *Ncgn
 
-vnoremap <silent> * "cy/c<cr>
-vnoremap <silent> # "cy/c<cr>
+vnoremap <silent> * y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap <silent> # y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 nmap <space>ee :<C-u>:NERDTreeToggle<cr>
 nmap <space>ef :<C-u>:NERDTreeFocus<cr>
@@ -72,6 +72,7 @@ map <leader>zn <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"
 
 " Files
 map <leader>f <Action>(GotoFile)
+map <leader>b <Action>(GotoFile)
 map <leader>/ <Action>(FindInPath)
 map <leader>ef <Action>(SelectInProjectView)
 

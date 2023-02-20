@@ -30,6 +30,7 @@ vim.opt.showbreak = "↳ "
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
+vim.opt.showtabline = 0
 
 vim.opt.clipboard = ""
 
@@ -50,7 +51,8 @@ vim.g.AutoPairsShortcutJump = ""
 vim.g.loaded_matchit = 1
 -- vim.g.loaded_matchparen = 1
 
-vim.opt.guicursor = [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-lCursor,sm:block-blinkwait175-blinkoff150-blinkon175]]
+vim.opt.guicursor =
+[[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-lCursor,sm:block-blinkwait175-blinkoff150-blinkon175]]
 --vim.api.nvim_set_hl(0, "lCursor", { reverse = true })
 
 if vim.g.neovide then
@@ -166,7 +168,7 @@ vim.api.nvim_set_keymap("v", "Y", '"*y', { noremap = true })
 
 -- https://youtu.be/YwMgnmZNWXA
 vim.api.nvim_set_keymap("n", "c*", "*Ncgn", { noremap = true })
-vim.api.nvim_set_keymap("v", "*", "y/0<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "*", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true, silent = true })
 
 -- to the end of line
 vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
@@ -210,10 +212,14 @@ lvim.builtin.which_key.mappings["/"] = { "<cmd>lua require'telescope.builtin'.li
 
 lvim.builtin.which_key.mappings["F"] = { "<cmd>lua require'telescope.builtin'.find_files{}<cr>", "Search Files" }
 
-lvim.builtin.which_key.mappings["s."] = { "<cmd>lua require'telescope.builtin'.resume{ sources = {'gitmoji'}}<cr>",
-  "Search Resume" }
-lvim.builtin.which_key.mappings["se"] = { "<cmd>lua require'telescope.builtin'.symbols{ sources = {'gitmoji'}}<cr>",
-  "Search Emoji" }
+lvim.builtin.which_key.mappings["s."] = {
+  "<cmd>lua require'telescope.builtin'.resume{ sources = {'gitmoji'}}<cr>",
+  "Search Resume",
+}
+lvim.builtin.which_key.mappings["se"] = {
+  "<cmd>lua require'telescope.builtin'.symbols{ sources = {'gitmoji'}}<cr>",
+  "Search Emoji",
+}
 lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require'telescope.builtin'.spell_suggest{}<cr>", "Spell Suggest" }
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
@@ -235,6 +241,7 @@ lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require'telescope.builtin'.s
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find Buffers" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<cr>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
@@ -246,18 +253,27 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" }
 }
 
-lvim.builtin.which_key.mappings["zz"] = { "<cmd>ZenMode<cr>", "Zen Mode" }
-lvim.builtin.which_key.mappings["zr"] = { [[ <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr> ]],
-  "Toggle relative line numbers" }
-
+lvim.builtin.which_key.mappings["zz"] = { "<cmd>TZFocus<cr>", "Zen Focus" }
+lvim.builtin.which_key.mappings["zn"] = { "<cmd>'<,'>TZNarrow<cr>", "Zen Narrow" }
+lvim.builtin.which_key.mappings["za"] = { "<cmd>TZAtaraxis<cr>", "Zen Ataraxis" }
+lvim.builtin.which_key.mappings["zm"] = { "<cmd>TZMinimalist<cr>", "Zen MInimalist" }
+lvim.builtin.which_key.mappings["zw"] = { [[ <cmd>exec &wrap==0 ? "set wrap" : "set nowrap"<cr> ]], "Toggle wrap" }
+lvim.builtin.which_key.mappings["zr"] = {
+  [[ <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr> ]],
+  "Toggle relative line numbers",
+}
 
 lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
-lvim.builtin.which_key.mappings["lo"] = { [[<cmd>lua require("typescript").actions.organizeImports()<cr>]],
-  "Organize Imports" }
+lvim.builtin.which_key.mappings["lo"] = {
+  [[<cmd>lua require("typescript").actions.organizeImports()<cr>]],
+  "Organize Imports",
+}
 lvim.builtin.which_key.mappings["lO"] = { [[<cmd>lua require("typescript").actions.fixAll()<cr>]], "Fix All" }
-lvim.builtin.which_key.mappings["lm"] = { [[<cmd>lua require("typescript").actions.addMissingImports()<cr>]],
-  "Add Missing Imports" }
+lvim.builtin.which_key.mappings["lm"] = {
+  [[<cmd>lua require("typescript").actions.addMissingImports()<cr>]],
+  "Add Missing Imports",
+}
 lvim.builtin.which_key.mappings["lM"] = { [[<cmd>lua require("typescript").actions.removeUnused()<cr>]], "Remove Unused" }
 
 lvim.builtin.which_key.mappings["l"]["f"] = {
@@ -272,6 +288,14 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
+lvim.builtin.bufferline.options.mode = "tabs"
+lvim.builtin.bufferline.active = false
+lvim.builtin.bufferline.options.truncate_names = false
+lvim.builtin.bufferline.options.always_show_bufferline = false
+lvim.builtin.bufferline.options.name_formatter = function(buf)
+  return vim.fn.fnamemodify(buf.name, ":p")
+end
+
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 
@@ -341,43 +365,44 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
-lvim.lsp.automatic_configuration.skipped_servers = {
-  "ansiblels",
-  "ccls",
-  "csharp_ls",
-  "cssmodules_ls",
-  "denols",
-  "ember",
-  "emmet_ls",
-  "glint",
-  "golangci_lint_ls",
-  "gradle_ls",
-  "jedi_language_server",
-  "ltex",
-  "neocmake",
-  "ocamlls",
-  "phpactor",
-  "psalm",
-  "pylsp",
-  "quick_lint_js",
-  "reason_ls",
-  "rome",
-  "ruby_ls",
-  "scry",
-  "solang",
-  "solc",
-  "solidity_ls",
-  "sorbet",
-  "sourcekit",
-  "sourcery",
-  "spectral",
-  "sqlls",
-  "sqls",
-  "stylelint_lsp",
-  "svlangserver",
-  "tflint",
-  "verible",
-}
+-- lvim.lsp.automatic_configuration.skipped_servers = {
+--   "ansiblels",
+--   "ccls",
+--   "csharp_ls",
+--   "cssmodules_ls",
+--   "denols",
+--   "ember",
+--   "emmet_ls",
+--   "glint",
+--   "golangci_lint_ls",
+--   "gradle_ls",
+--   "jedi_language_server",
+--   "ltex",
+--   "neocmake",
+--   "ocamlls",
+--   "phpactor",
+--   "psalm",
+--   "pylsp",
+--   "quick_lint_js",
+--   "reason_ls",
+--   "rome",
+--   "ruby_ls",
+--   "ruff_lsp",
+--   "scry",
+--   "solang",
+--   "solc",
+--   "solidity_ls",
+--   "sorbet",
+--   "sourcekit",
+--   "sourcery",
+--   "spectral",
+--   "sqlls",
+--   "sqls",
+--   "stylelint_lsp",
+--   "svlangserver",
+--   "tflint",
+--   "verible",
+-- }
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
@@ -407,15 +432,11 @@ lvim.lsp.null_ls.setup = {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { exe = "beautysh" },
-  { exe = "black", filetypes = { "python" } },
-  { exe = "isort", filetypes = { "python" } },
+  { exe = "black",     filetypes = { "python" } },
+  { exe = "isort",     filetypes = { "python" } },
   { exe = "phpcsfixer" },
   { exe = "prettier" },
-  {
-    exe = "tidy",
-    filetypes = { "html" },
-    extra_args = { "--show-body-only", "y" },
-  },
+  { exe = "tidy",      filetypes = { "html", "xml" }, extra_args = { "--show-body-only", "y" } },
 }
 
 -- -- set additional linters
@@ -445,27 +466,27 @@ linters.setup {
   --   }
   -- },
   -- {
-  --   exe = "eslint",
-  --   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-  --   -- diagnostic_config = {
-  --   --   underline = true,
-  --   --   virtual_text = true,
-  --   --   signs = true,
-  --   --   update_in_insert = false,
-  --   --   severity_sort = true,
-  --   -- }
+  exe = "eslint",
+  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  -- diagnostic_config = {
+  --   underline = true,
+  --   virtual_text = true,
+  --   signs = true,
+  --   update_in_insert = false,
+  --   severity_sort = true,
+  -- }
   -- },
   { exe = "php" },
-  { exe = "pylama", filetypes = { "python" } },
+  -- { exe = "pylama", filetypes = { "python" } },
   { exe = "shellcheck", filetypes = { "sh", "bash" } },
-  { exe = "zsh", filetype = { "zsh" } },
+  { exe = "zsh",        filetype = { "zsh" } },
 }
 
---local code_actions = require "lvim.lsp.null-ls.code_actions"
---code_actions.setup {
----- { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
---{ exe = "cspell" },
---}
+local code_actions = require "lvim.lsp.null-ls.code_actions"
+code_actions.setup {
+  { exe = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
+  --{ exe = "cspell" },
+}
 
 local dap = require "dap"
 for _, language in ipairs({ "typescript", "javascript" }) do
@@ -729,12 +750,12 @@ lvim.plugins = {
     config = function()
       require("colorizer").setup(
         {
-          'css';
-          'html';
-          'javascript';
-          'javascriptreact';
-          'typescript';
-          'typescriptreact';
+          'css',
+          'html',
+          'javascript',
+          'javascriptreact',
+          'typescript',
+          'typescriptreact',
         },
         {
           RGB = true,
@@ -964,7 +985,6 @@ lvim.plugins = {
           buffer_inactive_target = true,
         },
       })
-
     end,
   },
   -- { "zbirenbaum/copilot.lua",
@@ -980,12 +1000,6 @@ lvim.plugins = {
   -- { "zbirenbaum/copilot-cmp",
   --   after = { "copilot.lua", "nvim-cmp" },
   -- },
-  {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup {}
-    end,
-  },
   {
     "folke/twilight.nvim",
     config = function()
@@ -1026,41 +1040,41 @@ lvim.plugins = {
           virtual_text = "NONE",
         }
       })
-
     end
   },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
-  { "chrisbra/csv.vim", ft = { "csv", "tsv" }, },
-  { "dag/vim-fish", ft = { "fish" } },
+  { "chrisbra/csv.vim",                           ft = { "csv", "tsv" }, },
+  { "dag/vim-fish",                               ft = { "fish" } },
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
-  { "echasnovski/mini.nvim", version = false },
+  { "echasnovski/mini.nvim",                      version = false },
   { "editorconfig/editorconfig-vim" },
-  { "ellisonleao/glow.nvim", ft = { "markdown" } },
-  { "felipec/vim-sanegx", event = "BufRead" },
-  { "folke/trouble.nvim", cmd = "TroubleToggle" },
-  { "fvictorio/vim-textobj-backticks", dependencies = "kana/vim-textobj-user" },
-  { "glts/vim-textobj-comment", dependencies = "kana/vim-textobj-user" },
+  { "ellisonleao/glow.nvim",                      ft = { "markdown" } },
+  { "felipec/vim-sanegx",                         event = "BufRead" },
+  { "folke/trouble.nvim",                         cmd = "TroubleToggle" },
+  { "fvictorio/vim-textobj-backticks",            dependencies = "kana/vim-textobj-user" },
+  { "glts/vim-textobj-comment",                   dependencies = "kana/vim-textobj-user" },
   { "inkarkat/vim-CursorLineCurrentWindow" },
   { "jiangmiao/auto-pairs" },
-  { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user" },
+  { "Julian/vim-textobj-variable-segment",        dependencies = "kana/vim-textobj-user" },
   { "junegunn/vim-easy-align" },
-  { "kana/vim-textobj-indent", dependencies = "kana/vim-textobj-user" },
-  { "kana/vim-textobj-line", dependencies = "kana/vim-textobj-user" },
+  { "kana/vim-textobj-indent",                    dependencies = "kana/vim-textobj-user" },
+  { "kana/vim-textobj-line",                      dependencies = "kana/vim-textobj-user" },
   { "kana/vim-textobj-user" },
   { "kristijanhusak/vim-dadbod-ui" },
-  { "mfussenegger/nvim-jdtls", ft = { "java" } },
+  { "mfussenegger/nvim-jdtls",                    ft = { "java" } },
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "p00f/nvim-ts-rainbow", },
-  { "pantharshit00/vim-prisma", ft = { "prisma" } },
+  { "pantharshit00/vim-prisma",                   ft = { "prisma" } },
+  { "Pocco81/true-zen.nvim", },
   { "rbong/vim-flog" },
-  { "simnalamburt/vim-mundo", cmd = "MundoToggle" },
-  { "simrat39/symbols-outline.nvim", cmd = "SymbolsOutline" },
+  { "simnalamburt/vim-mundo",                     cmd = "MundoToggle" },
+  { "simrat39/symbols-outline.nvim",              cmd = "SymbolsOutline" },
   { "sindrets/diffview.nvim" },
   { "stevearc/dressing.nvim" },
   { "tmux-plugins/vim-tmux-focus-events" },
@@ -1072,6 +1086,6 @@ lvim.plugins = {
   { "tpope/vim-sleuth" },
   { "tpope/vim-unimpaired" },
   { "vim-scripts/LargeFile" },
-  { "vimtaku/vim-textobj-keyvalue", dependencies = "kana/vim-textobj-user" },
+  { "vimtaku/vim-textobj-keyvalue",               dependencies = "kana/vim-textobj-user" },
   { "wellle/targets.vim" },
 }
