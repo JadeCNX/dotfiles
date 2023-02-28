@@ -48,7 +48,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
    x: 0
-   y: 8
+   y: 2
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -62,7 +62,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: buttonless
+  #decorations: buttonless
 
   # Background opacity
   #
@@ -79,7 +79,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  #startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -179,7 +179,7 @@ font:
     style: Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

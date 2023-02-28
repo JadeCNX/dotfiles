@@ -286,6 +286,7 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 
 -- lvim.builtin.alpha.active = false
 lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.alpha.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.options.mode = "tabs"
@@ -866,12 +867,6 @@ lvim.plugins = {
               ["Dockerfile*"] = "dockerfile",
               ["Jenkinsfile*"] = "groovy"
             },
-            function_complex = {
-              ["*.fish"] = function()
-                vim.cmd("compiler fish")
-                vim.cmd("set foldmethod=expr")
-              end
-            },
             shebang = {
               dash = "sh"
             }
@@ -1069,7 +1064,7 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
-  { "p00f/nvim-ts-rainbow", },
+  -- { "p00f/nvim-ts-rainbow", },
   { "pantharshit00/vim-prisma",                   ft = { "prisma" } },
   { "Pocco81/true-zen.nvim", },
   { "rbong/vim-flog" },
