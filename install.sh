@@ -38,7 +38,7 @@ link hyper "$PWD"/hyper.js ~/.hyper.js
 link emacs "$PWD"/spacemacs.d/init.el ~/.spacemacs.d/init.el
 
 # tmux
-link tmux "$PWD"/tmux.conf ~/.tmux.conf
+link tmux "$PWD"/tmux/tmux.conf ~/.tmux.conf
 
 # vim
 link vim "$PWD"/vimrcs/vimrc.vim ~/.vimrc
