@@ -17,7 +17,6 @@ link() {
   source=$2
   destination=$3
   if [[ -n "$specific_config" ]] && [[ "$specific_config" != "$config" ]]; then
-    echo "SKIP: $config"
     return
   fi
   echo "SET: $config - $destination"
@@ -92,3 +91,6 @@ link ideavim "$PWD"/ideavimrc ~/.ideavimrc
 
 # vrapper
 link vrapper "$PWD"/vrapperrc ~/.vrapperrc
+
+# zellij
+link zellij "$PWD"/zellij/config.kdl ~/.config/zellij/config.kdl
