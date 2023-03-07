@@ -21,5 +21,6 @@ private-*
 .luarc.json
 .sqlfluff
 .sourcery.yaml
+.project
 
 src/main/generated

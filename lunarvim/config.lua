@@ -102,7 +102,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.scrollopt:append "hor"
 
-lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "main.go" }
+lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "main.go", '.project' }
 
 -- Trigger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
@@ -365,7 +365,7 @@ lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions")
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "lemminx" })
 -- lvim.lsp.automatic_configuration.skipped_servers = {
 --   "ansiblels",
 --   "ccls",
@@ -437,7 +437,7 @@ formatters.setup {
   { exe = "isort",     filetypes = { "python" } },
   { exe = "phpcsfixer" },
   { exe = "prettier" },
-  { exe = "tidy",      filetypes = { "html", "xml" }, extra_args = { "--show-body-only", "y" } },
+  -- { exe = "tidy",      filetypes = { "html", "xml" }, extra_args = { "--show-body-only", "y" } },
 }
 
 -- -- set additional linters
@@ -1045,7 +1045,7 @@ lvim.plugins = {
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
-  { "echasnovski/mini.nvim",                      version = false },
+  -- { "echasnovski/mini.nvim",                      version = false },
   { "editorconfig/editorconfig-vim" },
   { "ellisonleao/glow.nvim",                      ft = { "markdown" } },
   { "felipec/vim-sanegx",                         event = "BufRead" },
