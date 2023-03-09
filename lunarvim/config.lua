@@ -254,7 +254,6 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 lvim.builtin.which_key.mappings["zz"] = { "<cmd>TZFocus<cr>", "Zen Focus" }
-lvim.builtin.which_key.mappings["zn"] = { "<cmd>'<,'>TZNarrow<cr>", "Zen Narrow" }
 lvim.builtin.which_key.mappings["za"] = { "<cmd>TZAtaraxis<cr>", "Zen Ataraxis" }
 lvim.builtin.which_key.mappings["zm"] = { "<cmd>TZMinimalist<cr>", "Zen MInimalist" }
 lvim.builtin.which_key.mappings["zw"] = { [[ <cmd>exec &wrap==0 ? "set wrap" : "set nowrap"<cr> ]], "Toggle wrap" }
@@ -262,6 +261,7 @@ lvim.builtin.which_key.mappings["zr"] = {
   [[ <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr> ]],
   "Toggle relative line numbers",
 }
+lvim.builtin.which_key.vmappings["zn"] = { "<cmd>'<,'>TZNarrow<cr>", "Zen Narrow" }
 
 lvim.builtin.which_key.mappings["gB"] = { "<cmd>Git blame<cr>", "Git blame" }
 
@@ -730,23 +730,6 @@ lvim.plugins = {
     end
   },
   {
-    "romgrk/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup {
-        enable = true,
-        throttle = true,
-        max_lines = 0,
-        patterns = {
-          default = {
-            "class",
-            "function",
-            "method"
-          }
-        }
-      }
-    end
-  },
-  {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup(
@@ -834,13 +817,6 @@ lvim.plugins = {
         "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>",
         { noremap = true }
       )
-    end
-  },
-  {
-    "chrisbra/NrrwRgn",
-    config = function()
-      vim.g.nrrw_rgn_nomap_nr = 1
-      vim.g.nrrw_rgn_nomap_Nr = 1
     end
   },
   {
@@ -1064,10 +1040,11 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
-  -- { "p00f/nvim-ts-rainbow", },
+  { "p00f/nvim-ts-rainbow", },
   { "pantharshit00/vim-prisma",                   ft = { "prisma" } },
   { "Pocco81/true-zen.nvim", },
   { "rbong/vim-flog" },
+  { "romgrk/nvim-treesitter-context" },
   { "simnalamburt/vim-mundo",                     cmd = "MundoToggle" },
   { "simrat39/symbols-outline.nvim",              cmd = "SymbolsOutline" },
   { "sindrets/diffview.nvim" },
