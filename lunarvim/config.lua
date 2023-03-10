@@ -552,12 +552,6 @@ snip.filetype_extend("typescriptreact", { "javascript" })
 
 -- Additional Plugins
 lvim.plugins = {
-  -- {
-  --   "tzachar/cmp-tabnine",
-  --   build = "./install.sh",
-  --   dependencies = "hrsh7th/nvim-cmp",
-  --   event = "InsertEnter"
-  -- },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
@@ -934,30 +928,6 @@ lvim.plugins = {
       vim.g.tmux_navigator_preserve_zoom = 1
     end
   },
-  { "levouh/tint.nvim",
-    config = function()
-      require('tint').setup({
-        tint_background_colors = false,
-      })
-    end
-  },
-  {
-    "lunarvim/synthwave84.nvim",
-    config = function()
-      require 'synthwave84'.setup({
-        glow = {
-          error_msg = true,
-          type2 = true,
-          func = true,
-          keyword = true,
-          operator = false,
-          buffer_current_target = true,
-          buffer_visible_target = true,
-          buffer_inactive_target = true,
-        },
-      })
-    end,
-  },
   -- { "zbirenbaum/copilot.lua",
   --   event = { "VimEnter" },
   --   config = function()
@@ -971,12 +941,6 @@ lvim.plugins = {
   -- { "zbirenbaum/copilot-cmp",
   --   after = { "copilot.lua", "nvim-cmp" },
   -- },
-  {
-    "folke/twilight.nvim",
-    config = function()
-      require("twilight").setup {}
-    end,
-  },
   {
     "rareitems/printer.nvim",
     config = function()
