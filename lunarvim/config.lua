@@ -992,6 +992,13 @@ lvim.plugins = {
     end,
   },
   {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    config = function()
+      require("symbols-outline").setup()
+    end
+  },
+  {
     "olimorris/onedarkpro.nvim",
     config = function()
       require("onedarkpro").setup({
@@ -1021,7 +1028,6 @@ lvim.plugins = {
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
-  -- { "echasnovski/mini.nvim",                      version = false },
   { "editorconfig/editorconfig-vim" },
   { "ellisonleao/glow.nvim",                      ft = { "markdown" } },
   { "felipec/vim-sanegx",                         event = "BufRead" },
@@ -1040,13 +1046,11 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
-  { "p00f/nvim-ts-rainbow", },
   { "pantharshit00/vim-prisma",                   ft = { "prisma" } },
   { "Pocco81/true-zen.nvim", },
   { "rbong/vim-flog" },
   { "romgrk/nvim-treesitter-context" },
   { "simnalamburt/vim-mundo",                     cmd = "MundoToggle" },
-  { "simrat39/symbols-outline.nvim",              cmd = "SymbolsOutline" },
   { "sindrets/diffview.nvim" },
   { "stevearc/dressing.nvim" },
   { "tmux-plugins/vim-tmux-focus-events" },
