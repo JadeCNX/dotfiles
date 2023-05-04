@@ -34,8 +34,8 @@ imap jj <C-c>
 
 let mapleader=" "
 
-map s <Plug>(easymotion-s2)
-map S <Plug>(easymotion-s2)
+nnoremap s <Plug>(easymotion-s2)
+nnoremap S <Plug>(easymotion-s2)
 
 map <c-h> <c-w>h
 map <c-j> <c-w>j
@@ -68,7 +68,7 @@ vnoremap - $
 
 " UI
 map <leader>zz <Action>(ToggleDistractionFreeMode)
-map <leader>zn <cmd>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr> 
+map <leader>zn <C-u>:exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr>
 
 " Files
 map <leader>f <Action>(GotoFile)

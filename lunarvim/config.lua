@@ -100,7 +100,7 @@ lvim.format_on_save = {
 -- scroll off
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.scrollopt:append "hor"
+vim.opt.scrollopt = "ver,jump,hor"
 
 lvim.builtin.project.patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "main.go", '.project' }
 
@@ -300,12 +300,11 @@ end
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 
-lvim.builtin.gitsigns.word_diff = true
-lvim.builtin.gitsigns.current_line_blame = true
-lvim.builtin.gitsigns.current_line_blame_opts = {
+lvim.builtin.gitsigns.opts.current_line_blame = true
+lvim.builtin.gitsigns.opts.current_line_blame_opts = {
   virt_text = true,
-  virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
-  delay = 180,
+  virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+  delay = 100,
   ignore_whitespace = true
 }
 
@@ -356,7 +355,7 @@ lvim.builtin.telescope.defaults.preview = { treesitter = false }
 lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions").close
 
 -- Disable virtual text
--- lvim.lsp.diagnostics.virtual_text = false
+lvim.lsp.diagnostics.virtual_text = false
 
 -- generic LSP settings
 
@@ -871,22 +870,26 @@ lvim.plugins = {
       vim.g.mkdp_auto_start = 1
     end,
   },
-  { "ggandor/leap.nvim",
+  {
+    "ggandor/leap.nvim",
     config = function()
       require('leap').add_default_mappings()
     end
   },
-  { "kylechui/nvim-surround",
+  {
+    "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup()
     end
   },
-  { "j-hui/fidget.nvim",
+  {
+    "j-hui/fidget.nvim",
     config = function()
       require("fidget").setup {}
     end
   },
-  { "EdenEast/nightfox.nvim",
+  {
+    "EdenEast/nightfox.nvim",
     config = function()
       require('nightfox').setup({
         options = {
@@ -899,7 +902,8 @@ lvim.plugins = {
       })
     end
   },
-  { "Wansmer/treesj",
+  {
+    "Wansmer/treesj",
     config = function()
       require 'treesj'.setup {
         use_default_keymaps = false,
@@ -922,7 +926,8 @@ lvim.plugins = {
       })
     end
   },
-  { "christoomey/vim-tmux-navigator",
+  {
+    "christoomey/vim-tmux-navigator",
     config = function()
       vim.g.tmux_navigator_disable_when_zoomed = 1
       vim.g.tmux_navigator_preserve_zoom = 1
