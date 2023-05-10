@@ -92,9 +92,9 @@ end
 
 -- general
 lvim.log.level = "error"
-lvim.colorscheme = "onedark_vivid"
+lvim.colorscheme = "catppuccin-mocha"
 lvim.format_on_save = {
-  pattern = "*.go",
+  pattern = "*.go,*.lua",
 }
 
 -- scroll off
@@ -981,6 +981,7 @@ lvim.plugins = {
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
+  { "catppuccin/nvim",                            name = "catppuccin" },
   { "chrisbra/csv.vim",                           ft = { "csv", "tsv" }, },
   { "dag/vim-fish",                               ft = { "fish" } },
   { "dbakker/vim-paragraph-motion" },

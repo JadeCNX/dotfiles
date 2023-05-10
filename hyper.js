@@ -9,11 +9,11 @@ module.exports = {
     updateChannel: "stable",
 
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily:
-      '"OperatorMonoSSmLig Nerd Font", "VictorMono Nerd Font", "FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      '"DankMono Nerd Font", "OperatorMonoSSmLig Nerd Font", "VictorMono Nerd Font", "FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
@@ -143,27 +143,7 @@ module.exports = {
       fontFamily: '"OperatorMonoSSmLig Nerd Font"',
       fontSize: 12,
     },
-    materialBox: {
-      scheme: "one-dark",
-    },
-    MaterialTheme: {
-      // Set the theme variant,
-      // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
-      theme: "",
-
-      // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
-      // OPTIONS: From 0.1 to 1
-      backgroundOpacity: ".4",
-
-      // [Optional] Set the accent color for the current active tab
-      accentColor: "#64FFDA",
-
-      // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
-      // OPTIONS: 'dark', 'ultra-dark', 'bright'
-      // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
-      vibrancy: "ultra-dark",
-    },
-    catppuccinTheme: 'moccha',
+    catppuccinTheme: "mocha",
   },
 
   // a list of plugins to fetch and install from npm
@@ -174,6 +154,7 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     "git-falcon9",
+    "hyperline",
     "hypurr#latest",
     // 'gitrocket',
     // 'hyper-rose-pine',
@@ -193,14 +174,13 @@ module.exports = {
     // 'hyper-statusline',
     // 'hyperborder',
     // 'hypercwd',
-    "hyperline",
     // 'hyperpower',
     // 'hyperterm-alternatescroll',
     // 'hyperterm-atom-dark',
     // 'hyperterm-monokai',
     // 'hyperterm-new-moon-theme',
     // 'space-pull',
-    "verminal",
+    // "verminal",
   ],
 
   // in development, you can create a directory under
