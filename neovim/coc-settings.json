@@ -1,14 +1,9 @@
 {
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "prisma"
-  ],
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.enabled": false,
-  "cSpell.showCommandsInEditorContextMenu": false,
-  "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.enableSign": true,
-  "diagnostic.locationlistUpdate":true,
+  "diagnostic.locationlistUpdate": true,
   "diagnostic.refreshOnInsertMode": true,
   "explorer.file.reveal.auto": true,
   "explorer.icon.enableNerdfont": true,
@@ -26,9 +21,6 @@
       "args": ["--stdio"]
     }
   },
-  "list.indicator": ">",
-  "list.nextKeymap": "<c-n>",
-  "list.previousKeymap": "<c-p>",
   "python.pythonPath": "python3",
   "signature.target": "float",
   "snippets.autoTrigger": true,
@@ -39,16 +31,6 @@
     "typescript": ["javascript"]
   },
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
-  "suggest.echodocSupport": true,
-  "suggest.enablePreview": true,
-  "suggest.floatEnable": true,
-  "suggest.snippetIndicator": "   (Snippet)",
   "suggest.triggerAfterInsertEnter": true,
-  "cSpell.userWords": [
-    "JWKS",
-    "Unmount",
-    "resizer",
-    "semibold",
-    "toastify"
-  ]
+  "cSpell.userWords": ["JWKS", "Unmount", "resizer", "semibold", "toastify"]
 }

@@ -428,6 +428,27 @@ lvim.lsp.null_ls.setup = {
   fallback_severity = vim.diagnostic.severity.INFO
 }
 
+vim.filetype.add({
+  extensions = {
+    mm = "objc",
+    conf = "sh",
+    php = "php",
+    tsv = "csv",
+  },
+  filename = {
+    ["Dockerfile"] = "dockerfile",
+    [".prettierrc"] = "yaml",
+    [".env"] = "sh",
+    [".sqlfluff"] = "toml",
+    ["fish_variables"] = "fish",
+    ["Jenkinsfile"] = "groovy"
+  },
+  pattern = {
+    ["Dockerfile*"] = "dockerfile",
+    ["Jenkinsfile*"] = "groovy"
+  },
+})
+
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -451,6 +472,9 @@ linters.setup {
       "-E wsl",
     },
   },
+  { exe = "php" },
+  { exe = "shellcheck", filetypes = { "sh", "bash" } },
+  { exe = "zsh",        filetype = { "zsh" } },
   -- {
   --   exe = "cspell",
   --   diagnostic_config = {
@@ -466,8 +490,8 @@ linters.setup {
   --   }
   -- },
   -- {
-  exe = "eslint",
-  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  -- exe = "eslint",
+  -- filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
   -- diagnostic_config = {
   --   underline = true,
   --   virtual_text = true,
@@ -476,10 +500,7 @@ linters.setup {
   --   severity_sort = true,
   -- }
   -- },
-  { exe = "php" },
   -- { exe = "pylama", filetypes = { "python" } },
-  { exe = "shellcheck", filetypes = { "sh", "bash" } },
-  { exe = "zsh",        filetype = { "zsh" } },
 }
 
 local code_actions = require "lvim.lsp.null-ls.code_actions"
@@ -809,38 +830,6 @@ lvim.plugins = {
         "<leader>sr",
         "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>",
         { noremap = true }
-      )
-    end
-  },
-  {
-    "nathom/filetype.nvim",
-    config = function()
-      require("filetype").setup(
-        {
-          overrides = {
-            extensions = {
-              mm = "objc",
-              conf = "sh",
-              php = "php",
-              tsv = "csv",
-            },
-            literal = {
-              ["Dockerfile"] = "dockerfile",
-              [".prettierrc"] = "yaml",
-              [".env"] = "sh",
-              [".sqlfluff"] = "toml",
-              ["fish_variables"] = "fish",
-              ["Jenkinsfile"] = "groovy"
-            },
-            complex = {
-              ["Dockerfile*"] = "dockerfile",
-              ["Jenkinsfile*"] = "groovy"
-            },
-            shebang = {
-              dash = "sh"
-            }
-          }
-        }
       )
     end
   },
