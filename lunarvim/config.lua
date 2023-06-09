@@ -430,18 +430,19 @@ lvim.lsp.null_ls.setup = {
 
 vim.filetype.add({
   extensions = {
-    mm = "objc",
     conf = "sh",
+    mm = "objc",
     php = "php",
     tsv = "csv",
   },
   filename = {
-    ["Dockerfile"] = "dockerfile",
-    [".prettierrc"] = "yaml",
     [".env"] = "sh",
+    [".prettierrc"] = "yaml",
     [".sqlfluff"] = "toml",
+    ["Dockerfile"] = "dockerfile",
     ["fish_variables"] = "fish",
-    ["Jenkinsfile"] = "groovy"
+    ["Jenkinsfile"] = "groovy",
+    ["vrapperrc"] = "vim"
   },
   pattern = {
     ["Dockerfile*"] = "dockerfile",
@@ -457,6 +458,7 @@ formatters.setup {
   { exe = "isort",     filetypes = { "python" } },
   { exe = "phpcsfixer" },
   { exe = "prettier" },
+  { exe = "xmllint", filetypes = { "xml" } },
   -- { exe = "tidy",      filetypes = { "html", "xml" }, extra_args = { "--show-body-only", "y" } },
 }
 
