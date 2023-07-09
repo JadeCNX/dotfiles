@@ -355,7 +355,8 @@ lvim.builtin.telescope.defaults.preview = { treesitter = false }
 lvim.builtin.telescope.defaults.mappings.n["c-c"] = require("telescope.actions").close
 
 -- Disable virtual text
-lvim.lsp.diagnostics.virtual_text = false
+-- lvim.lsp.diagnostics.virtual_text = false
+-- vim.diagnostic.config({ virtual_text = false })
 
 -- generic LSP settings
 
@@ -458,7 +459,7 @@ formatters.setup {
   { exe = "isort",     filetypes = { "python" } },
   { exe = "phpcsfixer" },
   { exe = "prettier" },
-  { exe = "xmllint", filetypes = { "xml" } },
+  { exe = "xmllint",   filetypes = { "xml" } },
   -- { exe = "tidy",      filetypes = { "html", "xml" }, extra_args = { "--show-body-only", "y" } },
 }
 
@@ -874,12 +875,6 @@ lvim.plugins = {
     end
   },
   {
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup {}
-    end
-  },
-  {
     "EdenEast/nightfox.nvim",
     config = function()
       require('nightfox').setup({
@@ -959,33 +954,39 @@ lvim.plugins = {
     end
   },
   {
-    "olimorris/onedarkpro.nvim",
-    config = function()
-      require("onedarkpro").setup({
-        styles = {
-          types = "NONE",
-          methods = "NONE",
-          numbers = "NONE",
-          strings = "NONE",
-          comments = "italic",
-          keywords = "bold,italic",
-          constants = "NONE",
-          functions = "italic",
-          operators = "NONE",
-          variables = "NONE",
-          parameters = "NONE",
-          conditionals = "italic",
-          virtual_text = "NONE",
-        }
-      })
-    end
+    "echasnovski/mini.trailspace",
+    version = false,
+    opts = {
+      only_in_normal_buffers = true }
   },
+  -- {
+  --   "olimorris/onedarkpro.nvim",
+  --   config = function()
+  --     require("onedarkpro").setup({
+  --       styles = {
+  --         types = "NONE",
+  --         methods = "NONE",
+  --         numbers = "NONE",
+  --         strings = "NONE",
+  --         comments = "italic",
+  --         keywords = "bold,italic",
+  --         constants = "NONE",
+  --         functions = "italic",
+  --         operators = "NONE",
+  --         variables = "NONE",
+  --         parameters = "NONE",
+  --         conditionals = "italic",
+  --         virtual_text = "NONE",
+  --       }
+  --     })
+  --   end
+  -- },
   { "AndrewRadev/linediff.vim" },
   { "AndrewRadev/splitjoin.vim" },
   { "AndrewRadev/switch.vim" },
-  { "catppuccin/nvim",                            name = "catppuccin" },
-  { "chrisbra/csv.vim",                           ft = { "csv", "tsv" }, },
-  { "dag/vim-fish",                               ft = { "fish" } },
+  { "catppuccin/nvim",                name = "catppuccin" },
+  { "chrisbra/csv.vim",               ft = { "csv", "tsv" }, },
+  { "dag/vim-fish",                   ft = { "fish" } },
   { "dbakker/vim-paragraph-motion" },
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
