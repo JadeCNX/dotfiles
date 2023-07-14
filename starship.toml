@@ -22,18 +22,18 @@ $character
 format = "[$user]($style)@"
 
 [aws]
-symbol = " "
+symbol = " "
 disabled = true
 
 [gcloud]
-symbol = " "
+symbol = "󱇶 "
 disabled = true
 
 [battery]
 disabled = true
-charging_symbol = ""
-discharging_symbol = ""
-full_symbol = ""
+charging_symbol = "󰂄"
+discharging_symbol = "󱟨"
+full_symbol = "󰁹"
 
 [[battery.display]]
 style = "bold red"
@@ -48,8 +48,8 @@ style = "bold green"
 threshold = 80
 
 [character]
-success_symbol = "[](green)"
-error_symbol = "[](red)"
+success_symbol = "[](green)"
+error_symbol = "[󰅗](red)"
 vicmd_symbol = "[](yellow)"
 # use_symbol_for_status = true
 
@@ -62,20 +62,20 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 style = "blue"
 truncation_length = 7
 truncate_to_repo = false
-home_symbol = " "
-read_only = " "
+home_symbol = " "
+read_only = " "
 
 [directory.substitutions]
-" /Documents" = " "
-" /Movies" = " "
-" /Music" = " "
-" /Downloads" = " "
-" /Develops" = "גּ "
-" /Pictures" = " "
-" /Applications" = " "
-" /Desktop" = " "
-" /Dropbox" = " "
-" /Library" = " "
+" /Documents" = "󱔗 "
+" /Movies" = "󱜅 "
+" /Music" = "󰝚 "
+" /Downloads" = " "
+" /Develops" = "󱗂 "
+" /Pictures" = " "
+" /Applications" = "󱢡 "
+" /Desktop" = "󰧨 "
+" /Dropbox" = " "
+" /Library" = " "
 "/Applications" = " "
 ".git" = ". "
 
@@ -88,7 +88,7 @@ symbol = " "
 disabled = true
 
 [elixir]
-symbol = " "
+symbol = " "
 disabled = true
 
 [git_branch]
@@ -116,7 +116,7 @@ untracked = "[$count ](purple)"
 # style = "fg:bright-yellow bg:white"
 
 [golang]
-symbol = "ﳑ "
+symbol = " "
 disabled = true
 
 [java]
@@ -124,7 +124,7 @@ symbol = " "
 disabled = true
 
 [kubernetes]
-symbol = "ﴱ "
+symbol = "󱃾 "
 disabled = true
 
 [memory_usage]
@@ -133,37 +133,37 @@ prefix = ""
 show_percentage = true
 show_swap = false
 style = "bold dimmed white"
-symbol = " "
+symbol = "󰍛 "
 threshold = 50
 
 [nodejs]
-symbol = " "
+symbol = " "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 disabled = true
 
 [perl]
-symbol = " "
+symbol = " "
 disabled = true
 
 [php]
-symbol = " "
+symbol = " "
 disabled = true
 
 [python]
-symbol = " "
+symbol = "󰌠 "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
 disabled = true
 
 [time]
 disabled = true
-format = " %T"
+format = " %T"
 style = "bright-white"
 
 [custom.giturl]
@@ -178,9 +178,9 @@ elif [[ "$GIT_REMOTE" =~ "gitlab" ]] || [[ "$GIT_REMOTE" =~ git.alm ]]; then
 elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
     GIT_REMOTE_SYMBOL=" "
 elif [[ "$GIT_REMOTE" =~ "git" ]]; then
-    GIT_REMOTE_SYMBOL=" "
+    GIT_REMOTE_SYMBOL=" "
 else
-    GIT_REMOTE_SYMBOL=" "
+    GIT_REMOTE_SYMBOL=" "
 fi
 echo "$GIT_REMOTE_SYMBOL "
 """
@@ -191,7 +191,7 @@ when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 
 [custom.git_email]
 command = 'echo "`git config user.email | cut -c1-6`..."'
-format = "﯑[$output]($style) "
+format = "󰛓[$output]($style) "
 style = "bright-yellow bold"
 when = "git rev-parse --git-dir 2> /dev/null"
 
