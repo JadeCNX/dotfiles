@@ -647,7 +647,7 @@ endif
 
 if s:search_manager  == 'fzf'
   " File search
-  nmap <silent> <leader>p :FilesMru --tiebreak=end<CR>
+  nmap <silent> <leader><space> :FilesMru --tiebreak=end<CR>
   nmap <silent> <leader>P :History<cr>
   nmap <silent> <leader>b :Buffers<cr>
   nmap <silent> <leader>B :GFiles<cr>
