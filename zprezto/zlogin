@@ -19,8 +19,12 @@ if [[ -o INTERACTIVE && -t 2 ]]; then
 
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
-    if (( $+commands[lolcat] )) && (( $+commands[cowsay] )); then
+    if (( $+commands[pokemonsay] )); then
+      fortune -s | pokemonsay -n -t
+    elif (( $+commands[lolcat] )) && (( $+commands[cowsay] )); then
       fortune -s | cowsay -f `echo "${$(cowsay -l | tail -n +2)// /\n}" | sort -R | tail -1` | lolcat
+    elif (( $+commands[ponysay] )); then
+      fortune -s | ponysay
     else
       fortune -s
     fi
