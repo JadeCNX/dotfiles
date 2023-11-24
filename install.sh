@@ -86,3 +86,6 @@ link vrapper "$PWD"/vrapperrc ~/.vrapperrc
 
 # zellij
 link zellij "$PWD"/zellij/config.kdl ~/.config/zellij/config.kdl
+
+# wezterm
+link wezterm "$PWD"/wezterm.lua ~/.wezterm.lua
