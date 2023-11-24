@@ -69,6 +69,7 @@ map <leader>zz <Action>(ToggleDistractionFreeMode)
 map <leader>zn <C-u>:exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr>
 
 " Files
+map <leader><leader> <Action>(GotoFile)
 map <leader>f <Action>(GotoFile)
 map <leader>b <Action>(GotoFile)
 map <leader>/ <Action>(FindInPath)
@@ -77,18 +78,31 @@ map <leader>ef <Action>(SelectInProjectView)
 " Git
 map <leader>gL <Action>(Switcher)
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>gr <Action>(Vcs.RollbackChangedLines)
+map <leader>gg <Action>(Vcs.QuickListPopupAction)
+map <leader>gc <Action>(CompareActions)
+
+map <leader>gd <Action>(Vcs.ShowHistoryForBlock)
+vmap <leader>gd <Action>(Vcs.ShowHistoryForBlock)
+
+map <leader>]g <Action>(JumpToNextChange)
+map <leader>[g <Action>(VcsShowPrevChangeMarker)
 
 " Language
 map <leader>la <Action>(QuickActions)
-map <leader>lf <Action>(ReformatCode)
+map <leader>lA <Action>(Refactorings.QuickListPopupAction)
+map <leader>le <Action>(RefactoringMenu)
 map <leader>li <Action>(Annotate)
-map <leader>lj <Action>(GotoNextError)
-map <leader>lk <Action>(GotoPrevError)
-map <leader>lk <Action>(GotoPreviousError)
 map <leader>lr <Action>(RenameElement)
 map <leader>ls <Action>(FileStructurePopup)
 map <leader>lS <Action>(GotoSymbol)
-map <leader>lS <Action>(Refactorings.QuickListPopupAction)
+
+map ]l <Action>(GotoNextError)
+map [l <Action>(GotoPreviousError)
+
+map <leader>lf <Action>(ReformatCode)
+vmap <leader>lf <Action>(ReformatCode)
+
 map K <Action>(ShowErrorDescription)
 
 " Debug
