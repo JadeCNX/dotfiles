@@ -26,7 +26,11 @@ link() {
 }
 
 # alacritty
-link alacritty "$PWD"/alacritty.yml ~/.alacritty.yml
+link alacritty "$PWD"/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+link alacritty "$PWD"/alacritty/catppuccin-frappe.toml ~/.config/alacritty/catppuccin-frappe.toml
+link alacritty "$PWD"/alacritty/catppuccin-latte.toml ~/.config/alacritty/catppuccin-latte.toml
+link alacritty "$PWD"/alacritty/catppuccin-macchiato.toml ~/.config/alacritty/catppuccin-macchiato.toml
+link alacritty "$PWD"/alacritty/catppuccin-mocha.toml ~/.config/alacritty/catppuccin-mocha.toml
 
 # git
 link git "$PWD"/gitignore_global ~/.gitignore_global
