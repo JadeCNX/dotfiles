@@ -1,7 +1,7 @@
 live_config_reload = true
 
 import = [
-  "~/.config/alacritty/catppuccin-latte.toml"
+  "~/.config/alacritty/themes-dark.toml"
 ]
 
 [env]
@@ -10,22 +10,21 @@ TERM = "xterm-256color"
 [font]
 size = 14.0
 
-[font.bold_italic]
-style = "Italic"
+# [font.bold]
+# style = "Bold"
+
+# [font.bold_italic]
+# style = "Bold Italic"
+
+[font.italic]
+style = "Light Italic"
 
 [font.normal]
-family = "DankMono Nerd Font"
-
-[selection]
-save_to_clipboard = true
-
-[window]
-decorations = "buttonless"
-startup_mode = "Maximized"
-
-# [window.padding]
-# x = 0
-# y = 0
+style = "Light"
+# family = "SFMono Nerd Font"
+family = "LigaOperatorMonoNerdFontCompleteMono Nerd Font"
+# family = "OverpassM Nerd Font"
+# family = "DankMono Nerd Font"
 
 [[keyboard.bindings]]
 chars = "\f"
@@ -76,3 +75,14 @@ mods = "Command|Shift"
 chars = "\u001Bu"
 key = "U"
 mods = "Alt"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "buttonless"
+# startup_mode = "Maximized"
+
+[window.padding]
+x = 4
+y = 4
