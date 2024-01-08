@@ -52,6 +52,7 @@ link emacs "$PWD/spacemacs.d/init.el" "$HOME/.spacemacs.d/init.el"
 link tmux "$PWD/tmux/tmux.conf" "$HOME/.tmux.conf"
 link tmux "$PWD/tmux/themes/light.conf" "$HOME/.tmux/themes/light.conf"
 link tmux "$PWD/tmux/themes/dark.conf" "$HOME/.tmux/themes/dark.conf"
+link tmux "$PWD/tmux/themes/toggle-themes.sh" "$HOME/.tmux/themes/toggle-themes.sh"
 
 # vim
 link vim "$PWD/vimrcs/vimrc.vim" "$HOME/.vimrc"
