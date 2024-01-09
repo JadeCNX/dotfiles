@@ -84,5 +84,5 @@ decorations = "buttonless"
 # startup_mode = "Maximized"
 
 [window.padding]
-x = 4
-y = 4
+x = 8
+y = 8
