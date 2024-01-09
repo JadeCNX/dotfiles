@@ -16,6 +16,7 @@ $git_status\
 $all\
 $shell\
 $character
+$time
 """
 
 [username]
@@ -162,7 +163,7 @@ symbol = "󱘗 "
 disabled = true
 
 [time]
-disabled = true
+# disabled = true
 format = " %T"
 style = "bright-white"
 
