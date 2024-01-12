@@ -14,9 +14,17 @@ $git_state\
 $git_metrics\
 $git_status\
 $all\
+${custom.time}\
+$time\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$status\
+$os\
+$container\
 $shell\
 $character
-$time
 """
 
 [username]
@@ -51,12 +59,10 @@ threshold = 80
 [character]
 success_symbol = "[](green)"
 error_symbol = "[󰅗](red)"
-vicmd_symbol = "[](yellow)"
-# use_symbol_for_status = true
 
 [cmd_duration]
-min_time = 500
-# prefix = "underwent "
+format = "[󰔚 $duration](purple) "
+min_time = 1000
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
@@ -130,9 +136,6 @@ disabled = true
 
 [memory_usage]
 disabled = true
-prefix = ""
-show_percentage = true
-show_swap = false
 style = "bold dimmed white"
 symbol = "󰍛 "
 threshold = 50
@@ -163,9 +166,18 @@ symbol = "󱘗 "
 disabled = true
 
 [time]
-# disabled = true
-format = " %T"
-style = "bright-white"
+disabled = false
+format = " [$time]($style) "
+
+[custom.time]
+disabled = false
+format = "[$output]($style)"
+shell = ["bash", "--noprofile", "--norc"]
+style = "bright-yellow"
+when = true
+command = """
+echo $("$HOME/.local/bin/clock-emoji")
+"""
 
 [custom.giturl]
 # disabled = true
