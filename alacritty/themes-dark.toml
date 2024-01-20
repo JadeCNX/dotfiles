@@ -1,4 +1,4 @@
 import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/themes/catppuccin_mocha.toml"
 ]
 
