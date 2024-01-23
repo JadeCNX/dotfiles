@@ -39,7 +39,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'tmux' \
   'ssh' \
-  'fasd' \
+  'zoxide' \
   'fzf' \
   'completion' \
   'homebrew' \
