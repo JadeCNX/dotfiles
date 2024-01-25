@@ -37,7 +37,8 @@ copy() {
 }
 
 # alacritty
-copy alacritty "$PWD/alacritty" "$HOME/.config/"
+copy alacritty "$PWD/alacritty/themes" "$HOME/.config/alacritty/"
+link alacritty "$PWD/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
 # git
 link git "$PWD/gitignore_global" "$HOME/.gitignore_global"
