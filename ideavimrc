@@ -26,8 +26,8 @@ set ignorecase
 set incsearch
 set number
 set relativenumber
-set scrolljump 1
-set scrolloff 8
+set scrolljump 3
+set scrolloff 10
 set smartcase
 set wrapscan
 
@@ -96,6 +96,7 @@ map <leader>li <Action>(Annotate)
 map <leader>lr <Action>(RenameElement)
 map <leader>ls <Action>(FileStructurePopup)
 map <leader>lS <Action>(GotoSymbol)
+map <leader>lR <Action>(FindUsages)
 
 map ]l <Action>(GotoNextError)
 map [l <Action>(GotoPreviousError)

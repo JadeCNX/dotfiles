@@ -58,6 +58,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
+  'autopair' \
   'prompt'
 
 #
