@@ -89,20 +89,21 @@ map <leader>]g <Action>(JumpToNextChange)
 map <leader>[g <Action>(VcsShowPrevChangeMarker)
 
 " Language
-map <leader>la <Action>(QuickActions)
-map <leader>lA <Action>(Refactorings.QuickListPopupAction)
-map <leader>le <Action>(RefactoringMenu)
-map <leader>li <Action>(Annotate)
-map <leader>lr <Action>(RenameElement)
-map <leader>ls <Action>(FileStructurePopup)
-map <leader>lS <Action>(GotoSymbol)
-map <leader>lR <Action>(FindUsages)
+map <leader>ca <Action>(QuickActions)
+map <leader>cA <Action>(Refactorings.QuickListPopupAction)
+map <leader>ce <Action>(RefactoringMenu)
+map <leader>ci <Action>(Annotate)
+map <leader>cr <Action>(RenameElement)
+map <leader>ss <Action>(FileStructurePopup)
+map <leader>cs <Action>(FileStructurePopup)
+map <leader>cS <Action>(GotoSymbol)
+map <leader>cR <Action>(FindUsages)
 
-map ]l <Action>(GotoNextError)
-map [l <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
 
-map <leader>lf <Action>(ReformatCode)
-vmap <leader>lf <Action>(ReformatCode)
+map <leader>cf <Action>(ReformatCode)
+vmap <leader>cf <Action>(ReformatCode)
 
 map K <Action>(ShowErrorDescription)
 
