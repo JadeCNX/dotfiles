@@ -13,7 +13,7 @@ module.exports = {
 
     // font family with optional fallbacks
     fontFamily:
-      '"DankMono Nerd Font", "OperatorMonoSSmLig Nerd Font", "VictorMono Nerd Font", "FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      '"VictorMono Nerd Font", "OperatorMonoSSmLig Nerd Font", "DankMono Nerd Font", "FuraCodeiScript Nerd Font Mono", "BlexMono Nerd Font",  "FuraCode Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
@@ -68,7 +68,7 @@ module.exports = {
     showWindowControls: "",
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: "12px 14px",
+    padding: "0px 4px 4px 4px",
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
@@ -155,7 +155,8 @@ module.exports = {
   plugins: [
     "git-falcon9",
     "hyperline",
-    "hypurr#latest",
+    "hyper-aura-theme",
+    // "hypurr#latest",
     // 'gitrocket',
     // 'hyper-rose-pine',
     // 'hyper-atom-dark-transparent',
