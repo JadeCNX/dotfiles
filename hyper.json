@@ -1,0 +1,86 @@
+{
+  "$schema": "./schema.json",
+  "config": {
+    "updateChannel": "canary",
+    "fontSize": 16,
+    "fontFamily": "\"LigaOperatorMonoNerdFontCompleteMono Nerd Font\", \"VictorMono Nerd Font\", \"DankMono Nerd Font\", \"FuraCodeiScript Nerd Font Mono\", \"BlexMono Nerd Font\",  \"FuraCode Nerd Font\", Menlo, \"DejaVu Sans Mono\", Consolas, \"Lucida Console\", monospace",
+    "fontWeight": "normal",
+    "fontWeightBold": "bold",
+    "lineHeight": 1.1,
+    "letterSpacing": 0,
+    "scrollback": 1000,
+    "cursorColor": "#FBB829",
+    "cursorAccentColor": "#1c1b19",
+    "cursorShape": "BLOCK",
+    "cursorBlink": true,
+    "foregroundColor": "#fce8c3",
+    "backgroundColor": "rgba(28,27,25,0.888)",
+    "selectionColor": "#FCE8C3",
+    "borderColor": "rgba(28,27,25,0.888)",
+    "css": "",
+    "termCSS": "",
+    "workingDirectory": "",
+    "showHamburgerMenu": "",
+    "showWindowControls": "",
+    "padding": "0px 4px 4px 4px",
+    "colors": {
+      "black": "#1C1B19",
+      "red": "#EF2F27",
+      "green": "#519F50",
+      "yellow": "#FBB829",
+      "blue": "#2C78BF",
+      "magenta": "#E02C6D",
+      "cyan": "#0AAEB3",
+      "white": "#D0BFA1",
+      "lightBlack": "#918175",
+      "lightRed": "#F75341",
+      "lightGreen": "#98BC37",
+      "lightYellow": "#FED06E",
+      "lightBlue": "#68A8E4",
+      "lightMagenta": "#FF5C8F",
+      "lightCyan": "#53FDE9",
+      "lightWhite": "#FCE8C3",
+      "limeGreen": "#32CD32",
+      "lightCoral": "#F08080"
+    },
+    "shell": "",
+    "shellArgs": [
+      "--login"
+    ],
+    "env": {},
+    "bell": "SOUND",
+    "bellSound": null,
+    "bellSoundURL": null,
+    "copyOnSelect": true,
+    "defaultSSHApp": true,
+    "quickEdit": false,
+    "macOptionSelectionMode": "vertical",
+    "webGLRenderer": true,
+    "webLinksActivationKey": "",
+    "disableLigatures": false,
+    "disableAutoUpdates": false,
+    "autoUpdatePlugins": true,
+    "preserveCWD": true,
+    "screenReaderMode": false,
+    "imageSupport": true,
+    "defaultProfile": "default",
+    "profiles": [
+      {
+        "name": "default",
+        "config": {}
+      }
+    ],
+    "verminal": {
+      "fontFamily": "\"LigaOperatorMonoNerdFontCompleteMono Nerd Font\"",
+      "fontSize": 18
+    },
+    "catppuccinTheme": "mocha"
+  },
+  "plugins": [
+    "git-falcon9",
+    "hyper-rose-pine",
+    "hyperline"
+  ],
+  "localPlugins": [],
+  "keymaps": {}
+}

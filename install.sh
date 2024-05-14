@@ -44,7 +44,7 @@ link alacritty "$PWD/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritt
 link git "$PWD/gitignore_global" "$HOME/.gitignore_global"
 
 # hyper
-link hyper "$PWD/hyper.js" "$HOME/.hyper.js"
+link hyper "$PWD/hyper.json" "$HOME/.config/Hyper/hyper.json"
 
 # emacs
 link emacs "$PWD/spacemacs.d/init.el" "$HOME/.spacemacs.d/init.el"
