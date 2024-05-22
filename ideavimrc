@@ -59,6 +59,9 @@ vnoremap <silent> # y/\V<C-R>0<CR>
 nmap <space>ee :<C-u>:NERDTreeToggle<cr>
 nmap <space>ef :<C-u>:NERDTreeFocus<cr>
 
+nmap <C-o> :action Back<CR>
+nmap <C-i> :action Forward<CR>
+
 nmap Q @@
 
 nnoremap - $
