@@ -22,10 +22,11 @@ style = "Italic"
 [font.normal]
 style = "Regular"
 # family = "SFMono Nerd Font"
-family = "LigaOperatorMonoNerdFontCompleteMono Nerd Font"
+# family = "LigaOperatorMonoNerdFontCompleteMono Nerd Font"
 # family = "OverpassM Nerd Font"
 # family = "DankMono Nerd Font"
 # family = "CaskaydiaCove Nerd Font"
+family = "MonoLisaNerdFontCompleteMono Nerd Font"
 
 [[keyboard.bindings]]
 chars = "\f"
