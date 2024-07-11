@@ -7,7 +7,7 @@ set highlightedyank
 set matchit
 set multicursor
 set multiple-cursors
-set NERDTree
+" set NERDTree
 set ReplaceWithRegister
 set surround
 set textobj-entire
@@ -56,8 +56,8 @@ nnoremap c* *Ncgn
 vnoremap <silent> * y/\V<C-R>0<CR>
 vnoremap <silent> # y/\V<C-R>0<CR>
 
-nmap <space>ee :<C-u>:NERDTreeToggle<cr>
-nmap <space>ef :<C-u>:NERDTreeFocus<cr>
+" nmap <space>ee :<C-u>:NERDTreeToggle<cr>
+" nmap <space>ef :<C-u>:NERDTreeFocus<cr>
 
 nmap <C-o> :action Back<CR>
 nmap <C-i> :action Forward<CR>
@@ -66,6 +66,9 @@ nmap Q @@
 
 nnoremap - $
 vnoremap - $
+
+nmap ]g <Action>(VcsShowNextChangeMarker)
+nmap [g <Action>(VcsShowPrevChangeMarker)
 
 " UI
 map <leader>zz <Action>(ToggleDistractionFreeMode)
@@ -76,7 +79,7 @@ map <leader><leader> <Action>(GotoFile)
 map <leader>f <Action>(GotoFile)
 map <leader>b <Action>(GotoFile)
 map <leader>/ <Action>(FindInPath)
-map <leader>ef <Action>(SelectInProjectView)
+map <leader>e <Action>(SelectInProjectView)
 
 " Git
 map <leader>gL <Action>(Switcher)
@@ -87,9 +90,6 @@ map <leader>gc <Action>(CompareActions)
 
 map <leader>gd <Action>(Vcs.ShowHistoryForBlock)
 vmap <leader>gd <Action>(Vcs.ShowHistoryForBlock)
-
-map <leader>]g <Action>(JumpToNextChange)
-map <leader>[g <Action>(VcsShowPrevChangeMarker)
 
 " Language
 map <leader>ca <Action>(QuickActions)
