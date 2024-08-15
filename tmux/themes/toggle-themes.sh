@@ -14,4 +14,4 @@ else
   /opt/homebrew/bin/gsed -i -r 's/\w+-theme/light-theme/' "$HOME/.config/alacritty/themes/toggle-theme.toml"
 fi
 
-/opt/homebrew/bin/tmux run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
+/opt/homebrew/bin/tmux run-shell "$HOME/.tmux/plugins/tmux/rose-pine.tmux"
