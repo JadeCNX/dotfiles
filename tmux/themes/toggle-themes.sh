@@ -1,17 +1,21 @@
 #!/bin/sh
 
-DARK_MODE="$1"
+dark_mode="$1"
+alacritty_theme_file="$HOME/.config/alacritty/theme.toml"
+alacritty_config_file="$HOME/.config/alacritty/alacritty.toml"
 
-if [ "$DARK_MODE" = "dark" ]; then
+if [ "$dark_mode" = "dark" ]; then
   tmux set -g @catppuccin_flavour 'mocha'
   tmux set -g @rose_pine_variant 'moon'
 
-  /opt/homebrew/bin/gsed -i -r 's/\w+-theme/dark-theme/' "$HOME/.config/alacritty/themes/toggle-theme.toml"
-else 
+  cp "$HOME/.config/alacritty/themes/monokai_pro.toml" "$alacritty_theme_file"
+  /opt/homebrew/bin/tmux run-shell "$HOME/.tmux/plugins/tmux-monokai-pro/monokai.tmux"
+else
   tmux set -g @catppuccin_flavour 'latte'
   tmux set -g @rose_pine_variant 'dawn'
 
-  /opt/homebrew/bin/gsed -i -r 's/\w+-theme/light-theme/' "$HOME/.config/alacritty/themes/toggle-theme.toml"
+  cp "$HOME/.config/alacritty/themes/rose-pine-dawn.toml" "$alacritty_theme_file"
+  /opt/homebrew/bin/tmux run-shell "$HOME/.tmux/plugins/tmux/rose-pine.tmux"
 fi
 
-/opt/homebrew/bin/tmux run-shell "$HOME/.tmux/plugins/tmux/rose-pine.tmux"
+touch "$alacritty_config_file"
