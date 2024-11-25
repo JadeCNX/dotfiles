@@ -13,7 +13,8 @@ set surround
 set textobj-entire
 set textobj-indent
 set vim-paragraph-motion
-set sneak
+" set sneak
+set peekaboo
 
 " set options
 set history
@@ -118,3 +119,7 @@ map <leader>do <Action>(StepOver)
 map <leader>ds <Action>(Debug)
 map <leader>dS <Action>(DebugClass)
 map <leader>du <Action>(StepOut)
+
+" textobj-entire
+xmap ag <Plug>(textobj-entire-a)
+xmap ig <Plug>(textobj-entire-i)
