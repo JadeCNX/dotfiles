@@ -4,10 +4,10 @@ keybinds {
     bind "Ctrl Space" { SwitchToMode "Tmux"; }
     bind "Ctrl g" { SwitchToMode "Locked"; }
 
-    bind "Ctrl h" { MoveFocus "Left"; }
-    bind "Ctrl l" { MoveFocus "Right"; }
-    bind "Ctrl j" { MoveFocus "Down"; }
-    bind "Ctrl k" { MoveFocus "Up"; }
+    bind "Alt h" { MoveFocus "Left"; }
+    bind "Alt l" { MoveFocus "Right"; }
+    bind "Alt j" { MoveFocus "Down"; }
+    bind "Alt k" { MoveFocus "Up"; }
   }
 
   tmux {
@@ -255,15 +255,15 @@ plugins {
   configuration location="zellij:configuration"
   plugin-manager location="zellij:plugin-manager"
 
-  autolock location="https://github.com/fresh2dev/zellij-autolock/releases/latest/download/zellij-autolock.wasm" {
-    is_enabled true
-    triggers "nvim|vim|git|fzf|zoxide|atuin"
-  }
+  // autolock location="https://github.com/fresh2dev/zellij-autolock/releases/latest/download/zellij-autolock.wasm" {
+  //   is_enabled true
+  //   triggers "nvim|vim|git|fzf|zoxide|atuin"
+  // }
 }
 
 // Plugins to load in the background when a new session starts
 load_plugins {
-  autolock
+  // autolock
   // "file:/path/to/my-plugin.wasm"
   // "https://example.com/my-plugin.wasm"
 }
@@ -282,7 +282,7 @@ load_plugins {
 //    - true
 //    - false (Default)
 //
-// simplified_ui true
+simplified_ui true
 
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
