@@ -104,3 +104,6 @@ link zellij "$PWD/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 
 # wezterm
 link wezterm "$PWD/wezterm.lua" "$HOME/.wezterm.lua"
+
+# ghostty
+link ghostty "$PWD/ghostty/config" "$HOME/.config/ghostty/config"

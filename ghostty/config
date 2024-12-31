@@ -1,0 +1,17 @@
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+
+font-family = 0xProto
+font-feature = ss01
+font-size = 16
+
+confirm-close-surface = false
+cursor-style = block
+macos-icon = custom-style
+macos-icon-frame = aluminum
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = transparent
+shell-integration-features = no-cursor
+
+quick-terminal-position = bottom
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
