@@ -39,11 +39,19 @@ if [ "$dark_mode" = "dark" ]; then
   $TM set -g @rose_pine_variant 'moon'
   $TM run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
 
+  if command -v kitten > /dev/null 2>&1; then
+    kitten themes Catppuccin-Mocha
+  fi
+
   ln -fs "$HOME/.config/alacritty/themes/catppuccin_mocha.toml" "$alacritty_theme_file"
 else
   $TM set -g @catppuccin_flavor 'latte'
   $TM set -g @rose_pine_variant 'dawn'
   $TM run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
+
+  if command -v kitten > /dev/null 2>&1; then
+    kitten themes Catppuccin-Latte
+  fi
 
   ln -fs "$HOME/.config/alacritty/themes/catppuccin_latte.toml" "$alacritty_theme_file"
 fi
