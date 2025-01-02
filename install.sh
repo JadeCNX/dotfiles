@@ -54,6 +54,7 @@ link tmux "$PWD/tmux/tmux.conf" "$HOME/.tmux.conf"
 link tmux "$PWD/tmux/themes/light.conf" "$HOME/.tmux/themes/light.conf"
 link tmux "$PWD/tmux/themes/dark.conf" "$HOME/.tmux/themes/dark.conf"
 link tmux "$PWD/tmux/themes/toggle-themes.sh" "$HOME/.tmux/themes/toggle-themes.sh"
+link tmux "$PWD/tmux/themes/theme.conf" "$HOME/.tmux/themes/theme.conf"
 
 # vim
 link vim "$PWD/vimrcs/vimrc.vim" "$HOME/.vimrc"
