@@ -50,5 +50,4 @@ fi
 
 touch "$HOME/.config/alacritty/alacritty.toml"
 
-THEME_DIR="$(dirname "$0")"
-tmux source-file "$THEME_DIR/theme.conf"
+tmux source-file "$(dirname "$0")/theme.conf"
