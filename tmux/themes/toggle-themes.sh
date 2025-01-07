@@ -40,7 +40,7 @@ if [ "$dark_mode" = "dark" ]; then
   $TM run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
 
   if command -v kitten > /dev/null 2>&1; then
-    kitten themes Catppuccin-Mocha
+    kitten themes --reload-in=all Catppuccin-Mocha
   fi
 
   ln -fs "$HOME/.config/alacritty/themes/catppuccin_mocha.toml" "$alacritty_theme_file"
@@ -50,7 +50,7 @@ else
   $TM run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
 
   if command -v kitten > /dev/null 2>&1; then
-    kitten themes Catppuccin-Latte
+    kitten themes --reload-in=all Catppuccin-Latte
   fi
 
   ln -fs "$HOME/.config/alacritty/themes/catppuccin_latte.toml" "$alacritty_theme_file"
