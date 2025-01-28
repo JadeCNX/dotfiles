@@ -123,5 +123,9 @@ map <leader>dS <Action>(DebugClass)
 map <leader>du <Action>(StepOut)
 
 " textobj-entire
-xmap ag <Plug>(textobj-entire-a)
-xmap ig <Plug>(textobj-entire-i)
+ounmap ag
+xunmap ig
+onoremap ag <Plug>(textobj-entire-a)
+onoremap ig <Plug>(textobj-entire-i)
+xnoremap ag <Plug>(textobj-entire-a)
+xnoremap ig <Plug>(textobj-entire-i)
