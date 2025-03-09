@@ -10,7 +10,7 @@ set multiple-cursors
 " set NERDTree
 set ReplaceWithRegister
 set surround
-set textobj-entire
+" set textobj-entire
 set textobj-indent
 set vim-paragraph-motion
 " set sneak
@@ -81,6 +81,7 @@ map <leader>f <Action>(GotoFile)
 map <leader>b <Action>(GotoFile)
 map <leader>/ <Action>(FindInPath)
 map <leader>e <Action>(SelectInProjectView)
+map <leader>, <Action>(RecentFiles)
 
 " Git
 map <leader>gL <Action>(Switcher)
@@ -92,18 +93,22 @@ map <leader>gc <Action>(CompareActions)
 map <leader>gd <Action>(Vcs.ShowHistoryForBlock)
 vmap <leader>gd <Action>(Vcs.ShowHistoryForBlock)
 
-" Language
+" Code
 map <leader>ca <Action>(QuickActions)
 map <leader>cA <Action>(Refactorings.QuickListPopupAction)
 map <leader>ce <Action>(RefactoringMenu)
 map <leader>ci <Action>(Annotate)
 map <leader>cr <Action>(RenameElement)
 map <leader>cR <Action>(RenameFile)
-map <leader>ss <Action>(FileStructurePopup)
 map <leader>cs <Action>(FileStructurePopup)
 map <leader>cS <Action>(GotoSymbol)
 map <leader>cu <Action>(FindUsages)
 map <leader>cU <Action>(FindUsages)
+
+" Search
+map <leader>ss <Action>(FileStructurePopup)
+map <leader>sr <Action>(ReplaceInPath)
+map <leader>sp <Action>(OpenProjectWindows)
 
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
@@ -121,11 +126,3 @@ map <leader>do <Action>(StepOver)
 map <leader>ds <Action>(Debug)
 map <leader>dS <Action>(DebugClass)
 map <leader>du <Action>(StepOut)
-
-" textobj-entire
-ounmap ag
-xunmap ig
-onoremap ag <Plug>(textobj-entire-a)
-onoremap ig <Plug>(textobj-entire-i)
-xnoremap ag <Plug>(textobj-entire-a)
-xnoremap ig <Plug>(textobj-entire-i)
