@@ -48,6 +48,7 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'ruby' \
   'node' \
+  'mise' \
   'rsync' \
   'archive' \
   'git' \
