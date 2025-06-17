@@ -2,8 +2,6 @@
 
 dark_mode="$1"
 
-alacritty_theme_file="$HOME/.config/alacritty/theme.toml"
-
 TM=/opt/homebrew/bin/tmux
 
 $TM set -ug @thm_bg
@@ -38,24 +36,10 @@ if [ "$dark_mode" = "dark" ]; then
   $TM set -g @catppuccin_flavor 'mocha'
   $TM set -g @rose_pine_variant 'moon'
   $TM run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
-
-  if command -v kitten > /dev/null 2>&1; then
-    kitten themes --reload-in=all Catppuccin-Mocha
-  fi
-
-  ln -fs "$HOME/.config/alacritty/themes/catppuccin_mocha.toml" "$alacritty_theme_file"
 else
   $TM set -g @catppuccin_flavor 'latte'
   $TM set -g @rose_pine_variant 'dawn'
   $TM run-shell "$HOME/.tmux/plugins/tmux/catppuccin.tmux"
-
-  if command -v kitten > /dev/null 2>&1; then
-    kitten themes --reload-in=all Catppuccin-Latte
-  fi
-
-  ln -fs "$HOME/.config/alacritty/themes/catppuccin_latte.toml" "$alacritty_theme_file"
 fi
-
-touch "$HOME/.config/alacritty/alacritty.toml"
 
 tmux source-file "$(dirname "$0")/theme.conf"
