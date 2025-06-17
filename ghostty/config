@@ -1,4 +1,6 @@
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:Monokai Pro Spectrum,light:Monokai Pro Light
+background-opacity = 0.9
+background-blur = true
 
 font-family = 0xProto
 font-feature = ss01
