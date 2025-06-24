@@ -108,3 +108,6 @@ link wezterm "$PWD/wezterm.lua" "$HOME/.wezterm.lua"
 
 # ghostty
 link ghostty "$PWD/ghostty/config" "$HOME/.config/ghostty/config"
+
+# nvim
+link nvim "$PWD/nvim" "$HOME/.config/nvim"
