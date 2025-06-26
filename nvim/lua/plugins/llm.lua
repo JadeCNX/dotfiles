@@ -193,7 +193,7 @@ return {
             -- Automatically generate titles for new chats
             auto_generate_title = true,
             ---On exiting and entering neovim, loads the last chat on opening chat
-            continue_last_chat = false,
+            continue_last_chat = true,
             ---When chat is cleared with `gx` delete the chat from history
             delete_on_clearing_chat = false,
             -- Picker interface ("telescope" or "default")
@@ -210,6 +210,19 @@ return {
       { "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion", mode = { "n", "v" } },
       { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
       { "<leader>aA", "<cmd>CodeCompanionChat Add<cr>", desc = "Chat add", mode = "v" },
+    },
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "npm install -g mcp-hub@latest",
+    config = function()
+      require("mcphub").setup()
+    end,
+    keys = {
+      { "<leader>aH", "<cmd>MCPHub<cr>", desc = "MCP Hub", mode = { "n" } },
     },
   },
 }
