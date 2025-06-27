@@ -9,7 +9,7 @@ return {
     config = function()
       require("dark_notify").run({
         schemes = {
-          dark = "onedark_vivid",
+          dark = "vaporwave",
           light = "rose-pine-dawn",
         },
       })
@@ -76,16 +76,16 @@ return {
   --     filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
   --   },
   -- },
-  -- {
-  --   "olimorris/onedarkpro.nvim",
-  --   opts = {
-  --     options = {
-  --       cursorline = true, -- Use cursorline highlighting?
-  --       transparency = true, -- Use a transparent background?
-  --       terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
-  --       lualine_transparency = true, -- Center bar transparency?
-  --       highlight_inactive_windows = false, -- When the window is out of focus, change the normal background?
-  --     },
-  --   },
-  -- },
+  {
+    "olimorris/onedarkpro.nvim",
+    opts = {
+      options = {
+        cursorline = true, -- Use cursorline highlighting?
+        transparency = true, -- Use a transparent background?
+        terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
+        lualine_transparency = true, -- Center bar transparency?
+        highlight_inactive_windows = true, -- When the window is out of focus, change the normal background?
+      },
+    },
+  },
 }

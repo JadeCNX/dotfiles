@@ -12,8 +12,7 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      -- opts = { colorscheme = "monokai-pro-octagon" },
-      opts = { colorscheme = "onedark_vivid" },
+      opts = { colorscheme = "vaporwave" },
     },
     { import = "plugins" },
   },
