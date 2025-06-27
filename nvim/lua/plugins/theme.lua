@@ -9,8 +9,8 @@ return {
     config = function()
       require("dark_notify").run({
         schemes = {
-          dark = "vaporwave",
-          light = "rose-pine-dawn",
+          dark = vim.g.dark_colorscheme,
+          light = vim.g.light_colorscheme,
         },
       })
     end,
