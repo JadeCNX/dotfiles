@@ -1,7 +1,7 @@
 return {
   {
     "saghen/blink.cmp",
-    optional = true,
+    lazy = true,
     opts = function(_, o)
       local conf = {
         completion = {
@@ -21,6 +21,8 @@ return {
           preset = "super-tab",
           ["<Tab>"] = {
             function(cmp)
+              local snippet_active = cmp.snippet_active()
+              vim.notify("Tab pressed " .. (snippet_active and "snippet active" or "snippet inactive"), vim.log.levels.INFO)
               if cmp.snippet_active() then
                 return cmp.accept()
               else
@@ -34,6 +36,7 @@ return {
         },
       }
 
+      vim.notify("Blink CMP configuration loaded", vim.log.levels.INFO)
       return vim.tbl_deep_extend("force", o, conf)
     end,
   },

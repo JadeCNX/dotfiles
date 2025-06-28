@@ -57,12 +57,12 @@ if vim.g.neovide then
   vim.opt.guifont = "DankMono Nerd Font:h14"
   vim.opt.linespace = 2
 
-  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_refresh_rate = 75
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_profiler = false
   vim.g.neovide_input_macos_option_key_is_meta = "both"
-  vim.g.neovide_opacity = 0.6
+  vim.g.neovide_opacity = 0.8
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_window_blurred = true
