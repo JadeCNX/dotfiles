@@ -34,7 +34,8 @@ Summarize the following git commit messages and diffs in concise bullet points.
 - For commits without an issue key at the beginning, group them under "General changes:".
 - Only include the "General changes:" section if there are commits without an issue key at the beginning. If there are none, do not include this section at all. Do not output "General changes:" or any placeholder if there are no such commits.
 - Do not invent or add any issue key if none exist at the beginning of the commit messages.
-- For each group, list the summarized commit messages and their corresponding diffs as bullet points.
+- For each group, list up to 3 summarized commit messages and their corresponding diffs as bullet points.
+- Each bullet point must not exceed 120 characters.
 - Output in simple plain text, no code blocks or markdown.
 
 Example output format:
