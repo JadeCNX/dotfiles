@@ -1,9 +1,12 @@
 local GIT_COMMIT_PROMPT = [[
-Write expertly crafted concise commit message for the change with commitizen convention.
-Start with a summary in imperative mood, explain the 'why' behind changes,
-keep the summary under 50 characters, use bullet points for multiple changes,
-avoid using the word refactor, instead explain what was done.
-Wrap the whole message in code block with language gitcommit.
+Given the following git diff, generate a commit message:
+- The first line should be a short, imperative summary (max 60 characters).
+- If the change is complex, add a blank line and a detailed explanation.
+- Use bullet points for multiple detailed explanations.
+- Do not include issue numbers or references.
+- Avoid using the word refactor, instead explain what was done.
+- Wrap the whole message in code block with language gitcommit.
+
 #git:staged
 ]]
 
@@ -17,37 +20,30 @@ Code diff:
 
 Instructions:
 - Use the format: `%s: <short summary>`
-- Start with a summary in imperative mood.
-- Keep the summary under 60 characters.
-- Add detailed summary in the body and use bullet points for multiple changes.
+- The first line should be a short, imperative summary (max 60 characters).
+- If the change is complex, add a blank line and a detailed explanation.
+- Use bullet points for multiple detailed explanations.
 - Avoid using the word refactor, instead explain what was done.
 - Wrap the whole message in code block with language gitcommit.
 ]]
 
 local GIT_DAILY_SUMMARY_PROMPT = [[
-Summarize the following git commit messages and diffs in concise bullet points.
+Create a changelog by summarizing the following git commit messages in concise bullet points, merging similar topics into a single bullet point.
 
 - Ignore any git merge commit messages.
 - Ignore any revert commit messages.
 - Only capture an issue key if it appears at the very beginning of a commit message, with the format "SETLINK-" followed by digits (e.g., "SETLINK-123"). Ignore any issue key mentioned elsewhere in the message.
-- For any commit message starting with an issue key, group all such commits under that issue key. Start the group with the issue key followed by a colon (e.g., "SETLINK-123:").
-- For commits without an issue key at the beginning, group them under "General changes:".
-- Only include the "General changes:" section if there are commits without an issue key at the beginning. If there are none, do not include this section at all. Do not output "General changes:" or any placeholder if there are no such commits.
-- Do not invent or add any issue key if none exist at the beginning of the commit messages.
-- For each group, list up to 3 summarized commit messages and their corresponding diffs as bullet points.
-- Each bullet point must not exceed 120 characters.
+- For any commit message starting with an issue key, include the issue key at the beginning of the bullet point (e.g., "- summary (SETLINK-123)").
+- Merge similar topics together into one bullet point, summarizing them collectively.
+- Each bullet point must not exceed 200 characters.
+- Total output should not exceed 1000 characters.
 - Output in simple plain text, no code blocks or markdown.
 
 Example output format:
 
-SETLINK-123:
-- Summary 1
-- Summary 2
-
-General changes:
-- summary 1
-- summary 2
-
+- Summary of related changes (SETLINK-123)
+- Summary of other related changes (SETLINK-124)
+- summary of another topic
 
 Input git commit messages:
 
@@ -125,16 +121,15 @@ vim.api.nvim_create_user_command("DailySummarized", function(opts)
   local until_ = date_str .. " 23:59:59"
 
   local user = vim.env.USER or ""
-  local handle = io.popen(
-    "git log --all --patch --no-merges --author="
-      .. user
-      .. " --pretty=format:'%s%b'"
-      .. " --since='"
-      .. since
-      .. "' --until='"
-      .. until_
-      .. "'"
-  )
+  local cmd = "git log --all --no-merges --author="
+    .. user
+    .. " --pretty=format:'%s%b' --since='"
+    .. since
+    .. "' --until='"
+    .. until_
+    .. "'"
+
+  local handle = io.popen(cmd)
   if not handle then
     return
   end
