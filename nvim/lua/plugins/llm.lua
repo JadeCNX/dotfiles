@@ -6,31 +6,13 @@ return {
     },
   },
   {
-    "David-Kunz/gen.nvim",
-    enabled = false,
-    keys = {
-      { "<leader>GG", "<cmd>Gen<cr>", desc = "Gen", mode = { "n", "v" } },
-      { "<leader>GS", "<cmd>Gen Enhance_Grammar_Spelling<CR>", desc = "Spelling", mode = { "n", "v" } },
-      { "<leader>GW", "<cmd>Gen Enhance_Wording<CR>", desc = "Wording", mode = { "n", "v" } },
-      { "<leader>GC", "<cmd>Gen Enhance_Code<CR>", desc = "Coding", mode = { "n", "v" } },
-      { "<leader>GR", "<cmd>Gen Review_Code<CR>", desc = "Reviewing", mode = { "n", "v" } },
-    },
-    opts = {
-      model = "codellama", -- The default model to use.
-      display_mode = "float", -- The display mode. Can be "float" or "split".
-      show_prompt = true, -- Shows the Prompt submitted to Ollama.
-      show_model = false, -- Displays which model you are using at the beginning of your chat session.
-      no_auto_close = false, -- Never closes the window automatically.
-      debug = false, -- Prints errors and the command which is run.
-    },
-  },
-  {
     "CopilotC-Nvim/CopilotChat.nvim",
-    tag = "v3.2.0",
     build = "make tiktoken",
     dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
+      "zbirenbaum/copilot.lua",
+      "nvim-lua/plenary.nvim",
+      "ravitemer/mcphub.nvim",
+      "Davidyz/VectorCode",
     },
     keys = {
       {
@@ -43,22 +25,6 @@ return {
         end,
         desc = "Quick chat",
       },
-      {
-        "<leader>Ch",
-        function()
-          local actions = require("CopilotChat.actions")
-          require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-        end,
-        desc = "Help actions",
-      },
-      {
-        "<leader>Cp",
-        function()
-          local actions = require("CopilotChat.actions")
-          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-        end,
-        desc = "Prompt actions",
-      },
       { "<leader>CC", "<cmd>CopilotChat<CR>", desc = "Toggle Copilot Chat", mode = { "n", "v" } },
       { "<leader>Ce", "<cmd>CopilotChatExplain<CR>", desc = "Explains", mode = { "n", "v" } },
       { "<leader>Cr", "<cmd>CopilotChatReview<CR>", desc = "Review", mode = { "n", "v" } },
@@ -66,17 +32,16 @@ return {
       { "<leader>Co", "<cmd>CopilotChatOptimize<CR>", desc = "Optimize", mode = { "n", "v" } },
       { "<leader>Cd", "<cmd>CopilotChatDocs<CR>", desc = "Docs", mode = { "n", "v" } },
       { "<leader>Ct", "<cmd>CopilotChatTests<CR>", desc = "Tests", mode = { "n", "v" } },
-      { "<leader>Cm", "<cmd>CopilotChatCommit<CR>", desc = "Commit All", mode = { "n", "v" } },
-      { "<leader>Cs", "<cmd>CopilotChatCM<CR>", desc = "Commit", mode = { "n", "v" } },
-      { "<leader>CS", "<cmd>CopilotChatCCM<CR>", desc = "Convesion Commit", mode = { "n", "v" } },
+      -- { "<leader>Cm", "<cmd>CopilotChatCommit<CR>", desc = "Commit All", mode = { "n", "v" } },
+      -- { "<leader>Cs", "<cmd>CopilotChatCM<CR>", desc = "Commit", mode = { "n", "v" } },
+      -- { "<leader>CS", "<cmd>CopilotChatCCM<CR>", desc = "Convesion Commit", mode = { "n", "v" } },
     },
     opts = function()
-      require("CopilotChat.integrations.cmp").setup()
-
       require("CopilotChat").setup({
         mappings = {
           complete = {
             insert = "",
+            callback = function() end,
           },
         },
       })
@@ -84,12 +49,15 @@ return {
       local user = vim.env.USER or "User"
       user = user:sub(1, 1):upper() .. user:sub(2)
       return {
-        model = "gpt-4",
+        model = "gpt-4.1",
         auto_insert_mode = true,
         show_help = true,
-        question_header = "  " .. user .. " ",
-        answer_header = "  Copilot ",
         log_level = "error",
+        headers = {
+          user = "  " .. user .. " ", -- Header to use for user questions
+          assistant = "  Copilot ", -- Header to use for AI answers
+          tool = "## Tool ", -- Header to use for tool calls
+        },
         window = {
           layout = "horizontal",
           width = 0.4,
@@ -105,59 +73,16 @@ return {
           local select = require("CopilotChat.select")
           return select.visual(source) or select.buffer(source)
         end,
-        prompts = {
-          CM = {
-            prompt = "#git:staged\n\nWrite commit message for the change without commas or colons. Avoid using word `refactor`. Summary the change in unordered list format. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
-          },
-          CCM = {
-            prompt = "#git:staged\n\nWrite commit message for the change with commitizen convention. Summary the change in unordered list format. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
-          },
-        },
+        -- prompts = {
+        --   CM = {
+        --     prompt = "#gitdiff:staged\n\nWrite commit message for the change without commas or colons. Avoid using word `refactor`. Summary the change in unordered list format. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
+        --   },
+        --   CCM = {
+        --     prompt = "#gitdiff:staged\n\nWrite commit message for the change with commitizen convention. Summary the change in unordered list format. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
+        --   },
+        -- },
       }
     end,
-  },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    lazy = false,
-    version = false,
-    opts = {
-      provider = "copilot",
-      auto_suggestions_provider = "copilot",
-      hints = { enabled = false },
-    },
-    keys = {
-      { "<leader>ax", "<cmd>AvanteClear<cr>", desc = "avante: clear", mode = { "n", "v" } },
-    },
-    build = "make",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "echasnovski/mini.icons",
-      "zbirenbaum/copilot.lua",
-      {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-          },
-        },
-      },
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
   },
   {
     "olimorris/codecompanion.nvim",
@@ -166,6 +91,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim",
       "ravitemer/codecompanion-history.nvim",
+      "Davidyz/VectorCode",
     },
     opts = {
       strategies = {
@@ -219,10 +145,25 @@ return {
     },
     build = "npm install -g mcp-hub@latest",
     config = function()
-      require("mcphub").setup()
+      require("mcphub").setup({
+        extensions = {
+          copilotchat = {
+            enabled = true,
+            convert_tools_to_functions = true,
+            convert_resources_to_functions = true,
+            add_mcp_prefix = false,
+          },
+        },
+      })
     end,
     keys = {
       { "<leader>aH", "<cmd>MCPHub<cr>", desc = "MCP Hub", mode = { "n" } },
     },
+  },
+  {
+    "Davidyz/VectorCode",
+    version = "*",
+    build = "uv tool upgrade vectorcode", -- This helps keeping the CLI up-to-date
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 }

@@ -1,13 +1,14 @@
 local GIT_COMMIT_PROMPT = [[
-Given the following git diff, generate a commit message:
+Given the following git diff, generate a commit message following Tim Pope’s Guidelines:
 - The first line should be a short, imperative summary (max 60 characters).
 - If the change is complex, add a blank line and a detailed explanation.
 - Use bullet points for multiple detailed explanations.
 - Do not include issue numbers or references.
 - Avoid using the word refactor, instead explain what was done.
+- Ignore nested bullets.
 - Wrap the whole message in code block with language gitcommit.
 
-#git:staged
+#gitdiff:staged
 ]]
 
 local GIT_COMMIT_PROMPT_WITH_ISSUE_KEY = [[
@@ -16,7 +17,7 @@ Given the following prefix and code diff, write a commit message in the conventi
 Prefix: %s
 
 Code diff:
-#git:staged
+#gitdiff:staged
 
 Instructions:
 - Use the format: `%s: <short summary>`
@@ -24,6 +25,7 @@ Instructions:
 - If the change is complex, add a blank line and a detailed explanation.
 - Use bullet points for multiple detailed explanations.
 - Avoid using the word refactor, instead explain what was done.
+- Ignore nested bullets.
 - Wrap the whole message in code block with language gitcommit.
 ]]
 
