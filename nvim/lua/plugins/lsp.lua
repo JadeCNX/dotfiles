@@ -25,4 +25,8 @@ return {
       return opts
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    enabled = false,
+  },
 }
