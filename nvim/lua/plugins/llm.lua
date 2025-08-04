@@ -32,9 +32,6 @@ return {
       { "<leader>Co", "<cmd>CopilotChatOptimize<CR>", desc = "Optimize", mode = { "n", "v" } },
       { "<leader>Cd", "<cmd>CopilotChatDocs<CR>", desc = "Docs", mode = { "n", "v" } },
       { "<leader>Ct", "<cmd>CopilotChatTests<CR>", desc = "Tests", mode = { "n", "v" } },
-      -- { "<leader>Cm", "<cmd>CopilotChatCommit<CR>", desc = "Commit All", mode = { "n", "v" } },
-      -- { "<leader>Cs", "<cmd>CopilotChatCM<CR>", desc = "Commit", mode = { "n", "v" } },
-      -- { "<leader>CS", "<cmd>CopilotChatCCM<CR>", desc = "Convesion Commit", mode = { "n", "v" } },
     },
     opts = function()
       require("CopilotChat").setup({
@@ -50,6 +47,7 @@ return {
       user = user:sub(1, 1):upper() .. user:sub(2)
       return {
         model = "gpt-4.1",
+        -- temperature = 0.1,
         auto_insert_mode = true,
         show_help = true,
         log_level = "error",
@@ -73,14 +71,6 @@ return {
           local select = require("CopilotChat.select")
           return select.visual(source) or select.buffer(source)
         end,
-        -- prompts = {
-        --   CM = {
-        --     prompt = "#gitdiff:staged\n\nWrite commit message for the change without commas or colons. Avoid using word `refactor`. Summary the change in unordered list format. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
-        --   },
-        --   CCM = {
-        --     prompt = "#gitdiff:staged\n\nWrite commit message for the change with commitizen convention. Summary the change in unordered list format. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
-        --   },
-        -- },
       }
     end,
   },
