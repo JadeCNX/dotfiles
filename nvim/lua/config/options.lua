@@ -54,7 +54,7 @@ vim.opt.guicursor =
 --vim.api.nvim_set_hl(0, "lCursor", { reverse = true })
 
 if vim.g.neovide then
-  vim.opt.guifont = "DankMono Nerd Font:h14"
+  vim.opt.guifont = "DankMono Nerd Font:h12"
   vim.opt.linespace = 2
 
   vim.g.neovide_refresh_rate = 75
