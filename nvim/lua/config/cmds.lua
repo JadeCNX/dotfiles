@@ -61,7 +61,7 @@ vim.api.nvim_create_user_command("Commit", function()
 
   require("CopilotChat").ask(GIT_COMMIT_PROMPT, {
     callback = function(response)
-      os.execute("git commit -m '" .. remove_code_blocks(response) .. "'")
+      os.execute("git commit -m '" .. remove_code_blocks(response.content) .. "'")
       vim.cmd("qa!")
     end,
   })
@@ -74,7 +74,7 @@ vim.api.nvim_create_user_command("Recommit", function()
 
   require("CopilotChat").ask(GIT_COMMIT_PROMPT, {
     callback = function(response)
-      os.execute("git commit -m '" .. remove_code_blocks(response) .. "'")
+      os.execute("git commit -m '" .. remove_code_blocks(response.content) .. "'")
       vim.cmd("qa!")
     end,
   })
@@ -85,7 +85,7 @@ vim.api.nvim_create_user_command("IssuedCommit", function(o)
 
   require("CopilotChat").ask(string.format(GIT_COMMIT_PROMPT_WITH_ISSUE_KEY, o.args, o.args), {
     callback = function(response)
-      os.execute("git commit -m '" .. remove_code_blocks(response) .. "'")
+      os.execute("git commit -m '" .. remove_code_blocks(response.content) .. "'")
       vim.cmd("qa!")
     end,
   })
@@ -98,7 +98,7 @@ vim.api.nvim_create_user_command("IssuedRecommit", function(o)
 
   require("CopilotChat").ask(string.format(GIT_COMMIT_PROMPT_WITH_ISSUE_KEY, o.args, o.args), {
     callback = function(response)
-      os.execute("git commit -m '" .. remove_code_blocks(response) .. "'")
+      os.execute("git commit -m '" .. remove_code_blocks(response.content) .. "'")
       vim.cmd("qa!")
     end,
   })
@@ -145,7 +145,7 @@ vim.api.nvim_create_user_command("DailySummarized", function(opts)
 
   require("CopilotChat").ask(string.format(GIT_DAILY_SUMMARY_PROMPT, content), {
     callback = function(response)
-      vim.print(response)
+      vim.print(response.content)
       vim.cmd("qa!")
     end,
   })
