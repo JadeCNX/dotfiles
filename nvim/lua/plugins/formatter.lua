@@ -4,6 +4,11 @@ return {
     opts = function(_, opts)
       opts.formatters_by_ft.html = { "prettier_html" }
       opts.formatters_by_ft.zsh = { "shfmt" }
+      opts.formatters_by_ft.xml = { "xmlformatter" }
+      opts.formatters.xmlformatter = {
+        command = "xmlformat",
+        args = { "--blanks", "--selfclose", "--indent=2", "-" },
+      }
       opts.formatters.prettier_html = {
         command = "prettier",
         args = {
