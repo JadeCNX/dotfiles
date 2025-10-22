@@ -1,28 +1,28 @@
 return {
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     config = function()
       require("mini.align").setup()
     end,
   },
   {
-    "echasnovski/mini.trailspace",
+    "nvim-mini/mini.trailspace",
     opts = { only_in_normal_buffers = true },
     keys = {
       { "<leader>ct", "<cmd>lua MiniTrailspace.trim()<cr>", desc = "Trailspace" },
     },
   },
   {
-    "echasnovski/mini.bracketed",
+    "nvim-mini/mini.bracketed",
     enabled = false,
     config = function()
       require("mini.bracketed").setup()
     end,
   },
-  { "echasnovski/mini.indentscope", enabled = false },
-  { "echasnovski/mini.surround", enabled = false },
+  { "nvim-mini/mini.indentscope", enabled = false },
+  { "nvim-mini/mini.surround", enabled = false },
   {
-    "echasnovski/mini.bufremove",
+    "nvim-mini/mini.bufremove",
     keys = {
       {
         "<C-q>",

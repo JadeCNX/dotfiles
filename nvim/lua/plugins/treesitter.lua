@@ -1,6 +1,6 @@
 return {
   {
-    "ChristianChiarulli/nvim-ts-rainbow",
+    "HiPhish/rainbow-delimiters.nvim",
     rainbow = {
       enable = true,
       -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for

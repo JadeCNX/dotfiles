@@ -954,7 +954,7 @@ lvim.plugins = {
     end
   },
   {
-    "echasnovski/mini.trailspace",
+    "nvim-mini/mini.trailspace",
     version = false,
     opts = {
       only_in_normal_buffers = true }
