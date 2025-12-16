@@ -114,7 +114,7 @@ set laststatus=2
 set statusline=                          " left align
 set statusline+=%2*\                     " blank char
 set statusline+=%2*\%{StatuslineMode()}
-set statusline+=%2*\  
+set statusline+=%2*\                     " black char
 set statusline+=%1*\ %f                  " short filename              
 set statusline+=%=                       " right align
 set statusline+=%*
