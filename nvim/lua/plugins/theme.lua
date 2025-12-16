@@ -60,12 +60,13 @@ return {
       extend_background_behind_borders = true,
     },
   },
-  -- { "RRethy/base16-nvim", priority = 1000, lazy = true },
+  { "nyoom-engineering/oxocarbon.nvim", priority = 1000, lazy = true },
   -- { "loctvl842/monokai-pro.nvim", lazy = true },
   -- { "maxmx03/solarized.nvim", lazy = true },
-  -- { "nyoom-engineering/oxocarbon.nvim", lazy = true },
-  -- { "yorik1984/newpaper.nvim", lazy = true },
   -- { "projekt0n/github-nvim-theme", name = "github-theme", lazy = true },
+  -- { "RRethy/base16-nvim", priority = 1000, lazy = true },
+  -- { "tanvirtin/monokai.nvim", priority = 1000, lazy = true },
+  -- { "yorik1984/newpaper.nvim", lazy = true },
   -- {
   --   "loctvl842/monokai-pro.nvim",
   --   lazy = true,
@@ -87,5 +88,25 @@ return {
         highlight_inactive_windows = true, -- When the window is out of focus, change the normal background?
       },
     },
+  },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      italic_comments = true,
+      cache = true,
+    },
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.italic_strings = false
+      vim.g.transparent_background = true
+    end,
   },
 }

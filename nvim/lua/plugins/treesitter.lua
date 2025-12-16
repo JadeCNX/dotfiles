@@ -7,4 +7,7 @@ return {
     lazy = true,
     opts = { max_lines = 3, mode = "topline" },
   },
+  {
+    "fei6409/log-highlight.nvim",
+  },
 }

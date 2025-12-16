@@ -16,6 +16,7 @@
 .tern-port
 .vim
 .vscode
+.temp
 node_modules
 private-*
 Session.vim

@@ -20,7 +20,9 @@ return {
         function()
           local input = vim.fn.input("Quick Chat: ")
           if input ~= "" then
-            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+            require("CopilotChat").ask(input, {
+              selection = require("CopilotChat.select").buffer,
+            })
           end
         end,
         desc = "Quick chat",
@@ -67,10 +69,6 @@ return {
             insert = "<C-,>",
           },
         },
-        selection = function(source)
-          local select = require("CopilotChat.select")
-          return select.visual(source) or select.buffer(source)
-        end,
       }
     end,
   },
@@ -83,7 +81,9 @@ return {
       "ravitemer/codecompanion-history.nvim",
       "Davidyz/VectorCode",
     },
+    version = "v17.33.0",
     opts = {
+      ignore_warnings = true,
       strategies = {
         chat = {
           adapter = "copilot",

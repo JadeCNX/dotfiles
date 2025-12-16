@@ -113,8 +113,9 @@ vim.api.nvim_create_user_command("RestorePersistence", function()
 end, {})
 
 vim.api.nvim_create_user_command("DailySummarized", function(opts)
-  local date_str = opts.args
-  if not date_str:match("^%d%d%d%d%-%d%d%-%d%d$") then
+  local date_str = opts.fargs[1]
+  local email = opts.fargs[2] or ""
+  if not date_str or not email or not date_str:match("^%d%d%d%d%-%d%d%-%d%d$") then
     vim.cmd("qa!")
     return
   end
@@ -122,9 +123,8 @@ vim.api.nvim_create_user_command("DailySummarized", function(opts)
   local since = date_str .. " 00:00:00"
   local until_ = date_str .. " 23:59:59"
 
-  local user = vim.env.USER or ""
   local cmd = "git log --all --no-merges --author="
-    .. user
+    .. email
     .. " --pretty=format:'%s%b' --since='"
     .. since
     .. "' --until='"
@@ -149,4 +149,4 @@ vim.api.nvim_create_user_command("DailySummarized", function(opts)
       vim.cmd("qa!")
     end,
   })
-end, { nargs = 1, complete = nil, desc = "Summarize git commits and diffs for a date" })
+end, { nargs = "*", complete = nil, desc = "Summarize git commits and diffs for a date and email" })

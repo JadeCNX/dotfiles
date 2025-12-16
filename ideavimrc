@@ -32,8 +32,6 @@ set scrolloff 10
 set smartcase
 set wrapscan
 
-imap jj <C-c>
-
 let mapleader=" "
 
 map <c-h> <c-w>h

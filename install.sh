@@ -57,7 +57,7 @@ link tmux "$PWD/tmux/themes/toggle-themes.sh" "$HOME/.tmux/themes/toggle-themes.
 link tmux "$PWD/tmux/themes/theme.conf" "$HOME/.tmux/themes/theme.conf"
 
 # vim
-link vim "$PWD/vimrcs/vimrc.vim" "$HOME/.vimrc"
+link vim "$PWD/vimrc" "$HOME/.vimrc"
 
 # htop
 link htop "$PWD/htoprc" "$HOME/.config/htop/htoprc"
