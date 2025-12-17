@@ -1,4 +1,4 @@
-theme = dark:Monokai Pro Spectrum,light:Monokai Pro Light
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 background-opacity = 0.9
 background-blur = true
 
