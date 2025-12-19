@@ -186,7 +186,7 @@ command = """
 GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
 if [[ "$GIT_REMOTE" =~ "github" ]]; then
     GIT_REMOTE_SYMBOL=" "
-elif [[ "$GIT_REMOTE" =~ "gitlab" ]] || [[ "$GIT_REMOTE" =~ git.alm ]]; then
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]] || [[ "$GIT_REMOTE" =~ alm ]]; then
     GIT_REMOTE_SYMBOL=" "
 elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
     GIT_REMOTE_SYMBOL=" "
@@ -203,7 +203,7 @@ style = "purple"
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 
 [custom.git_email]
-command = 'echo "`git config user.email | cut -c1-6`..."'
+command = 'email=$(git config user.email); echo "`echo $email | cut -c1-6`...@${email#*@}"'
 format = "󰛓[$output]($style) "
 style = "bright-yellow bold"
 when = "git rev-parse --git-dir 2> /dev/null"
