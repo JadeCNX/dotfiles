@@ -35,7 +35,7 @@ return {
           desc = "Blame",
         },
         { "<leader>gL", gitsigns.toggle_current_line_blame, desc = "Toogle Blame" },
-        { "<leader>gh", gitsigns.preview_hunk, desc = "Preview Hunk" },
+        -- { "<leader>gh", gitsigns.preview_hunk, desc = "Preview Hunk" },
         { "<leader>gs", gitsigns.stage_hunk, desc = "Stage Hunk" },
         { "<leader>gS", gitsigns.stage_buffer, desc = "Stage Hunk" },
         {
@@ -44,7 +44,7 @@ return {
             gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
           end,
           desc = "Stage Hunk",
-          mode = "v"
+          mode = "v",
         },
         { "<leader>gr", gitsigns.reset_hunk, desc = "Reset Hunk" },
         { "<leader>gR", gitsigns.reset_buffer, desc = "Reset buffer" },

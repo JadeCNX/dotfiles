@@ -81,7 +81,6 @@ return {
       "ravitemer/codecompanion-history.nvim",
       "Davidyz/VectorCode",
     },
-    version = "v17.33.0",
     opts = {
       ignore_warnings = true,
       strategies = {

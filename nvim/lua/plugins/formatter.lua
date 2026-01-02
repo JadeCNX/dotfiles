@@ -7,7 +7,7 @@ return {
       opts.formatters_by_ft.xml = { "xmlformatter" }
       opts.formatters.xmlformatter = {
         command = "xmlformat",
-        args = { "--blanks", "--selfclose", "--indent=2", "-" },
+        args = { "--blanks", "--selfclose", "--indent=4", "-" },
       }
       opts.formatters.prettier_html = {
         command = "prettier",
