@@ -778,65 +778,6 @@ lvim.plugins = {
     end
   },
   {
-    "ThePrimeagen/refactoring.nvim",
-    config = function()
-      require("refactoring").setup({})
-
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>le",
-        [[ <esc><cmd>lua require('refactoring').refactor('Extract Function')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>lE",
-        [[ <esc><cmd>lua require('refactoring').refactor('Extract Function To File')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>lv",
-        [[ <esc><cmd>lua require('refactoring').refactor('Extract Variable')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>li",
-        [[ <esc><cmd>lua require('refactoring').refactor('Inline Variable')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>lb",
-        [[ <esc><cmd>lua require('refactoring').refactor('Extract Block')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>lbf",
-        [[ <esc><cmd>lua require('refactoring').refactor('Extract Block To File')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>lv",
-        [[ <esc><cmd>lua require('refactoring').refactor('Inline Variable')<cr>]],
-        { noremap = true, silent = true, expr = false }
-      )
-
-      require("telescope").load_extension("refactoring")
-
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>sr",
-        "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>",
-        { noremap = true }
-      )
-    end
-  },
-  {
     "jose-elias-alvarez/typescript.nvim",
     config = function()
       require("typescript").setup({
