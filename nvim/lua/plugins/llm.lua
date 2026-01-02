@@ -8,6 +8,7 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     build = "make tiktoken",
+    cmd = "CopilotChat",
     dependencies = {
       "zbirenbaum/copilot.lua",
       "nvim-lua/plenary.nvim",
@@ -15,19 +16,46 @@ return {
       "Davidyz/VectorCode",
     },
     keys = {
+      { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
+      { "<leader>C", "", desc = "+ai", mode = { "n", "x" } },
+      {
+        "<leader>CC",
+        function()
+          return require("CopilotChat").toggle()
+        end,
+        desc = "Toggle",
+        mode = { "n", "x" },
+      },
+      {
+        "<leader>Cx",
+        function()
+          return require("CopilotChat").reset()
+        end,
+        desc = "Clear",
+        mode = { "n", "x" },
+      },
       {
         "<leader>Cc",
         function()
-          local input = vim.fn.input("Quick Chat: ")
-          if input ~= "" then
-            require("CopilotChat").ask(input, {
-              selection = require("CopilotChat.select").buffer,
-            })
-          end
+          vim.ui.input({
+            prompt = "Quick Chat: ",
+          }, function(input)
+            if input ~= "" then
+              require("CopilotChat").ask(input)
+            end
+          end)
         end,
-        desc = "Quick chat",
+        desc = "Quick Chat",
+        mode = { "n", "x" },
       },
-      { "<leader>CC", "<cmd>CopilotChat<CR>", desc = "Toggle Copilot Chat", mode = { "n", "v" } },
+      {
+        "<leader>Cp",
+        function()
+          require("CopilotChat").select_prompt()
+        end,
+        desc = "Prompt Actions",
+        mode = { "n", "x" },
+      },
       { "<leader>Ce", "<cmd>CopilotChatExplain<CR>", desc = "Explains", mode = { "n", "v" } },
       { "<leader>Cr", "<cmd>CopilotChatReview<CR>", desc = "Review", mode = { "n", "v" } },
       { "<leader>Cf", "<cmd>CopilotChatFix<CR>", desc = "Fix", mode = { "n", "v" } },
@@ -36,15 +64,6 @@ return {
       { "<leader>Ct", "<cmd>CopilotChatTests<CR>", desc = "Tests", mode = { "n", "v" } },
     },
     opts = function()
-      require("CopilotChat").setup({
-        mappings = {
-          complete = {
-            insert = "",
-            callback = function() end,
-          },
-        },
-      })
-
       local user = vim.env.USER or "User"
       user = user:sub(1, 1):upper() .. user:sub(2)
       return {
@@ -70,6 +89,19 @@ return {
           },
         },
       }
+    end,
+    config = function(_, opts)
+      local chat = require("CopilotChat")
+
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "copilot-chat",
+        callback = function()
+          vim.opt_local.relativenumber = false
+          vim.opt_local.number = false
+        end,
+      })
+
+      chat.setup(opts)
     end,
   },
   {
@@ -122,6 +154,7 @@ return {
       },
     },
     keys = {
+      { "<leader>a", desc = "+AI Chat", icon = "󰭺" },
       { "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion", mode = { "n", "v" } },
       { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
       { "<leader>aA", "<cmd>CodeCompanionChat Add<cr>", desc = "Chat add", mode = "v" },
