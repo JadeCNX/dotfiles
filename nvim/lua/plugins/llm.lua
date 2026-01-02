@@ -154,10 +154,9 @@ return {
       },
     },
     keys = {
-      { "<leader>a", desc = "+AI Chat", icon = "󰭺" },
-      { "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion", mode = { "n", "v" } },
-      { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
-      { "<leader>aA", "<cmd>CodeCompanionChat Add<cr>", desc = "Chat add", mode = "v" },
+      { "<leader>aP", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion", mode = { "n", "v" } },
+      { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
+      { "<leader>aC", "<cmd>CodeCompanionChat Add<cr>", desc = "Chat add", mode = "v" },
     },
   },
   {
