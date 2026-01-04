@@ -55,9 +55,6 @@ nnoremap c* *Ncgn
 vnoremap <silent> * y/\V<C-R>0<CR>
 vnoremap <silent> # y/\V<C-R>0<CR>
 
-" nmap <space>ee :<C-u>:NERDTreeToggle<cr>
-" nmap <space>ef :<C-u>:NERDTreeFocus<cr>
-
 nmap <C-o> :action Back<CR>
 nmap <C-i> :action Forward<CR>
 
@@ -71,7 +68,8 @@ nmap [g <Action>(VcsShowPrevChangeMarker)
 
 " UI
 map <leader>uz <Action>(ToggleDistractionFreeMode)
-map <leader>un <C-u>:exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr>
+map <leader>ul <Action>(EditorToggleShowLineNumbers)
+map <leader>uL :<C-u>exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr>
 map <leader>uw <Action>(EditorToggleUseSoftWraps)
 
 " Files
