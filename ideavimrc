@@ -70,8 +70,9 @@ nmap ]g <Action>(VcsShowNextChangeMarker)
 nmap [g <Action>(VcsShowPrevChangeMarker)
 
 " UI
-map <leader>zz <Action>(ToggleDistractionFreeMode)
-map <leader>zn <C-u>:exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr>
+map <leader>uz <Action>(ToggleDistractionFreeMode)
+map <leader>un <C-u>:exec &rnu==0 ? "set relativenumber" : "set norelativenumber"<cr>
+map <leader>uw <Action>(EditorToggleUseSoftWraps)
 
 " Files
 map <leader><leader> <Action>(GotoFile)
