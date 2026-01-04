@@ -45,18 +45,18 @@ nnoremap <c-u> <c-u>zz
 nnoremap Y "*y
 vnoremap Y "*y
 
-map <space>nn :<c-u>%normal<space>
-vmap <space>nn :<c-u>'<,'>normal<space>
+map <space>nn :<C-u>%normal<space>
+vmap <space>nn :<C-u>'<,'>normal<space>
 
-map <space>h :<c-u>noh<cr>
+map <space>h :<C-u>noh<cr>
 
 nnoremap c* *Ncgn
 
 vnoremap <silent> * y/\V<C-R>0<CR>
 vnoremap <silent> # y/\V<C-R>0<CR>
 
-nmap <C-o> :action Back<CR>
-nmap <C-i> :action Forward<CR>
+nmap <C-o> :<C-u>action Back<CR>
+nmap <C-i> :<C-u>action Forward<CR>
 
 nmap Q @@
 
