@@ -109,4 +109,5 @@ return {
       vim.g.transparent_background = true
     end,
   },
+  { "nuvic/flexoki-nvim", name = "flexoki" },
 }

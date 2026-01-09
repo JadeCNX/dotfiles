@@ -19,6 +19,7 @@ return {
   { "ThePrimeagen/vim-be-good", enabled = false },
   { "tommcdo/vim-exchange" },
   { "tpope/vim-abolish" },
+  { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-rsi" },
   { "Vigemus/iron.nvim", lazy = true },

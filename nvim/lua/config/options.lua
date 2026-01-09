@@ -104,6 +104,7 @@ vim.filetype.add({
     [".env"] = "dotenv",
     [".prettierrc"] = "yaml",
     [".sqlfluff"] = "toml",
+    [".sqruff"] = "toml",
     ["Dockerfile"] = "dockerfile",
     ["fish_variables"] = "fish",
     ["Jenkinsfile"] = "groovy",

@@ -15,8 +15,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.dark_colorscheme = "rose-pine-moon"
-vim.g.light_colorscheme = "rose-pine-dawn"
+vim.g.dark_colorscheme = "flexoki-moon"
+vim.g.light_colorscheme = "flexoki-dawn"
 
 require("lazy").setup({
   spec = {

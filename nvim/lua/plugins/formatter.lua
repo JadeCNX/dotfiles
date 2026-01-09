@@ -1,10 +1,16 @@
 return {
   {
     "stevearc/conform.nvim",
+    optional = true,
     opts = function(_, opts)
       opts.formatters_by_ft.html = { "prettier_html" }
       opts.formatters_by_ft.zsh = { "shfmt" }
       opts.formatters_by_ft.xml = { "xmlformatter" }
+      opts.formatters_by_ft.sql = { "sqlformatter" }
+      opts.formatters.sqlformatter = {
+        command = "sql-formatter",
+        args = { "$FILENAME" },
+      }
       opts.formatters.xmlformatter = {
         command = "xmlformat",
         args = { "--blanks", "--selfclose", "--indent=4", "-" },
@@ -27,5 +33,15 @@ return {
 
       return opts
     end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = function(_, opts)
+      opts.linters_by_ft.sql = {}
+    end,
+  },
+  {
+    "nanotee/sqls.nvim",
   },
 }
