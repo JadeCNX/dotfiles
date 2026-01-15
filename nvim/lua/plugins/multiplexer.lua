@@ -1,7 +1,6 @@
 return {
   {
     "christoomey/vim-tmux-navigator",
-    enabld = false,
     keys = function()
       return {
         { "<C-H>", "<cmd>TmuxNavigateLeft<cr>", mode = { "n", "v", "t" }, desc = "Navigate Left" },
