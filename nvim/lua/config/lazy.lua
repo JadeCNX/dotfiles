@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.dark_colorscheme = "tokyonight-storm"
+vim.g.dark_colorscheme = "catppuccin-mocha"
 vim.g.light_colorscheme = "rose-pine-dawn"
 
 require("lazy").setup({
