@@ -15,21 +15,21 @@ return {
       })
     end,
   },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   lazy = true,
-  --   priority = 1000,
-  --   opts = {
-  --     compile = true,
-  --     undercurl = true,
-  --     transparent = true,
-  --     commentStyle = { italic = true },
-  --     functionStyle = { italic = true },
-  --     keywordStyle = { italic = true },
-  --     statementStyle = { bold = true },
-  --     dimInactive = true,
-  --   },
-  -- },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      compile = true,
+      undercurl = true,
+      transparent = true,
+      commentStyle = { italic = true },
+      functionStyle = { bold = true },
+      -- keywordStyle = { italic = true },
+      -- statementStyle = { bold = true },
+      dimInactive = true,
+    },
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -110,4 +110,15 @@ return {
     end,
   },
   { "nuvic/flexoki-nvim", name = "flexoki" },
+  {
+    "oskarnurm/koda.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      styles = {
+        functions = { bold = true },
+        comments = { italic = true },
+      },
+    },
+  },
 }
