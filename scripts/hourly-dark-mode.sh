@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ $(( $(date +%H) % 2 )) -eq 0 ]; then
-  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
-else
   osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
+else
+  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 fi
 
 # DARK_MODE=$(defaults read -g AppleInterfaceStyle 2>&1)
