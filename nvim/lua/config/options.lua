@@ -54,10 +54,12 @@ vim.opt.guicursor =
 --vim.api.nvim_set_hl(0, "lCursor", { reverse = true })
 
 if vim.g.neovide then
-  vim.opt.guifont = "Cascadia Code:h14"
+  vim.opt.guifont = "Maple Mono:h14"
   vim.opt.linespace = 2
 
   vim.g.neovide_refresh_rate = 75
+  vim.g.neovide_refresh_rate_idle = 5
+
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_profiler = false
