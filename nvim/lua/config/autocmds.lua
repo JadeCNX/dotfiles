@@ -27,3 +27,26 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "*" },
   command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
 })
+
+-- gx mapping to open URLs under cursor (like netrw's gx)
+local function gx_browse(url)
+  local viewer
+  if vim.g.netrw_browsex_viewer then
+    viewer = vim.g.netrw_browsex_viewer
+  elseif vim.fn.has("unix") == 1 and vim.fn.executable("xdg-open") == 1 then
+    viewer = "xdg-open"
+  elseif vim.fn.has("macunix") == 1 and vim.fn.executable("open") == 1 then
+    viewer = "open"
+  elseif vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 then
+    viewer = "start"
+  else
+    return
+  end
+  vim.fn.jobstart({ viewer, url }, { detach = true })
+end
+
+vim.keymap.set("n", "gx", function()
+  local url = vim.fn.expand("<cWORD>")
+  gx_browse(url)
+end, { silent = true, desc = "Open URL under cursor" })
+

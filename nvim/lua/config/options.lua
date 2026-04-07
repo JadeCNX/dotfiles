@@ -5,6 +5,8 @@
 -- timeout before show which_key and also exit current command chain
 vim.opt.timeoutlen = 1000
 
+vim.opt.ttimeoutlen = 50
+
 -- Show line number
 vim.opt.number = true
 
@@ -46,6 +48,111 @@ vim.opt.list = false
 vim.g.autoformat = false
 
 vim.g.loaded_perl_provider = 0
+
+-- Keymaps ported from Vimscript (rsi-like behavior)
+local map = vim.keymap.set
+
+-- Insert mode mappings
+map("i", "<C-A>", "<C-O>^")
+map("i", "<C-X><C-A>", "<C-A>")
+map("i", "<C-B>", function()
+  local line = vim.fn.getline(".")
+  if line:match("^%s*$") and vim.fn.col(".") > #line then
+    return "0\22\27kJs" -- 0<C-D><Esc>kJs
+  else
+    return "<Left>"
+  end
+end, { expr = false })
+map("i", "<C-D>", function()
+  if vim.fn.col(".") > #vim.fn.getline(".") then
+    return "<C-D>"
+  else
+    return "<Del>"
+  end
+end, { expr = true })
+map("i", "<C-E>", function()
+  if vim.fn.col(".") > #vim.fn.getline(".") or vim.fn.pumvisible() == 1 then
+    return "<C-E>"
+  else
+    return "<End>"
+  end
+end, { expr = true })
+map("i", "<C-F>", function()
+  if vim.fn.col(".") > #vim.fn.getline(".") then
+    return "<C-F>"
+  else
+    return "<Right>"
+  end
+end, { expr = true })
+
+-- Command-line mode mappings
+map("c", "<C-A>", "<Home>")
+map("c", "<C-X><C-A>", "<C-A>")
+map("c", "<C-B>", "<Left>")
+map("c", "<C-D>", function()
+  if vim.fn.getcmdpos() > #vim.fn.getcmdline() then
+    return "<C-D>"
+  else
+    return "<Del>"
+  end
+end, { expr = true })
+map("c", "<C-F>", function()
+  if vim.fn.getcmdpos() > #vim.fn.getcmdline() then
+    return vim.o.cedit
+  else
+    return "<Right>"
+  end
+end, { expr = true })
+
+-- Command-line transpose
+map("c", "<C-T>", function()
+  local pos = vim.fn.getcmdpos()
+  local cmdline = vim.fn.getcmdline()
+  if vim.fn.getcmdtype():match("[?/]") then
+    return "<C-T>"
+  elseif pos > #cmdline + 1 then
+    return "<Left><BS><Right>" .. (cmdline:sub(pos - 2, pos - 2) or "")
+  elseif pos <= 1 then
+    return "<Right><BS><Right>" .. (cmdline:sub(1, 1) or "")
+  else
+    return "<BS><Right>" .. (cmdline:sub(pos - 2, pos - 2) or "")
+  end
+end, { expr = true })
+
+
+-- Command-line <C-U> and <C-Y>
+map("c", "<C-U>", function()
+  if vim.fn.getcmdpos() > 1 then
+    vim.fn.setreg("-", vim.fn.getcmdline():sub(1, vim.fn.getcmdpos() - 2))
+  end
+  return "<C-U>"
+end, { expr = true })
+map("c", "<C-Y>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-Y>"
+  else
+    return "<C-R>-"
+  end
+end, { expr = true })
+
+-- Meta key mappings (for GUI/Neovim)
+map({ "i", "c" }, "<M-b>", "<S-Left>")
+map({ "i", "c" }, "<M-f>", "<S-Right>")
+map({ "i", "c" }, "<M-d>", "<C-O>dw")
+map("c", "<M-d>", "<S-Right><C-W>")
+map({ "i", "c" }, "<M-n>", "<Down>")
+map({ "i", "c" }, "<M-p>", "<Up>")
+map({ "i", "c" }, "<M-BS>", "<C-W>")
+map({ "i", "c" }, "<M-C-h>", "<C-W>")
+
+-- Terminal mode mappings (if needed)
+map("t", "<M-b>", "<Esc>b")
+map("t", "<M-f>", "<Esc>f")
+map("t", "<M-d>", "<Esc>d")
+map("t", "<M-n>", "<Esc>n")
+map("t", "<M-p>", "<Esc>p")
+map("t", "<M-BS>", "<Esc><C-?>")
+map("t", "<M-C-h>", "<Esc><C-H>")
 
 vim.opt.conceallevel = 0
 

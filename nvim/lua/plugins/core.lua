@@ -8,7 +8,6 @@ return {
   { "eandrju/cellular-automaton.nvim" },
   { "editorconfig/editorconfig-vim" },
   { "ellisonleao/glow.nvim", ft = { "markdown" } },
-  { "felipec/vim-sanegx", event = "BufRead" },
   { "folke/flash.nvim", enabled = false },
   { "glts/vim-textobj-comment", dependencies = "kana/vim-textobj-user" },
   { "junegunn/vim-easy-align" },
@@ -21,7 +20,6 @@ return {
   { "tpope/vim-abolish" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
-  { "tpope/vim-rsi" },
   { "Vigemus/iron.nvim", lazy = true },
   { "vimtaku/vim-textobj-keyvalue", dependencies = "kana/vim-textobj-user" },
 }
