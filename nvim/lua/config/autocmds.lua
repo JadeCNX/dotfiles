@@ -49,4 +49,3 @@ vim.keymap.set("n", "gx", function()
   local url = vim.fn.expand("<cWORD>")
   gx_browse(url)
 end, { silent = true, desc = "Open URL under cursor" })
-
