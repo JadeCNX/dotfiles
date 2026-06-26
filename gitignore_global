@@ -27,3 +27,8 @@ tags.temp
 .idea
 .sql-formatter.json
 AGENTS.md
+GEMINI.md
+.gemini
+.antigravitycli
+
+**/.claude/settings.local.json

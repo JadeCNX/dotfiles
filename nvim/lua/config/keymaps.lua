@@ -49,3 +49,9 @@ vim.keymap.set("v", "*", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true
 -- to the end of line
 vim.keymap.set("n", "-", "$", { noremap = true })
 vim.keymap.set("v", "-", "$", { noremap = true })
+
+if vim.g.vscode then
+  vim.keymap.set("n", "<space><space>", function()
+    require("vscode").action("workbench.action.quickOpen")
+  end, { silent = true })
+end

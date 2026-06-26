@@ -1,9 +1,8 @@
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur = true
 
-font-family = 0xProto
-font-feature = ss01
+font-family = Maple Mono
 font-size = 14
 
 window-decoration = none
