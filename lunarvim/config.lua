@@ -952,7 +952,6 @@ lvim.plugins = {
   { "pantharshit00/vim-prisma",                   ft = { "prisma" } },
   { "Pocco81/true-zen.nvim", },
   { "rbong/vim-flog" },
-  { "romgrk/nvim-treesitter-context" },
   { "simnalamburt/vim-mundo",                     cmd = "MundoToggle" },
   { "sindrets/diffview.nvim" },
   { "stevearc/dressing.nvim" },
