@@ -6,6 +6,12 @@ return {
       opts.formatters_by_ft.html = { "prettier_html" }
       opts.formatters_by_ft.zsh = { "shfmt" }
       opts.formatters_by_ft.xml = { "xmlformatter" }
+      opts.formatters_by_ft.java = { "google_java_format" }
+      opts.formatters.google_java_format = {
+        command = "google-java-format",
+        args = { "--aosp", "-" },
+        stdin = true,
+      }
       opts.formatters_by_ft.sql = { "sqlformatter" }
       opts.formatters.sqlformatter = {
         command = "sql-formatter",
