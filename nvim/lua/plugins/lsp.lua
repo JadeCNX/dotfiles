@@ -12,13 +12,6 @@ return {
     },
   },
   {
-    "mfussenegger/nvim-jdtls",
-    ft = "java",
-    init = function()
-      vim.lsp.enable("jdtls")
-    end,
-  },
-  {
     "windwp/nvim-ts-autotag",
     enabled = false,
   },
