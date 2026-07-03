@@ -2,6 +2,9 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- jsonc has no standalone treesitter grammar anymore; reuse json's
+vim.treesitter.language.register("json", "jsonc")
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "*.xml" },
   command = "setlocal sw=4",

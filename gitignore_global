@@ -26,7 +26,6 @@ tags.temp
 .env-local*
 .idea
 .sql-formatter.json
-AGENTS.md
 GEMINI.md
 .gemini
 .antigravitycli
