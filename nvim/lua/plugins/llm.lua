@@ -19,11 +19,6 @@ return {
             url = "https://github.com/google-gemini/antigravity",
             continue = { "--continue" },
           },
-          claude_code = {
-            cmd = { "claude" },
-            is_proc = "\\<claude\\>",
-            continue = { "--continue" },
-          },
         },
       },
     },
@@ -34,13 +29,6 @@ return {
           require("sidekick.cli").toggle({ name = "agy", focus = true })
         end,
         desc = "Sidekick Toggle Antigravity",
-      },
-      {
-        "<leader>ac",
-        function()
-          require("sidekick.cli").toggle({ name = "claude_code", focus = true })
-        end,
-        desc = "Sidekick Toggle Claude Code",
       },
     },
     config = function(_, opts)
