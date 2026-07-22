@@ -29,5 +29,7 @@ tags.temp
 GEMINI.md
 .gemini
 .antigravitycli
+.agents
+.caveman.json
 
 **/.claude/settings.local.json
