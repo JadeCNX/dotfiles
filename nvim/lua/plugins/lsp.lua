@@ -15,4 +15,13 @@ return {
     "windwp/nvim-ts-autotag",
     enabled = false,
   },
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = {
+        markdown = false,
+      },
+    },
+  }
 }
