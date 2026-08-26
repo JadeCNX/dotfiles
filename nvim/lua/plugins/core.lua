@@ -7,7 +7,6 @@ return {
   { "dhruvasagar/vim-zoom" },
   { "eandrju/cellular-automaton.nvim" },
   { "editorconfig/editorconfig-vim" },
-  { "ellisonleao/glow.nvim", ft = { "markdown" } },
   { "folke/flash.nvim", enabled = false },
   { "junegunn/vim-easy-align" },
   { "nacro90/numb.nvim", event = "BufRead", opts = { show_numbers = true, show_cursorline = true } },
